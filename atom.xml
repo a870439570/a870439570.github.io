@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>codeing-java</title>
+  
+  <subtitle>codeing-java</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://blog.qinxuewu.club/"/>
+  <updated>2019-01-25T07:08:34.000Z</updated>
+  <id>https://blog.qinxuewu.club/</id>
+  
+  <author>
+    <name>qinxuewu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入理解JVM+脑图</title>
+    <link href="https://blog.qinxuewu.club/2019/02/12/shen-ru-li-jie-jvm-nao-tu/"/>
+    <id>https://blog.qinxuewu.club/2019/02/12/shen-ru-li-jie-jvm-nao-tu/</id>
+    <published>2019-02-12T10:13:39.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://images.gitee.com/uploads/images/2019/0124/182055_4265159e_1478371.png&quot; alt=&quot;深入理解JVM脑图&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JVM" scheme="https://blog.qinxuewu.club/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="https://blog.qinxuewu.club/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloud集成Consul注册中心</title>
+    <link href="https://blog.qinxuewu.club/2019/02/11/springcloud-ji-cheng-consul-zhu-ce-zhong-xin/"/>
+    <id>https://blog.qinxuewu.club/2019/02/11/springcloud-ji-cheng-consul-zhu-ce-zhong-xin/</id>
+    <published>2019-02-11T09:54:44.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt; &lt;strong&gt;Spring Cloud 支持很多服务发现的软件，Eureka 只是其中之一，下面是 Spring Cloud 支持的服务发现软件以及特性对比：&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2019/1/17/168597b59609d307?w=780&amp;amp;h=441&amp;amp;f=jpeg&amp;amp;s=70496&quot; alt=&quot;输入图片说明&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
+    
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper实现分布式锁和队列</title>
+    <link href="https://blog.qinxuewu.club/2019/02/04/zookeeper-shi-xian-fen-bu-shi-suo-he-dui-lie/"/>
+    <id>https://blog.qinxuewu.club/2019/02/04/zookeeper-shi-xian-fen-bu-shi-suo-he-dui-lie/</id>
+    <published>2019-02-04T06:11:30.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Zookeeper客户端（Apache-Curator）&quot;&gt;&lt;a href=&quot;#Zookeeper客户端（Apache-Curator）&quot; class=&quot;headerlink&quot; title=&quot;Zookeeper客户端（Apache
+        
+      
+    
+    </summary>
+    
+      <category term="Zookeeper" scheme="https://blog.qinxuewu.club/categories/Zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="https://blog.qinxuewu.club/tags/Zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Apache Curator入门</title>
+    <link href="https://blog.qinxuewu.club/2019/02/03/apache-curator-ru-men/"/>
+    <id>https://blog.qinxuewu.club/2019/02/03/apache-curator-ru-men/</id>
+    <published>2019-02-03T09:53:27.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Zookeeper客户端（Apache-Curator）&quot;&gt;&lt;a href=&quot;#Zookeeper客户端（Apache-Curator）&quot; class=&quot;headerlink&quot; title=&quot;Zookeeper客户端（Apache Curator）&quot;&gt;&lt;/a&gt;Zookeeper客户端（Apache Curator）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;zookeeper自带的客户端是官方提供的，比较底层、使用起来写代码麻烦、不够直接。&lt;/li&gt;
+&lt;li&gt;Apache Curator是Apache的开源项目，封装了zookeeper自带的客户端，使用相对简便，易于使用。&lt;/li&gt;
+&lt;li&gt;zkclient是另一个开源的ZooKeeper客户端，其地址：&lt;a href=&quot;https://github.com/adyliu/zkclient生产环境不推荐使用。&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/adyliu/zkclient生产环境不推荐使用。&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="zookeeper" scheme="https://blog.qinxuewu.club/tags/zookeeper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot集成ElasticSearch6.2</title>
+    <link href="https://blog.qinxuewu.club/2019/02/03/springboot-ji-cheng-elasticsearch6-2/"/>
+    <id>https://blog.qinxuewu.club/2019/02/03/springboot-ji-cheng-elasticsearch6-2/</id>
+    <published>2019-02-03T06:06:11.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;elasticsearch-Java-High-Level-REST-Client-api&quot;&gt;&lt;a href=&quot;#elasticsearch-Java-High-Level-REST-Client-api&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="ElasticSearch" scheme="https://blog.qinxuewu.club/tags/ElasticSearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ElasticSearch安装及java Api使用</title>
+    <link href="https://blog.qinxuewu.club/2019/02/02/elasticsearch-an-zhuang-ji-java-api-shi-yong/"/>
+    <id>https://blog.qinxuewu.club/2019/02/02/elasticsearch-an-zhuang-ji-java-api-shi-yong/</id>
+    <published>2019-02-02T09:50:15.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;ElasticSearch-简介&quot;&gt;&lt;a href=&quot;#ElasticSearch-简介&quot; class=&quot;headerlink&quot; title=&quot;ElasticSearch 简介&quot;&gt;&lt;/a&gt;ElasticSearch 简介&lt;/h3&gt;&lt;p&gt;ElasticSearch是一个高度可扩展的开源搜索引擎并使用REST API，所以您值得拥有。 在本教程中，将介绍开始使用ElasticSearch的一些主要概念。&lt;/p&gt;
+&lt;h3 id=&quot;下载并运行ElasticSearch&quot;&gt;&lt;a href=&quot;#下载并运行ElasticSearch&quot; class=&quot;headerlink&quot; title=&quot;下载并运行ElasticSearch&quot;&gt;&lt;/a&gt;下载并运行ElasticSearch&lt;/h3&gt;&lt;p&gt;ElasticSearch可以从elasticsearch.org下载对应的文件格式，如ZIP和TAR.GZ。下载并提取一个运行它的软件包之后不会容易得多，需要提前安装Java运行时环境。&lt;br&gt;下载链接 &lt;a href=&quot;https://www.elastic.co/products/elasticsearch&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.elastic.co/products/elasticsearch&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="ElasticSearch" scheme="https://blog.qinxuewu.club/tags/ElasticSearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm系列(六)storm和kafka集成</title>
+    <link href="https://blog.qinxuewu.club/2019/02/01/storm-xi-lie-liu-storm-he-kafka-ji-cheng/"/>
+    <id>https://blog.qinxuewu.club/2019/02/01/storm-xi-lie-liu-storm-he-kafka-ji-cheng/</id>
+    <published>2019-02-01T09:48:37.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;使用kafka-client-jar进行Storm-Apache-Kafka集成&quot;&gt;&lt;a href=&quot;#使用kafka-client-jar进行Storm-Apache-Kafka集成&quot; class=&quot;headerlink&quot; title=&quot;使用kafka-client jar进行Storm Apache Kafka集成&quot;&gt;&lt;/a&gt;使用kafka-client jar进行Storm Apache Kafka集成&lt;/h2&gt;&lt;p&gt;这包括新的Apache Kafka消费者API。兼容性 Apache Kafka版本0.10起&lt;br&gt;引入jar包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;dependency&amp;gt;
+      &amp;lt;groupId&amp;gt;org.apache.storm&amp;lt;/groupId&amp;gt;
+      &amp;lt;artifactId&amp;gt;storm-kafka-client&amp;lt;/artifactId&amp;gt;
+      &amp;lt;version&amp;gt;1.2.0&amp;lt;/version&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;从kafka中订阅消息读取&quot;&gt;&lt;a href=&quot;#从kafka中订阅消息读取&quot; class=&quot;headerlink&quot; title=&quot;从kafka中订阅消息读取&quot;&gt;&lt;/a&gt;从kafka中订阅消息读取&lt;/h2&gt;&lt;p&gt;通过使用KafkaSpoutConfig类来配置spout实现。此类使用Builder模式，可以通过调用其中一个Builders构造函数或通过调用KafkaSpoutConfig类中的静态方法构建器来启动。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
+    
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot版的JVM检控工具</title>
+    <link href="https://blog.qinxuewu.club/2019/01/30/springboot-ban-de-jvm-jian-kong-gong-ju/"/>
+    <id>https://blog.qinxuewu.club/2019/01/30/springboot-ban-de-jvm-jian-kong-gong-ju/</id>
+    <published>2019-01-30T09:46:51.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2019/1/6/168214665581edf1?w=1909&amp;amp;h=931&amp;amp;f=png&amp;amp;s=126744&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/tags/springboot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm系列(五)DRPC实现远程调用</title>
+    <link href="https://blog.qinxuewu.club/2019/01/29/storm-xi-lie-wu-drpc-shi-xian-yuan-cheng-diao-yong/"/>
+    <id>https://blog.qinxuewu.club/2019/01/29/storm-xi-lie-wu-drpc-shi-xian-yuan-cheng-diao-yong/</id>
+    <published>2019-01-29T09:44:41.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Trident简介&quot;&gt;&lt;a href=&quot;#Trident简介&quot; class=&quot;headerlink&quot; title=&quot;Trident简介&quot;&gt;&lt;/a&gt;Trident简介&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Trident拥有一流的抽象，可以读取和写入有状态的来源。状态可以是拓扑的内部 - 例如，保存在内存中并由HDFS支持 -  或者外部存储在Memcached或Cassandra等数据库中。在任何一种情况下，Trident API都没有区别。&lt;/li&gt;
+&lt;li&gt;Trident以容错的方式管理状态，以便状态更新在重试和失败时是幂等的。这使您可以推理Trident拓扑，就好像每条消息都是精确处理一次一样。&lt;/li&gt;
+&lt;li&gt;在进行状态更新时，可以实现各种级别的容错
+    
+    </summary>
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
+    
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm系列(四)并行度和流分组</title>
+    <link href="https://blog.qinxuewu.club/2019/01/28/storm-xi-lie-si-bing-xing-du-he-liu-fen-zu/"/>
+    <id>https://blog.qinxuewu.club/2019/01/28/storm-xi-lie-si-bing-xing-du-he-liu-fen-zu/</id>
+    <published>2019-01-28T09:43:11.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;并行度-parallelism-概念&quot;&gt;&lt;a href=&quot;#并行度-parallelism-概念&quot; class=&quot;headerlink&quot; title=&quot;并行度(parallelism)概念&quot;&gt;&lt;/a&gt;并行度(parallelism)概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一个运行中的拓扑是由什么构成的：工作进程（worker processes），执行器（executors）和任务（tasks）&lt;/li&gt;
+&lt;li&gt;在 Worker 中运行的是拓扑的一个子集。一个 worker 进程是从属于某一个特定的拓扑的，在 worker&lt;br&gt;进程中会运行一个或者多个与拓扑中的组件相关联的 executor。一个运行中的拓扑就是由这些运行于 Storm集群中的很多机器上的进程组成的。
+    
+    </summary>
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
+    
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm系列(三)java编写第个storm程序</title>
+    <link href="https://blog.qinxuewu.club/2019/01/27/storm-xi-lie-san-java-bian-xie-di-ge-storm-cheng-xu/"/>
+    <id>https://blog.qinxuewu.club/2019/01/27/storm-xi-lie-san-java-bian-xie-di-ge-storm-cheng-xu/</id>
+    <published>2019-01-27T09:41:26.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;本地模式&quot;&gt;&lt;a href=&quot;#本地模式&quot; class=&quot;headerlink&quot; title=&quot;本地模式&quot;&gt;&lt;/a&gt;本地模式&lt;/h2&gt;&lt;p&gt;在本地模式下，Storm拓扑结构运行在本地计算机的单一JVM进程上。这个模式用于开发、测试以及调试，因为这是观察所有组件如何协同工作的最简单方法。在这种模式下，我们可以调整参数，观察我们的拓扑结构如何在不同的Storm配置环境下运行。要在本地模式下运行，我们要下载Storm开发依赖，以便用来开发并测试我们的拓扑结构。我们创建了第一个Storm工程以后，很快就会明白如何使用本地模式了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
+    
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm系列(二)常用shell命令操作</title>
+    <link href="https://blog.qinxuewu.club/2019/01/27/storm-xi-lie-er-chang-yong-shell-ming-ling-cao-zuo/"/>
+    <id>https://blog.qinxuewu.club/2019/01/27/storm-xi-lie-er-chang-yong-shell-ming-ling-cao-zuo/</id>
+    <published>2019-01-27T09:39:00.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;p&gt;官方文档&lt;br&gt;&lt;a href=&quot;http://storm.apache.org/releases/1.2.2/Command-line-client.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://storm.apache.org/releases/1.2.2/Command-line-client.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;查看命令帮助&quot;&gt;&lt;a href=&quot;#查看命令帮助&quot; class=&quot;headerlink&quot; title=&quot;查看命令帮助&quot;&gt;&lt;/a&gt;查看命令帮助&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
+    
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka安装搭建以及SpringBoot集成</title>
+    <link href="https://blog.qinxuewu.club/2019/01/27/kafka-an-zhuang-da-jian-yi-ji-springboot-ji-cheng/"/>
+    <id>https://blog.qinxuewu.club/2019/01/27/kafka-an-zhuang-da-jian-yi-ji-springboot-ji-cheng/</id>
+    <published>2019-01-27T06:04:01.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;kafka介绍&quot;&gt;&lt;a href=&quot;#kafka介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="kafka" scheme="https://blog.qinxuewu.club/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringCloud服务链路追踪</title>
+    <link href="https://blog.qinxuewu.club/2019/01/27/springcloud-fu-wu-lian-lu-zhui-zong/"/>
+    <id>https://blog.qinxuewu.club/2019/01/27/springcloud-fu-wu-lian-lu-zhui-zong/</id>
+    <published>2019-01-27T06:00:12.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/a870439570/boot-cloud&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SpringCloud 教程Finchley版本&lt;/a&gt;&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
+    
+    
+      <category term="zipkin" scheme="https://blog.qinxuewu.club/tags/zipkin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm系列(一)环境搭建安装</title>
+    <link href="https://blog.qinxuewu.club/2019/01/26/storm-xi-lie-yi-huan-jing-da-jian-an-zhuang/"/>
+    <id>https://blog.qinxuewu.club/2019/01/26/storm-xi-lie-yi-huan-jing-da-jian-an-zhuang/</id>
+    <published>2019-01-26T09:35:51.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是Apache-Storm&quot;&gt;&lt;a href=&quot;#什么是Apache-Storm&quot; class=&quot;headerlink&quot; title=&quot;什么是Apache Storm&quot;&gt;&lt;/a&gt;什么是Apache Storm&lt;/h3&gt;&lt;p&gt;Apache Storm是一个分布式实时大数据处理系统。Storm设计用于在容错和水平可扩展方法中处理大量数据。它是一个流数据框架，具有最高的摄取率。虽然Storm是无状态的，它通过Apache ZooKeeper管理分布式环境和集群状态。它很简单，您可以并行地对实时数据执行各种操作。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
+    
+    
+      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eureka注册中心增加访问权限</title>
+    <link href="https://blog.qinxuewu.club/2019/01/26/eureka-zhu-ce-zhong-xin-zeng-jia-fang-wen-quan-xian/"/>
+    <id>https://blog.qinxuewu.club/2019/01/26/eureka-zhu-ce-zhong-xin-zeng-jia-fang-wen-quan-xian/</id>
+    <published>2019-01-26T05:55:41.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;eureka注册中心增加访问权限（Springboot2.0版本解决方案）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SpringCloud组件它主要提供的模块包括：服务发现（Eureka），断路器（Hystrix），智能路有（Zuul），客户端负载均衡（Ribbon），Archaius，
+        
+      
+    
+    </summary>
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
+    
+    
+      <category term="eureka" scheme="https://blog.qinxuewu.club/tags/eureka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot Admin2.1应用监控</title>
+    <link href="https://blog.qinxuewu.club/2019/01/26/springbootadmin/"/>
+    <id>https://blog.qinxuewu.club/2019/01/26/springbootadmin/</id>
+    <published>2019-01-26T05:41:57.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软件。每个应用都认为是一个客户端，通过HTTP或者使用 Eureka注册到admin server中进行展示，Spring Boot Admin
+        
+      
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="springbootAdmin" scheme="https://blog.qinxuewu.club/tags/springbootAdmin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode我们必知必会的SQL面试题</title>
+    <link href="https://blog.qinxuewu.club/2019/01/25/leetcode-wo-men-bi-zhi-bi-hui-de-sql-mian-shi-ti/"/>
+    <id>https://blog.qinxuewu.club/2019/01/25/leetcode-wo-men-bi-zhi-bi-hui-de-sql-mian-shi-ti/</id>
+    <published>2019-01-25T09:25:45.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;获取Employee第n高的薪水&quot;&gt;&lt;a href=&quot;#获取Employee第n高的薪水&quot; class=&quot;headerlink&quot; title=&quot;获取Employee第n高的薪水&quot;&gt;&lt;/a&gt;获取Employee第n高的薪水&lt;/h2&gt;&lt;p&gt;编写一个 SQL 查询，获取 Employee 表中第 n 高的薪水（Salary）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+----+--------+
+| Id | Salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://blog.qinxuewu.club/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/tags/springboot/"/>
+    
+      <category term="leetcode" scheme="https://blog.qinxuewu.club/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单微信小程序个人博客</title>
+    <link href="https://blog.qinxuewu.club/2019/01/25/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/"/>
+    <id>https://blog.qinxuewu.club/2019/01/25/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/</id>
+    <published>2019-01-25T09:21:03.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;项目介绍&quot;&gt;&lt;a href=&quot;#项目介绍&quot; class=&quot;headerlink&quot; title=&quot;项目介绍&quot;&gt;&lt;/a&gt;项目介绍&lt;/h4&gt;&lt;p&gt;简单微信笔记小程序.&lt;/p&gt;
+&lt;h3 id=&quot;文档&quot;&gt;&lt;a href=&quot;#文档&quot; class=&quot;headerlink&quot; title=&quot;文档&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://a870439570.github.io/blog-sharon/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文档&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://a870439570.github.io/blog-sharon/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://a870439570.github.io/blog-sharon/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;项目架构&quot;&gt;&lt;a href=&quot;#项目架构&quot; class=&quot;headerlink&quot; title=&quot;项目架构&quot;&gt;&lt;/a&gt;项目架构&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;SpringBoot2.0 h2数据库&lt;/li&gt;
+&lt;li&gt;html2wxml  用于微信小程序的HTML和Markdown格式的富文本渲染组件，支持代码高亮（&lt;a href=&quot;https://gitee.com/qwqoffice/html2wxml）部署小程序需要集成插件&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://gitee.com/qwqoffice/html2wxml）部署小程序需要集成插件&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/tags/springboot/"/>
+    
+      <category term="小程序" scheme="https://blog.qinxuewu.club/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github+docsify打造个人文档</title>
+    <link href="https://blog.qinxuewu.club/2019/01/24/github-docsify-da-zao-ge-ren-wen-dang/"/>
+    <id>https://blog.qinxuewu.club/2019/01/24/github-docsify-da-zao-ge-ren-wen-dang/</id>
+    <published>2019-01-24T09:13:21.000Z</published>
+    <updated>2019-01-25T07:08:34.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;在日常开发中 前后端对接时 经常要写很多文档Api。docsify就是一个强大的文档生成工具 界面清新好 支持语法高亮和Markdown 语法，并且docsify 扩展了一些 Markdown 语法可以让文档更易读。像vue.js官网(&lt;a href=&quot;https://cn.vuejs.org/)就是docsify&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://cn.vuejs.org/)就是docsify&lt;/a&gt; 其中的一种注意 并且是目前用的的最多的主题&lt;/p&gt;
+&lt;h3 id=&quot;效果图如下&quot;&gt;&lt;a href=&quot;#效果图如下&quot; class=&quot;headerlink&quot; title=&quot;效果图如下&quot;&gt;&lt;/a&gt;效果图如下&lt;/h3&gt;&lt;p&gt;预览链接：&lt;a href=&quot;https://a870439570.github.io/interview-docs&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://a870439570.github.io/interview-docs&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;https://user-gold-cdn.xitu.io/2019/1/4/16816de06fadda89?w=1237&amp;amp;h=607&amp;amp;f=png&amp;amp;s=367834&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://blog.qinxuewu.club/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="docsify" scheme="https://blog.qinxuewu.club/tags/docsify/"/>
+    
+  </entry>
+  
+</feed>
