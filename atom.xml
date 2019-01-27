@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-01-27T06:27:39.000Z</updated>
+  <updated>2019-01-27T08:16:58.000Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring cloud alibaba系列(一) 服务注册</title>
+    <link href="https://blog.qinxuewu.club/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/"/>
+    <id>https://blog.qinxuewu.club/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/</id>
+    <published>2019-01-27T08:10:45.000Z</published>
+    <updated>2019-01-27T08:16:58.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;alibaba-cloud&quot;&gt;&lt;a href=&quot;#alibaba-cloud&quot; class=&quot;headerlink&quot; title=&quot;alibaba-cloud&quot;&gt;&lt;/a&gt;alibaba-cloud&lt;/h2&gt;&lt;p&gt;本项目演示如何使用 spring cloud
+        
+      
+    
+    </summary>
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
+    
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
+    
+      <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot版的JVM检控工具</title>
@@ -519,32 +547,6 @@
     
     
       <category term="Zookeeper" scheme="https://blog.qinxuewu.club/tags/Zookeeper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zookeeper客户端Curator入门</title>
-    <link href="https://blog.qinxuewu.club/2018/08/28/java/apache-curator-ru-men/"/>
-    <id>https://blog.qinxuewu.club/2018/08/28/java/apache-curator-ru-men/</id>
-    <published>2018-08-28T09:53:27.000Z</published>
-    <updated>2019-01-27T06:15:58.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Zookeeper客户端（Apache-Curator）&quot;&gt;&lt;a href=&quot;#Zookeeper客户端（Apache-Curator）&quot; class=&quot;headerlink&quot; title=&quot;Zookeeper客户端（Apache
-        
-      
-    
-    </summary>
-    
-      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
-    
-    
-      <category term="zookeeper" scheme="https://blog.qinxuewu.club/tags/zookeeper/"/>
     
   </entry>
   
