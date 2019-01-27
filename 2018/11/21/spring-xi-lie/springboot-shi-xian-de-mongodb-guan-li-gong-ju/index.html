@@ -521,29 +521,29 @@ Mongodb网页管理工具,基于Spring Boot2.0，前端采用layerUI实现。
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
 </div>
 
-<script src="/libs/gitment/gitment.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
 <script>
-var gitment = new Gitment({
-    id: 'Wed Nov 21 2018 17:05:58 GMT+0800',
-    owner: 'codeing-java',
-    repo: 'https://github.com/a870439570/interview-docs.git',
-    oauth: {
-        client_id: 'bbfceab09bd5cf64b66a',
-        client_secret: '6f71192f036d77519ffd37fe69e86bf2fe70a1ad'
-    }
-});
+    let gitalk = new Gitalk({
+        clientID: 'f3cb37ac575dd81097d7',
+        clientSecret: '2c7489d70b7285fd18cd21f90d5f92542035553b',
+        repo: 'https://github.com/a870439570/a870439570.github.io',
+        owner: 'codeing-java',
+        admin: "a870439570",
+        id: '2018-11-21T17-05-58',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
 
-gitment.render('gitment-content');
+    gitalk.render('gitalk-container');
 </script>
+    
+
     
 
     
