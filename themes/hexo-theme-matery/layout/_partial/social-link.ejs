@@ -1,0 +1,21 @@
+<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
+    <i class="fa fa-jsfiddle"></i>
+</a>
+<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
+    <i class="fa fa-arrow-circle-right"></i>
+</a>
+
+<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+<% if (config.feed && config.feed.path == 'atom.xml') { %>
+<a href="<%- url_for('/atom.xml') %>" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <i class="fa fa-rss"></i>
+</a>
+<% } %>
