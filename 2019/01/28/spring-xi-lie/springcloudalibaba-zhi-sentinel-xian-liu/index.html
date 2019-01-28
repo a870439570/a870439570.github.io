@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Netty入门(一)快速入门, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
-    <meta name="description" content="Netty介绍  Netty是一个NIO client-server(客户端服务器)框架，使用Netty可以快速开发网络应用，例如服务器和客户端协议。Netty提供了一种新的方式来使开发网络应用程序，这种新的方式使得它很容易使用和有很强的扩">
+    <meta name="keywords" content="spring cloud alibaba系列(二)Sentinel应用的限流管理, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
+    <meta name="description" content="限流组件Sentinel
+Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。
+默认支持 Servlet、Feign、RestTemplate、Dubbo 和 RocketMQ 限流降级功能的接">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Netty入门(一)快速入门 | codeing</title>
+    <title>spring cloud alibaba系列(二)Sentinel应用的限流管理 | codeing</title>
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -298,13 +300,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0127/145107_dbdaa076_1478371.png')">
+<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0128/145749_7c622d30_1478371.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Netty入门(一)快速入门
+                        spring cloud alibaba系列(二)Sentinel应用的限流管理
                     </div>
                 </div>
             </div>
@@ -417,8 +419,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Netty/" target="_blank">
-                                <span class="chip bg-color">Netty</span>
+                            <a href="/tags/springcloud/" target="_blank">
+                                <span class="chip bg-color">springcloud</span>
+                            </a>
+                        
+                            <a href="/tags/alibaba/" target="_blank">
+                                <span class="chip bg-color">alibaba</span>
                             </a>
                         
                     </div>
@@ -429,8 +435,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Netty/" class="post-category" target="_blank">
-                                Netty
+                            <a href="/categories/springcloud/" class="post-category" target="_blank">
+                                springcloud
                             </a>
                         
                     </div>
@@ -441,14 +447,14 @@
             <div class="post-info">
                 <span class="post-date">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-10-11
+                    2019-01-28
                 </span>
 
                 
                     
                     <span class="post-word-count">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.4k
                     </span>
                     
 
@@ -471,189 +477,140 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Netty介绍"><a href="#Netty介绍" class="headerlink" title="Netty介绍"></a>Netty介绍</h2><p>  Netty是一个NIO client-server(客户端服务器)框架，使用Netty可以快速开发网络应用，例如服务器和客户端协议。Netty提供了一种新的方式来使开发网络应用程序，这种新的方式使得它很容易使用和有很强的扩展性。Netty的内部实现时很复杂的，但是Netty提供了简单易用的api从网络处理代码中解耦业务逻辑。Netty是完全基于NIO实现的，所以整个Netty都是异步的。</p>
-<h2 id="Netty框架的组成"><a href="#Netty框架的组成" class="headerlink" title="Netty框架的组成"></a>Netty框架的组成</h2><p>   <img src="https://img-blog.csdn.net/20181011131758867?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
-<h2 id="一个Netty程序的工作图如下"><a href="#一个Netty程序的工作图如下" class="headerlink" title="一个Netty程序的工作图如下"></a>一个Netty程序的工作图如下</h2><p><img src="https://img-blog.csdn.net/20181011131844464?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br>1.客户端连接到服务器<br>2.建立连接后，发送或接收数据<br>3.服务器处理所有的客户端连接 </p>
-<h2 id="Netty为什么传输快"><a href="#Netty为什么传输快" class="headerlink" title="Netty为什么传输快"></a>Netty为什么传输快</h2><ul>
-<li>Netty的传输快其实也是依赖了NIO的一个特性——零拷贝。我们知道，Java的内存有堆内存、栈内存和字符串常量池等等，其中堆内存是占用内存空间最大的一块，也是Java对象存放的地方，一般我们的数据如果需要从IO读取到堆内存，中间需要经过Socket缓冲区，也就是说一个数据会被拷贝两次才能到达他的的终点，如果数据量大，就会造成不必要的资源浪费。</li>
-<li>Netty针对这种情况，使用了NIO中的另一大特性——零拷贝，当他需要接收数据的时候，他会在堆内存之外开辟一块内存，数据就直接从IO读到了那块内存中去，在netty里面通过ByteBuf可以直接对这些数据进行直接操作，从而加快了传输速度。</li>
+                <h2 id="限流组件Sentinel"><a href="#限流组件Sentinel" class="headerlink" title="限流组件Sentinel"></a>限流组件Sentinel</h2><ul>
+<li>Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。</li>
+<li>默认支持 Servlet、Feign、RestTemplate、Dubbo 和 RocketMQ 限流降级功能的接入，可以在运行时通过控制台实时修改限流降级规则，还支持查看限流降级 Metrics 监控。</li>
+<li>自带控台动态修改限流策略。但是每次服务重启后就丢失了。所以它也支持ReadableDataSource 目前支持file, nacos, zk, apollo 这4种类型<h2 id="接入Sentinel"><a href="#接入Sentinel" class="headerlink" title="接入Sentinel"></a>接入Sentinel</h2>创建项目cloud-sentinel</li>
 </ul>
-<h2 id="编写一个HelloWorld"><a href="#编写一个HelloWorld" class="headerlink" title="编写一个HelloWorld"></a>编写一个HelloWorld</h2><p>服务端</p>
-<pre><code>public class Server {
-
-    public static void main(String[] args) throws Exception{
-        //1 创建2个线程，一个是负责接收客户端的连接。一个是负责进行数据传输的
-        EventLoopGroup pGroup = new NioEventLoopGroup();
-        EventLoopGroup cGroup = new NioEventLoopGroup();
-
-        //2 创建服务器辅助类
-        ServerBootstrap b = new ServerBootstrap();
-        b.group(pGroup, cGroup)
-         .channel(NioServerSocketChannel.class)
-         .option(ChannelOption.SO_BACKLOG, 1024)
-         .option(ChannelOption.SO_SNDBUF, 32*1024)
-         .option(ChannelOption.SO_RCVBUF, 32*1024)
-         .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
-            @Override
-            protected void initChannel(SocketChannel sc) throws Exception {
-                //设置特殊分隔符
-                ByteBuf buf = Unpooled.copiedBuffer(&quot;$_&quot;.getBytes());
-                sc.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, buf));
-                //设置字符串形式的解码
-                sc.pipeline().addLast(new StringDecoder());
-                sc.pipeline().addLast(new ServerHandler());
-            }
-        });
-
-        //4 绑定连接
-        ChannelFuture cf = b.bind(8765).sync();
-        //等待服务器监听端口关闭
-        cf.channel().closeFuture().sync();
-        pGroup.shutdownGracefully();
-        cGroup.shutdownGracefully();
-    }
-}
-
-</code></pre><p>服务端消息处理类</p>
-<pre><code>public class ServerHandler extends ChannelHandlerAdapter{
-
-    /**
-     * 通道刚被激活时会调用次方法
-     * @param ctx
-     * @throws Exception
-     */
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println(&quot;server channel active... &quot;);
-    }
-
-    /**
-     * 读取消息方法
-     * @param ctx
-     * @param msg
-     * @throws Exception
-     */
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-        String body = new String(req, &quot;utf-8&quot;);
-        System.out.println(&quot;Server :&quot; + body );
-
-        String response = &quot;进行返回给客户端的响应：&quot; + body ;
-        ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
-
-    }
-
-    /**
-     * 读取完毕后处理方法
-     * @param ctx
-     * @throws Exception
-     */
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        System.out.println(&quot;读完了&quot;);
-        ctx.flush();
-    }
-
-
-    /***
-     * 这个方法会在发生异常时触发
-
-     */
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable t) throws Exception {
-        /**
-         * exceptionCaught() 事件处理方法是当出现 Throwable 对象才会被调用，即当 Netty 由于 IO
-         * 错误或者处理器在处理事件时抛出的异常时。在大部分情况下，捕获的异常应该被记录下来 并且把关联的 channel
-         * 给关闭掉。然而这个方法的处理方式会在遇到不同异常的情况下有不 同的实现，比如你可能想在关闭连接之前发送一个错误码的响应消息。
-         */
-        // 出现异常就关闭
-        t.printStackTrace();
-        ctx.close();
-    }
-}
-</code></pre><p>客户端</p>
-<pre><code>public class Client {
-    public static void main(String[] args) {
-        EventLoopGroup group = new NioEventLoopGroup();
-        Bootstrap b = new Bootstrap();
-        b.group(group).channel(NioSocketChannel.class).handler(new ChannelInitializer&lt;SocketChannel&gt;() {
-                    @Override
-                    protected void initChannel(SocketChannel sc) throws Exception {
-                        sc.pipeline().addLast(new ClientHandler()); //收到服务端发送过来的消息处理类
-                    }
-                });
-
-        ChannelFuture cf1 = null;
-        try {
-            cf1 = b.connect(&quot;127.0.0.1&quot;, 8765).sync();
-            //发送消息
-            cf1.channel().writeAndFlush(Unpooled.copiedBuffer(&quot;777&quot;.getBytes()));
-            cf1.channel().writeAndFlush(Unpooled.copiedBuffer(&quot;666&quot;.getBytes()));
-            cf1.channel().writeAndFlush(Unpooled.copiedBuffer(&quot;888&quot;.getBytes()));
-
-            //关闭通道
-            cf1.channel().closeFuture().sync();
-            group.shutdownGracefully();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-</code></pre><p>客户端消息处理类</p>
-<pre><code>**
- * 服务端处理通道.这里只是打印一下请求的内容，并不对请求进行任何的响应 DiscardServerHandler 继承自
- * ChannelHandlerAdapter， 这个类实现了ChannelHandler接口， ChannelHandler提供了许多事件处理的接口方法，
- * 然后你可以覆盖这些方法。 现在仅仅只需要继承ChannelHandlerAdapter类而不是你自己去实现接口方法。
- *
- */
-public class ClientHandler extends ChannelHandlerAdapter {
-    /**
-     * 通道刚被激活时会调用次方法
-     * @param ctx
-     * @throws Exception
-     */
-    @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println(&quot;Client channel active... &quot;);
-    }
-
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-
-    }
-
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        ctx.close();
-    }
-
-    /**这里我们覆盖了chanelRead()事件处理方法。 每当从客户端收到新的数据时， 这个方法会在收到消息时被调用，
-     * 读取消息处理方法
-     * @param ctx  通道处理的上下文信息
-     * @param msg  接收的消息
-     * @throws Exception
-     */
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        try {
-            ByteBuf buf = (ByteBuf) msg;
-            byte[] req = new byte[buf.readableBytes()];
-            buf.readBytes(req);
-            String body = new String(req, &quot;utf-8&quot;);
-            String response = &quot;收到服务器端的返回信息：&quot; + body;
-            System.out.println(response);
-        } finally {
-            // 抛弃收到的数据
-            ReferenceCountUtil.release(msg);
-        }
-    }
-}
+<ul>
+<li>1 引入 Sentinel starter<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+  <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+  <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>starter<span class="token operator">-</span>alibaba<span class="token operator">-</span>sentinel<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 </code></pre>
+</li>
+<li>2 application.properties配置如下<br><code>`</code> bash<br>server.port=18084<br>spring.application.name=service-sentinel</li>
+</ul>
+<p>#Sentinel 控制台地址<br>spring.cloud.sentinel.transport.dashboard=localhost:8080</p>
+<p>#取消Sentinel控制台懒加载<br>spring.cloud.sentinel.eager=true</p>
+<pre><code>## 接入限流埋点
+Sentinel 默认为所有的 HTTP 服务提供了限流埋点。引入依赖后自动完成所有埋点。只需要在控制配置限流规则即可
+* 注解埋点
+  如果需要对某个特定的方法进行限流或降级，可以通过 @SentinelResource 注解来完成限流的埋点
+
+``` java
+@SentinelResource(&quot;resource&quot;)
+@RequestMapping(&quot;/sentinel/hello&quot;)
+public Map&lt;String,Object&gt; hello(){
+        Map&lt;String,Object&gt; map=new HashMap&lt;&gt;(2);
+        map.put(&quot;appName&quot;,appName);
+        map.put(&quot;method&quot;,&quot;hello&quot;);
+        return map;
+}
+</code></pre><h2 id="部署Sentinel控制台"><a href="#部署Sentinel控制台" class="headerlink" title="部署Sentinel控制台"></a>部署Sentinel控制台</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="http://edas-public.oss-cn-hangzhou.aliyuncs.com/install_package/demo/sentinel-dashboard.jar" target="_blank" rel="noopener">Sentinel下载</a></p>
+<h3 id="启动控制台"><a href="#启动控制台" class="headerlink" title="启动控制台"></a>启动控制台</h3><p>执行 Java 命令 <code>java -jar sentinel-dashboard.jar</code> 默认的监听端口为 <code>8080</code></p>
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>打开<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 即可看到控制台界面<br><img src="https://images.gitee.com/uploads/images/2019/0128/142828_12667ffe_1478371.png" alt="输入图片说明"><br>说明cloud-sentinel已经成功和Sentinel完成率通讯</p>
+<h2 id="配置限流规则"><a href="#配置限流规则" class="headerlink" title="配置限流规则"></a>配置限流规则</h2><p>如果控制台没有找到自己的应用，可以先调用一下进行了 Sentinel 埋点的 URL 或方法或着禁用Sentinel 的赖加载<code>spring.cloud.sentinel.eager=true</code></p>
+<h3 id="配置-URL-限流规则"><a href="#配置-URL-限流规则" class="headerlink" title="配置 URL 限流规则"></a>配置 URL 限流规则</h3><p>控制器随便添加一个普通的http方法</p>
+<pre class=" language-Java"><code class="language-Java">  /**
+     * 通过控制台配置URL 限流
+     * @return
+     */
+    @RequestMapping("/sentinel/test")
+    public Map<string,object> test(){
+        Map<string,object> map=new HashMap<>(2);
+        map.put("appName",appName);
+        map.put("method","test");
+        return map;
+    }
+
+</string,object></string,object></code></pre>
+<p>点击新增流控规则。为了方便测试阀值设为 1<br><img src="https://images.gitee.com/uploads/images/2019/0128/143410_16ca33b7_1478371.png" alt="输入图片说明"><br>浏览器重复请求 <a href="http://localhost:18084/sentinel/test" target="_blank" rel="noopener">http://localhost:18084/sentinel/test</a> 如果超过阀值就会出现如下界面<br><img src="https://images.gitee.com/uploads/images/2019/0128/143600_56ead0a3_1478371.png" alt="输入图片说明"></p>
+<p>整个URL限流就完成了。但是返回的提示不够友好。</p>
+<h3 id="配置自定义限流规则-SentinelResource埋点"><a href="#配置自定义限流规则-SentinelResource埋点" class="headerlink" title="配置自定义限流规则(@SentinelResource埋点)"></a>配置自定义限流规则(@SentinelResource埋点)</h3><p>自定义限流规则就不是添加方法的访问路径。 配置的是@SentinelResource注解中value的值。比如<code>@SentinelResource(&quot;resource&quot;)</code>就是配置路径为resource<br><img src="https://images.gitee.com/uploads/images/2019/0128/144027_2261e5f6_1478371.png" alt="输入图片说明"></p>
+<ul>
+<li>访问：<a href="http://localhost:18084/sentinel/hello" target="_blank" rel="noopener">http://localhost:18084/sentinel/hello</a></li>
+<li>通过<code>@SentinelResource</code>注解埋点配置的限流规则如果没有自定义处理限流逻辑，当请求到达限流的阀值时就返回404页面<br><img src="https://images.gitee.com/uploads/images/2019/0128/144236_3ea6d1b5_1478371.png" alt="输入图片说明"></li>
+</ul>
+<h2 id="自定义限流处理逻辑"><a href="#自定义限流处理逻辑" class="headerlink" title="自定义限流处理逻辑"></a>自定义限流处理逻辑</h2><p>@SentinelResource 注解包含以下属性：</p>
+<ul>
+<li>value: 资源名称，必需项（不能为空）</li>
+<li>entryType: 入口类型，可选项（默认为 EntryType.OUT）</li>
+<li>blockHandler:blockHandlerClass中对应的异常处理方法名。参数类型和返回值必须和原方法一致</li>
+<li><p>blockHandlerClass：自定义限流逻辑处理类<br><code>`</code> java</p>
+<p>//通过注解限流并自定义限流逻辑<br>@SentinelResource(value = “resource2”, blockHandler = “handleException”, blockHandlerClass = {ExceptionUtil.class})<br>@RequestMapping(“/sentinel/test2”)<br>  public Map&lt;String,Object&gt; test2() {</p>
+<pre><code>  Map&lt;String,Object&gt; map=new HashMap&lt;&gt;();
+  map.put(&quot;method&quot;,&quot;test2&quot;);
+  map.put(&quot;msg&quot;,&quot;自定义限流逻辑处理&quot;);
+  return  map;
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>public class ExceptionUtil {</p>
+<pre><code>public static Map&lt;String,Object&gt; handleException(BlockException ex) {
+    Map&lt;String,Object&gt; map=new HashMap&lt;&gt;();
+    System.out.println(&quot;Oops: &quot; + ex.getClass().getCanonicalName());
+    map.put(&quot;Oops&quot;,ex.getClass().getCanonicalName());
+    map.put(&quot;msg&quot;,&quot;通过@SentinelResource注解配置限流埋点并自定义处理限流后的逻辑&quot;);
+    return  map;
+}
+</code></pre><p>}</p>
+<pre><code>控制台新增resource2的限流规则并设置阀值为1。访问http://localhost:18084/sentinel/test2 请求到达阀值时机会返回自定义的异常消息
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0128/144957_69a6d3d0_1478371.png)
+
+基本的限流处理就完成了。 但是每次服务重启后 之前配置的限流规则就会被清空因为是内存态的规则对象.所以下面就要用到Sentinel一个特性ReadableDataSource 获取文件、数据库或者配置中心是限流规则
+## 读取文件的实现限流规则
+一条限流规则主要由下面几个因素组成：
+* resource：资源名，即限流规则的作用对象
+* count: 限流阈值
+* grade: 限流阈值类型（QPS 或并发线程数）
+* limitApp: 流控针对的调用来源，若为 default 则不区分调用来源
+* strategy: 调用关系限流策略
+* controlBehavior: 流量控制效果（直接拒绝、Warm Up、匀速排队）
+  SpringCloud alibaba集成Sentinel后只需要在配置文件中进行相关配置，即可在 Spring 容器中自动注册 DataSource，这点很方便。配置文件添加如下配置
+
+``` bash
+#通过文件读取限流规则
+spring.cloud.sentinel.datasource.ds1.file.file=classpath: flowrule.json
+spring.cloud.sentinel.datasource.ds1.file.data-type=json
+spring.cloud.sentinel.datasource.ds1.file.rule-type=flow
+</code></pre><p>在resources新建一个文件 比如flowrule.json 添加限流规则</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token string">"resource"</span><span class="token punctuation">:</span> <span class="token string">"resource"</span><span class="token punctuation">,</span>
+    <span class="token string">"controlBehavior"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"count"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"grade"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"limitApp"</span><span class="token punctuation">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span>
+    <span class="token string">"strategy"</span><span class="token punctuation">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token string">"resource"</span><span class="token punctuation">:</span> <span class="token string">"resource3"</span><span class="token punctuation">,</span>
+    <span class="token string">"controlBehavior"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"count"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"grade"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"limitApp"</span><span class="token punctuation">:</span> <span class="token string">"default"</span><span class="token punctuation">,</span>
+    <span class="token string">"strategy"</span><span class="token punctuation">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+</code></pre>
+<p> <strong>重新启动项目。出现如下日志说明文件读取成功</strong> </p>
+<pre class=" language-Java"><code class="language-Java"> [Sentinel Starter] DataSource ds1-sentinel-file-datasource start to loadConfig
+ [Sentinel Starter] DataSource ds1-sentinel-file-datasource load 2 FlowRule
+</code></pre>
+<p> <strong>刷新Sentinel 控制台 限流规则就会自动添加进去</strong><br><img src="https://images.gitee.com/uploads/images/2019/0128/154204_aafdbed2_1478371.png" alt="输入图片说明"></p>
+<h2 id="Sentinel的基本配置"><a href="#Sentinel的基本配置" class="headerlink" title="Sentinel的基本配置"></a>Sentinel的基本配置</h2><pre class=" language-bash"><code class="language-bash">spring.cloud.sentinel.enabled              <span class="token comment" spellcheck="true">#Sentinel自动化配置是否生效</span>
+spring.cloud.sentinel.eager               <span class="token comment" spellcheck="true">#取消Sentinel控制台懒加载</span>
+spring.cloud.sentinel.transport.dashboard   <span class="token comment" spellcheck="true">#Sentinel 控制台地址</span>
+spring.cloud.sentinel.transport.heartbeatIntervalMs        <span class="token comment" spellcheck="true">#应用与Sentinel控制台的心跳间隔时间</span>
+spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck="true">#Sentinel 日志文件所在的目录</span>
+</code></pre>
+<ul>
+<li>案例源码：<a href="https://github.com/a870439570/alibaba-cloud" target="_blank" rel="noopener">https://github.com/a870439570/alibaba-cloud</a></li>
+</ul>
+
             </div>
             <hr>
 
@@ -676,7 +633,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
                     </span>
                     <a href="https://blog.qinxuewu.club" class="b-link-green">codeing</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/10/11/netty/netty-ru-men-yi-kuai-su-ru-men/" class="b-link-green">Netty入门(一)快速入门</a>
+                    <a href="/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/" class="b-link-green">spring cloud alibaba系列(二)Sentinel应用的限流管理</a>
                 </p>
             </div>
         </div>
@@ -698,7 +655,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
         repo: 'a870439570.github.io',
         owner: 'a870439570',
         admin: ["a870439570"],
-        id: '2018-10-11T11-18-33',
+        id: '2019-01-28T14-55-45',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -721,41 +678,47 @@ public class ClientHandler extends ChannelHandlerAdapter {
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/10/12/netty/netty-ru-men-er-tcp-nian-bao-yu-chai-bao-wen-ti-chu-li/">
+                <a href="/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/144515_937c99d5_1478371.png" class="responsive-img" alt="Netty入门(二)TCP粘包与拆包问题处理">
+                        <img src="https://images.gitee.com/uploads/images/2019/0128/145749_7c622d30_1478371.png" class="responsive-img" alt="spring cloud alibaba系列(二)Sentinel应用的限流管理">
                         
-                        <span class="card-title">Netty入门(二)TCP粘包与拆包问题处理</span>
+                        <span class="card-title">spring cloud alibaba系列(二)Sentinel应用的限流管理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">TCP粘包与拆包是什么？上一章的demo中客户端发送了三条数据服务端收到确是合并在一起的一条数据
-这就是是TCP粘包
-TCP是一个”流”协议，就像河流中的溪流一样，没有严格的分界线。当我们客户端向服务端发送数据时（比如以下发送了三条数据A,</div>
+                    <div class="summary">限流组件Sentinel
+Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。
+默认支持 Servlet、Feign、RestTemplate、Dubbo 和 RocketMQ 限流降级功能的接</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Netty/" class="post-category" target="_blank">
-                                    Netty
+                            <a href="/categories/springcloud/" class="post-category" target="_blank">
+                                    springcloud
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Netty/" target="_blank">
-                        <span class="chip bg-color">Netty</span>
+                    <a href="/tags/springcloud/" target="_blank">
+                        <span class="chip bg-color">springcloud</span>
+                    </a>
+                    
+                    <a href="/tags/alibaba/" target="_blank">
+                        <span class="chip bg-color">alibaba</span>
                     </a>
                     
                 </div>
@@ -769,30 +732,30 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/09/22/sui-bi/hello-world/">
+                <a href="/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/144909_5eec0723_1478371.png" class="responsive-img" alt="GitHub+hexo搭建个人静态博客">
+                        <img src="https://images.gitee.com/uploads/images/2019/0127/161348_7df24fd9_1478371.png" class="responsive-img" alt="spring cloud alibaba系列(一) 服务注册">
                         
-                        <span class="card-title">GitHub+hexo搭建个人静态博客</span>
+                        <span class="card-title">spring cloud alibaba系列(一) 服务注册</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-写博客的好处是我们用博客表达自己、升华自己。
-平时学习新知识总是经常性会遗忘部分内容，使用过有道云，印象笔记，公众号，缺金社区，csdn,Github,码云等等记录了零零散散一些内容。所以准备使用hexo做一个归纳
+                    <div class="summary">alibaba-cloud本项目演示如何使用 spring cloud alibaba系列之服务的注册于发现
+引入依赖
+版本 0.2.1.RELEASE 对应的是 Spring Cloud Finchley 版本，
 
-快速开始首选安装好n</div>
+版本 0.1.1.RE</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                    随笔
+                            <a href="/categories/springcloud/" class="post-category" target="_blank">
+                                    springcloud
                                 </a>
                             
                             
@@ -802,8 +765,12 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/springcloud/" target="_blank">
+                        <span class="chip bg-color">springcloud</span>
+                    </a>
+                    
+                    <a href="/tags/alibaba/" target="_blank">
+                        <span class="chip bg-color">alibaba</span>
                     </a>
                     
                 </div>
