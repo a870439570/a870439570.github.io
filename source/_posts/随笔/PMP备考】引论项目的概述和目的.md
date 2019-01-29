@@ -1,11 +1,13 @@
 ---
 title: 【PMP备考】引论项目的概述和目的
 date: 2019-01-29 14:44:21
-img: https://user-gold-cdn.xitu.io/2019/1/4/16816de06fadda89?w=1237&h=607&f=png&s=367834
+img: https://images.gitee.com/uploads/images/2019/0129/162255_a5797798_1478371.png
 tags: PMP备考
 categories: PMP备考
 
 ---
+
+<img src="https://images.gitee.com/uploads/images/2019/0129/153915_8785d8d1_1478371.png" width=""/>
 
 ## 概述
 

@@ -16,12 +16,15 @@ menu:
   关于:
     url: /about
     icon: fa-user-circle-o
+  常用工具:
+    url: /Brain
+    icon: fa fa-amazon
   友情链接:
     url: /friends
     icon: fa-address-book
-  脑图:
-    url: /Brain
-    icon: fa-line-chart
+  阅读书单:
+    url: /book
+    icon: fa fa-paint-brush
 
 # index page dream text,
 # 配置首页显示"梦想"的语句.
