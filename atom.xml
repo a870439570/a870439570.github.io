@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-01-28T12:14:13.000Z</updated>
+  <updated>2019-01-29T13:12:47.000Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【PMP备考】引论项目的概述和目的</title>
+    <link href="https://blog.qinxuewu.club/2019/01/29/sui-bi/pmp-bei-kao-yin-lun-xiang-mu-de-gai-shu-he-mu-de/"/>
+    <id>https://blog.qinxuewu.club/2019/01/29/sui-bi/pmp-bei-kao-yin-lun-xiang-mu-de-gai-shu-he-mu-de/</id>
+    <published>2019-01-29T06:44:21.000Z</published>
+    <updated>2019-01-29T13:12:47.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://images.gitee.com/uploads/images/2019/0129/153915_8785d8d1_1478371.png&quot; width=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="PMP备考" scheme="https://blog.qinxuewu.club/categories/PMP%E5%A4%87%E8%80%83/"/>
+    
+    
+      <category term="PMP备考" scheme="https://blog.qinxuewu.club/tags/PMP%E5%A4%87%E8%80%83/"/>
+    
+  </entry>
   
   <entry>
     <title>spring cloud alibaba系列(二)Sentinel应用的限流管理</title>
@@ -514,32 +541,6 @@
         
         
           &lt;h2 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a&gt;常用命令&lt;/h2&gt;&lt;p&gt;官方文档&lt;br&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
-    
-    
-      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Storm系列(一)环境搭建安装</title>
-    <link href="https://blog.qinxuewu.club/2018/09/12/storm/storm-xi-lie-yi-huan-jing-da-jian-an-zhuang/"/>
-    <id>https://blog.qinxuewu.club/2018/09/12/storm/storm-xi-lie-yi-huan-jing-da-jian-an-zhuang/</id>
-    <published>2018-09-12T09:35:51.000Z</published>
-    <updated>2019-01-27T07:06:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;什么是Apache-Storm&quot;&gt;&lt;a href=&quot;#什么是Apache-Storm&quot; class=&quot;headerlink&quot; title=&quot;什么是Apache Storm&quot;&gt;&lt;/a&gt;什么是Apache Storm&lt;/h3&gt;&lt;p&gt;Apache
         
       
     
