@@ -79,6 +79,7 @@ public class SampleController {
 
  **6.启动测试** 
 这样就可以获取到配置中心的值。并且配置中心修改值后。可以立即动态刷新获取最新的值
+
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0130/115742_50cdb2ee_1478371.png)
 
 * 案例源码: https://github.com/a870439570/alibaba-cloud
