@@ -7,7 +7,14 @@
 }, {
     "avatar": "http://cmsblogs.com/wp-content/resources/img/wx.jpg",
     "name": "Java技术驿站",
-    "introduction": "一个为理想而奋斗的程序员",
+    "introduction": "每一个不曾起舞的日子  都是对未来的一种辜负。",
     "url": "http://cmsblogs.com/",
+    "title": "前去学习"
+},
+ {
+    "avatar": "https://images.gitee.com/uploads/images/2018/1225/094055_a1254ebd_1478371.png",
+    "name": "interview-docs",
+    "introduction": "java 知识点学习+面试核心知识，收录网上大部分面试题整理加看书笔记整理而来",
+    "url": "https://blog.qinxuewu.club/interview-docs/#/",
     "title": "前去学习"
 }]
