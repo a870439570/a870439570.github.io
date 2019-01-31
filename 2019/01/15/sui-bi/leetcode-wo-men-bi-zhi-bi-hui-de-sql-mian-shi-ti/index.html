@@ -107,6 +107,15 @@
         </a>
     </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
     <li>
         <a id="toggleSearch" class="waves-effect waves-light">
             <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
@@ -184,6 +193,15 @@
                 <i class="fa fa-fw fa fa-amazon"></i>
                 
                 常用工具
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
             </a>
         </li>
         
@@ -434,7 +452,7 @@
                     
                     <span class="post-word-count">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        2k
                     </span>
                     
 
@@ -472,7 +490,7 @@
 | 200                    |
 +------------------------+
 </code></pre><p>分组去重加分页查询语法</p>
-<pre><code>CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+<pre class=" language-mysql"><code class="language-mysql">CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
 SET N = N - 1;
   RETURN (
@@ -480,7 +498,8 @@ SET N = N - 1;
  select Salary from Employee  GROUP BY Salary ORDER BY Salary desc  LIMIT N,1  
   );
 END
-</code></pre><h3 id="SQL查询来实现分数排名"><a href="#SQL查询来实现分数排名" class="headerlink" title="SQL查询来实现分数排名"></a>SQL查询来实现分数排名</h3><p>编写一个 SQL 查询来实现分数排名。如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。</p>
+</code></pre>
+<h3 id="SQL查询来实现分数排名"><a href="#SQL查询来实现分数排名" class="headerlink" title="SQL查询来实现分数排名"></a>SQL查询来实现分数排名</h3><p>编写一个 SQL 查询来实现分数排名。如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。</p>
 <pre><code>+----+-------+
 | Id | Score |
 +----+-------+
@@ -505,8 +524,9 @@ END
 </code></pre><p> 考虑两件事：1按分数降序排列  2 分数相同属同一级</p>
 <ul>
 <li>外面的查询负责查排序后的粉数</li>
-<li>select里的查询语句负责排名操作 通过score条件判断 如果<pre><code>select Score,(SELECT COUNT(DISTINCT score) from Scores WHERE score &gt;= s.score) as Rank  from scores s ORDER BY Score DESC 
-</code></pre></li>
+<li>select里的查询语句负责排名操作 通过score条件判断 如果<pre class=" language-mysql"><code class="language-mysql">select Score,(SELECT COUNT(DISTINCT score) from Scores WHERE score >= s.score) as Rank  from scores s ORDER BY Score DESC 
+</code></pre>
+</li>
 </ul>
 <h3 id="超过经理收入的员工"><a href="#超过经理收入的员工" class="headerlink" title="超过经理收入的员工"></a>超过经理收入的员工</h3><p>Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
 <pre><code>+----+-------+--------+-----------+
@@ -525,9 +545,10 @@ END
 +----------+
 </code></pre><p>通过</p>
 <p>解答：通过自连接 关联表两次查询 组装出员工表每个员工对应的经理信息 即可通过条件判断取出结果</p>
-<pre><code>select e1.Name Employee  from Employee e1,Employee e2 where e1.ManagerId=e2.Id
-and e1.Salary&gt;e2.Salary
-</code></pre><h2 id="部门工资最高的员工"><a href="#部门工资最高的员工" class="headerlink" title="部门工资最高的员工"></a>部门工资最高的员工</h2><p>Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。</p>
+<pre class=" language-mysql"><code class="language-mysql">select e1.Name Employee  from Employee e1,Employee e2 where e1.ManagerId=e2.Id
+and e1.Salary>e2.Salary
+</code></pre>
+<h2 id="部门工资最高的员工"><a href="#部门工资最高的员工" class="headerlink" title="部门工资最高的员工"></a>部门工资最高的员工</h2><p>Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。</p>
 <pre><code>+----+-------+--------+--------------+
 | Id | Name  | Salary | DepartmentId |
 +----+-------+--------+--------------+
@@ -545,11 +566,12 @@ and e1.Salary&gt;e2.Salary
 +----+----------+
 </code></pre><p>编写一个 SQL 查询，找出每个部门工资最高的员工。例如，根据上述给定的表格，Max 在 IT 部门有最高工资，Henry 在 Sales 部门有最高工资。</p>
 <p>解答 内连接匹配查询出所有员工对应的部门名称 然后通过子查询条件匹配</p>
-<pre><code>select d.Name as Department,e.Name as Employee, e.Salary  
+<pre class=" language-mysql"><code class="language-mysql">select d.Name as Department,e.Name as Employee, e.Salary  
         from Department d  join Employee e on d.Id=e.DepartmentId
-        where e.Salary &gt;=(select max(Salary) from Employee where DepartmentId=d.Id)
+        where e.Salary >=(select max(Salary) from Employee where DepartmentId=d.Id)
 
-</code></pre><h2 id="部门工资前三高的员工"><a href="#部门工资前三高的员工" class="headerlink" title="部门工资前三高的员工"></a>部门工资前三高的员工</h2><p>Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id 。</p>
+</code></pre>
+<h2 id="部门工资前三高的员工"><a href="#部门工资前三高的员工" class="headerlink" title="部门工资前三高的员工"></a>部门工资前三高的员工</h2><p>Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id 。</p>
 <pre><code>+----+-------+--------+--------------+
 | Id | Name  | Salary | DepartmentId |
 +----+-------+--------+--------------+
@@ -571,16 +593,17 @@ and e1.Salary&gt;e2.Salary
 <li>思路是查询Employee a,Employee b 而且a.salary小于b.salary，a.departmentid=b.departmengtid，其中去重后的b数量不能大于3，这样就可以查出每个部门工资前三的员工</li>
 <li>链接两表，将部门id换成name</li>
 <li>如何取前三高？不妨再加入一张Employee表，将其与1中的表作对比，令e2表中的salary大于e1表中的salary</li>
-<li>限制条件：e2表中salary大于e1表中salary的个数少于3 ==》取前三高的salary<pre><code>SELECT Department.Name AS Department, e1.Name AS Employee, e1.Salary AS Salary
+<li>限制条件：e2表中salary大于e1表中salary的个数少于3 ==》取前三高的salary<pre class=" language-mysql"><code class="language-mysql">SELECT Department.Name AS Department, e1.Name AS Employee, e1.Salary AS Salary
 FROM Employee e1
 JOIN Department
 ON e1.DepartmentId = Department.Id
-WHERE 3 &gt;   (
+WHERE 3 >   (
           SELECT COUNT(DISTINCT e2.Salary) 
           FROM Employee e2
-          WHERE e2.Salary &gt; e1.Salary AND e1.DepartmentId = e2.DepartmentId
+          WHERE e2.Salary > e1.Salary AND e1.DepartmentId = e2.DepartmentId
           )
-</code></pre></li>
+</code></pre>
+</li>
 </ul>
 <h2 id="删除重复的电子邮箱"><a href="#删除重复的电子邮箱" class="headerlink" title="删除重复的电子邮箱"></a>删除重复的电子邮箱</h2><p>编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。</p>
 <pre><code>+----+------------------+
@@ -592,12 +615,15 @@ WHERE 3 &gt;   (
 +----+------------------+
 </code></pre><p>Id 是这个表的主键。</p>
 <h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>我们可以使用以下代码，将此表与它自身在电子邮箱列中连接起来。</p>
-<pre><code>SELECT p1.* FROM Person p1,Person p2 WHERE  p1.Email = p2.Email
-</code></pre><p>然后我们需要找到其他记录中具有相同电子邮件地址的更大 ID。所以我们可以像这样给 WHERE 子句添加一个新的条件。</p>
-<pre><code>SELECT p1.* FROM Person p1,Person p2 WHERE  p1.Email = p2.Email AND p1.Id &gt; p2.Id
-</code></pre><p>因为我们已经得到了要删除的记录，所以我们最终可以将该语句更改为 DELETE。</p>
-<pre><code>DELETE p1 FROM Person p1, Person p2  WHERE   p1.Email = p2.Email AND p1.Id &gt; p2.Id
-</code></pre><h2 id="上升的温度"><a href="#上升的温度" class="headerlink" title="上升的温度"></a>上升的温度</h2><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT p1.* FROM Person p1,Person p2 WHERE  p1.Email = p2.Email
+</code></pre>
+<p>然后我们需要找到其他记录中具有相同电子邮件地址的更大 ID。所以我们可以像这样给 WHERE 子句添加一个新的条件。</p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT p1.* FROM Person p1,Person p2 WHERE  p1.Email = p2.Email AND p1.Id > p2.Id
+</code></pre>
+<p>因为我们已经得到了要删除的记录，所以我们最终可以将该语句更改为 DELETE。</p>
+<pre class=" language-mysql"><code class="language-mysql">DELETE p1 FROM Person p1, Person p2  WHERE   p1.Email = p2.Email AND p1.Id > p2.Id
+</code></pre>
+<h2 id="上升的温度"><a href="#上升的温度" class="headerlink" title="上升的温度"></a>上升的温度</h2><p>给定一个 Weather 表，编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 Id。</p>
 <pre><code>+---------+------------------+------------------+
 | Id(INT) | RecordDate(DATE) | Temperature(INT) |
 +---------+------------------+------------------+
@@ -616,17 +642,18 @@ WHERE 3 &gt;   (
 </code></pre><ul>
 <li>使用join 和datediff 日期函数 求差  自连接匹配出有昨天的数据</li>
 </ul>
-<pre><code>select * from  weather w1 join weather w2 on DATEDIFF(w1.RecordDate,w2.RecordDate)=1
+<pre class=" language-mysql"><code class="language-mysql">select * from  weather w1 join weather w2 on DATEDIFF(w1.RecordDate,w2.RecordDate)=1
 
 id  RecordDate    Temperature       w2.id          昨天的日期          w2.Temperature(昨天的温度)
 2      2019-01-02      25                  1                 2019-01-01                10
 4      2019-01-04      30                  3                 2019-01-03               20
 4      2019-01-04      30                  3                 2019-01-03                20
 
-条件帅选今天比昨天温度高的数据 w1.Temperature&gt;w2.Temperature
-select w1.id  from  weather w1 join weather w2 on DATEDIFF(w1.RecordDate,w2.RecordDate)=1 where w1.Temperature&gt;w2.Temperature
+条件帅选今天比昨天温度高的数据 w1.Temperature>w2.Temperature
+select w1.id  from  weather w1 join weather w2 on DATEDIFF(w1.RecordDate,w2.RecordDate)=1 where w1.Temperature>w2.Temperature
 
-</code></pre><h2 id="行程和用户"><a href="#行程和用户" class="headerlink" title="行程和用户"></a>行程和用户</h2><p>Trips 表中存所有出租车的行程信息。每段行程有唯一键 Id，Client_Id 和 Driver_Id 是 Users 表中 Users_Id 的外键。Status 是枚举类型，枚举成员为 (‘completed’, ‘cancelled_by_driver’, ‘cancelled_by_client’)。</p>
+</code></pre>
+<h2 id="行程和用户"><a href="#行程和用户" class="headerlink" title="行程和用户"></a>行程和用户</h2><p>Trips 表中存所有出租车的行程信息。每段行程有唯一键 Id，Client_Id 和 Driver_Id 是 Users 表中 Users_Id 的外键。Status 是枚举类型，枚举成员为 (‘completed’, ‘cancelled_by_driver’, ‘cancelled_by_client’)。</p>
 <pre><code>
 +----+-----------+-----------+---------+--------------------+----------+
 | Id | Client_Id | Driver_Id | City_Id |        Status      |Request_at|
@@ -666,18 +693,19 @@ select w1.id  from  weather w1 join weather w2 on DATEDIFF(w1.RecordDate,w2.Reco
 | 2013-10-03 |       0.50        |
 +------------+-------------------+
 </code></pre><p>解法</p>
-<pre><code>#先求出非禁止用户的所有记录
- select * from  Trips t  join Users  u on t.Client_Id =u.Users_Id   where u.Banned=&#39;No&#39; 
+<pre class=" language-mysql"><code class="language-mysql">#先求出非禁止用户的所有记录
+ select * from  Trips t  join Users  u on t.Client_Id =u.Users_Id   where u.Banned='No' 
 
 通过if函数加分组 2013年10月1日 至 2013年10月3日 期间非禁止用户的取消率
 IF(expr1,expr2,expr3)，如果expr1的值为true，则返回expr2的值，如果expr1的值为false，
 round(x,d)  ，x指要处理的数，d是指保留几位小数
 
 select t.Request_at as Day, 
-  round(count( IF ( t.Status !=&quot;completed&quot;, t.Status, NULL ) ) / count(t.Status),2) as `Cancellation Rate`
+  round(count( IF ( t.Status !="completed", t.Status, NULL ) ) / count(t.Status),2) as `Cancellation Rate`
     from  Trips t   join Users u on t.Client_Id =u.Users_Id  
-      where u.Banned=&#39;No&#39;  and t.request_at between  &quot;2013-10-01&quot; and &quot;2013-10-03&quot;  group by t.Request_at 
-</code></pre><h2 id="换座位"><a href="#换座位" class="headerlink" title="换座位"></a>换座位</h2><ul>
+      where u.Banned='No'  and t.request_at between  "2013-10-01" and "2013-10-03"  group by t.Request_at 
+</code></pre>
+<h2 id="换座位"><a href="#换座位" class="headerlink" title="换座位"></a>换座位</h2><ul>
 <li>小美是一所中学的信息科技老师，她有一张 seat 座位表，平时用来储存学生名字和与他们相对应的座位 id。</li>
 <li>其中纵列的 id 是连续递增的 小美想改变相邻俩学生的座位。你能不能帮她写一个 SQL query 来输出小美想要的结果呢？</li>
 </ul>
@@ -701,16 +729,14 @@ select t.Request_at as Day,
 |    5    | Jeames  |
 +---------+---------+
 </code></pre><p>注意：如果学生人数是奇数，则不需要改变最后一个同学的座位。</p>
-<pre><code>
+<pre class=" language-mysql"><code class="language-mysql">
 先把简单的偶数都-1；然后对于非最大的奇数id+1；最后(即else)如果存在未变化的数则值不变
 
 select
     case                                             #如果
     when id%2=0 then id-1                           # id%2为偶数 则返回 id-1 
-    when id&lt;(select max(id) from seat) then id+1   #如果表中最大的ID 小于当前返回的ID 则执行 id+1 也就是取最大ID
-    else id                                          #如果存在未变化的数则值不变
-    end as id,student from seat  order by  id
-</code></pre>
+    when id<(select max(id)="" from="" seat)="" then="" id+1="" #如果表中最大的id="" 小于当前返回的id="" 则执行="" 也就是取最大id="" else="" id="" #如果存在未变化的数则值不变="" end="" as="" id,student="" seat="" order="" by="" <="" code=""></(select></code></pre>
+
             </div>
             <hr>
 
@@ -780,28 +806,31 @@ select
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/">
+                <a href="/2019/01/15/sui-bi/leetcode-suan-fa-ti/">
                     <div class="card-image">
                         
-                        <img src="/images/banner.png" class="responsive-img" alt="深入理解JVM+脑图">
+                        <img src="https://images.gitee.com/uploads/images/2019/0127/145010_e2964cbc_1478371.png" class="responsive-img" alt="leetcode算法题">
                         
-                        <span class="card-title">深入理解JVM+脑图</span>
+                        <span class="card-title">leetcode算法题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-1. 运行时数据区域
-Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途,以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。</div>
+                    <div class="summary">两数之和
+给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+
+示例:
+给定 nums</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-15
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JVM/" class="post-category" target="_blank">
-                                    JVM
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                    算法
                                 </a>
                             
                             
@@ -811,8 +840,8 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/" target="_blank">
-                        <span class="chip bg-color">JVM</span>
+                    <a href="/tags/leetcode/" target="_blank">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -965,7 +994,7 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">49k</span>
+                <span class="white-color">50.8k</span>
             
 
             
