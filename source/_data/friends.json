@@ -1,51 +1,13 @@
-[
-{
-    "avatar": "https://img3.doubanio.com/view/subject/l/public/s27458236.jpg",
-    "name": "周志明",
-    "introduction": "深入理解Java虚拟机（第2版）",
-    "url": "https://book.douban.com/subject/24722612/",
-    "title": "读完.."
-},
-{
-    "avatar": "https://img3.doubanio.com/view/subject/l/public/s28238985.jpg",
-    "name": "高洪岩",
-    "introduction": "深入理解Java虚拟机（第2版）",
-    "url": "https://book.douban.com/subject/26555197/",
-    "title": "读完.."
-},
-{
-    "avatar": "https://img3.doubanio.com/view/subject/l/public/s9853525.jpg",
-    "name": "拉佛 ",
-    "introduction": "Java数据结构与算法",
-    "url": "https://book.douban.com/subject/26555197/",
-    "title": "正在读.."
-},
-{
-    "avatar": "https://img1.doubanio.com/view/subject/l/public/s28275418.jpg",
-    "name": "方腾飞",
-    "introduction": "java并发编程的艺术",
-    "url": "https://book.douban.com/subject/26591326/",
-    "title": "正在读.."
-},
-{
-    "avatar": "https://img1.doubanio.com/view/subject/l/public/s6908318.jpg",
-    "name": "程杰",
-    "introduction": "大话设计模式",
-    "url": "https://book.douban.com/subject/2334288/",
-    "title": "正在读.."
-},
-{
-    "avatar": "https://img3.doubanio.com/view/subject/l/public/s28053675.jpg",
-    "name": "项目管理协会",
-    "introduction": "PMBOK指南第六版",
-    "url": "https://book.douban.com/subject/24697645/",
-    "title": "正在读.."
-},
-{
-    "avatar": "https://img1.doubanio.com/view/subject/l/public/s29212018.jpg",
-    "name": "罗振宇",
-    "introduction": "罗辑思维：我懂你的知识焦虑",
-    "url": "https://book.douban.com/subject/26933283/",
-    "title": "读完.."
-}
-]
+[{
+    "avatar": "http://image.luokangyuan.com/4027734.jpeg",
+    "name": "闪烁之狐",
+    "introduction": "编程界大佬，技术牛，人还特别好，不懂的都可以请教大佬",
+    "url": "https://blinkfox.github.io/",
+    "title": "前去学习"
+}, {
+    "avatar": "http://cmsblogs.com/wp-content/resources/img/wx.jpg",
+    "name": "Java技术驿站",
+    "introduction": "一个为理想而奋斗的程序员",
+    "url": "http://cmsblogs.com/",
+    "title": "前去学习"
+}]
