@@ -432,14 +432,14 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
                     
                     <span class="post-word-count">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        12.3k
+                        15.3k
                     </span>
                     
 
                     
                     <span class="post-word-count">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        43 分
+                        53 分
                     </span>
                     
                 
@@ -500,18 +500,28 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <h3 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h3><p>用来描述一些还有用，但并非必须的对象。对于软引用关联着的对象，在系统将要发生内存溢出前，将会把这些对象列进回收范围之内并进行第二次回收，如果这此次回收还是没有足够的内存，才会抛出内存溢出。</p>
 <h3 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h3><p>用来描述非必须的对象，但是它的强度比软引用更弱一下，被弱引用关联的对象，只能生存到下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否足够，只会回收被弱引用关联的对象</p>
 <h3 id="虚引用"><a href="#虚引用" class="headerlink" title="虚引用"></a>虚引用</h3><p>被称为幽灵引用或幻引用，是最弱的一种引用关系，一个对象是否有虚引用的存在，完全不会对其它生存时间构成影响，也无法通过虚引用来取得一个实列。为一个对象设置虚引用的目的就是在对象被回收时收到一个系统通知。</p>
-<h2 id="4-垃圾收集算法"><a href="#4-垃圾收集算法" class="headerlink" title="4. 垃圾收集算法"></a>4. 垃圾收集算法</h2><h3 id="1-Serial收集器"><a href="#1-Serial收集器" class="headerlink" title="1.Serial收集器"></a>1.Serial收集器</h3><ul>
+<h2 id="4-垃圾收集算法"><a href="#4-垃圾收集算法" class="headerlink" title="4. 垃圾收集算法"></a>4. 垃圾收集算法</h2><h3 id="Serial收集器"><a href="#Serial收集器" class="headerlink" title="Serial收集器"></a>Serial收集器</h3><ul>
 <li>一个单线程的收集器，只会使用一个CPU或一条收集线程去完成垃圾收集工作。在进行垃圾收集时必须暂停其它所有的工作线程，直接到结束。(Stop The Word)这项工作是虚拟机在后台自动发起和完成的。</li>
 <li>JDK1.3之前是新生代收集的唯一选择。</li>
-<li>它依然是虚拟机运行在Client模式下的默认新手代收集器，简单而高效。<h3 id="2-ParNew收集器"><a href="#2-ParNew收集器" class="headerlink" title="2. ParNew收集器"></a>2. ParNew收集器</h3>Serial收集器的多线程版本，使用多条线程收集。其余的和Serial一样，是许多运行在Server模式下的虚拟机首选新生代收集器。且目前除了Serial收集器，只有它可以与CMS收集器配合工作<h3 id="3-Parallel-Scavenge收集器"><a href="#3-Parallel-Scavenge收集器" class="headerlink" title="3.Parallel Scavenge收集器"></a>3.Parallel Scavenge收集器</h3></li>
+<li>它依然是虚拟机运行在Client模式下的默认新手代收集器，简单而高效。</li>
+</ul>
+<h3 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h3><p>Serial收集器的多线程版本，使用多条线程收集。其余的和Serial一样，是许多运行在Server模式下的虚拟机首选新生代收集器。且目前除了Serial收集器，只有它可以与CMS收集器配合工作</p>
+<h3 id="3-Parallel-Scavenge收集器"><a href="#3-Parallel-Scavenge收集器" class="headerlink" title="3.Parallel Scavenge收集器"></a>3.Parallel Scavenge收集器</h3><ul>
 <li>它是一款新生代收集器。使用复制算法收集，又是并行的多线程收集器</li>
-<li>特点是达到一个可控制的吞吐量，也被称为“吞吐量优先”收集器。<h3 id="4-Serial-Old收集器"><a href="#4-Serial-Old收集器" class="headerlink" title="4.Serial Old收集器"></a>4.Serial Old收集器</h3></li>
+<li>特点是达到一个可控制的吞吐量，也被称为“吞吐量优先”收集器。</li>
+</ul>
+<h3 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h3><ul>
 <li>它是Serial收集器的老年代版本，是一个单线程收集器，使用标记-整理算法收集。</li>
-<li>主要意义是给Client模式下虚拟机使用。如果是Server模式，则有两种用途，一是在JDK1.5之前与Parallel Scavenge收集器搭配使用。二是作为CMS收集器的后背预案<h3 id="5-Parallel-Old收集器"><a href="#5-Parallel-Old收集器" class="headerlink" title="5.Parallel Old收集器"></a>5.Parallel Old收集器</h3>它是Parallel Scavenge收集器的老年代版本，使用多线程和标记-整理算法。JDK1.6才开始提供。<h3 id="6-CMS收集器"><a href="#6-CMS收集器" class="headerlink" title="6.CMS收集器"></a>6.CMS收集器</h3></li>
+<li>主要意义是给Client模式下虚拟机使用。如果是Server模式，则有两种用途，一是在JDK1.5之前与Parallel Scavenge收集器搭配使用。二是作为CMS收集器的后背预案</li>
+</ul>
+<h3 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h3><p>它是Parallel Scavenge收集器的老年代版本，使用多线程和标记-整理算法。JDK1.6才开始提供。</p>
+<h3 id="CMS收集器"><a href="#CMS收集器" class="headerlink" title="CMS收集器"></a>CMS收集器</h3><ul>
 <li>是一种以获取最短回收停顿时间的为目标的收集器。基于标记-清楚算法实现。</li>
 <li>运作过程分为四个阶段。初始标记,并发标记,重新标记,并发清除。</li>
 <li>初始标记和并发标记仍然需要”Stop The Word”.初始标记只是记录下GC Roots能直接关联到对象，速度快。并发标记就是进行GC Roots Tracing过程。重新标记修正并发标记期间因程序继续运作导致标记产生变动的一部分对象的标记记录。整个过程耗时最长是并发标记和并发清除过程。</li>
-<li>优点是并发收集，低停顿。缺点是：对CPU资源非常敏感，无法处理浮动垃圾。收集结束时会产生大量空间碎片<h3 id="7-G1收集器"><a href="#7-G1收集器" class="headerlink" title="7.G1收集器"></a>7.G1收集器</h3></li>
+<li>优点是并发收集，低停顿。缺点是：对CPU资源非常敏感，无法处理浮动垃圾。收集结束时会产生大量空间碎片</li>
+</ul>
+<h3 id="G1收集器"><a href="#G1收集器" class="headerlink" title="G1收集器"></a>G1收集器</h3><ul>
 <li>当前收集器技术最前沿成果之一。将整个Java堆分为多个大小相等的独立区域。虽然保留新生代和老年代，但它们不再是物理隔离，都是一部分不需要连续的集合。</li>
 <li>特点是并行与并发充分利用CPU缩短停顿时间。分代收集，空间整合不会产生内存空间碎片，可预测的停顿。有计划的避免回收整个Java堆。</li>
 <li>运行大致分为:初始标记,并发标记,最终标记,筛选回收。</li>
@@ -628,14 +638,20 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>当虚拟机启动时，用户指定一个执行的主类，虚拟机会先初始化这个主类。</li>
 <li>当使用jdk1.7动态语言支持时,如果一个实例最后解析结果REF_getStatic,REF_putStatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化。</li>
 </ol>
-<h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><h4 id="1-加载"><a href="#1-加载" class="headerlink" title="1. 加载"></a>1. 加载</h4><p>在加载阶段（可以参考java.lang.ClassLoader的loadClass()方法），虚拟机需要完成以下3件事情：</p>
+<h3 id="什么是被动引用"><a href="#什么是被动引用" class="headerlink" title="什么是被动引用"></a>什么是被动引用</h3><p>一个类进行主动引用时会执行初始化。所有引用类的方式多不会触发初始化称为被动引用。</p>
+<ul>
+<li>通过子类调用父类的静态字段，不会导致子类初始化，只会触发父类的初始化。</li>
+<li>通过数组定义的引用类，不会触发此类的初始化。</li>
+<li>常量在编译阶段会存入调用类的常量池中，因此不会触发定义常量的类初始化。</li>
+</ul>
+<h3 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h3><h4 id="1-加载"><a href="#1-加载" class="headerlink" title="1.加载"></a>1.加载</h4><p>在加载阶段（可以参考java.lang.ClassLoader的loadClass()方法），虚拟机需要完成以下3件事情：</p>
 <ul>
 <li>通过一个类的全限定名来获取定义此类的二进制字节流（并没有指明要从一个Class文件中获取，可以从其他渠道，譬如：网络、动态生成、数据库等）；</li>
 <li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构；</li>
 <li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口；</li>
 </ul>
 <p>加载阶段和连接阶段（Linking）的部分内容（如一部分字节码文件格式验证动作）是交叉进行的，加载阶段尚未完成，连接阶段可能已经开始，但这些夹在加载阶段之中进行的动作，仍然属于连接阶段的内容，这两个阶段的开始时间仍然保持着固定的先后顺序。</p>
-<h4 id="2-验证"><a href="#2-验证" class="headerlink" title="2. 验证"></a>2. 验证</h4><p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。 </p>
+<h4 id="2-验证"><a href="#2-验证" class="headerlink" title="2.验证"></a>2.验证</h4><p>验证是连接阶段的第一步，这一阶段的目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。 </p>
 <p> <strong>验证阶段大致会完成4个阶段的检验动作：</strong> </p>
 <ol>
 <li>文件格式验证：验证字节流是否符合Class文件格式的规范；例如：是否以魔术0xCAFEBABE开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。</li>
@@ -644,7 +660,7 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>符号引用验证：确保解析动作能正确执行。</li>
 </ol>
 <p>验证阶段是非常重要的，但不是必须的，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用-Xverifynone参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
-<h4 id="3-准备"><a href="#3-准备" class="headerlink" title="3. 准备"></a>3. 准备</h4><ul>
+<h4 id="3-准备"><a href="#3-准备" class="headerlink" title="3.准备"></a>3.准备</h4><ul>
 <li>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些变量所使用的内存都将在方法区中进行分配。这时候进行内存分配的仅包括类变量（被static修饰的变量），而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配在堆中。其次，这里所说的初始值“通常情况”下是数据类型的零值，假设一个类变量的定义为：</li>
 </ul>
 <pre><code>public static int value=123;
@@ -652,12 +668,12 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>那变量value在准备阶段过后的初始值为0而不是123.因为这时候尚未开始执行任何java方法，而把value赋值为123的putstatic指令是程序被编译后，存放于类构造器()方法之中，所以把value赋值为123的动作将在初始化阶段才会执行。 </li>
 <li>至于“特殊情况”是指：public static final int value=123，即当类字段的字段属性是ConstantValue时，会在准备阶段初始化为指定的值，所以标注为final之后，value的值在准备阶段初始化为123而非0.</li>
 </ul>
-<h4 id="4-解析"><a href="#4-解析" class="headerlink" title="4. 解析"></a>4. 解析</h4><p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符7类符号引用进行。</p>
-<h4 id="5-初始化"><a href="#5-初始化" class="headerlink" title="5. 初始化"></a>5. 初始化</h4><ul>
+<h4 id="4-解析"><a href="#4-解析" class="headerlink" title="4.解析"></a>4.解析</h4><p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符7类符号引用进行。</p>
+<h4 id="5-初始化"><a href="#5-初始化" class="headerlink" title="5.初始化"></a>5.初始化</h4><ul>
 <li>如果一个类被主动引用，就会触发类的初始化。</li>
-<li>在java中，直接引用的情况有，通过new关键字实例化对象、读取或设置类的静态变量、调用类的静态方法。通过反射方式执行以上三种行为。初始化子类的时候，会触发父类的初始化。作为程序入口直接运行时（也就是直接调用main方法）。除了以上四种情况，其他使用类的方式叫做被动引用，而被动引用不会触发类的初始化<h4 id="6-使用"><a href="#6-使用" class="headerlink" title="6. 使用"></a>6. 使用</h4></li>
+<li>在java中，直接引用的情况有，通过new关键字实例化对象、读取或设置类的静态变量、调用类的静态方法。通过反射方式执行以上三种行为。初始化子类的时候，会触发父类的初始化。作为程序入口直接运行时（也就是直接调用main方法）。除了以上四种情况，其他使用类的方式叫做被动引用，而被动引用不会触发类的初始化<h4 id="6-使用"><a href="#6-使用" class="headerlink" title="6.使用"></a>6.使用</h4></li>
 <li>类的使用包括主动引用和被动引用</li>
-<li>被动引用：引用父类的静态字段，只会引起父类的初始化，而不会引起子类的初始化。定义类数组，不会引起类的初始化。引用类的常量，不会引起类的初始化。<h4 id="7-卸载"><a href="#7-卸载" class="headerlink" title="7. 卸载"></a>7. 卸载</h4></li>
+<li>被动引用：引用父类的静态字段，只会引起父类的初始化，而不会引起子类的初始化。定义类数组，不会引起类的初始化。引用类的常量，不会引起类的初始化。<h4 id="7-卸载"><a href="#7-卸载" class="headerlink" title="7.卸载"></a>7.卸载</h4></li>
 <li>满足下面的情况，类就会被卸载：该类所有的实例都已经被回收，也就是java堆中不存在该类的任何实例。加载该类的ClassLoader已经被回收。该类对应的java.lang.Class对象没有任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
 <li>如果以上三个条件全部满足，jvm就会在方法区垃圾回收的时候对类进行卸载，类的卸载过程其实就是在方法区中清空类信息，java类的整个生命周期就结束了。</li>
 </ul>
@@ -741,7 +757,7 @@ Employee emp5 = (Employee) in.readObject();
 5，子类成员变量按顺序初始化，子类构造方法调用
 
 一旦对象被创建，并被分派给某些变量赋值，这个对象的状态就切换到了应用阶段
-</code></pre><h4 id="阶段（Using）"><a href="#阶段（Using）" class="headerlink" title="阶段（Using）"></a>阶段（Using）</h4><pre><code>对象至少被一个强引用持有着
+</code></pre><h4 id="应用阶段-In-Use"><a href="#应用阶段-In-Use" class="headerlink" title="应用阶段(In Use)"></a>应用阶段(In Use)</h4><pre><code>对象至少被一个强引用持有着
 </code></pre><h4 id="不可视阶段（Invisible）"><a href="#不可视阶段（Invisible）" class="headerlink" title="不可视阶段（Invisible）"></a>不可视阶段（Invisible）</h4><pre><code>当一个对象处于不可见阶段时，说明程序本身不再持有该对象的任何强引用，虽然该这些引用仍然是存在着的。
 简单说就是程序的执行已经超出了该对象的作用域了。
 </code></pre><h4 id="不可到达阶段（Unreachable）"><a href="#不可到达阶段（Unreachable）" class="headerlink" title="不可到达阶段（Unreachable）"></a>不可到达阶段（Unreachable）</h4><pre><code>对象处于不可达阶段是指该对象不再被任何强引用所持有
@@ -751,24 +767,24 @@ Employee emp5 = (Employee) in.readObject();
 如果该对象已经重写了finalize()方法，则会去执行该方法的终端操作。
 </code></pre><h4 id="终结阶段（Finalized）"><a href="#终结阶段（Finalized）" class="headerlink" title="终结阶段（Finalized）"></a>终结阶段（Finalized）</h4><pre><code>当对象执行完finalize()方法后仍然处于不可达状态时，则该对象进入终结阶段。在该阶段是等待垃圾回收器对该对象空间进行回收。
 </code></pre><h4 id="对象空间重新分配阶段"><a href="#对象空间重新分配阶段" class="headerlink" title="对象空间重新分配阶段"></a>对象空间重新分配阶段</h4><pre><code>垃圾回收器对该对象的所占用的内存空间进行回收或者再分配了，则该对象彻底消失了，称之为“对象空间重新分配阶段”。
-</code></pre><h2 id="9-对象内存分配"><a href="#9-对象内存分配" class="headerlink" title="9. 对象内存分配"></a>9. 对象内存分配</h2><p>类加载检查通过后，虚拟机将为新生对象分配内存，对象所需内存大小在类加载完成后可以完全确定，对象内存分配任务就是把一块确定大小的内存从堆中划分出来。</p>
-<h3 id="指针碰撞法"><a href="#指针碰撞法" class="headerlink" title="指针碰撞法"></a>指针碰撞法</h3><ul>
-<li>如果堆中内存是绝对规整的。用过的内存放一边，空闲的放一边，中间放着一个指针作为分界点的指示器，那所分配内存就是把指针向空闲一边移动一段与对象大小相等的距离，即为“指针碰撞”<h3 id="空闲列表法"><a href="#空闲列表法" class="headerlink" title="空闲列表法"></a>空闲列表法</h3></li>
-<li>如果堆中内存不规整，已使用内存和未使用内存相互交错，虚拟机就必须一个列表，记录哪些内存块可用，在分配时从列表中找到一块足够大空间划分给对象，并更新列表上记录，即为“空闲列表”<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3></li>
+</code></pre><h3 id="对象内存分配"><a href="#对象内存分配" class="headerlink" title="对象内存分配"></a>对象内存分配</h3><p>类加载检查通过后，虚拟机将为新生对象分配内存，对象所需内存大小在类加载完成后可以完全确定，对象内存分配任务就是把一块确定大小的内存从堆中划分出来。</p>
+<h4 id="指针碰撞法"><a href="#指针碰撞法" class="headerlink" title="指针碰撞法"></a>指针碰撞法</h4><ul>
+<li>如果堆中内存是绝对规整的。用过的内存放一边，空闲的放一边，中间放着一个指针作为分界点的指示器，那所分配内存就是把指针向空闲一边移动一段与对象大小相等的距离，即为“指针碰撞”<h4 id="空闲列表法"><a href="#空闲列表法" class="headerlink" title="空闲列表法"></a>空闲列表法</h4></li>
+<li>如果堆中内存不规整，已使用内存和未使用内存相互交错，虚拟机就必须一个列表，记录哪些内存块可用，在分配时从列表中找到一块足够大空间划分给对象，并更新列表上记录，即为“空闲列表”<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4></li>
 <li>选择何种分配方式，由堆是否规整决定，而堆是否规整由采用的垃圾收集器是否有压缩整理功能决定。</li>
 <li>使用Serial，ParNew等带Compactg过程的收集器时，系统采用指针碰撞法</li>
-<li>使用CMS这种基于Mark-Sweep算法的收集器时，系统采用空闲列表法<h2 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h2></li>
+<li>使用CMS这种基于Mark-Sweep算法的收集器时，系统采用空闲列表法<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3></li>
 <li>Java程序需要通过栈上的references数据来操作堆上的具体对象。因为referencesz只是指向对象的一个引用，并没有定义这个引用通过何种方式去方位堆中对象的具体位置。所以对象访问方式取决于虚拟机实现而定的。</li>
-<li>目前主流的访问方式有使用句柄和直接指针两种。<h3 id="句柄定位"><a href="#句柄定位" class="headerlink" title="句柄定位"></a>句柄定位</h3>使用句柄访问时，Java堆中会划分出一块内存来作为句柄池，references中存储的就是对象的句柄地址。句柄中包含对象实列数据与类型数据各组的具体地址信息  references-&gt;句柄池-&gt;java堆</li>
+<li>目前主流的访问方式有使用句柄和直接指针两种。<h4 id="句柄定位"><a href="#句柄定位" class="headerlink" title="句柄定位"></a>句柄定位</h4>使用句柄访问时，Java堆中会划分出一块内存来作为句柄池，references中存储的就是对象的句柄地址。句柄中包含对象实列数据与类型数据各组的具体地址信息  references-&gt;句柄池-&gt;java堆</li>
 </ul>
 <p><img src="https://images.gitee.com/uploads/images/2019/0121/203615_b37c5a59_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
-<h3 id="直接指针定位"><a href="#直接指针定位" class="headerlink" title="直接指针定位"></a>直接指针定位</h3><p>如果是直接指针访问，Java堆的布局就必须考虑如何放置访问类型数据相关。</p>
+<h4 id="直接指针定位"><a href="#直接指针定位" class="headerlink" title="直接指针定位"></a>直接指针定位</h4><p>如果是直接指针访问，Java堆的布局就必须考虑如何放置访问类型数据相关。</p>
 <p><img src="https://images.gitee.com/uploads/images/2019/0121/203833_a0988220_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
-<h3 id="各自优点"><a href="#各自优点" class="headerlink" title="各自优点"></a>各自优点</h3><ul>
+<h4 id="各自优点"><a href="#各自优点" class="headerlink" title="各自优点"></a>各自优点</h4><ul>
 <li>句柄访问最大好处就是references中存储的是稳定的句柄地址，在对象移动(垃圾收集时移动对象是普遍行为)时只会改变句柄中的实列数据指针，references本身不需要修改。</li>
 <li>直接指针访问的最大好处是速度快，节省了一次定位的实时间开销。</li>
 </ul>
-<h2 id="10-常量池总结"><a href="#10-常量池总结" class="headerlink" title="10. 常量池总结"></a>10. 常量池总结</h2><h3 id="全局字符串池"><a href="#全局字符串池" class="headerlink" title="全局字符串池"></a>全局字符串池</h3><p>string pool也有叫做string literal pool</p>
+<h2 id="9-常量池总结"><a href="#9-常量池总结" class="headerlink" title="9. 常量池总结"></a>9. 常量池总结</h2><h3 id="全局字符串池"><a href="#全局字符串池" class="headerlink" title="全局字符串池"></a>全局字符串池</h3><p>string pool也有叫做string literal pool</p>
 <ul>
 <li>全局字符串池里的内容是在类加载完成，经过验证，准备阶段之后在堆中生成字符串对象实例，然后将该字符串对象实例的引用值存到string pool中（记住：string pool中存的是引用值而不是具体的实例对象，具体的实例对象是在堆中开辟的一块空间存放的。）。</li>
 <li>在HotSpot VM里实现的string pool功能的是一个StringTable类，它是一个哈希表，里面存的是驻留字符串(也就是我们常说的用双引号括起来的)的引用（而不是驻留字符串实例本身），也就是说在堆中的某些字符串实例被这个StringTable引用之后就等同被赋予了”驻留字符串”的身份。这个StringTable在每个HotSpot VM的实例只有一份，被所有的类共享。</li>
@@ -829,6 +845,104 @@ Employee emp5 = (Employee) in.readObject();
 </li>
 <li><p>运行时常量池里的内容除了是class文件常量池里的内容外，还将class文件常量池里的符号引用转变为直接引用，而且运行时常量池里的内容是能动态添加的。例如调用String的intern方法就能将string的值添加到String常量池中，这里String常量池是包含在运行时常量池里的，但在jdk1.8后，将String常量池放到了堆中。</p>
 </li>
+</ul>
+<h2 id="10-类文件结构"><a href="#10-类文件结构" class="headerlink" title="10. 类文件结构"></a>10. 类文件结构</h2><h3 id="1-class类文件结构"><a href="#1-class类文件结构" class="headerlink" title="1.class类文件结构"></a>1.class类文件结构</h3><ul>
+<li>class 文件结构是一组以8位字节为基础单位的二进制流。存储的内容几乎全部是程序运行的必要数据，无空隙。</li>
+<li>如果需要占用8位字节以上空间的数据，则按照高位在前的方式分割成若干个8位字节进行存储。</li>
+<li>class文件结构采用一种类似C语言体系的伪结构体系，这种伪结构只有无符号数和表两种数据类型。</li>
+</ul>
+<h4 id="魔数与Class文件的版本"><a href="#魔数与Class文件的版本" class="headerlink" title="魔数与Class文件的版本"></a>魔数与Class文件的版本</h4><ul>
+<li>class文件的头4个字节称为魔数，唯一作用是确定这个文件是否为一个能被虚拟机接受的文件。</li>
+<li>魔数值可以自由选择,只要未被广泛使用同事不会引起混淆。</li>
+<li>紧接着魔数的4个字节是class文件版本号，第5和第6个字节是次版本你好，7和8个字节是class文件版本号(java版本号从45开始。jdk7是51.0)</li>
+</ul>
+<h4 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h4><ul>
+<li>主次版本号之后的是常量池，常量池可以理解为class文件中的资源仓库。</li>
+<li>class文件结构中只有常量的容量技术是从1开始</li>
+<li>常量池主要存放两大类常量：字面量(如文本字符串，finald常量)和符号引用(类和接口的全限定名，字段的名称和描述符，方法的名称和描述符)。</li>
+<li>虚拟机运行时,需从常量池获取对应的符号引用，再在类创建时或运行将诶系会，翻译到哪具体的内存地址中。</li>
+</ul>
+<h4 id="访问标志"><a href="#访问标志" class="headerlink" title="访问标志"></a>访问标志</h4><p>常量池之后的两个字节代表访问标志，用于识别class是类还是接口，是否为public类型或abstract类型等等。</p>
+<h4 id="类索引-父类缩影与接口索引集合"><a href="#类索引-父类缩影与接口索引集合" class="headerlink" title="类索引,父类缩影与接口索引集合"></a>类索引,父类缩影与接口索引集合</h4><ul>
+<li>这三项按顺序排列在访问标志之后,class文件中由这三项来确定整个类的继承关系。</li>
+<li>类索引用于确定类的全限定名，父类索引用于确定类的父类权限定名。接口索引集合描述类实现了哪些接口</li>
+</ul>
+<h4 id="字段表集合"><a href="#字段表集合" class="headerlink" title="字段表集合"></a>字段表集合</h4><p>用于描述接口或类中声明的变量。字段包裹类级别的变量和实列变量。不包括方法内部声明的局部变量。</p>
+<h4 id="方法表集合"><a href="#方法表集合" class="headerlink" title="方法表集合"></a>方法表集合</h4><p>方法表结构依次包括访问标志,名称索引,描述索引,属性集合.</p>
+<h2 id="11-虚拟机字节码执行引擎"><a href="#11-虚拟机字节码执行引擎" class="headerlink" title="11. 虚拟机字节码执行引擎"></a>11. 虚拟机字节码执行引擎</h2><p>执行引擎是Java虚拟机最核心的组成部分之一。</p>
+<h3 id="运行时栈帧结构"><a href="#运行时栈帧结构" class="headerlink" title="运行时栈帧结构"></a>运行时栈帧结构</h3><ul>
+<li>栈帧用于虚拟机进行方法调用和方法执行的数据结构。</li>
+<li>栈帧存储了方法的局部变量表,操作数据栈,动态链接和返回地址等信息。每一个方法从调用开始至执行完成过程,都是在虚拟机中入栈到出栈的过程。</li>
+<li>栈帧需要分配多少内存，不受程序运行时期变量数据影响，取决虚拟机的具体实现。</li>
+</ul>
+<h4 id="1-局部变量表"><a href="#1-局部变量表" class="headerlink" title="1.局部变量表"></a>1.局部变量表</h4><ul>
+<li>一组变量值存储空间,存放方法参数和方法内部的局部变量, 类编译为class文件时就在方法的code属性max_locals中确定了方法局部变量表的最大容量。</li>
+<li>一变量槽”Slot“为最小单位,虚拟机没指明solt的占用内存大小,一般每个solt都可以存放一个boolean,bye,char,short,int,float,reference或returnAddress类的数据(32位或更小物理内存存放)。</li>
+<li>它是建立在线程的堆栈上。是线程私有的数据,所以是线程安全的。</li>
+<li>虚拟机通过索引的方式使用局部变量表。执行方法时,通过局部变量表完成参数值到参数变量列表的过程。如果执行实列方法(非static),变量表中第0位索引的slot默认用户传递方法的引用。</li>
+</ul>
+<h4 id="2-操作数栈"><a href="#2-操作数栈" class="headerlink" title="2.操作数栈"></a>2.操作数栈</h4><ul>
+<li>它是一个后入先出的栈。同局部变量表一样，最大深度在编译时写入到code属性的max_stacks中。</li>
+<li>操作数栈的每一个元素可以是任意的Java数据类型。32位的数据类所占的栈容量为1,64位栈容量2(long,double)</li>
+<li>一个方方法刚开始执行时,操作数栈时空的。在方法执行过程中,通过各种字节码指令往操作数栈写入和提取内容,也就是出栈/入栈操作.</li>
+</ul>
+<h4 id="3-动态链接"><a href="#3-动态链接" class="headerlink" title="3.动态链接"></a>3.动态链接</h4><ul>
+<li>每个栈帧都包含一个指向运行时常量池中该栈所属方法的引用，持有这个引用是为了支持方法调用过程中的动态链接</li>
+</ul>
+<h4 id="4-方法返回地址"><a href="#4-方法返回地址" class="headerlink" title="4.方法返回地址"></a>4.方法返回地址</h4><ul>
+<li>一个方法执行后，只有通过正常完成出口和异常完成出口两种方式退出。</li>
+<li>正常完成出口：当执行引擎遇到一个方法返回的字节码指令</li>
+<li>异常完成出口：方法执行过程中遇到异常且方法中未处理此异常,就会导致方法退出。</li>
+<li>方法正常退出时,调用者的程序计数器的值可以作为返回地址。</li>
+<li>方法退出的过程等于就是把当前栈帧出栈。</li>
+</ul>
+<h3 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h3><ul>
+<li>方法调用不等于方法执行,方法调用阶段唯一任务就是确定被调用方法的版本。</li>
+<li>一切方法调用在Class文件里存储都只是符号引用,而不是方法在实际运行时内存布中的入口地址(直接引用）。</li>
+</ul>
+<h4 id="1-解析"><a href="#1-解析" class="headerlink" title="1.解析"></a>1.解析</h4><ul>
+<li>所有方法调用重点目标方法在Class文件里都是一个常量池的符号引用,解析阶段会将一部分符号引用转化为直接引用。</li>
+<li>“编译器可知,运行期间不可变”这类方法的调用称为解析.(静态方法和私有方法)</li>
+<li>只要能被invokestatic和invokespecial指令调用的方法，都可以在解析阶段中确定唯一的调用版本.(比如静态方法,私有方法,实列构造器,父类方法)它们在类加载时候会把符号引用解析为该方法的直接引用。</li>
+</ul>
+<h4 id="2-静态分派"><a href="#2-静态分派" class="headerlink" title="2.静态分派"></a>2.静态分派</h4><p>在重载时时通过参数的静态类型而不是实际类型作为判定依据的。并且静态类型是编译可知的。<br>静态分派的典型应用就是方法重载</p>
+<pre><code>//左边是静态类型 右边是实际类型
+Human man=new Man();
+Huamn woman=new Woman();
+</code></pre><h4 id="3-动态分派"><a href="#3-动态分派" class="headerlink" title="3.动态分派"></a>3.动态分派</h4><p>方法的重写就是动态分派的体现。</p>
+<h2 id="12-高效并发"><a href="#12-高效并发" class="headerlink" title="12. 高效并发"></a>12. 高效并发</h2><h3 id="主内存与工作内存"><a href="#主内存与工作内存" class="headerlink" title="主内存与工作内存"></a>主内存与工作内存</h3><ul>
+<li>JAVA内模型规定所有的变量都存储在主内存中，每个线程都有自己的工作内存，线程的工作内存中保存的是当前线程使用到的变量值的副本（主内村拷贝过来的）。</li>
+<li>线程对变量的所有操作都必须在工作内存中进行，不能直接与主内存进行读写交.线程间相互的传值需要通过主内存完成。</li>
+</ul>
+<h3 id="内存间的交互"><a href="#内存间的交互" class="headerlink" title="内存间的交互"></a>内存间的交互</h3><p>JAVA内存模型定义了以下8种操作来完成内存交互工作：</p>
+<ul>
+<li><code>lock</code>(锁定)：作用于主内存的变量。把一个变量标识为一条线程独占的状态。</li>
+<li><code>unlock</code>(解锁)：作用于主内存的变量.把一个处于锁定状态的变量释放出来。</li>
+<li><code>read</code>(读取):作用于主内存的变量。把一个变量值从主内存传输到线程的工作内存中，以便随后的<code>load</code>动作使用。</li>
+<li><code>load</code>(载入):作用于工作内存的变量，它把read操作从主内存中得到的值放入工作内存的变量副本中。</li>
+<li><code>use</code>(使用)：作用与工作内存的变量.它把工作内存中一个变量值传递给执行引擎，每当虚拟机遇到一个需要使用到变量的值的字节码指令时就会执行这个操作。</li>
+<li><code>assign</code>(赋值）:作用于工作内存的变量，它把一个从执行引擎收到的赋值给工作内存的变量，每当虚拟机遇到一个给变量赋值的字节码指令时执行这个操作。</li>
+<li><code>store</code>(存储)：作用于工作内存的变量，它把工作内存中的一个变量的值传送到主内存中，以便随后的wirte操作使用。</li>
+<li><p><code>wirte</code>（写入）：作用于主内存的变量，它把store操作从工作内存中得到的变量值放入主内存中。</p>
+<p><strong>上述操作虚拟机实现时保证每一种操作都是原子性的。且比如满足如下规则</strong></p>
+</li>
+<li>不 _允许一个变量从主内存读取但工作内存不接受，或者工作内存发起回写了但主内存不接受的情况出现</li>
+<li>变量在工作内存中改变之后必须把该变化同步回主内存</li>
+<li>一个新的变量必须在主内存中诞生。不允许工作内存直接使用未初始化的变量。</li>
+<li>一个变量同一个时刻只能一条线程进行lock操作，但是lock操作可以被同一条线程重复执行多次，多次执行lock后，只有执行相同次数的unlock操作，变量才会被解锁。</li>
+<li>如果一个变量执行lock操作,那将会清空工作内存中此变量的值，在执行引擎使用这个变量前，需要重新执行load或assign操作。</li>
+<li>如果一个变量事先没有被lock操作锁定，那将不允许执行unlock操作，也不允许去unlock一个被其它线程锁定住的变量</li>
+<li>对一个变量执行unlock操作之前,必须先把此变量同步回主内存中 </li>
+</ul>
+<h3 id="对于volatile型变量的特殊规则"><a href="#对于volatile型变量的特殊规则" class="headerlink" title="对于volatile型变量的特殊规则"></a>对于volatile型变量的特殊规则</h3><ul>
+<li>volatile是虚拟机提供的最轻量级同步机制。它具备两种特性：保证被修饰的变量对所有线程可见（即可见性）和禁止指令重排序。</li>
+<li>volatile只能保证可见性，不能保证操作运算的原子性。</li>
+<li>运算结果并不依赖变量的当前值时和不需要与其他的状态变量共同参与不变约束时适合使用volatile</li>
+</ul>
+<h3 id="对于long和double型变量的特殊规则"><a href="#对于long和double型变量的特殊规则" class="headerlink" title="对于long和double型变量的特殊规则"></a>对于long和double型变量的特殊规则</h3><ul>
+<li>对于64位的数据类型long和double,在内存模型中有一条相对宽松的规定：允许虚拟机将没有被volatile修饰的64位数据类型分为两次32位的操作来新型。</li>
+<li>允许虚拟机实现选择可以不保证64位数据类型的<code>load</code>,<code>storm</code>,<code>read</code>,<code>write</code>这个四个操作的原子性（ong和double的非原子性协定）</li>
+<li>JAVA内存模型虽然允许虚拟机不把<code>long</code>和<code>double</code>变量的读写实现成原子操作，但允许虚拟机选择把这些操作实现为具有原子性的操作。目前各种平台下的虚拟机几乎都选择吧64位数据类型读写操作作为原子操作对待。</li>
 </ul>
 
             </div>
@@ -1045,7 +1159,7 @@ Employee emp5 = (Employee) in.readObject();
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingSelector: 'h1,h2, h3, h4'
+            headingSelector: 'h2,h3,h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -1057,7 +1171,7 @@ Employee emp5 = (Employee) in.readObject();
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h1,h2, h3, h4').each(function () {
+        $('#articleContent').children('h2,h3,h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -1089,7 +1203,7 @@ Employee emp5 = (Employee) in.readObject();
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">48.6k</span>
+                <span class="white-color">51.6k</span>
             
 
             
