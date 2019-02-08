@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-02-07T15:14:59.000Z</updated>
+  <updated>2019-02-08T06:13:23.000Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构与算法(五)什么是队列</title>
+    <link href="https://blog.qinxuewu.club/2019/02/08/shu-ju-jie-gou-yu-suan-fa-di-er-ban/dui-lie/"/>
+    <id>https://blog.qinxuewu.club/2019/02/08/shu-ju-jie-gou-yu-suan-fa-di-er-ban/dui-lie/</id>
+    <published>2019-02-08T06:10:01.000Z</published>
+    <updated>2019-02-08T06:13:23.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;https://images.gitee.com/uploads/images/2019/0208/141249_42b56dad_1478371.png&quot; alt=&quot;队列&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;队列的概述&quot;&gt;&lt;a href=&quot;#队列的概述&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="https://blog.qinxuewu.club/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构与算法(四)什么是栈</title>
@@ -525,32 +552,6 @@
     
     
       <category term="hexo" scheme="https://blog.qinxuewu.club/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Storm系列(六)storm和kafka集成</title>
-    <link href="https://blog.qinxuewu.club/2018/09/21/storm/storm-xi-lie-liu-storm-he-kafka-ji-cheng/"/>
-    <id>https://blog.qinxuewu.club/2018/09/21/storm/storm-xi-lie-liu-storm-he-kafka-ji-cheng/</id>
-    <published>2018-09-21T09:48:37.000Z</published>
-    <updated>2019-01-27T07:01:22.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;使用kafka-client-jar进行Storm-Apache-Kafka集成&quot;&gt;&lt;a href=&quot;#使用kafka-client-jar进行Storm-Apache-Kafka集成&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="storm" scheme="https://blog.qinxuewu.club/categories/storm/"/>
-    
-    
-      <category term="storm" scheme="https://blog.qinxuewu.club/tags/storm/"/>
     
   </entry>
   
