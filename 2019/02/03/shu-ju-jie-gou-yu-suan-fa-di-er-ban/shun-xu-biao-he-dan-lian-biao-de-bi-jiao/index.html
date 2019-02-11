@@ -512,26 +512,21 @@
          <span class="token keyword">int</span> result <span class="token operator">=</span><span class="token function">halfSort</span><span class="token punctuation">(</span>number<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
          System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"查找出的下标："</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">halfSort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">,</span><span class="token keyword">int</span> key<span class="token punctuation">)</span><span class="token punctuation">{</span>
-
-             <span class="token keyword">int</span> leftIndex<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//左标记</span>
-             <span class="token keyword">int</span> rightIndex<span class="token operator">=</span>data<span class="token punctuation">.</span>length<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//右标记</span>
-             <span class="token keyword">int</span> curnIndex<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//返回结果</span>
-             <span class="token keyword">if</span><span class="token punctuation">(</span>key<span class="token operator">></span>rightIndex<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                 <span class="token keyword">return</span> curnIndex<span class="token punctuation">;</span>
-             <span class="token punctuation">}</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span>leftIndex<span class="token operator">&lt;=</span>rightIndex<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//进行中间判断</span>
-                    <span class="token keyword">int</span> half <span class="token operator">=</span> <span class="token punctuation">(</span>leftIndex<span class="token operator">+</span>rightIndex<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
-                    <span class="token keyword">if</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>half<span class="token punctuation">]</span> <span class="token operator">==</span> key<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                        curnIndex <span class="token operator">=</span>half<span class="token punctuation">;</span>
-                        <span class="token keyword">break</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>data<span class="token punctuation">[</span>half<span class="token punctuation">]</span> <span class="token operator">&lt;</span> key<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                        leftIndex <span class="token operator">=</span> half<span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-                        rightIndex <span class="token operator">=</span> half<span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">halfSort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">,</span><span class="token keyword">int</span> key<span class="token punctuation">)</span><span class="token punctuation">{</span>
+             <span class="token keyword">int</span> min<span class="token punctuation">,</span>mid<span class="token punctuation">,</span>max<span class="token punctuation">;</span>
+             max<span class="token operator">=</span>data<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+             min<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>min<span class="token operator">&lt;=</span>max<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                mid<span class="token operator">=</span><span class="token punctuation">(</span>min<span class="token operator">+</span>max<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//折半</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>key<span class="token operator">&lt;</span>data<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如查找值比中值小</span>
+                    max<span class="token operator">=</span>mid<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//最高下标调证到中值下标的小一位</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>key<span class="token operator">></span>data<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    min<span class="token operator">=</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                    <span class="token keyword">return</span>  mid<span class="token punctuation">;</span>
                 <span class="token punctuation">}</span>
-             <span class="token keyword">return</span> curnIndex<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span>  <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
