@@ -107,4 +107,4 @@ feed:
 deploy:
   type: git
   repo: https://github.com/a870439570/a870439570.github.io.git
-
+  # branch: master

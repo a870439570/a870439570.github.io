@@ -29,7 +29,7 @@ categories: 算法
 +------------------------+
 ```
 分组去重加分页查询语法
-```mysql
+```
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
 SET N = N - 1;
@@ -69,7 +69,7 @@ END
  考虑两件事：1按分数降序排列  2 分数相同属同一级
 - 外面的查询负责查排序后的粉数
 - select里的查询语句负责排名操作 通过score条件判断 如果
-```mysql
+```
 select Score,(SELECT COUNT(DISTINCT score) from Scores WHERE score >= s.score) as Rank  from scores s ORDER BY Score DESC 
 ```
 
@@ -101,7 +101,7 @@ Employee 表包含所有员工，他们的经理也属于员工。每个员工�
 
 
 解答：通过自连接 关联表两次查询 组装出员工表每个员工对应的经理信息 即可通过条件判断取出结果
-```mysql
+```
 select e1.Name Employee  from Employee e1,Employee e2 where e1.ManagerId=e2.Id
 and e1.Salary>e2.Salary
 ```
@@ -132,7 +132,7 @@ Department 表包含公司所有部门的信息。
 
 
 解答 内连接匹配查询出所有员工对应的部门名称 然后通过子查询条件匹配
-```mysql
+```
 select d.Name as Department,e.Name as Employee, e.Salary  
         from Department d  join Employee e on d.Id=e.DepartmentId
         where e.Salary >=(select max(Salary) from Employee where DepartmentId=d.Id)
@@ -166,7 +166,7 @@ Department 表包含公司所有部门的信息。
 - 链接两表，将部门id换成name
 - 如何取前三高？不妨再加入一张Employee表，将其与1中的表作对比，令e2表中的salary大于e1表中的salary
 - 限制条件：e2表中salary大于e1表中salary的个数少于3 ==》取前三高的salary
-```mysql
+```
 SELECT Department.Name AS Department, e1.Name AS Employee, e1.Salary AS Salary
 FROM Employee e1
 JOIN Department
@@ -194,15 +194,15 @@ Id 是这个表的主键。
 
 #### 算法
 我们可以使用以下代码，将此表与它自身在电子邮箱列中连接起来。
-```mysql
+```
 SELECT p1.* FROM Person p1,Person p2 WHERE  p1.Email = p2.Email
 ```
 然后我们需要找到其他记录中具有相同电子邮件地址的更大 ID。所以我们可以像这样给 WHERE 子句添加一个新的条件。
-```mysql
+```
 SELECT p1.* FROM Person p1,Person p2 WHERE  p1.Email = p2.Email AND p1.Id > p2.Id
 ```
 因为我们已经得到了要删除的记录，所以我们最终可以将该语句更改为 DELETE。
-```mysql
+```
 DELETE p1 FROM Person p1, Person p2  WHERE   p1.Email = p2.Email AND p1.Id > p2.Id
 ```
 ## 上升的温度
@@ -230,7 +230,7 @@ DELETE p1 FROM Person p1, Person p2  WHERE   p1.Email = p2.Email AND p1.Id > p2.
 ```
 - 使用join 和datediff 日期函数 求差  自连接匹配出有昨天的数据
 
-```mysql
+```
 select * from  weather w1 join weather w2 on DATEDIFF(w1.RecordDate,w2.RecordDate)=1
 
 id  RecordDate    Temperature       w2.id          昨天的日期          w2.Temperature(昨天的温度)
@@ -299,7 +299,7 @@ Users 表存所有用户。每个用户有唯一键 Users_Id。Banned 表示这�
 
 解法
 
-```mysql
+```
 #先求出非禁止用户的所有记录
  select * from  Trips t  join Users  u on t.Client_Id =u.Users_Id   where u.Banned='No' 
 
@@ -347,7 +347,7 @@ select t.Request_at as Day,
 ```
 注意：如果学生人数是奇数，则不需要改变最后一个同学的座位。
 
-```mysql
+```
 
 先把简单的偶数都-1；然后对于非最大的奇数id+1；最后(即else)如果存在未变化的数则值不变
 

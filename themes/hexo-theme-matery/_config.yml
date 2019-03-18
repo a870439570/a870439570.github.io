@@ -19,9 +19,9 @@ menu:
   常用工具:
     url: /Brain
     icon: fa fa-amazon
-  友情链接:
-    url: /friends
-    icon: fa-address-book
+  # 阅读书单:
+  #   url: /friends
+  #   icon: fa-address-book
 
 # index page dream text,
 # 配置首页显示"梦想"的语句.

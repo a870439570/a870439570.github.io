@@ -23,16 +23,15 @@ categories: springcloud
 </dependency>
 ```
 * 2 application.properties配置如下
-
-```bash
+``` bash
 server.port=18084
 spring.application.name=service-sentinel
+
+#Sentinel 控制台地址
 spring.cloud.sentinel.transport.dashboard=localhost:8080
+#取消Sentinel控制台懒加载
 spring.cloud.sentinel.eager=true
 ```
-
-
-
 ## 接入限流埋点
 Sentinel 默认为所有的 HTTP 服务提供了限流埋点。引入依赖后自动完成所有埋点。只需要在控制配置限流规则即可
 * 注解埋点
@@ -91,13 +90,11 @@ public Map<String,Object> hello(){
   ![输入图片说明](https://images.gitee.com/uploads/images/2019/0128/144236_3ea6d1b5_1478371.png)
 
 ## 自定义限流处理逻辑
-`@SentinelResource` 注解包含以下属性：
-
+@SentinelResource 注解包含以下属性：
 - value: 资源名称，必需项（不能为空）
 - entryType: 入口类型，可选项（默认为 EntryType.OUT）
 - blockHandler:blockHandlerClass中对应的异常处理方法名。参数类型和返回值必须和原方法一致
 - blockHandlerClass：自定义限流逻辑处理类
-
 ``` java
 
  //通过注解限流并自定义限流逻辑
