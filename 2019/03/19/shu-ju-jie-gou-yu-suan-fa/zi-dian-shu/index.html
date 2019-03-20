@@ -5,12 +5,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="spring cloud alibaba系列(一) 服务注册, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
-    <meta name="description" content="alibaba-cloud本项目演示如何使用 spring cloud alibaba系列之服务的注册于发现
-引入依赖
-版本 0.2.1.RELEASE 对应的是 Spring Cloud Finchley 版本，
-
-版本 0.1.1.RE">
+    <meta name="keywords" content="数据结构与算法(六)什么是字典树, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
+    <meta name="description" content="数据结构与算法(六)什么是字典树 | codeing">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>spring cloud alibaba系列(一) 服务注册 | codeing</title>
+    <title>数据结构与算法(六)什么是字典树 | codeing</title>
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -284,13 +280,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0127/161348_7df24fd9_1478371.png')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        spring cloud alibaba系列(一) 服务注册
+                        数据结构与算法(六)什么是字典树
                     </div>
                 </div>
             </div>
@@ -403,12 +399,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springcloud/" target="_blank">
-                                <span class="chip bg-color">springcloud</span>
-                            </a>
-                        
-                            <a href="/tags/alibaba/" target="_blank">
-                                <span class="chip bg-color">alibaba</span>
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -419,8 +411,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/springcloud/" class="post-category" target="_blank">
-                                springcloud
+                            <a href="/categories/算法/" class="post-category" target="_blank">
+                                算法
                             </a>
                         
                     </div>
@@ -431,21 +423,21 @@
             <div class="post-info">
                 <span class="post-date">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-27
+                    2019-03-19
                 </span>
 
                 
                     
                     <span class="post-word-count">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.2k
+                        0
                     </span>
                     
 
                     
                     <span class="post-word-count">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        1 分
                     </span>
                     
                 
@@ -461,151 +453,7 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="alibaba-cloud"><a href="#alibaba-cloud" class="headerlink" title="alibaba-cloud"></a>alibaba-cloud</h2><p>本项目演示如何使用 spring cloud alibaba系列之服务的注册于发现</p>
-<h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><ul>
-<li><p>版本 0.2.1.RELEASE 对应的是 Spring Cloud Finchley 版本，</p>
-</li>
-<li><p>版本 0.1.1.RELEASE 对应的是 Spring Cloud Edgware 版本。</p>
-</li>
-<li><p>官方文档目前推荐的SpringBoot 2.0.6.RELEASE版本。如果注册不了一般都是版本不对。可以去官方文档查看对应的版本<br>如果需要使用已发布的版本，在 <code>dependencyManagement</code> 中添加如下配置。</p>
-<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencyManagement<span class="token operator">></span>
-      <span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
-          <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-              <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
-              <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>alibaba<span class="token operator">-</span>dependencies<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-              <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">0.2</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token punctuation">.</span>RELEASE<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
-              <span class="token operator">&lt;</span>type<span class="token operator">></span>pom<span class="token operator">&lt;</span><span class="token operator">/</span>type<span class="token operator">></span>
-              <span class="token operator">&lt;</span>scope<span class="token operator">></span><span class="token keyword">import</span><span class="token operator">&lt;</span><span class="token operator">/</span>scope<span class="token operator">></span>
-          <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>dependencyManagement<span class="token operator">></span>
-</code></pre>
-</li>
-</ul>
-<p>然后在 <code>dependencies</code> 中添加自己所需使用的依赖即可使用。</p>
-<p>如果您想体验最新的 BUILD-SNAPSHOT 的新功能，则可以将版本换成最新的版本，但是需要在 pom.xml 中配置 Spring BUILDSNAPSHOT 仓库，<strong>注意: SNAPSHOT 版本随时可能更新</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>repositories<span class="token operator">></span>
-    <span class="token operator">&lt;</span>repository<span class="token operator">></span>
-        <span class="token operator">&lt;</span>id<span class="token operator">></span>spring<span class="token operator">-</span>snapshot<span class="token operator">&lt;</span><span class="token operator">/</span>id<span class="token operator">></span>
-        <span class="token operator">&lt;</span>name<span class="token operator">></span>Spring Snapshot Repository<span class="token operator">&lt;</span><span class="token operator">/</span>name<span class="token operator">></span>
-        <span class="token operator">&lt;</span>url<span class="token operator">></span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>repo<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>io<span class="token operator">/</span>snapshot<span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">></span>
-        <span class="token operator">&lt;</span>snapshots<span class="token operator">></span>
-            <span class="token operator">&lt;</span>enabled<span class="token operator">></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>enabled<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>snapshots<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>repository<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>repositories<span class="token operator">></span>
-</code></pre>
-<h2 id="服务的注册发现-Nacos-Discovery"><a href="#服务的注册发现-Nacos-Discovery" class="headerlink" title="服务的注册发现(Nacos Discovery)"></a>服务的注册发现(Nacos Discovery)</h2><p>Nacos 是阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。<br>如何使用Nacos Discovery Starter 完成 Spring Cloud 应用的服务注册与发现</p>
-<h3 id="创建服务提供者"><a href="#创建服务提供者" class="headerlink" title="创建服务提供者"></a>创建服务提供者</h3><p>新建一个项目 cloud-client</p>
-<ol>
-<li>引入Nacos Discovery Starter</li>
-</ol>
-<pre class=" language-java"><code class="language-java">      <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>starter<span class="token operator">-</span>alibaba<span class="token operator">-</span>nacos<span class="token operator">-</span>discovery<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
-</code></pre>
-<ol start="2">
-<li><p>配置Nacos Server地址</p>
-<pre class=" language-bash"><code class="language-bash">server.port<span class="token operator">=</span>18082
-<span class="token comment" spellcheck="true">#服务名称</span>
-spring.application.name<span class="token operator">=</span>cloud-client
-<span class="token comment" spellcheck="true">#Nacos Server 地址</span>
-spring.cloud.nacos.discovery.server-addr<span class="token operator">=</span>127.0.0.1:8848
-</code></pre>
-</li>
-<li><p>启动类上使用 @EnableDiscoveryClient 注解开启服务注册与发现功能</p>
-</li>
-</ol>
-<p>4 下载 Nacos Server ：<a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener">https://github.com/alibaba/nacos/releases</a></p>
-<ol start="5">
-<li>启动 Server</li>
-</ol>
-<ul>
-<li>Linux/Unix/Mac 操作系统，执行命令 sh startup.sh -m standalone</li>
-<li>Windows 操作系统，执行命令 cmd startup.cmd</li>
-<li><p>访问控制台：<a href="http://127.0.0.1:8848/nacos/index.html" target="_blank" rel="noopener">http://127.0.0.1:8848/nacos/index.html</a>  </p>
-<p><strong>0.8版本默认登录账号的密码nacos/nacos.</strong> </p>
-</li>
-</ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0124/125758_aa62dddb_1478371.png" alt="输入图片说明"><br><img src="https://images.gitee.com/uploads/images/2019/0124/130000_4da3402a_1478371.png" alt="输入图片说明" title="登录界面"></p>
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>出现如下信息说明注册到nacos成功<br><img src="https://images.gitee.com/uploads/images/2019/0125/180020_c426127d_1478371.png" alt="输入图片说明"><br>nacos控制条界面就会出现注册的服务<br><img src="https://images.gitee.com/uploads/images/2019/0125/180210_3d75c743_1478371.png" alt="输入图片说明"></p>
-<p>以上步骤向您展示了如何将一个服务注册到 Nacos。</p>
-<h3 id="创建消费者"><a href="#创建消费者" class="headerlink" title="创建消费者"></a>创建消费者</h3><p>新建一个项目 cloud-consumer.配置文件和消费者一样更换下端口即可。</p>
-<pre class=" language-bash"><code class="language-bash">server.port<span class="token operator">=</span>18083
-spring.application.name<span class="token operator">=</span>service-consumer
-<span class="token comment" spellcheck="true">#Nacos Server 地址</span>
-spring.cloud.nacos.discovery.server-addr<span class="token operator">=</span>127.0.0.1:8848
-management.endpoints.web.exposure.include<span class="token operator">=</span>*
-
-</code></pre>
-<p>启动类同样添加@EnableDiscoveryClient 注册到nacos</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@EnableDiscoveryClient</span>
-<span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CloudConsumerApplication</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>CloudConsumerApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-
-    <span class="token comment" spellcheck="true">//实例化 RestTemplate 实例</span>
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> RestTemplate <span class="token function">restTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
-<p>新建一个 ConsumerController</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConsumerController</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> LoadBalancerClient loadBalancerClient<span class="token punctuation">;</span>
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> RestTemplate restTemplate<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.application.name}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> String appName<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 通过带有负载均衡的RestTemplate 和 FeignClient 也是可以访问的
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/echo/app-name"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">echoAppName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//使用 LoadBalanceClient 和 RestTemolate 结合的方式来访问</span>
-        ServiceInstance serviceInstance <span class="token operator">=</span> loadBalancerClient<span class="token punctuation">.</span><span class="token function">choose</span><span class="token punctuation">(</span><span class="token string">"service-provider"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String url <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"http://%s:%s/echo/%s"</span><span class="token punctuation">,</span>serviceInstance<span class="token punctuation">.</span><span class="token function">getHost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>serviceInstance<span class="token punctuation">.</span><span class="token function">getPort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>appName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"request url:"</span><span class="token operator">+</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> restTemplate<span class="token punctuation">.</span><span class="token function">getForObject</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-
-</code></pre>
-<p>分别启动cloud-client和cloud-consumer刷新nacos<br><img src="https://images.gitee.com/uploads/images/2019/0125/183238_acff8d12_1478371.png" alt="输入图片说明"><br>两个服务都注册成功</p>
-<p>##测试<br>访问 <a href="http://127.0.0.1:18083/echo/app-name" target="_blank" rel="noopener">http://127.0.0.1:18083/echo/app-name</a> 消费者输出访问日志说明请求成功</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0125/183350_f130882c_1478371.png" alt="输入图片说明"></p>
-<p>浏览器出现 第一个Nacos 程序service-consumer 到此Over 基于Nacos实现的服务注册发现已经调用就到此为止。入门还是很简单的 阿里巴巴大法好！</p>
-<h3 id="Nacos更多配置信息"><a href="#Nacos更多配置信息" class="headerlink" title="Nacos更多配置信息"></a>Nacos更多配置信息</h3><pre class=" language-bash"><code class="language-bash">spring.cloud.nacos.discovery.server-addr  <span class="token comment" spellcheck="true">#Nacos Server 启动监听的ip地址和端口</span>
-spring.cloud.nacos.discovery.service  <span class="token comment" spellcheck="true">#给当前的服务命名</span>
-spring.cloud.nacos.discovery.weight  <span class="token comment" spellcheck="true">#取值范围 1 到 100，数值越大，权重越大</span>
-spring.cloud.nacos.discovery.network-interface <span class="token comment" spellcheck="true">#当IP未配置时，注册的IP为此网卡所对应的IP地址，如果此项也未配置，则默认取第一块网卡的地址</span>
-spring.cloud.nacos.discovery.ip  <span class="token comment" spellcheck="true">#优先级最高</span>
-spring.cloud.nacos.discovery.port  <span class="token comment" spellcheck="true">#默认情况下不用配置，会自动探测</span>
-spring.cloud.nacos.discovery.namespace <span class="token comment" spellcheck="true">#常用场景之一是不同环境的注册的区分隔离，例如开发测试环境和生产环境的资源（如配置、服务）隔离等。</span>
-
-spring.cloud.nacos.discovery.access-key  <span class="token comment" spellcheck="true">#当要上阿里云时，阿里云上面的一个云账号名</span>
-spring.cloud.nacos.discovery.secret-key <span class="token comment" spellcheck="true">#当要上阿里云时，阿里云上面的一个云账号密码</span>
-spring.cloud.nacos.discovery.metadata    <span class="token comment" spellcheck="true">#使用Map格式配置，用户可以根据自己的需要自定义一些和服务相关的元数据信息</span>
-spring.cloud.nacos.discovery.log-name   日志文件名
-spring.cloud.nacos.discovery.enpoint   <span class="token comment" spellcheck="true">#地域的某个服务的入口域名，通过此域名可以动态地拿到服务端地址</span>
-ribbon.nacos.enabled  <span class="token comment" spellcheck="true">#是否集成Ribbon 一般都设置成true即可</span>
-</code></pre>
-<p> <strong>Demmo源码：<a href="https://github.com/a870439570/alibaba-cloud" target="_blank" rel="noopener">https://github.com/a870439570/alibaba-cloud</a></strong> </p>
-
+                
             </div>
             <hr>
 
@@ -628,7 +476,7 @@ ribbon.nacos.enabled  <span class="token comment" spellcheck="true">#是否集�
                     </span>
                     <a href="https://blog.qinxuewu.club" class="b-link-green">codeing</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/" class="b-link-green">spring cloud alibaba系列(一) 服务注册</a>
+                    <a href="/2019/03/19/shu-ju-jie-gou-yu-suan-fa/zi-dian-shu/" class="b-link-green">数据结构与算法(六)什么是字典树</a>
                 </p>
             </div>
         </div>
@@ -650,7 +498,7 @@ ribbon.nacos.enabled  <span class="token comment" spellcheck="true">#是否集�
         repo: 'a870439570.github.io',
         owner: 'a870439570',
         admin: ["a870439570"],
-        id: '2019-01-27T16-10-45',
+        id: '2019-03-19T12-34-11',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -675,28 +523,28 @@ ribbon.nacos.enabled  <span class="token comment" spellcheck="true">#是否集�
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/">
+                <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0128/145749_7c622d30_1478371.png" class="responsive-img" alt="spring cloud alibaba系列(二)Sentinel应用的限流管理">
                         
-                        <span class="card-title">spring cloud alibaba系列(二)Sentinel应用的限流管理</span>
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="并发编程-深入理解ReentrantLock">
+                        
+                        <span class="card-title">并发编程-深入理解ReentrantLock</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">限流组件Sentinel
-Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。
-默认支持 Servlet、Feign、RestTemplate、Dubbo 和 RocketMQ 限流降级功能的接</div>
+                    <div class="summary">什么是ReentrantLock
+ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与使用 synchronized 方法和语句所访问的隐式监视器锁相同的一些基本行为和语义。ReentrantLock是显示的获取或释</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-28
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springcloud/" class="post-category" target="_blank">
-                                    springcloud
+                            <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
                                 </a>
                             
                             
@@ -706,12 +554,8 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springcloud/" target="_blank">
-                        <span class="chip bg-color">springcloud</span>
-                    </a>
-                    
-                    <a href="/tags/alibaba/" target="_blank">
-                        <span class="chip bg-color">alibaba</span>
+                    <a href="/tags/ReentrantLock/" target="_blank">
+                        <span class="chip bg-color">ReentrantLock</span>
                     </a>
                     
                 </div>
@@ -725,28 +569,29 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/">
+                <a href="/2019/03/19/java/bing-fa-bian-cheng-shi-me-shi-aqs/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/142721_96f799bb_1478371.png" class="responsive-img" alt="SpringBoot版的JVM检控工具">
                         
-                        <span class="card-title">SpringBoot版的JVM检控工具</span>
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="并发编程-深入理解AQS(队列同步器)">
+                        
+                        <span class="card-title">并发编程-深入理解AQS(队列同步器)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">项目介绍
-基于SpringBoot2.0 实现的jvm远程监工图形化工具，可以同时监控多个web应用
-该项目是借鉴另个一开源项目 （ JavaMonitor） https://gitee.com/zyzpp/JavaMonitor 演变而来</div>
+                    <div class="summary">什么是AQS
+AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它同步组件的基础框架，它使用一个volatile修饰的int成员变量表示同步状态，通过内置的FIFO队列来完成资源获取线程排队的工作
+通过改</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springboot/" class="post-category" target="_blank">
-                                    springboot
+                            <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
                                 </a>
                             
                             
@@ -756,8 +601,8 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springboot/" target="_blank">
-                        <span class="chip bg-color">springboot</span>
+                    <a href="/tags/AQS/" target="_blank">
+                        <span class="chip bg-color">AQS</span>
                     </a>
                     
                 </div>
