@@ -645,25 +645,24 @@ ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入�
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantreadwritelock/">
+                <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="并发编程-深入理解ReentrantReadWriteLock读写锁">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="并发编程-深入理解ReentrantLock">
                         
-                        <span class="card-title">并发编程-深入理解ReentrantReadWriteLock读写锁</span>
+                        <span class="card-title">并发编程-深入理解ReentrantLock</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">概述
-ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入和公以及平非公平模式。读锁是共享式的，多个线程可以并发的读取。写锁是独占式的，在写线程访问时，所有的读线程和其他写线程均被阻塞。通过分离读锁和写锁，使得</div>
+                    <div class="summary">什么是ReentrantLock
+ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与使用 synchronized 方法和语句所访问的隐式监视器锁相同的一些基本行为和语义。ReentrantLock是显示的获取或释</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -676,7 +675,6 @@ ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入�
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -695,21 +693,22 @@ ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/">
+                <a href="/2019/03/19/java/bing-fa-bian-cheng-shi-me-shi-aqs/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="并发编程-深入理解ReentrantLock">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="并发编程-深入理解AQS(队列同步器)">
                         
-                        <span class="card-title">并发编程-深入理解ReentrantLock</span>
+                        <span class="card-title">并发编程-深入理解AQS(队列同步器)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">什么是ReentrantLock
-ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与使用 synchronized 方法和语句所访问的隐式监视器锁相同的一些基本行为和语义。ReentrantLock是显示的获取或释</div>
+                    <div class="summary">什么是AQS
+AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它同步组件的基础框架，它使用一个volatile修饰的int成员变量表示同步状态，通过内置的FIFO队列来完成资源获取线程排队的工作
+通过改</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-19
                             </span>
                         <span class="publish-author">
                             
@@ -726,8 +725,8 @@ ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ReentrantLock/" target="_blank">
-                        <span class="chip bg-color">ReentrantLock</span>
+                    <a href="/tags/AQS/" target="_blank">
+                        <span class="chip bg-color">AQS</span>
                     </a>
                     
                 </div>
@@ -739,43 +738,6 @@ ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与�
 </article>
 </div>
 
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: codeing<br />'
-            + '作者: qinxuewu<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
 
     </div>
     <div class="col l3 hide-on-med-and-down">
