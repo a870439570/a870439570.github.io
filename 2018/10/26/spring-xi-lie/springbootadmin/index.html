@@ -462,27 +462,27 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 <li>新建一个springBoot2.x工程，将Spring Boot Admin Server启动器添加到pom.xml</li>
 <li>使用ide新建工程可以直接选择引入Spring Boot Admin</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">  <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>de.codecentric<span class="token operator">&lt;</span>/groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring-boot-admin-starter-server<span class="token operator">&lt;</span>/artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span>/dependency<span class="token operator">></span>
+<pre class=" language-java"><code class="language-java">  <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>de<span class="token punctuation">.</span>codecentric<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>admin<span class="token operator">-</span>starter<span class="token operator">-</span>server<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org.springframework.boot<span class="token operator">&lt;</span>/groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring-boot-starter-test<span class="token operator">&lt;</span>/artifactId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>scope<span class="token operator">></span>test<span class="token operator">&lt;</span>/scope<span class="token operator">></span>
-        <span class="token operator">&lt;</span>/dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>test<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>scope<span class="token operator">></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>scope<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org.springframework.boot<span class="token operator">&lt;</span>/groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring-boot-starter-web<span class="token operator">&lt;</span>/artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span>/dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>web<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>de.codecentric<span class="token operator">&lt;</span>/groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring-boot-admin-server-ui<span class="token operator">&lt;</span>/artifactId<span class="token operator">></span>
-   <span class="token operator">&lt;</span>/dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>de<span class="token punctuation">.</span>codecentric<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>admin<span class="token operator">-</span>server<span class="token operator">-</span>ui<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+   <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
     <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org.springframework.boot<span class="token operator">&lt;</span>/groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring-boot-starter-security<span class="token operator">&lt;</span>/artifactId<span class="token operator">></span>
-   <span class="token operator">&lt;</span>/dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>security<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+   <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 </code></pre>
 <h3 id="启动类添加如下注解"><a href="#启动类添加如下注解" class="headerlink" title="启动类添加如下注解"></a>启动类添加如下注解</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
 <span class="token annotation punctuation">@EnableAdminServer</span>
@@ -548,7 +548,7 @@ spring.boot.admin.context-path<span class="token operator">=</span>/szq-monitori
 spring.boot.admin.ui.title<span class="token operator">=</span>szq-Monitpring
 
 </code></pre>
-<p>启动运行：<a href="http://localhost:8088/szq-monitoring/login" target="_blank" rel="noopener">http://localhost:8088/szq-monitoring/login</a> 出现登录界面表示成功<br><img src="https://user-gold-cdn.xitu.io/2019/1/25/1688378e770b7afe?w=1091&amp;h=735&amp;f=png&amp;s=45284" alt="输入图片说明" title="屏幕截图.png"></p>
+<p>启动运行：<a href="http://localhost:8088/szq-monitoring/login" target="_blank" rel="noopener">http://localhost:8088/szq-monitoring/login</a> 出现登录界面表示成功<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3byk2lqj30st0j4q3n.jpg" alt=""></p>
 <h3 id="Spring-Boot客户端配置监控"><a href="#Spring-Boot客户端配置监控" class="headerlink" title="Spring Boot客户端配置监控"></a>Spring Boot客户端配置监控</h3><ul>
 <li>客户端需要配置账户密码 不然无法注册到springBoot Admin</li>
 <li>每个要注册的应用程序都必须包含Spring Boot Admin Client 配置如下<pre class=" language-java"><code class="language-java"> <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
@@ -568,8 +568,8 @@ spring.boot.admin.client.enabled<span class="token operator">=</span>true
 <span class="token comment" spellcheck="true">#启用ip显示</span>
 spring.boot.admin.client.instance.prefer-ip<span class="token operator">=</span>true
 </code></pre>
-<p>启动后：监控的服务端就会收到通知 刷新页面就可以看到监控的服务<br><img src="https://user-gold-cdn.xitu.io/2019/1/25/1688378e77f3f8f1?w=1513&amp;h=802&amp;f=png&amp;s=66492" alt="输入图片说明"></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/1/25/1688378e779b1b6c?w=1670&amp;h=867&amp;f=png&amp;s=89632" alt="输入图片说明"></p>
+<p>启动后：监控的服务端就会收到通知 刷新页面就可以看到监控的服务<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3cmpm60j31540lzdh4.jpg" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3dc88adj31af0nowga.jpg" alt=""></p>
 <p>项目地址：<a href="https://gitee.com/qinxuewu/SpringBoot--Admin-demo" target="_blank" rel="noopener">https://gitee.com/qinxuewu/SpringBoot--Admin-demo</a></p>
 <h3 id="Spring-Boot-Admin-Client配置选项"><a href="#Spring-Boot-Admin-Client配置选项" class="headerlink" title="Spring Boot Admin Client配置选项"></a>Spring Boot Admin Client配置选项</h3><pre class=" language-bash"><code class="language-bash">spring.boot.admin.client.enabled    <span class="token comment" spellcheck="true">#启用S​​pring Boot Admin Client,默认值true</span>
 spring.boot.admin.client.url  <span class="token comment" spellcheck="true">#逗号分隔Spring Boot Admin服务器的有序URL列表以进行注册</span>
@@ -803,7 +803,7 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

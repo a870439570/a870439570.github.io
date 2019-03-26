@@ -479,7 +479,7 @@ AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它
 <li><code>tryAcquireSharedNanos(int arg, long nanosTimeout)</code> 试图以共享模式获取对象，如果被中断则中止，如果到了给定超时时间，则会失败。</li>
 <li><code>tryReleaseShared(int arg)</code>  试图设置状态来反映共享模式下的一个释放。</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0318/233908_0be94444_1478371.png" alt="同步器可重写的方法"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g30xqlk9j30tk0dogs7.jpg" alt="同步器可重写的方法"></p>
 <h2 id="队列同步器的实现分析"><a href="#队列同步器的实现分析" class="headerlink" title="队列同步器的实现分析"></a>队列同步器的实现分析</h2><ul>
 <li>同步器依赖内部的同步队列（一个FIFO双向队列）来完成同步状态的管理，当前线程获取同步状态失败时，同步器会将当前线程以及等待状态等信息构造成为一个节点（Node）并将其加入同步队列，同时会阻塞当前线程，当同步状态释放时，会把首节点中的线程唤醒，使其再次尝试获取同步状态。</li>
 </ul>
@@ -827,18 +827,18 @@ AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantreadwritelock/">
+                <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="并发编程-深入理解ReentrantReadWriteLock读写锁">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="并发编程-深入理解ReentrantLock">
                         
-                        <span class="card-title">并发编程-深入理解ReentrantReadWriteLock读写锁</span>
+                        <span class="card-title">并发编程-深入理解ReentrantLock</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">概述
-ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入和公以及平非公平模式。读锁是共享式的，多个线程可以并发的读取。写锁是独占式的，在写线程访问时，所有的读线程和其他写线程均被阻塞。通过分离读锁和写锁，使得</div>
+                    <div class="summary">什么是ReentrantLock
+ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与使用 synchronized 方法和语句所访问的隐式监视器锁相同的一些基本行为和语义。ReentrantLock是显示的获取或释</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-20
@@ -985,7 +985,7 @@ PV： 计划价值</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

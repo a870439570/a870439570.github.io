@@ -432,7 +432,7 @@ SpringCloud组件它主要提供的模块包括：服务发现（Eureka），断
                     
                     <span class="post-word-count">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        509
+                        502
                     </span>
                     
 
@@ -461,12 +461,13 @@ SpringCloud组件它主要提供的模块包括：服务发现（Eureka），断
 <li>Eureka作用相当于zookeeper,用于微服务项目中的服务注册及发现，在采用springBoot+springCloud开发微服务时，通过一些简单的配置就能够达到基本的目的</li>
 </ul>
 <h3 id="eureka注册中心访问权限"><a href="#eureka注册中心访问权限" class="headerlink" title="eureka注册中心访问权限"></a>eureka注册中心访问权限</h3><p>在注册中心服务pom.xml添加依赖</p>
-<pre><code> &lt;!-- 添加注册中心权限依赖  --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-</code></pre><p>在注册中心服务application.properties文件（注意），内容如下</p>
+<pre class=" language-java"><code class="language-java"> <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 添加注册中心权限依赖  <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>security<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>在注册中心服务application.properties文件（注意），内容如下</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#新版本开启权限</span>
 <span class="token comment" spellcheck="true">#注册中心配置</span>
 spring.application.name<span class="token operator">=</span>szq-server
@@ -481,10 +482,11 @@ spring.security.user.name<span class="token operator">=</span>admin
 spring.security.user.password<span class="token operator">=</span>123456
 </code></pre>
 <p>启动注册中心服务项目，浏览器输入<a href="http://localhost:8761/出现eureka控制台页面并要求输入用户名和密码框即为成功" target="_blank" rel="noopener">http://localhost:8761/出现eureka控制台页面并要求输入用户名和密码框即为成功</a></p>
-<p><img src="https://images.gitee.com/uploads/images/2018/0724/140715_4f6f683e_1478371.png" alt="输入图片说明" title="微信图片_20180724140701.png"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3aw3a7lj309806dwem.jpg" alt=""></p>
 <h3 id="eureka开启验证后服务无法连接注册中心解决方案"><a href="#eureka开启验证后服务无法连接注册中心解决方案" class="headerlink" title="eureka开启验证后服务无法连接注册中心解决方案"></a>eureka开启验证后服务无法连接注册中心解决方案</h3><p>运行错误提示</p>
-<pre><code>com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-</code></pre><p>Spring Cloud 2.0 以上的security默认启用了csrf检验，要在eurekaServer端配置security的csrf检验为false</p>
+<pre class=" language-java"><code class="language-java">com<span class="token punctuation">.</span>netflix<span class="token punctuation">.</span>discovery<span class="token punctuation">.</span>shared<span class="token punctuation">.</span>transport<span class="token punctuation">.</span>TransportException<span class="token operator">:</span> Cannot execute request on any known server
+</code></pre>
+<p>Spring Cloud 2.0 以上的security默认启用了csrf检验，要在eurekaServer端配置security的csrf检验为false</p>
 <pre><code>服务注册中心注册时加上账号密码
 eureka.client.serviceUrl.defaultZone=http://admin:123456@localhost:8761/eureka/ 
 </code></pre><ul>
@@ -725,7 +727,7 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

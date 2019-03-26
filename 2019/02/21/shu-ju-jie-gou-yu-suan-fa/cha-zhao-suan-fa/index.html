@@ -537,7 +537,7 @@
 <li>稠密索引是指在线性索引中,将数据集中的每个记录对应一个索引项</li>
 <li>对于稠密索引这个索引表来说,索引项一定是按照关键码有序的排列。索引项有序也就意味着,我们要查找关键字时,可以用到折半、插值、斐被那契 等有序查找算法,大大提高了效率 ,</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0214/222722_0c9ce82a_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g25zpjljj30ds09dmzw.jpg" alt=""></p>
 <pre class=" language-java"><code class="language-java">
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Index</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> key<span class="token punctuation">;</span>
@@ -641,7 +641,7 @@
 <li>存储了块中的记录个数,以便于循环时使用;</li>
 <li>用于指向块首数据元素的指针,便于开始对这一块中记景进行遍历。</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0214/215816_f541bb11_1478371.png" alt="分块索引"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g27306wvj30fo0fnjux.jpg" alt="分块索引"></p>
 <p>在分块索引表中查找,就是分两步进行:</p>
 <ul>
 <li>在分块索引表中查找要查关键字所在的块。由于分块索引表是块间有序的, 因此很容易利用折半、插值等算法得到结果。例如,在图 8-5-4的数据集中 查找62,我们可以很快可以从左上角的索引表中由 57&lt;62&lt;96 得到 62 在第三 个块中。</li>
@@ -738,11 +738,11 @@
 <h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><ul>
 <li>现在有两篇极短的英文”文章”一一其实只能算是句子,我们暂认为是文章,编号分别是 1 和 2。</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0214/221354_a482bdfc_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g27mzeayj30is02bmy6.jpg" alt=""></p>
 <ul>
 <li>假设我们忽略掉如 <code>books</code>,<code>friends</code> 中的复数 <code>s</code> 以及如 <code>A</code> 这样的大小写差异。我们可以整理出这样一张单词表,如表 8-5-1 所示,并将单词做了排序 , 也就是表格显示了每个不同的单词分别出现在哪篇文章中,比如 <code>good</code> 它在两篇文章中都有出现,而<code>is</code>只是在文章 2 中才有,</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0214/221648_559679e0_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g281xltsj30bv07ggn0.jpg" alt=""></p>
 <ul>
 <li><p>有了这样一张单词衰,我们要搜索文章,就非常方便了.如果在搜索框中搜索<code>book</code>关键字。系统就先在这张单词表中有序查找 “book”,找到后将它对应的文章编号 1 和 2的文章地址(通常在搜索引擎中就是网页的标题和链接)返回,并告诉你,查找到两条记录,用时 0.0001 秒。由于单词表是有序的,查找效率很高,返回的又只是文章的编号,所以整体速度都非常快 。</p>
 <p><strong>在这里这张单词表就是索引表, 索引项的通用结构是:</strong> </p>
@@ -845,23 +845,23 @@
 <li>它的结点间满足一定的次序关系，左子树结点一定比其双亲结点小，右子树结点一定比其双亲结点大。</li>
 <li>构造一棵二叉排序树的目的，其实并不是为了排序，而是为了提高查找和插入删除关键字的速度</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0215/213818_8adb2c23_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g28s8dezj30cw07ywf2.jpg" alt=""></p>
 <h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><p>（1）首先将20与根节点进行比较，发现比根节点小，所以继续与根节点的左子树30比较。</p>
 <p>（2）发现20比30也要小，所以继续与30的左子树10进行比较。</p>
 <p>（3）发现20比10要大，所以就将20插入到10的右子树中。</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0215/213856_c099b5a5_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g29924b3j309e080q3n.jpg" alt=""></p>
 <h3 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a>查找节点</h3><p>比如我们要查找节点10，那么思路如下：</p>
 <p>（1）还是一样，首先将10与根节点50进行比较，发现比根节点要小，所以继续与根节点的左子树30进行比较。</p>
 <p>（2）发现10比左子树30要小，所以继续与30的左子树10进行比较。</p>
 <p>（3）发现两值相等，即查找成功，返回10的位置。</p>
 <h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p> <strong>删除节点的情况相对复杂，主要分为以下三种情形：</strong> </p>
 <p>删除的是叶节点(即没有孩子节点的)。比如20，删除它不会破坏原来树的结构，最简单。如图所示</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0215/214035_e641e7f9_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g29qrk8hj309e06x74w.jpg" alt=""></p>
 <p>删除的是单孩子节点。比如90，删除它后需要将它的孩子节点与自己的父节点相连。情形比第一种复杂一些。</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0215/214117_c946e1e3_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2a6dlk0j30es07aab3.jpg" alt=""></p>
 <p>删除的是有左右孩子的节点。比如根节点50</p>
 <p>这里有一个问题就是删除它后，谁将作为根节点？利用二叉树的中序遍历，就是右节点的左子树的最左孩子。</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0215/214211_b773dc95_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2ao32xnj30dp06y0tp.jpg" alt=""></p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 结点值</span>
     <span class="token keyword">protected</span> Node leftChild<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 左孩子结点</span>
@@ -1117,13 +1117,13 @@
 <li>它是一种高度平衡的二叉排序树。要么它是一棵空树，要么它的左子树和右子树都是平衡二叉树， 旦左子树和右子树的深度之差的绝对值不超过 1</li>
 <li>我们将二叉树上结点的左子树深度减去右子树深度的值称为平衡因子BF。平衡二叉树上所有结点的平衡因乎只可能是-1 ， 0 和 1.</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0218/163302_4fd48473_1478371.png" alt="平衡二叉树"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2b9io6wj30jn0bhtb0.jpg" alt="平衡二叉树"></p>
 <ul>
 <li>图二 59 比 58 大却是 58 的左子树，这是不符合二叉排序树的定义的</li>
 <li>图 3 不是平衡二叉树的原因就在于，结点 58 的左子树高度为 2 ，而右子树为空，二者差大于了绝对值 1 </li>
 </ul>
 <p>距离插入结点最近的，且平衡困子的绝对值大于 1 的结点为根的子树，我们称为最小不平衡子树</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0218/164659_90233695_1478371.png" alt="最小不平衡子树"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2bq4vk6j30ad074wff.jpg" alt="最小不平衡子树"></p>
 <ul>
 <li>上图当新插入结点37时，距离它最近的平衡因子绝对值超过1的结点是58 (即它的左子树高度2减去右子树高度的，所以从58 开始以下的子树为最小不平衡子树 。</li>
 </ul>
@@ -1636,13 +1636,13 @@
 <li>将所有关键字为同义词的记录存储在一个单链表中，我们称这种表为同义词子表，在散列表中只存储所有同义词子表的头指针。</li>
 <li>对于关键字集合{12，67，S6，16，25.37，22,29,lS,47,48,34} ，我们用前面同样的 12 为除数，进行除留余数法，可得到如图<br>8-11-1 结构，此时， 已经不存在什么冲突换址的问题，无论有多少个冲突，都只是在当前位置给单链裴增加结点的问题 。</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0220/132858_a93ca0fe_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2c7stkej30co0cndha.jpg" alt=""></p>
 <p>链地址法对于可能会造成很多冲突的散列函数来说，提供了绝不会出现找不到地址的保障。当然，这也就带来了查找时需要遍历单链装的性能损耗。</p>
 <p> <strong>公共溢出区法</strong> </p>
 <ul>
 <li>凡是冲突的都跟我走，我给你们这些冲突找个地儿待着。这就如同孤儿院收留所有无家可归的孩子一样，我们为<br>所有冲突的关键字建立了一个公共的溢出区来存放.</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0220/133051_09bd720a_1478371.png" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2cnantjj30bc0e6ta8.jpg" alt=""></p>
 <ul>
 <li>在查找时，对给定值通过散列函数计算出散列地址后，先与基本表的相应位置进行比对，如果相等，则查找成功 i 如果不相等，则到溢出表去进行j帧序查找。</li>
 <li>如果相对于基本表而言，有冲突的数据很少的情况下，公共溢出区的结构对查找性能来说还是非常高的。</li>
@@ -1877,7 +1877,7 @@ PV： 计划价值</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

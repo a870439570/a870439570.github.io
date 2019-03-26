@@ -432,14 +432,14 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
                     
                     <span class="post-word-count">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        15.3k
+                        15k
                     </span>
                     
 
                     
                     <span class="post-word-count">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        53 分
+                        52 分
                     </span>
                     
                 
@@ -455,11 +455,11 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://images.gitee.com/uploads/images/2019/0124/182055_4265159e_1478371.png" alt="深入理解JVM脑图"></p>
+                <p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g31rss95j30mj0afgnc.jpg" alt="深入理解JVM脑图"></p>
 <h2 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1. 运行时数据区域"></a>1. 运行时数据区域</h2><ul>
 <li>Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途,以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0120/110634_7e0e2b98_1478371.jpeg" alt=""></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g327ko68j30g20anab3.jpg" alt=""></p>
 <ul>
 <li>线程私有的：虚拟机栈，本地方法栈，程序计数器</li>
 <li>线程共享的 方法区，堆</li>
@@ -560,33 +560,34 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>对象的年龄到达了MaxTenuringThreshold可以进入老年代，同时，如果在survivor区中相同年龄所有对象大小的总和大于survivor区的一半，年龄大于等于该年龄的对象就可以直接进入老年代。无需等到MaxTenuringThreshold中要求的年龄。</li>
 </ul>
 <p>具体代码如下：</p>
-<pre><code>public class AllocationTest {
-    private static final int _1MB = 1024 * 1024;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AllocationTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> _1MB <span class="token operator">=</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">;</span>
 
-    /*
+    <span class="token comment" spellcheck="true">/*
      *     -Xms20M -Xmx20M -Xmn10M 
         -XX:SurvivorRatio=8 
         -XX:+PrintGCDetails
         -XX:+UseSerialGC
         -XX:MaxTenuringThreshold=15
         -XX:+PrintTenuringDistribution
-     * */
+     * */</span>
 
-    public static void testTenuringThreshold2() {
-        byte[] allocation1, allocation2, allocation3, allocation4;
-        allocation1 = new byte[_1MB / 4];
-        allocation2 = new byte[_1MB / 4];
-        allocation3 = new byte[4 * _1MB];
-        allocation4 = new byte[4 * _1MB];
-        allocation4 = null;
-        allocation4 = new byte[4 * _1MB];
-    }
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">testTenuringThreshold2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> allocation1<span class="token punctuation">,</span> allocation2<span class="token punctuation">,</span> allocation3<span class="token punctuation">,</span> allocation4<span class="token punctuation">;</span>
+        allocation1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span>_1MB <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        allocation2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span>_1MB <span class="token operator">/</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        allocation3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">4</span> <span class="token operator">*</span> _1MB<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        allocation4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">4</span> <span class="token operator">*</span> _1MB<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        allocation4 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        allocation4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">4</span> <span class="token operator">*</span> _1MB<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public static void main(String[] args) {
-        testPretenureSizeThreshold2();
-    }
-}
-</code></pre><h3 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h3><ul>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">testPretenureSizeThreshold2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="空间分配担保"><a href="#空间分配担保" class="headerlink" title="空间分配担保"></a>空间分配担保</h3><ul>
 <li>发生Minor GC时，虚拟机会检查老年代连续的空闲区域是否大于新生代所有对象的总和，若成立，则说明Minor GC是安全的，否则，虚拟机需要查看HandlePromotionFailure的值，看是否运行担保失败，若允许，则虚拟机继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，若大于，将尝试进行一次Minor GC；若小于或者HandlePromotionFailure设置不运行冒险，那么此时将改成一次Full GC，以上是JDK Update 24之前的策略，之后的策略改变了，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小就会进行Minor GC，否则将进行Full GC。</li>
 <li>冒险是指经过一次Minor GC后有大量对象存活，而新生代的survivor区很小，放不下这些大量存活的对象，所以需要老年代进行分配担保，把survivor区无法容纳的对象直接进入老年代。</li>
 </ul>
@@ -595,11 +596,12 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>永久代的垃圾主要回收两部分内容：废弃常量和无用的类。</li>
 <li>回收废弃常量于回收<code>Java堆</code>中的对象非常相似。以常量池中字面量的回收为列，假如一个字符串“<code>abc</code>“已经进入常量池中，但是当前系统没有任何一个String对象叫做”<code>abc</code>“的，换句话就是没有任何Sting对象引用常量池中的”abc”,也没有其它地方引用了这个字面变量，如果这时候发生内存回收，而且必要的话，这个“<code>abc</code>“常量就会被系统请出常量池，常量池中的其它类，接口，方法，字段的符号引用也与此类似。</li>
 </ul>
-<p><img src="https://gitee.com/uploads/images/2018/0703/173826_78dcbdc8_1478371.png" alt="输入图片说明" title="image.png"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g333ghndj30mx04x415.jpg" alt=""></p>
 <h3 id="Java中对象访问是如何进行的"><a href="#Java中对象访问是如何进行的" class="headerlink" title="Java中对象访问是如何进行的"></a>Java中对象访问是如何进行的</h3><ul>
 <li><p>对象访问在Java中无处不在，即时是最简单的访问也会涉及到Java栈，Java堆，方法区这三个最重要的内存区域之间的关系。</p>
-<pre><code>Object obj=new Object();
-</code></pre></li>
+<pre class=" language-java"><code class="language-java">Object obj<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
 <li><p>假设这段代码出现在方法体中， 那吗“<code>Object obj</code>”这部分的语义将会反应到<code>Java栈</code>的本地变量中，作为一个<code>reference</code>类型数据出现。而“<code>new Object()</code>”这部分的语义将会反应到<code>Java堆</code>中,形成一块存储了Object类型所有实例数据值的结构化内存，根据具体类型以及虚拟机实现的对象内存布局的不同，这块内存的长度是不固定的。</p>
 </li>
 <li>另外，在Java堆中还必须包含能查找到此对象类型数据（如对象类型，父亲，实现的接口，方法等）的地址消息，这些类型数据则存储在方法区中。</li>
@@ -615,7 +617,7 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>这个算法的思路就是通过一系列的名为“GC roots”的对象作为起点，从这些节点开始向下搜索，搜索走过的路径称为引用链，当一个对象的GC roots没有任何引用链相连时，则证明此对象是不可用的。如下图所示，对象object5,object6,object7虽然相互关联，但是他们的GC roots是不可达到的，所以它们将会被判定是可回收的对象。</li>
 </ul>
 </blockquote>
-<p><img src="https://gitee.com/uploads/images/2018/0703/173354_410e32c9_1478371.png" alt="输入图片说明" title="image.png"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g33qxpsmj30fu0c2tay.jpg" alt=""></p>
 <h3 id="作为GC-roots的几种对象"><a href="#作为GC-roots的几种对象" class="headerlink" title="作为GC roots的几种对象"></a>作为GC roots的几种对象</h3><ul>
 <li>虚拟机栈(栈中的本地变量表)中的引用对象。</li>
 <li>方法区中的类静态属性引用对象。</li>
@@ -623,7 +625,7 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li>本地方法中JNI（即一般说的native方法）的引用的对象。</li>
 </ul>
 <h2 id="6-虚拟机类加载机制"><a href="#6-虚拟机类加载机制" class="headerlink" title="6. 虚拟机类加载机制"></a>6. 虚拟机类加载机制</h2><h3 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h3><ul>
-<li><p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括：加载（Loading）、验证（Verification）、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)和卸载(Unloading)7个阶段。其中准备、验证、解析3个部分统称为连接（Linking）<br><img src="https://images.gitee.com/uploads/images/2019/0120/145642_5617ec80_1478371.png" alt="输入图片说明" title="在这里输入图片标题"></p>
+<li><p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括：加载（Loading）、验证（Verification）、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)和卸载(Unloading)7个阶段。其中准备、验证、解析3个部分统称为连接（Linking）<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g36ub9ibj30hf06774b.jpg" alt=""></p>
 </li>
 <li><p>加载、验证、准备、初始化和卸载这5个阶段的顺序是确定的，类的加载过程必须按照这种顺序按部就班地开始，而解析阶段则不一定：它在某些情况下可以在初始化阶段之后再开始，这是为了支持Java语言的运行时绑定（也称为动态绑定或晚期绑定）。</p>
 </li>
@@ -696,7 +698,7 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
 <li><p>一个java类的完整的生命周期会经历加载、连接、初始化、使用、和卸载五个阶段，当然也有在加载或者连接之后没有被初始化就直接被使用的情况</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/uploads/images/2018/0704/125820_a13e503b_1478371.png" alt="输入图片说明" title="微信图片_20180704125805.png"></p>
+<p>![](<a href="https://gitee.com/uploads/images/2018/0704/125820_a13e503b_1478371.png" target="_blank" rel="noopener">https://gitee.com/uploads/images/2018/0704/125820_a13e503b_1478371.png</a> “</p>
 <h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><ul>
 <li>通过一个类的全限定名来获取描述此类的二进制字节流,这个动作放到java虚拟机外部去实现。以便让应用程序自己决定如何去获取所需要的类。实现各动作的代码模块称为“类加载器”。</li>
 <li>比较两个类是否相等，只有这两个类是由同一个类加载器加载的前提下才有意义，否则即使这两个；诶是来源同一个class文件，但类加载器不同，他们也不相等。<h4 id="启动类加载器"><a href="#启动类加载器" class="headerlink" title="启动类加载器"></a>启动类加载器</h4>这个类加载器负责放在&lt;JAVA_HOME&gt;\lib目录中的，或者被-Xbootclasspath参数所指定的路径中的，并且是虚拟机识别的类库。用户无法直接使用。</li>
@@ -747,7 +749,7 @@ Employee emp4 = (Employee) emp3.clone();
 </code></pre><p>使用反序列化→ 没有调用构造函数</p>
 <pre><code>ObjectInputStream in = new ObjectInputStream(new FileInputStream(&quot;data.obj&quot;));
 Employee emp5 = (Employee) in.readObject();
-</code></pre><p><img src="https://images.gitee.com/uploads/images/2019/0120/151315_16e661d8_1478371.png" alt="对象的创建"></p>
+</code></pre><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g354jorrj30830el0sy.jpg" alt="对象的创建"></p>
 <h3 id="Java-对象生命周期"><a href="#Java-对象生命周期" class="headerlink" title="Java 对象生命周期"></a>Java 对象生命周期</h3><p> 对象的整个生命周期大致可以分为7个阶段：</p>
 <h4 id="创建阶段（Creation）"><a href="#创建阶段（Creation）" class="headerlink" title="创建阶段（Creation）"></a>创建阶段（Creation）</h4><pre><code>在创建阶段系统通过下面的几个步骤来完成对象的创建过程
 1，为对象分配存储空间
@@ -777,9 +779,9 @@ Employee emp5 = (Employee) in.readObject();
 <li>Java程序需要通过栈上的references数据来操作堆上的具体对象。因为referencesz只是指向对象的一个引用，并没有定义这个引用通过何种方式去方位堆中对象的具体位置。所以对象访问方式取决于虚拟机实现而定的。</li>
 <li>目前主流的访问方式有使用句柄和直接指针两种。<h4 id="句柄定位"><a href="#句柄定位" class="headerlink" title="句柄定位"></a>句柄定位</h4>使用句柄访问时，Java堆中会划分出一块内存来作为句柄池，references中存储的就是对象的句柄地址。句柄中包含对象实列数据与类型数据各组的具体地址信息  references-&gt;句柄池-&gt;java堆</li>
 </ul>
-<p><img src="https://images.gitee.com/uploads/images/2019/0121/203615_b37c5a59_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g37jd8gwj30ih0900uu.jpg" alt=""></p>
 <h4 id="直接指针定位"><a href="#直接指针定位" class="headerlink" title="直接指针定位"></a>直接指针定位</h4><p>如果是直接指针访问，Java堆的布局就必须考虑如何放置访问类型数据相关。</p>
-<p><img src="https://images.gitee.com/uploads/images/2019/0121/203833_a0988220_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3817gxxj30kf09bwgj.jpg" alt=""></p>
 <h4 id="各自优点"><a href="#各自优点" class="headerlink" title="各自优点"></a>各自优点</h4><ul>
 <li>句柄访问最大好处就是references中存储的是稳定的句柄地址，在对象移动(垃圾收集时移动对象是普遍行为)时只会改变句柄中的实列数据指针，references本身不需要修改。</li>
 <li>直接指针访问的最大好处是速度快，节省了一次定位的实时间开销。</li>
@@ -796,25 +798,25 @@ Employee emp5 = (Employee) in.readObject();
 <li>符号引用是一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可（它与直接引用区分一下，直接引用一般是指向方法区的本地指针，相对偏移量或是一个能间接定位到目标的句柄）。一般包括下面三类常量。类和接口的全限定名，字段的名称和描述符，方法的名称和描述符。</li>
 </ul>
 <p>常量池的每一项常量都是一个表，一共有如下表所示的11种各不相同的表结构数据，这每个表开始的第一位都是一个字节的标志位（取值1-12），代表当前这个常量属于哪种常量类型。 </p>
-<p><img src="https://images.gitee.com/uploads/images/2018/1024/155541_2eec5e16_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
 <h3 id="运行时常量池（runtime-constant-pool）"><a href="#运行时常量池（runtime-constant-pool）" class="headerlink" title="运行时常量池（runtime constant pool）"></a>运行时常量池（runtime constant pool）</h3><p>当java文件被编译成class文件之后，也就是会生成我上面所说的class常量池，那么运行时常量池又是什么时候产生的呢？</p>
 <ul>
 <li>jvm在执行某个类的时候，必须经过加载、连接、初始化，而连接又包括验证、准备、解析三个阶段。而当类加载到内存中后，jvm就会将class常量池中的内容存放到运行时常量池中，由此可知，运行时常量池也是每个类都有一个。在上面我也说了，class常量池中存的是字面量和符号引用，也就是说他们存的并不是对象的实例，而是对象的符号引用值。而经过解析（resolve）之后，也就是把符号引用替换为直接引用，解析的过程会去查询全局字符串池，也就是我们上面所说的StringTable，以保证运行时常量池所引用的字符串与全局字符串池中所引用的是一致的。</li>
 </ul>
 <p>举个实例来说明一下:</p>
-<pre><code>public class HelloWorld {
-    public static void main(String []args) {
-        String str1 = &quot;abc&quot;; 
-        String str2 = new String(&quot;def&quot;); 
-        String str3 = &quot;abc&quot;; 
-        String str4 = str2.intern(); 
-        String str5 = &quot;def&quot;; 
-        System.out.println(str1 == str3);//true 
-        System.out.println(str2 == str4);//false 
-        System.out.println(str4 == str5);//true
-    }
-}
-</code></pre><ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String <span class="token punctuation">[</span><span class="token punctuation">]</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String str1 <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span> 
+        String str2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"def"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        String str3 <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span> 
+        String str4 <span class="token operator">=</span> str2<span class="token punctuation">.</span><span class="token function">intern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        String str5 <span class="token operator">=</span> <span class="token string">"def"</span><span class="token punctuation">;</span> 
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1 <span class="token operator">==</span> str3<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//true </span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str2 <span class="token operator">==</span> str4<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//false </span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str4 <span class="token operator">==</span> str5<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
 <li>回到上面的那个程序，现在就很容易解释整个程序的内存分配过程了，首先，在堆中会有一个”abc”实例，全局StringTable中存放着”abc”的一个引用值</li>
 <li>然后在运行第二句的时候会生成两个实例，一个是”def”的实例对象，并且StringTable中存储一个”def”的引用值，还有一个是new出来的一个”def”的实例对象 与上面那个是不同的实例</li>
 <li>当在解析str3的时候查找StringTable，里面有”abc”的全局驻留字符串引用，所以str3的引用地址与之前的那个已存在的相同</li>
@@ -826,16 +828,6 @@ Employee emp5 = (Employee) in.readObject();
 <li>2.class常量池是在编译的时候每个class都有的，在编译阶段，存放的是常量的符号引用。</li>
 <li>3.运行时常量池是在类加载完成之后，将每个class常量池中的符号引用值转存到运行时常量池中，也就是说，每个class都有一个运行时常量池，类在解析之后，将符号引用替换成直接引用，与全局常量池中的引用值保持一致。</li>
 </ul>
-<h3 id="class文件常量池和运行时常量池"><a href="#class文件常量池和运行时常量池" class="headerlink" title="class文件常量池和运行时常量池"></a>class文件常量池和运行时常量池</h3><p>最近一直被方法区里面存着什么东西困扰着？</p>
-<pre><code> 1.方法区里存class文件信息和class文件常量池是个什么关系。
-
- 2.class文件常量池和运行时常量池是什么关系。        
-</code></pre><p>方法区存着类的信息，常量和静态变量，即类被编译后的数据。这个说法其实是没问题的，只是太笼统了。更加详细一点的说法是方法区里存放着类的版本，字段，方法，接口和常量池。常量池里存储着字面量和符号引用。</p>
-<p>符号引用包括：1.类的全限定名，2.字段名和属性，3.方法名和属性。</p>
-<p><img src="https://images.gitee.com/uploads/images/2018/1024/165202_c3ff9d88_1478371.png" alt="输入图片说明" title="屏幕截图.png"><br><img src="https://images.gitee.com/uploads/images/2018/1024/165214_c6ff9536_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
-<p> 可以看到在方法区里的class文件信息包括：魔数，版本号，常量池，类，父类和接口数组，字段，方法等信息，其实类里面又包括字段和方法的信息。</p>
-<p><img src="https://images.gitee.com/uploads/images/2018/1024/165252_dced1999_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
-<p><img src="https://images.gitee.com/uploads/images/2018/1024/165306_6bb9129a_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
 <h3 id="class文件常量池和运行时常量池的关系以及区别"><a href="#class文件常量池和运行时常量池的关系以及区别" class="headerlink" title="class文件常量池和运行时常量池的关系以及区别"></a>class文件常量池和运行时常量池的关系以及区别</h3><ul>
 <li>class文件常量池存储的是当class文件被java虚拟机加载进来后存放在方法区的一些字面量和符号引用，字面量包括字符串，基本类型的常量。</li>
 <li><p>运行时常量池是当class文件被加载完成后，java虚拟机会将class文件常量池里的内容转移到运行时常量池里，在class文件常量池的符号引用有一部分是会被转变为直接引用的，比如说类的静态方法或私有方法，实例构造方法，父类方法，这是因为这些方法不能被重写其他版本，所以能在加载的时候就可以将符号引用转变为直接引用，而其他的一些方法是在这个方法被第一次调用的时候才会将符号引用转变为直接引用的。</p>
@@ -1168,7 +1160,7 @@ Huamn woman=new Woman();
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

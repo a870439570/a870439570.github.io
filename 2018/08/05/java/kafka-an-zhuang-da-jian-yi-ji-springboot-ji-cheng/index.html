@@ -476,11 +476,12 @@
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>在kafka官网 <a href="http://kafka.apache.org/downloads下载到最新的kafka安装包，选择下载二进制版本的tgz文件" target="_blank" rel="noopener">http://kafka.apache.org/downloads下载到最新的kafka安装包，选择下载二进制版本的tgz文件</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
 <li>首先确保你的机器上安装了jdk，kafka需要java运行环境，以前的kafka还需要zookeeper，新版的kafka已经内置了一个zookeeper环境，所以我们可以直接使用。</li>
-<li>如果只需要进行最简单的尝试的话我们只需要解压到任意目录即可，这里我们将kafka压缩包解压到/home目录<br><img src="https://images.gitee.com/uploads/images/2018/0803/174343_e2ae8023_1478371.png" alt="输入图片说明"></li>
-</ul>
+<li><p>如果只需要进行最简单的尝试的话我们只需要解压到任意目录即可，这里我们将kafka压缩包解压到/home目录<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2z5kqoxj30qw05z0t6.jpg" alt=""></p>
 <p>kafka解压目录下下有一个config的文件夹，里面放置的是我们的配置文件</p>
 <p>consumer.properites 消费者配置</p>
 <p>producer.properties 生产者配置</p>
+</li>
+</ul>
 <p> <strong>server.properties kafka服务器的配置，此配置文件用来配置kafka服务器 目前仅介绍几个最基础的配置</strong> </p>
 <ul>
 <li>broker.id 申明当前kafka服务器在集群中的唯一ID，需配置为integer,并且集群中的每一个kafka服务器的id都应是唯一的，我们这里采用默认配置即可</li>
@@ -488,149 +489,156 @@
 <li>zookeeper.connect 申明kafka所连接的zookeeper的地址 ，需配置为zookeeper的地址，由于本次使用的是kafka高版本中自带zookeeper，使用默认配置即可 <code>zookeeper.connect=localhost:2181</code></li>
 </ul>
 <h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>启动zookeeper</p>
-<pre><code>#前台启动
-[root@CentOS124 home]# cd kafka2.11/
-[root@CentOS124 kafka2.11]# bin/zookeeper-server-start.sh config/zookeeper.properties
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#前台启动</span>
+<span class="token punctuation">[</span>root@CentOS124 home<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd kafka2.11/</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/zookeeper-server-start.sh config/zookeeper.properties</span>
 
-#后台启动
-[root@CentOS124 kafka2.11]# bin/zookeeper-server-start.sh config/zookeeper.properties 1&gt;/dev/null 2&gt;&amp;1 &amp;
-[1] 18466
+<span class="token comment" spellcheck="true">#后台启动</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/zookeeper-server-start.sh config/zookeeper.properties 1>/dev/null 2>&amp;1 &amp;</span>
+<span class="token punctuation">[</span>1<span class="token punctuation">]</span> 18466
 
-#查看是否启动成功
-[root@CentOS124 ~]#  ps -ef|grep kafka
-</code></pre><p>启动kafka</p>
-<pre><code>[root@CentOS124 kafka2.11]# bin/kafka-server-start.sh config/server.properties
+<span class="token comment" spellcheck="true">#查看是否启动成功</span>
+<span class="token punctuation">[</span>root@CentOS124 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  ps -ef|grep kafka</span>
+</code></pre>
+<p>启动kafka</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/kafka-server-start.sh config/server.properties</span>
 
-#后台启动
-[root@CentOS124 kafka2.11]# bin/kafka-server-start.sh config/server.properties 1&gt;/dev/null 2&gt;&amp;1 &amp;
+<span class="token comment" spellcheck="true">#后台启动</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/kafka-server-start.sh config/server.properties 1>/dev/null 2>&amp;1 &amp;</span>
 
-#创建 topic
-[root@CentOS124 kafka2.11]# bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+<span class="token comment" spellcheck="true">#创建 topic</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span>
 
 
-#查看Kafka 中的 topic 列表
+<span class="token comment" spellcheck="true">#查看Kafka 中的 topic 列表</span>
 bin/kafka-topics.sh --list --zookeeper localhost:2181
-</code></pre><h3 id="配置kafka集群"><a href="#配置kafka集群" class="headerlink" title="配置kafka集群"></a>配置kafka集群</h3><ul>
+</code></pre>
+<h3 id="配置kafka集群"><a href="#配置kafka集群" class="headerlink" title="配置kafka集群"></a>配置kafka集群</h3><ul>
 <li>条件有限，在同一个机器上启动三个broker来模拟kafka集群，三个broker使用另外安装的同一个zookeeper服务（实际集群中，每个broker通常在不同的机器上，也会使用不同host的zookeeper）</li>
 </ul>
-<pre><code>#复制server.properties配置文件为三份，分别起名为server.properties，server-2.properties，server-3.properties
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#复制server.properties配置文件为三份，分别起名为server.properties，server-2.properties，server-3.properties</span>
 
 三份配置中都要修改以下
-#三个配置中分别修改为0,2,3
-broker.id=0
+<span class="token comment" spellcheck="true">#三个配置中分别修改为0,2,3</span>
+broker.id<span class="token operator">=</span>0
 
-#三个配置中分别修改为9092,9093,9094
-port=9092
+<span class="token comment" spellcheck="true">#三个配置中分别修改为9092,9093,9094</span>
+port<span class="token operator">=</span>9092
 
-#kafka-logs，kafka-logs-2，kafka-logs-3
-log.dirs=/tmp/kafka-logs
+<span class="token comment" spellcheck="true">#kafka-logs，kafka-logs-2，kafka-logs-3</span>
+log.dirs<span class="token operator">=</span>/tmp/kafka-logs
 
-#都设置为3，即每个topic默认三个partition
-num.partitions=3
+<span class="token comment" spellcheck="true">#都设置为3，即每个topic默认三个partition</span>
+num.partitions<span class="token operator">=</span>3
 
-#zookeeper集群地址，外部可以配置，这里环境有限  使用默认既可
-zookeeper.connect=localhost:2181
+<span class="token comment" spellcheck="true">#zookeeper集群地址，外部可以配置，这里环境有限  使用默认既可</span>
+zookeeper.connect<span class="token operator">=</span>localhost:2181
 
-#分别进入kafka目录下 执行如下命令启动服务控制台输出日子完成了
+<span class="token comment" spellcheck="true">#分别进入kafka目录下 执行如下命令启动服务控制台输出日子完成了</span>
 bin/kafka-server-start.sh config/server.properties
 bin/kafka-server-start.sh config/server-2.properties
 bin/kafka-server-start.sh config/server-3.properties
-</code></pre><h3 id="springBoot中如何使用kafka"><a href="#springBoot中如何使用kafka" class="headerlink" title="springBoot中如何使用kafka"></a>springBoot中如何使用kafka</h3><p>首先创建一个springBoot项目 引入spring-kafka<br><img src="https://images.gitee.com/uploads/images/2018/0805/121233_6d03045f_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
+</code></pre>
+<h3 id="springBoot中如何使用kafka"><a href="#springBoot中如何使用kafka" class="headerlink" title="springBoot中如何使用kafka"></a>springBoot中如何使用kafka</h3><p>首先创建一个springBoot项目 引入spring-kafka<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g300zr7lj30wu0d8dj9.jpg" alt=""></p>
 <p> <strong>application.properties 配置</strong> </p>
-<pre><code>server.port=8080
+<pre class=" language-bash"><code class="language-bash">server.port<span class="token operator">=</span>8080
 
-#kafka地址 brokers集群地址用,隔开
-spring.kafka.bootstrap-servers=127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
+<span class="token comment" spellcheck="true">#kafka地址 brokers集群地址用,隔开</span>
+spring.kafka.bootstrap-servers<span class="token operator">=</span>127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 
-#生产者的配置，大部分我们可以使用默认的，这里列出几个比较重要的属性
-#每批次发送消息的数量
-spring.kafka.producer.batch-size=16
-#发送失败重试次数
-spring.kafka.producer.retries=0
-#即32MB的批处理缓冲区
-spring.kafka.producer.buffer-memory=33554432
-#key序列化方式
-spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
-spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+<span class="token comment" spellcheck="true">#生产者的配置，大部分我们可以使用默认的，这里列出几个比较重要的属性</span>
+<span class="token comment" spellcheck="true">#每批次发送消息的数量</span>
+spring.kafka.producer.batch-size<span class="token operator">=</span>16
+<span class="token comment" spellcheck="true">#发送失败重试次数</span>
+spring.kafka.producer.retries<span class="token operator">=</span>0
+<span class="token comment" spellcheck="true">#即32MB的批处理缓冲区</span>
+spring.kafka.producer.buffer-memory<span class="token operator">=</span>33554432
+<span class="token comment" spellcheck="true">#key序列化方式</span>
+spring.kafka.producer.key-serializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringSerializer
 
-#消费者的配置
-##Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
-spring.kafka.consumer.auto-offset-reset=latest
-#是否开启自动提交
-spring.kafka.consumer.enable-auto-commit=true
-#自动提交的时间间隔
-spring.kafka.consumer.auto-commit-interval=100
-#key的解码方式
-spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
-#value的解码方式
-spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
-#在kafka/config文件的consumer.properties中有配置
-spring.kafka.consumer.group-id=test-consumer-group
-</code></pre><p> <strong>创建Producer生产者</strong> </p>
-<pre><code>package com.example.modules;
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
-import java.util.Date;
-/**
+<span class="token comment" spellcheck="true">#消费者的配置</span>
+<span class="token comment" spellcheck="true">##Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】</span>
+spring.kafka.consumer.auto-offset-reset<span class="token operator">=</span>latest
+<span class="token comment" spellcheck="true">#是否开启自动提交</span>
+spring.kafka.consumer.enable-auto-commit<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true">#自动提交的时间间隔</span>
+spring.kafka.consumer.auto-commit-interval<span class="token operator">=</span>100
+<span class="token comment" spellcheck="true">#key的解码方式</span>
+spring.kafka.consumer.key-deserializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringDeserializer
+<span class="token comment" spellcheck="true">#value的解码方式</span>
+spring.kafka.consumer.value-deserializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringDeserializer
+<span class="token comment" spellcheck="true">#在kafka/config文件的consumer.properties中有配置</span>
+spring.kafka.consumer.group-id<span class="token operator">=</span>test-consumer-group
+</code></pre>
+<p> <strong>创建Producer生产者</strong> </p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>modules<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>fastjson<span class="token punctuation">.</span>JSONObject<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>core<span class="token punctuation">.</span>KafkaTemplate<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Date<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
  * 〈生产者〉
  * @author qinxuewu
  * @create 18/8/4下午11:56
  * @since 1.0.0
- */
-@Component
-public class Producer {
-    @Autowired
-    private KafkaTemplate kafkaTemplate;
-    //发送消息方法
-    public void send() {
-        JSONObject obj=new JSONObject();
-        obj.put(&quot;id&quot;,System.currentTimeMillis());
-        obj.put(&quot;name&quot;,&quot;生产者发送消息&quot;);
-        obj.put(&quot;date&quot;,new Date());
-        //这个 topic 在 Java 程序中是不需要提前在 Kafka 中设置的，因为它会在发送的时候自动创建你设置的 topic
-        kafkaTemplate.send(&quot;qxw&quot;,obj.toString());
-    }
-}
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Producer</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> KafkaTemplate kafkaTemplate<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//发送消息方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        JSONObject obj<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"生产者发送消息"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"date"</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//这个 topic 在 Java 程序中是不需要提前在 Kafka 中设置的，因为它会在发送的时候自动创建你设置的 topic</span>
+        kafkaTemplate<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"qxw"</span><span class="token punctuation">,</span>obj<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p> <strong>创建消费者</strong> </p>
-<pre><code>@Component
-public class Consumer {
-    private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
-    /**
+</code></pre>
+<p> <strong>创建消费者</strong> </p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Consumer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>Consumer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
      *  同时监听两个 topic 的消息了，可同时监听多个topic
      * @param record
      * @throws Exception
-     */
-    @KafkaListener(topics = {&quot;test&quot;,&quot;qxw&quot;})
-    public void listen (ConsumerRecord&lt;?, ?&gt; record) throws Exception {
-        Optional&lt;?&gt; kafkaMessage = Optional.ofNullable(record.value());
-        if (kafkaMessage.isPresent()) {
-            Object message = kafkaMessage.get();
-            logger.info(&quot;消费者开始消费message：&quot; + message);
-        }
-    }
-}
-</code></pre><p> <strong>运行后就可以看到控制台输出了</strong> </p>
-<pre><code>@RunWith(SpringRunner.class)                  
-@SpringBootTest                               
-public class KafkaDemoApplicationTests {      
-    @Autowired                                
-    private Producer producer;                
-    @Test                                     
-    public void contextLoads() {              
-        for (int i = 0; i &lt;3 ; i++) {         
-            producer.send();                  
-            try {                             
-                Thread.sleep(1000);           
-            } catch (InterruptedException e) {
-                e.printStackTrace();          
-            }                                 
-        }                                     
-    }                                         
-}                                             
-</code></pre><h3 id="kafka-配置文件参数详解"><a href="#kafka-配置文件参数详解" class="headerlink" title="kafka 配置文件参数详解"></a><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">kafka 配置文件参数详解</a></h3><p><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">https://www.cnblogs.com/alan319/p/8651434.html</a><br>kafka的配置分为 broker、producter、consumer三个不同的配置</p>
+     */</span>
+    <span class="token annotation punctuation">@KafkaListener</span><span class="token punctuation">(</span>topics <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"test"</span><span class="token punctuation">,</span><span class="token string">"qxw"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">listen</span> <span class="token punctuation">(</span>ConsumerRecord<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">></span> record<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        Optional<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> kafkaMessage <span class="token operator">=</span> Optional<span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span>record<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>kafkaMessage<span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Object message <span class="token operator">=</span> kafkaMessage<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"消费者开始消费message："</span> <span class="token operator">+</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p> <strong>运行后就可以看到控制台输出了</strong> </p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>                  
+<span class="token annotation punctuation">@SpringBootTest</span>                               
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">KafkaDemoApplicationTests</span> <span class="token punctuation">{</span>      
+    <span class="token annotation punctuation">@Autowired</span>                                
+    <span class="token keyword">private</span> Producer producer<span class="token punctuation">;</span>                
+    <span class="token annotation punctuation">@Test</span>                                     
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>              
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span><span class="token number">3</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>         
+            producer<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>                             
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          
+            <span class="token punctuation">}</span>                                 
+        <span class="token punctuation">}</span>                                     
+    <span class="token punctuation">}</span>                                         
+<span class="token punctuation">}</span>                                             
+</code></pre>
+<h3 id="kafka-配置文件参数详解"><a href="#kafka-配置文件参数详解" class="headerlink" title="kafka 配置文件参数详解"></a><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">kafka 配置文件参数详解</a></h3><p><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">https://www.cnblogs.com/alan319/p/8651434.html</a><br>kafka的配置分为 broker、producter、consumer三个不同的配置</p>
 
             </div>
             <hr>
@@ -861,7 +869,7 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

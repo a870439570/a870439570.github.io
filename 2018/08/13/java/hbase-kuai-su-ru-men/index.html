@@ -514,7 +514,7 @@ version: 提供正在使用HBase版本。
 table_help: 表引用命令提供帮助
 whoami: 提供有关用户的信息。
 </code></pre><p> <strong>HBase在表中操作的命令。</strong> </p>
-<pre><code>create: 创建一个表。
+<pre class=" language-bash"><code class="language-bash">create: 创建一个表。
 list: 列出HBase的所有表。
 disable: 禁用表。
 is_disabled: 验证表是否被禁用。
@@ -525,30 +525,34 @@ alter: 改变一个表。
 exists: 验证表是否存在。
 drop: 从HBase中删除表。
 drop_all: 丢弃在命令中给出匹配“regex”的表
-</code></pre><p> <strong>数据操纵语言</strong> </p>
-<pre><code>put: 把指定列在指定的行中单元格的值在一个特定的表。
+</code></pre>
+<p> <strong>数据操纵语言</strong> </p>
+<pre class=" language-bash"><code class="language-bash">put: 把指定列在指定的行中单元格的值在一个特定的表。
 get: 取行或单元格的内容。
 delete: 删除表中的单元格值。
 deleteall: 删除给定行的所有单元格。
 scan: 扫描并返回表数据。
 count: 计数并返回表中的行的数目。
 truncate: 禁用，删除和重新创建一个指定的表。
-</code></pre><h3 id="解决Java-API不能远程访问HBase的问题"><a href="#解决Java-API不能远程访问HBase的问题" class="headerlink" title="解决Java API不能远程访问HBase的问题"></a>解决Java API不能远程访问HBase的问题</h3><p> <strong>1、配置Linux的hostname</strong> </p>
-<pre><code>[root@CentOS124 hbase-1.2.6.1]# vie /etc/sysconfig/network
-NETWORKING=yes
-HOSTNAME=CentOS124   #名字随便
-</code></pre><p>这里配置的hostname要Linux重启才生效，为了不重启就生效，我们可以执行：hostname CentOS124命令，暂时设置hostname</p>
+</code></pre>
+<h3 id="解决Java-API不能远程访问HBase的问题"><a href="#解决Java-API不能远程访问HBase的问题" class="headerlink" title="解决Java API不能远程访问HBase的问题"></a>解决Java API不能远程访问HBase的问题</h3><p> <strong>1、配置Linux的hostname</strong> </p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@CentOS124 hbase-1.2.6.1<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vie /etc/sysconfig/network</span>
+NETWORKING<span class="token operator">=</span>yes
+HOSTNAME<span class="token operator">=</span>CentOS124   <span class="token comment" spellcheck="true">#名字随便</span>
+</code></pre>
+<p>这里配置的hostname要Linux重启才生效，为了不重启就生效，我们可以执行：hostname CentOS124命令，暂时设置hostname</p>
 <p> <strong>2、配置Linux的hosts，映射ip的hostname的关系</strong> </p>
 <pre><code>#映射ip的hostname的关系
 [root@CentOS124 hbase-1.2.6.1]# vim /etc/host
 
 #查看hbase ip绑定是否成功
 [root@CentOS124 hbase-1.2.6.1]# netstat -anp|grep 16010
-</code></pre><p><img src="https://images.gitee.com/uploads/images/2018/0809/183717_9b723e58_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
+</code></pre><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2y9ladfj30jb01sdfs.jpg" alt=""></p>
 <p> <strong>3、配置访问windows的hosts</strong> </p>
-<pre><code>#hbase
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#hbase</span>
 192.168.10.124  CentOS124
-</code></pre><h1 id="Java-操作远程hbase"><a href="#Java-操作远程hbase" class="headerlink" title="Java 操作远程hbase"></a>Java 操作远程hbase</h1><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HbaseTest</span> <span class="token punctuation">{</span>
+</code></pre>
+<h1 id="Java-操作远程hbase"><a href="#Java-操作远程hbase" class="headerlink" title="Java 操作远程hbase"></a>Java 操作远程hbase</h1><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HbaseTest</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span>  Connection connection<span class="token punctuation">;</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> Configuration configuration<span class="token punctuation">;</span> 
     <span class="token keyword">static</span> <span class="token punctuation">{</span> 
@@ -669,9 +673,9 @@ HOSTNAME=CentOS124   #名字随便
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ElasticSearch安装及java Api使用">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="ElasticSearch安装及Api使用">
                         
-                        <span class="card-title">ElasticSearch安装及java Api使用</span>
+                        <span class="card-title">ElasticSearch安装及Api使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -817,7 +821,7 @@ HOSTNAME=CentOS124   #名字随便
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

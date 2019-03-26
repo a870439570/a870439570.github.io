@@ -507,12 +507,12 @@ public Map&lt;String,Object&gt; hello(){
     }
 
 </string,object></string,object></code></pre>
-<p>点击新增流控规则。为了方便测试阀值设为 1<br><img src="https://images.gitee.com/uploads/images/2019/0128/143410_16ca33b7_1478371.png" alt="输入图片说明"><br>浏览器重复请求 <a href="http://localhost:18084/sentinel/test" target="_blank" rel="noopener">http://localhost:18084/sentinel/test</a> 如果超过阀值就会出现如下界面<br><img src="https://images.gitee.com/uploads/images/2019/0128/143600_56ead0a3_1478371.png" alt="输入图片说明"></p>
+<p>点击新增流控规则。为了方便测试阀值设为 1<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3lr3c52j31260h2myk.jpg" alt=""><br>浏览器重复请求 <a href="http://localhost:18084/sentinel/test" target="_blank" rel="noopener">http://localhost:18084/sentinel/test</a> 如果超过阀值就会出现如下界面<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3m94p13j30bn033mx4.jpg" alt=""></p>
 <p>整个URL限流就完成了。但是返回的提示不够友好。</p>
-<h3 id="配置自定义限流规则-SentinelResource埋点"><a href="#配置自定义限流规则-SentinelResource埋点" class="headerlink" title="配置自定义限流规则(@SentinelResource埋点)"></a>配置自定义限流规则(@SentinelResource埋点)</h3><p>自定义限流规则就不是添加方法的访问路径。 配置的是@SentinelResource注解中value的值。比如<code>@SentinelResource(&quot;resource&quot;)</code>就是配置路径为resource<br><img src="https://images.gitee.com/uploads/images/2019/0128/144027_2261e5f6_1478371.png" alt="输入图片说明"></p>
+<h3 id="配置自定义限流规则-SentinelResource埋点"><a href="#配置自定义限流规则-SentinelResource埋点" class="headerlink" title="配置自定义限流规则(@SentinelResource埋点)"></a>配置自定义限流规则(@SentinelResource埋点)</h3><p>自定义限流规则就不是添加方法的访问路径。 配置的是@SentinelResource注解中value的值。比如<code>@SentinelResource(&quot;resource&quot;)</code>就是配置路径为resource<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3moc9tlj311q0f275h.jpg" alt=""></p>
 <ul>
 <li>访问：<a href="http://localhost:18084/sentinel/hello" target="_blank" rel="noopener">http://localhost:18084/sentinel/hello</a></li>
-<li>通过<code>@SentinelResource</code>注解埋点配置的限流规则如果没有自定义处理限流逻辑，当请求到达限流的阀值时就返回404页面<br><img src="https://images.gitee.com/uploads/images/2019/0128/144236_3ea6d1b5_1478371.png" alt="输入图片说明"></li>
+<li>通过<code>@SentinelResource</code>注解埋点配置的限流规则如果没有自定义处理限流逻辑，当请求到达限流的阀值时就返回404页面<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3n57o7yj30ho07qaan.jpg" alt=""></li>
 </ul>
 <h2 id="自定义限流处理逻辑"><a href="#自定义限流处理逻辑" class="headerlink" title="自定义限流处理逻辑"></a>自定义限流处理逻辑</h2><p>@SentinelResource 注解包含以下属性：</p>
 <ul>
@@ -539,7 +539,7 @@ public Map&lt;String,Object&gt; hello(){
 </code></pre><p>}</p>
 <pre><code>控制台新增resource2的限流规则并设置阀值为1。访问http://localhost:18084/sentinel/test2 请求到达阀值时机会返回自定义的异常消息
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0128/144957_69a6d3d0_1478371.png)
+![](http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3nm45lqj30ho07qaan.jpg)
 
 基本的限流处理就完成了。 但是每次服务重启后 之前配置的限流规则就会被清空因为是内存态的规则对象.所以下面就要用到Sentinel一个特性ReadableDataSource 获取文件、数据库或者配置中心是限流规则
 ## 读取文件的实现限流规则
@@ -582,7 +582,7 @@ spring.cloud.sentinel.datasource.ds1.file.rule-type=flow
 <pre class=" language-Java"><code class="language-Java"> [Sentinel Starter] DataSource ds1-sentinel-file-datasource start to loadConfig
  [Sentinel Starter] DataSource ds1-sentinel-file-datasource load 2 FlowRule
 </code></pre>
-<p> <strong>刷新Sentinel 控制台 限流规则就会自动添加进去</strong><br><img src="https://images.gitee.com/uploads/images/2019/0128/154204_aafdbed2_1478371.png" alt="输入图片说明"></p>
+<p> <strong>刷新Sentinel 控制台 限流规则就会自动添加进去</strong><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3o3r1u3j318l063wey.jpg" alt=""></p>
 <h2 id="Sentinel的基本配置"><a href="#Sentinel的基本配置" class="headerlink" title="Sentinel的基本配置"></a>Sentinel的基本配置</h2><pre class=" language-bash"><code class="language-bash">spring.cloud.sentinel.enabled              <span class="token comment" spellcheck="true">#Sentinel自动化配置是否生效</span>
 spring.cloud.sentinel.eager               <span class="token comment" spellcheck="true">#取消Sentinel控制台懒加载</span>
 spring.cloud.sentinel.transport.dashboard   <span class="token comment" spellcheck="true">#Sentinel 控制台地址</span>
@@ -672,8 +672,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-概述
+                    <div class="summary">概述
 项目是为创造独特的产品、服务或成果而进行的临时性工作
 
 基本要素
@@ -687,6 +686,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 项目管理的重要性
 项目、项目集、项目组合以及运营管理之间的关系
 指南的组成部分
+
 </div>
                     <div class="publish-info">
                         <span class="publish-date">
@@ -833,7 +833,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             

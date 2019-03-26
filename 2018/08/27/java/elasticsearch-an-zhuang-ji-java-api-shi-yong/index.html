@@ -5,7 +5,7 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ElasticSearch安装及java Api使用, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
+    <meta name="keywords" content="ElasticSearch安装及Api使用, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
     <meta name="description" content="ElasticSearch 简介ElasticSearch是一个高度可扩展的开源搜索引擎并使用REST API，所以您值得拥有。 在本教程中，将介绍开始使用ElasticSearch的一些主要概念。
 下载并运行ElasticSearchEl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ElasticSearch安装及java Api使用 | codeing</title>
+    <title>ElasticSearch安装及Api使用 | codeing</title>
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -281,13 +281,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ElasticSearch安装及java Api使用
+                        ElasticSearch安装及Api使用
                     </div>
                 </div>
             </div>
@@ -486,21 +486,22 @@ http.port: 9200
 <span class="token comment" spellcheck="true">#设置集群中master节点的初始列表，可以通过这些节点来自动发现新加入集群的节点</span>
 discovery.zen.ping.unicast.hosts: <span class="token punctuation">[</span><span class="token string">"node-1"</span><span class="token punctuation">]</span>
 </code></pre>
-<p><strong>修改host 文件，执行命令 vi /etc/hosts</strong><br><img src="https://user-gold-cdn.xitu.io/2019/1/10/1683571a09244fc1?w=575&amp;h=116&amp;f=png&amp;s=8326" alt="输入图片说明" title="屏幕截图.png"></p>
+<p><strong>修改host 文件，执行命令 vi /etc/hosts</strong><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2v4apszj30fl038a9x.jpg" alt=""></p>
 <p> <strong>因为安全问题elasticsearch 不让用root用户直接运行，所以要创建新用户。</strong> </p>
-<pre><code>useradd es
-passwd es
-再输入两次密码(自定义)
+<pre class=" language-bash"><code class="language-bash"><span class="token function">useradd</span> es
+<span class="token function">passwd</span> es
+再输入两次密码<span class="token punctuation">(</span>自定义<span class="token punctuation">)</span>
 
-#给新创建用户文件夹执行权限
-chown -R es:es /usr/local/elasticsearch
+<span class="token comment" spellcheck="true">#给新创建用户文件夹执行权限</span>
+<span class="token function">chown</span> -R es:es /usr/local/elasticsearch
 
 切换es用户：su es
 
 启动集群命令：
-cd  /usr/local/elasticsearch
+<span class="token function">cd</span>  /usr/local/elasticsearch
 bin/elasticsearch
-</code></pre><p> <strong>在es用户下启动时报错</strong><br><img src="https://user-gold-cdn.xitu.io/2019/1/10/1683571a092803e1?w=1210&amp;h=240&amp;f=png&amp;s=66859" alt="输入图片说明" title="屏幕截图.png"></p>
+</code></pre>
+<p> <strong>在es用户下启动时报错</strong><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2vqkp6nj30xk05v3zh.jpg" alt=""></p>
 <pre><code>原因：Centos6不支持SecComp，而ES默认bootstrap.system_call_filter为true进行检测，所以导致检测失败，失败后直接导致ES不能启动
 
 详见 ：https://github.com/elastic/elasticsearch/issues/22899
@@ -508,13 +509,13 @@ bin/elasticsearch
 
 在elasticsearch.yml中新增配置bootstrap.system_call_filter，设为false。
 bootstrap.system_call_filter: false
-</code></pre><p><img src="https://user-gold-cdn.xitu.io/2019/1/10/1683571a09103c26?w=1084&amp;h=129&amp;f=png&amp;s=35384" alt="输入图片说明" title="屏幕截图.png"></p>
+</code></pre><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2wl1lpkj30u303pgm5.jpg" alt=""></p>
 <p> <strong>第一个问题的原因：</strong> </p>
-<pre><code>原因：无法创建本地文件问题,用户最大可创建文件数太小
+<pre class=" language-bash"><code class="language-bash">原因：无法创建本地文件问题,用户最大可创建文件数太小
 
 解决方案：切换到root用户，编辑limits.conf配置文件， 添加类似如下内容：
 
-vi /etc/security/limits.conf
+<span class="token function">vi</span> /etc/security/limits.conf
 
 添加如下内容: 注意*不要去掉了
 
@@ -525,21 +526,23 @@ vi /etc/security/limits.conf
 备注：* 代表Linux所有用户名称（比如 hadoop）
 
 需要保存、退出、重新登录才可生效。
-</code></pre><p><strong>第二个错误的原因：</strong> </p>
-<pre><code>原因：无法创建本地线程问题,用户最大可创建线程数太小
+</code></pre>
+<p><strong>第二个错误的原因：</strong> </p>
+<pre class=" language-bash"><code class="language-bash">原因：无法创建本地线程问题,用户最大可创建线程数太小
 
 解决方案：切换到root用户，进入limits.d目录下，修改90-nproc.conf 配置文件。
 
-vi /etc/security/limits.d/90-nproc.conf
+<span class="token function">vi</span> /etc/security/limits.d/90-nproc.conf
 
 找到如下内容：
 
 * soft nproc 1024
 
-#修改为
+<span class="token comment" spellcheck="true">#修改为</span>
 
 * soft nproc 4096
-</code></pre><p><strong>第三个错误的原因：</strong> </p>
+</code></pre>
+<p><strong>第三个错误的原因：</strong> </p>
 <pre><code>原因：最大虚拟内存太小
 
 每次启动机器都手动执行下。
@@ -554,12 +557,13 @@ root用户执行命令：
 
 echo &quot;vm.max_map_count=262144&quot; &gt;&gt; /etc/sysctl.conf
 </code></pre><p> <strong>切换到es用户执行:bin/elasticsearch</strong><br>访问：<a href="http://192.168.1.191:9200/" target="_blank" rel="noopener">http://192.168.1.191:9200/</a></p>
-<pre><code>#后台启动
-[es@localhost elasticsearch-6.4.0]$ ./bin/elasticsearch -d
-[es@localhost elasticsearch-6.4.0]$ jps
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#后台启动</span>
+<span class="token punctuation">[</span>es@localhost elasticsearch-6.4.0<span class="token punctuation">]</span>$ ./bin/elasticsearch -d
+<span class="token punctuation">[</span>es@localhost elasticsearch-6.4.0<span class="token punctuation">]</span>$ jps
 27587 Jps
 27573 Elasticsearch
-</code></pre><h3 id="elasticsearch-服务安全配置"><a href="#elasticsearch-服务安全配置" class="headerlink" title="elasticsearch 服务安全配置"></a>elasticsearch 服务安全配置</h3><p> <strong>一、目前主要通过插件的形式来控制：</strong> </p>
+</code></pre>
+<h3 id="elasticsearch-服务安全配置"><a href="#elasticsearch-服务安全配置" class="headerlink" title="elasticsearch 服务安全配置"></a>elasticsearch 服务安全配置</h3><p> <strong>一、目前主要通过插件的形式来控制：</strong> </p>
 <ol>
 <li>常用的插件主要包括：elasticsearch-http-basic，search-guard，shield</li>
 <li>由于shield是收费的暂时还未研究（研究后统一补充）</li>
@@ -573,21 +577,21 @@ echo &quot;vm.max_map_count=262144&quot; &gt;&gt; /etc/sysctl.conf
 <li>把下载的 elasticsearch-http-basic-1.5.1.jar拷贝到新建的http-basic文件夹下</li>
 <li>修改ES的配置文件elasticsearch.yml,在文件末尾添加以下配置：</li>
 </ol>
-<pre><code>配置名                                     默认值                            说明
+<pre class=" language-bash"><code class="language-bash">配置名                                     默认值                            说明
 
-http.basic.enabled                         true                            开关，开启会接管全部HTTP连接
+http.basic.enabled                         <span class="token boolean">true</span>                            开关，开启会接管全部HTTP连接
 
-http.basic.user                          &quot;admin&quot;                          账号
+http.basic.user                          <span class="token string">"admin"</span>                          账号
 
-http.basic.password                      &quot;admin_pw&quot;                       密码
+http.basic.password                      <span class="token string">"admin_pw"</span>                       密码
 
-http.basic.ipwhitelist            [&quot;localhost&quot;, &quot;127.0.0.1&quot;]    白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则
+http.basic.ipwhitelist            <span class="token punctuation">[</span><span class="token string">"localhost"</span>, <span class="token string">"127.0.0.1"</span><span class="token punctuation">]</span>    白名单内的ip访问不需要通过账号和密码，支持ip和主机名，不支持ip区间或正则
 
-http.basic.trusted_proxy_chains    []                                    信任代理列表
+http.basic.trusted_proxy_chains    <span class="token punctuation">[</span><span class="token punctuation">]</span>                                    信任代理列表
 
-http.basic.log    false                                              把无授权的访问事件添加到ES的日志
+http.basic.log    <span class="token boolean">false</span>                                              把无授权的访问事件添加到ES的日志
 
-http.basic.xforward    &quot;&quot;                                          记载代理路径的header字段名
+http.basic.xforward    <span class="token string">""</span>                                          记载代理路径的header字段名
 
 5.重启ES集群
 目前我们主要通过http.basic.ipwhitelist 白名单 + 用户名、密码来控制外部机器对ES集群的http请求，
@@ -595,7 +599,8 @@ http.basic.xforward    &quot;&quot;                                          记
 1.在白名单内的ip列表用户无需验证可直接通过ES节点的ip地址访问ES，白名单外的用户无权访问ES集群
 
 2.由于白名单无法控制通过域名的访问，如果要通过域名访问ES必须要通过用户名和密码来访问
-</code></pre><h3 id="java中使用elastaicsearch-RestHighLevelClient"><a href="#java中使用elastaicsearch-RestHighLevelClient" class="headerlink" title="java中使用elastaicsearch(RestHighLevelClient)"></a>java中使用elastaicsearch(RestHighLevelClient)</h3><p>官方文档可以得知，现在存在至少三种Java客户端。</p>
+</code></pre>
+<h3 id="java中使用elastaicsearch-RestHighLevelClient"><a href="#java中使用elastaicsearch-RestHighLevelClient" class="headerlink" title="java中使用elastaicsearch(RestHighLevelClient)"></a>java中使用elastaicsearch(RestHighLevelClient)</h3><p>官方文档可以得知，现在存在至少三种Java客户端。</p>
 <ol>
 <li>Transport Client</li>
 <li>Java High Level REST Client</li>
@@ -740,15 +745,17 @@ http.basic.xforward    &quot;&quot;                                          记
 <li>下载地址：<a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="noopener">https://www.elastic.co/downloads/kibana</a></li>
 <li><p>解压：tar zxvf kibana-6.4.0-linux-x64.tar.gz</p>
 <p><strong>配置</strong><br><a href="https://www.elastic.co/guide/cn/kibana/current/settings.html" target="_blank" rel="noopener">https://www.elastic.co/guide/cn/kibana/current/settings.html</a></p>
-<pre><code>server.port: 5601
-server.host: &quot;192.168.1.191&quot;
-elasticsearch.url: &quot;http://192.168.1.191:9200&quot;
-</code></pre><p><strong>启动</strong> </p>
-<pre><code>./kibana  //不能关闭终端
-nohup  ./kibana &gt; /nohub.out &amp;  //可关闭终端，在nohup.out中查看log
-在浏览器中访问：http://192.168.1.191:5601/
-</code></pre></li>
+<pre class=" language-bash"><code class="language-bash">server.port: 5601
+server.host: <span class="token string">"192.168.1.191"</span>
+elasticsearch.url: <span class="token string">"http://192.168.1.191:9200"</span>
+</code></pre>
+<p><strong>启动</strong> </p>
+</li>
 </ul>
+<pre class=" language-bash"><code class="language-bash">./kibana  //不能关闭终端
+<span class="token function">nohup</span>  ./kibana <span class="token operator">></span> /nohub.out <span class="token operator">&amp;</span>  //可关闭终端，在nohup.out中查看log
+在浏览器中访问：http://192.168.1.191:5601/
+</code></pre>
 <h3 id="FileBeats-与-LogStash-的安装"><a href="#FileBeats-与-LogStash-的安装" class="headerlink" title="FileBeats 与 LogStash 的安装"></a>FileBeats 与 LogStash 的安装</h3><ul>
 <li>LogStash 可以用来对日志进行收集并进行过滤整理后输出到 ES 中，FileBeats 是一个更加轻量级的日志收集工具。 </li>
 <li>现在最常用的方式是通过 FileBeats 收集目标日志，然后统一输出到 LogStash 做进一步的过滤，在由 LogStash 输出到 ES 中进行存储。</li>
@@ -758,35 +765,36 @@ nohup  ./kibana &gt; /nohub.out &amp;  //可关闭终端，在nohup.out中查看
 ###  进入目录
 cd logstash-6.2.2
 </code></pre><p>LogStash 的运行需要指定一个配置文件，来指定数据的流向，我们在当前目录下创建一个 first.conf 文件，其内容如下:</p>
-<pre><code>###  配置输入为 beats
-input {
-    beats {
-            port =&gt; &quot;5044&quot;
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">###  配置输入为 beats</span>
+input <span class="token punctuation">{</span>
+    beats <span class="token punctuation">{</span>
+            port <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"5044"</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-}
-###  数据过滤
-filter {
-    grok {
-            match =&gt; { &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot; }
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">###  数据过滤</span>
+filter <span class="token punctuation">{</span>
+    grok <span class="token punctuation">{</span>
+            match <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> <span class="token string">"message"</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"%{COMBINEDAPACHELOG}"</span> <span class="token punctuation">}</span>
 
-    }
-    geoip {
-            source =&gt; &quot;clientip&quot;
+    <span class="token punctuation">}</span>
+    geoip <span class="token punctuation">{</span>
+            <span class="token function">source</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"clientip"</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-}
-# 输出到本机的 ES
-output {
-    elasticsearch {
-            hosts =&gt; [ &quot;192.168.1.191:9200&quot;  ]
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true"># 输出到本机的 ES</span>
+output <span class="token punctuation">{</span>
+    elasticsearch <span class="token punctuation">{</span>
+            hosts <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span> <span class="token string">"192.168.1.191:9200"</span>  <span class="token punctuation">]</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>上面配置了 LogStash 输出日志到 ES 中 配置完成后就可以通过如下方式启动 LogStash 了</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上面配置了 LogStash 输出日志到 ES 中 配置完成后就可以通过如下方式启动 LogStash 了</p>
 <pre><code>bin/logstash -f first.conf --config.reload.automatic
 </code></pre><h3 id="安装运行-FileBeats"><a href="#安装运行-FileBeats" class="headerlink" title="安装运行 FileBeats"></a>安装运行 FileBeats</h3><p>FileBeats 也提供了下载包，地址为 <a href="https://www.elastic.co/downloads/beats/filebeat" target="_blank" rel="noopener">https://www.elastic.co/downloads/beats/filebeat</a> 。找到系统对应的包下载后解压即可。</p>
 <pre><code>tar zxvf filebeat-6.2.2-darwin-x86_64.tar.gz
@@ -831,7 +839,7 @@ sudo ./filebeat -e -c filebeat.yml -d &quot;publish&quot;
                     </span>
                     <a href="https://blog.qinxuewu.club" class="b-link-green">codeing</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/08/27/java/elasticsearch-an-zhuang-ji-java-api-shi-yong/" class="b-link-green">ElasticSearch安装及java Api使用</a>
+                    <a href="/2018/08/27/java/elasticsearch-an-zhuang-ji-java-api-shi-yong/" class="b-link-green">ElasticSearch安装及Api使用</a>
                 </p>
             </div>
         </div>
@@ -1028,7 +1036,7 @@ Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">80.8k</span>
+                <span class="white-color">84.8k</span>
             
 
             
