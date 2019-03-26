@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="分类: storm, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
     <meta name="description" content="分类: storm | codeing">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -18,35 +17,36 @@
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -103,24 +103,14 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -192,15 +182,6 @@
             </a>
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
         
         <li><div class="divider"></div></li>
         <li>
@@ -210,35 +191,12 @@
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -292,35 +250,34 @@
 </a>
         
     </nav>
+
 </header>
 
-<div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
+<div class="bg-cover pd-header about-cover">
     <div class="container">
-        <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                <div class="brand">
-                    <div class="title center-align">
-                    
-                        codeing-java
-                    
-                    </div>
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    codeing-java
+                
+            </div>
 
-                    <div class="description center-align">
-                    
-                        小步走 不停步 等于前进一大步.
-                    
-                    </div>
-                </div>
+            <div class="description center-align">
+                
+                    小步走 不停步 等于前进一大步.
+                
             </div>
         </div>
-        
     </div>
 </div>
-
 <script>
-// Dynamically switch banner pictures every day.
+// 每天切换 banner 图.  Switch banner image every day.
 $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
+    </div>
+</div>
 
 <main class="content">
 
@@ -336,17 +293,33 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
                 
                 
-                <a href="/categories/storm/" title="storm: 6">
+                <a href="/categories/HBase/" title="HBase: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active " style="background-color: #F9EBEA;">storm
+                             chip-default " style="background-color: #F9EBEA;">HBase
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/并发编程/" title="并发编程: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " style="background-color: #F5EEF8;">并发编程
                         <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Netty/" title="Netty: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " style="background-color: #D5F5E3;">Netty
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
                 <a href="/categories/springboot/" title="springboot: 8">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F5EEF8;">springboot
+                             chip-default " style="background-color: #E8F8F5;">springboot
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -354,31 +327,23 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
                 <a href="/categories/springcloud/" title="springcloud: 5">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #D5F5E3;">springcloud
+                             chip-default " style="background-color: #FEF9E7;">springcloud
                         <span class="tag-length">5</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Netty/" title="Netty: 2">
+                <a href="/categories/storm/" title="storm: 6">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #E8F8F5;">Netty
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/HBase/" title="HBase: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #FEF9E7;">HBase
-                        <span class="tag-length">1</span>
+                             chip-active " style="background-color: #F8F9F9;">storm
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
                 
                 <a href="/categories/算法/" title="算法: 9">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F8F9F9;">算法
+                             chip-default " style="background-color: #82E0AA;">算法
                         <span class="tag-length">9</span>
                     </span>
                 </a>
@@ -386,7 +351,15 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
                 <a href="/categories/随笔/" title="随笔: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #82E0AA;">随笔
+                             chip-default " style="background-color: #D7BDE2;">随笔
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/PMP备考/" title="PMP备考: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " style="background-color: #A3E4D7;">PMP备考
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -394,15 +367,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
                 <a href="/categories/Zookeeper/" title="Zookeeper: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #D7BDE2;">Zookeeper
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/PMP备考/" title="PMP备考: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #A3E4D7;">PMP备考
+                             chip-default " style="background-color: #85C1E9;">Zookeeper
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -410,7 +375,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
                 <a href="/categories/JVM/" title="JVM: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #85C1E9;">JVM
+                             chip-default " style="background-color: #F8C471;">JVM
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -426,12 +391,13 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/21/storm/storm-xi-lie-liu-storm-he-kafka-ji-cheng/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150110_00d0340a_1478371.png" class="responsive-img" alt="Storm系列(六)storm和kafka集成">
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Storm系列(六)storm和kafka集成">
                             
                             <span class="card-title">Storm系列(六)storm和kafka集成</span>
                         </div>
@@ -471,12 +437,13 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/20/storm/storm-xi-lie-wu-drpc-shi-xian-yuan-cheng-diao-yong/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150451_299eb273_1478371.png" class="responsive-img" alt="Storm系列(五)DRPC实现远程调用">
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Storm系列(五)DRPC实现远程调用">
                             
                             <span class="card-title">Storm系列(五)DRPC实现远程调用</span>
                         </div>
@@ -517,12 +484,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/19/storm/storm-xi-lie-si-bing-xing-du-he-liu-fen-zu/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150239_092fc119_1478371.png" class="responsive-img" alt="Storm系列(四)并行度和流分组">
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Storm系列(四)并行度和流分组">
                             
                             <span class="card-title">Storm系列(四)并行度和流分组</span>
                         </div>
@@ -563,12 +531,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/18/storm/storm-xi-lie-san-java-bian-xie-di-ge-storm-cheng-xu/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150204_0cb5febc_1478371.png" class="responsive-img" alt="Storm系列(三)java编写第个storm程序">
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Storm系列(三)java编写第个storm程序">
                             
                             <span class="card-title">Storm系列(三)java编写第个storm程序</span>
                         </div>
@@ -608,12 +577,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/17/storm/storm-xi-lie-er-chang-yong-shell-ming-ling-cao-zuo/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150015_da76a347_1478371.png" class="responsive-img" alt="Storm系列(二)常用shell命令操作">
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Storm系列(二)常用shell命令操作">
                             
                             <span class="card-title">Storm系列(二)常用shell命令操作</span>
                         </div>
@@ -653,12 +623,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/12/storm/storm-xi-lie-yi-huan-jing-da-jian-an-zhuang/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150551_d9d60055_1478371.png" class="responsive-img" alt="Storm系列(一)环境搭建安装">
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Storm系列(一)环境搭建安装">
                             
                             <span class="card-title">Storm系列(一)环境搭建安装</span>
                         </div>
@@ -706,48 +677,53 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">74.6k</span>
+                <span class="white-color">84.8k</span>
             
 
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -760,7 +736,7 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -768,7 +744,9 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -778,7 +756,7 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>

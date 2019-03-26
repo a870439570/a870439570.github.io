@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Storm系列(一)环境搭建安装, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
     <meta name="description" content="什么是Apache StormApache Storm是一个分布式实时大数据处理系统。Storm设计用于在容错和水平可扩展方法中处理大量数据。它是一个流数据框架，具有最高的摄取率。虽然Storm是无状态的，它通过Apache ZooKeep">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -18,35 +17,36 @@
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -103,24 +103,14 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -192,15 +182,6 @@
             </a>
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
         
         <li><div class="divider"></div></li>
         <li>
@@ -210,35 +191,12 @@
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -292,13 +250,14 @@
 </a>
         
     </nav>
+
 </header>
 
 
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0127/150551_d9d60055_1478371.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -319,38 +278,17 @@
     
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-    #articleContent h1,
-    #articleContent h2,
-    #articleContent h3,
-    #articleContent h4,
-    #articleContent h5,
-    #articleContent h6 {
-        padding-top: 76px;
-        margin-top: -76px;
-    }
-
-    #articleContent h1 {
-        line-height: 3.5rem;
-    }
-
-    #articleContent h2 {
-        line-height: 3.2rem;
-    }
-
-    #articleContent h3 {
-        line-height: 2.8rem;
-    }
-
-    #articleContent h4 {
-        line-height: 2.5rem;
-    }
-
-    #articleContent h5 {
-        line-height: 2.2rem;
-    }
-
-    #articleContent h6 {
-        line-height: 1.9rem;
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
     }
 
     #articleContent :focus {
@@ -405,15 +343,34 @@
     #toc-content .is-active-link::before {
         background-color: #42b983;
     }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
 </style>
 <div class="row">
-    <div class="col s12 m12 l9">
+    <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
-                <div class="col s6">
+                <div class="col s7">
                     
                     <div class="article-tag">
                         
@@ -424,7 +381,7 @@
                     </div>
                     
                 </div>
-                <div class="col s6 right-align">
+                <div class="col s5 right-align">
                     
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -439,40 +396,40 @@
             </div>
 
             <div class="post-info">
-                <span class="post-date">
+                <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2018-09-12
-                </span>
+                </div>
 
                 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
                         1.6k
-                    </span>
+                    </div>
                     
 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
                         5 分
-                    </span>
+                    </div>
                     
                 
 				
 				
-                    <span id="busuanzi_container_page_pv" class="post-read">
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
-                    </span>
+                    </div>
 				
             </div>
         </div>
-        <hr>
+        <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="什么是Apache-Storm"><a href="#什么是Apache-Storm" class="headerlink" title="什么是Apache Storm"></a>什么是Apache Storm</h3><p>Apache Storm是一个分布式实时大数据处理系统。Storm设计用于在容错和水平可扩展方法中处理大量数据。它是一个流数据框架，具有最高的摄取率。虽然Storm是无状态的，它通过Apache ZooKeeper管理分布式环境和集群状态。它很简单，您可以并行地对实时数据执行各种操作。</p>
-<h3 id="Apache-Storm-和-Hadoop对比"><a href="#Apache-Storm-和-Hadoop对比" class="headerlink" title="Apache Storm 和 Hadoop对比"></a>Apache Storm 和 Hadoop对比</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/3/168138034dd15d34?w=704&amp;h=306&amp;f=png&amp;s=46836" alt="输入图片说明" title="屏幕截图.png"></p>
+<h3 id="Apache-Storm-和-Hadoop对比"><a href="#Apache-Storm-和-Hadoop对比" class="headerlink" title="Apache Storm 和 Hadoop对比"></a>Apache Storm 和 Hadoop对比</h3><p><img src="https://user-gold-cdn.xitu.io/2019/1/3/168138034dd15d34?w=704&amp;h=306&amp;f=png&amp;s=46836" alt="输入图片说明"></p>
 <h3 id="Apache-Storm优势"><a href="#Apache-Storm优势" class="headerlink" title="Apache Storm优势"></a>Apache Storm优势</h3><ul>
 <li>storm是开源的，强大的，用户友好的。它可以用于小公司和大公司。</li>
 <li>Storm是容错的，灵活的，可靠的，并且支持任何编程语言。</li>
@@ -614,14 +571,15 @@ UI： 在Storm主控节点上运行命令bin/storm ui &amp;，启动UI后台程�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2018/09/17/storm/storm-xi-lie-er-chang-yong-shell-ming-ling-cao-zuo/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/150015_da76a347_1478371.png" class="responsive-img" alt="Storm系列(二)常用shell命令操作">
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Storm系列(二)常用shell命令操作">
                         
                         <span class="card-title">Storm系列(二)常用shell命令操作</span>
                     </div>
@@ -658,7 +616,7 @@ UI： 在Storm主控节点上运行命令bin/storm ui &amp;，启动UI后台程�
         </div>
         
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
@@ -666,7 +624,8 @@ UI： 在Storm主控节点上运行命令bin/storm ui &amp;，启动UI后台程�
                 <a href="/2018/08/29/spring-xi-lie/zookeeper-shi-xian-fen-bu-shi-suo-he-dui-lie/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/145708_1de7a067_1478371.png" class="responsive-img" alt="Zookeeper实现分布式锁和队列">
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Zookeeper实现分布式锁和队列">
                         
                         <span class="card-title">Zookeeper实现分布式锁和队列</span>
                     </div>
@@ -709,45 +668,8 @@ Apache Curator是Apache的开源项目，封装了z</div>
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: codeing<br />'
-            + '作者: qinxuewu<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
     </div>
-    <div class="col l3 hide-on-med-and-down">
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
             <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
@@ -755,13 +677,24 @@ Apache Curator是Apache的开源项目，封装了z</div>
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingSelector: 'h2,h3,h4'
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1,h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -773,7 +706,7 @@ Apache Curator是Apache的开源项目，封装了z</div>
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2,h3,h4').each(function () {
+        $('#articleContent').children('h1,h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -789,6 +722,43 @@ Apache Curator是Apache的开源项目，封装了z</div>
                 $tocWidget.removeClass('toc-fixed');
             }
         });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
     
@@ -799,48 +769,53 @@ Apache Curator是Apache的开源项目，封装了z</div>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">74.6k</span>
+                <span class="white-color">84.8k</span>
             
 
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -853,7 +828,7 @@ Apache Curator是Apache的开源项目，封装了z</div>
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -861,7 +836,9 @@ Apache Curator是Apache的开源项目，封装了z</div>
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -871,7 +848,7 @@ Apache Curator是Apache的开源项目，封装了z</div>
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>

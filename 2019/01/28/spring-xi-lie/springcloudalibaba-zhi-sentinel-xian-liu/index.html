@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
@@ -10,7 +9,7 @@
 Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。
 默认支持 Servlet、Feign、RestTemplate、Dubbo 和 RocketMQ 限流降级功能的接">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -20,35 +19,36 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -105,24 +105,14 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -194,15 +184,6 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
             </a>
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
         
         <li><div class="divider"></div></li>
         <li>
@@ -212,35 +193,12 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -294,13 +252,14 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
 </a>
         
     </nav>
+
 </header>
 
 
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0128/145749_7c622d30_1478371.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -321,38 +280,17 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
     
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-    #articleContent h1,
-    #articleContent h2,
-    #articleContent h3,
-    #articleContent h4,
-    #articleContent h5,
-    #articleContent h6 {
-        padding-top: 76px;
-        margin-top: -76px;
-    }
-
-    #articleContent h1 {
-        line-height: 3.5rem;
-    }
-
-    #articleContent h2 {
-        line-height: 3.2rem;
-    }
-
-    #articleContent h3 {
-        line-height: 2.8rem;
-    }
-
-    #articleContent h4 {
-        line-height: 2.5rem;
-    }
-
-    #articleContent h5 {
-        line-height: 2.2rem;
-    }
-
-    #articleContent h6 {
-        line-height: 1.9rem;
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
     }
 
     #articleContent :focus {
@@ -407,15 +345,34 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
     #toc-content .is-active-link::before {
         background-color: #42b983;
     }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
 </style>
 <div class="row">
-    <div class="col s12 m12 l9">
+    <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
-                <div class="col s6">
+                <div class="col s7">
                     
                     <div class="article-tag">
                         
@@ -430,7 +387,7 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
                     </div>
                     
                 </div>
-                <div class="col s6 right-align">
+                <div class="col s5 right-align">
                     
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -445,36 +402,36 @@ Sentinel是把流量作为切入点，从流量控制、熔断降级、系统负
             </div>
 
             <div class="post-info">
-                <span class="post-date">
+                <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2019-01-28
-                </span>
+                </div>
 
                 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
                         1.4k
-                    </span>
+                    </div>
                     
 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
                         5 分
-                    </span>
+                    </div>
                     
                 
 				
 				
-                    <span id="busuanzi_container_page_pv" class="post-read">
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
-                    </span>
+                    </div>
 				
             </div>
         </div>
-        <hr>
+        <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="限流组件Sentinel"><a href="#限流组件Sentinel" class="headerlink" title="限流组件Sentinel"></a>限流组件Sentinel</h2><ul>
@@ -525,12 +482,12 @@ public Map&lt;String,Object&gt; hello(){
     }
 
 </string,object></string,object></code></pre>
-<p>点击新增流控规则。为了方便测试阀值设为 1<br><img src="https://images.gitee.com/uploads/images/2019/0128/143410_16ca33b7_1478371.png" alt="输入图片说明"><br>浏览器重复请求 <a href="http://localhost:18084/sentinel/test" target="_blank" rel="noopener">http://localhost:18084/sentinel/test</a> 如果超过阀值就会出现如下界面<br><img src="https://images.gitee.com/uploads/images/2019/0128/143600_56ead0a3_1478371.png" alt="输入图片说明"></p>
+<p>点击新增流控规则。为了方便测试阀值设为 1<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3lr3c52j31260h2myk.jpg" alt=""><br>浏览器重复请求 <a href="http://localhost:18084/sentinel/test" target="_blank" rel="noopener">http://localhost:18084/sentinel/test</a> 如果超过阀值就会出现如下界面<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3m94p13j30bn033mx4.jpg" alt=""></p>
 <p>整个URL限流就完成了。但是返回的提示不够友好。</p>
-<h3 id="配置自定义限流规则-SentinelResource埋点"><a href="#配置自定义限流规则-SentinelResource埋点" class="headerlink" title="配置自定义限流规则(@SentinelResource埋点)"></a>配置自定义限流规则(@SentinelResource埋点)</h3><p>自定义限流规则就不是添加方法的访问路径。 配置的是@SentinelResource注解中value的值。比如<code>@SentinelResource(&quot;resource&quot;)</code>就是配置路径为resource<br><img src="https://images.gitee.com/uploads/images/2019/0128/144027_2261e5f6_1478371.png" alt="输入图片说明"></p>
+<h3 id="配置自定义限流规则-SentinelResource埋点"><a href="#配置自定义限流规则-SentinelResource埋点" class="headerlink" title="配置自定义限流规则(@SentinelResource埋点)"></a>配置自定义限流规则(@SentinelResource埋点)</h3><p>自定义限流规则就不是添加方法的访问路径。 配置的是@SentinelResource注解中value的值。比如<code>@SentinelResource(&quot;resource&quot;)</code>就是配置路径为resource<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3moc9tlj311q0f275h.jpg" alt=""></p>
 <ul>
 <li>访问：<a href="http://localhost:18084/sentinel/hello" target="_blank" rel="noopener">http://localhost:18084/sentinel/hello</a></li>
-<li>通过<code>@SentinelResource</code>注解埋点配置的限流规则如果没有自定义处理限流逻辑，当请求到达限流的阀值时就返回404页面<br><img src="https://images.gitee.com/uploads/images/2019/0128/144236_3ea6d1b5_1478371.png" alt="输入图片说明"></li>
+<li>通过<code>@SentinelResource</code>注解埋点配置的限流规则如果没有自定义处理限流逻辑，当请求到达限流的阀值时就返回404页面<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3n57o7yj30ho07qaan.jpg" alt=""></li>
 </ul>
 <h2 id="自定义限流处理逻辑"><a href="#自定义限流处理逻辑" class="headerlink" title="自定义限流处理逻辑"></a>自定义限流处理逻辑</h2><p>@SentinelResource 注解包含以下属性：</p>
 <ul>
@@ -557,7 +514,7 @@ public Map&lt;String,Object&gt; hello(){
 </code></pre><p>}</p>
 <pre><code>控制台新增resource2的限流规则并设置阀值为1。访问http://localhost:18084/sentinel/test2 请求到达阀值时机会返回自定义的异常消息
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0128/144957_69a6d3d0_1478371.png)
+![](http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3nm45lqj30ho07qaan.jpg)
 
 基本的限流处理就完成了。 但是每次服务重启后 之前配置的限流规则就会被清空因为是内存态的规则对象.所以下面就要用到Sentinel一个特性ReadableDataSource 获取文件、数据库或者配置中心是限流规则
 ## 读取文件的实现限流规则
@@ -600,7 +557,7 @@ spring.cloud.sentinel.datasource.ds1.file.rule-type=flow
 <pre class=" language-Java"><code class="language-Java"> [Sentinel Starter] DataSource ds1-sentinel-file-datasource start to loadConfig
  [Sentinel Starter] DataSource ds1-sentinel-file-datasource load 2 FlowRule
 </code></pre>
-<p> <strong>刷新Sentinel 控制台 限流规则就会自动添加进去</strong><br><img src="https://images.gitee.com/uploads/images/2019/0128/154204_aafdbed2_1478371.png" alt="输入图片说明"></p>
+<p> <strong>刷新Sentinel 控制台 限流规则就会自动添加进去</strong><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3o3r1u3j318l063wey.jpg" alt=""></p>
 <h2 id="Sentinel的基本配置"><a href="#Sentinel的基本配置" class="headerlink" title="Sentinel的基本配置"></a>Sentinel的基本配置</h2><pre class=" language-bash"><code class="language-bash">spring.cloud.sentinel.enabled              <span class="token comment" spellcheck="true">#Sentinel自动化配置是否生效</span>
 spring.cloud.sentinel.eager               <span class="token comment" spellcheck="true">#取消Sentinel控制台懒加载</span>
 spring.cloud.sentinel.transport.dashboard   <span class="token comment" spellcheck="true">#Sentinel 控制台地址</span>
@@ -676,21 +633,21 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2019/01/29/sui-bi/pmp-bei-kao-yin-lun-xiang-mu-de-gai-shu-he-mu-de/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0129/162255_a5797798_1478371.png" class="responsive-img" alt="【PMP备考】引论项目的概述和目的">
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="【PMP备考】引论项目的概述和目的">
                         
                         <span class="card-title">【PMP备考】引论项目的概述和目的</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-概述
+                    <div class="summary">概述
 项目是为创造独特的产品、服务或成果而进行的临时性工作
 
 基本要素
@@ -704,6 +661,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 项目管理的重要性
 项目、项目集、项目组合以及运营管理之间的关系
 指南的组成部分
+
 </div>
                     <div class="publish-info">
                         <span class="publish-date">
@@ -734,7 +692,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
         </div>
         
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
@@ -742,7 +700,8 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
                 <a href="/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/161348_7df24fd9_1478371.png" class="responsive-img" alt="spring cloud alibaba系列(一) 服务注册">
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="spring cloud alibaba系列(一) 服务注册">
                         
                         <span class="card-title">spring cloud alibaba系列(一) 服务注册</span>
                     </div>
@@ -790,45 +749,8 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: codeing<br />'
-            + '作者: qinxuewu<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
     </div>
-    <div class="col l3 hide-on-med-and-down">
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
             <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
@@ -836,13 +758,24 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingSelector: 'h2,h3,h4'
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1,h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -854,7 +787,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2,h3,h4').each(function () {
+        $('#articleContent').children('h1,h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -870,6 +803,43 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
                 $tocWidget.removeClass('toc-fixed');
             }
         });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
     
@@ -880,48 +850,53 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">74.6k</span>
+                <span class="white-color">84.8k</span>
             
 
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -934,7 +909,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -942,7 +917,9 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -952,7 +929,7 @@ spring.cloud.sentinel.log.dir            <span class="token comment" spellcheck=
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>

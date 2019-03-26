@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
@@ -10,7 +9,7 @@
 这就是是TCP粘包
 TCP是一个”流”协议，就像河流中的溪流一样，没有严格的分界线。当我们客户端向服务端发送数据时（比如以下发送了三条数据A,">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -20,35 +19,36 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -105,24 +105,14 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -194,15 +184,6 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
             </a>
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
         
         <li><div class="divider"></div></li>
         <li>
@@ -212,35 +193,12 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -294,13 +252,14 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
 </a>
         
     </nav>
+
 </header>
 
 
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0127/144515_937c99d5_1478371.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -321,38 +280,17 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
     
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-    #articleContent h1,
-    #articleContent h2,
-    #articleContent h3,
-    #articleContent h4,
-    #articleContent h5,
-    #articleContent h6 {
-        padding-top: 76px;
-        margin-top: -76px;
-    }
-
-    #articleContent h1 {
-        line-height: 3.5rem;
-    }
-
-    #articleContent h2 {
-        line-height: 3.2rem;
-    }
-
-    #articleContent h3 {
-        line-height: 2.8rem;
-    }
-
-    #articleContent h4 {
-        line-height: 2.5rem;
-    }
-
-    #articleContent h5 {
-        line-height: 2.2rem;
-    }
-
-    #articleContent h6 {
-        line-height: 1.9rem;
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
     }
 
     #articleContent :focus {
@@ -407,15 +345,34 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
     #toc-content .is-active-link::before {
         background-color: #42b983;
     }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
 </style>
 <div class="row">
-    <div class="col s12 m12 l9">
+    <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
-                <div class="col s6">
+                <div class="col s7">
                     
                     <div class="article-tag">
                         
@@ -426,7 +383,7 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
                     </div>
                     
                 </div>
-                <div class="col s6 right-align">
+                <div class="col s5 right-align">
                     
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -441,39 +398,39 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
             </div>
 
             <div class="post-info">
-                <span class="post-date">
+                <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2018-10-12
-                </span>
+                </div>
 
                 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        957
-                    </span>
+                        937
+                    </div>
                     
 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
                         4 分
-                    </span>
+                    </div>
                     
                 
 				
 				
-                    <span id="busuanzi_container_page_pv" class="post-read">
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
-                    </span>
+                    </div>
 				
             </div>
         </div>
-        <hr>
+        <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="TCP粘包与拆包是什么？"><a href="#TCP粘包与拆包是什么？" class="headerlink" title="TCP粘包与拆包是什么？"></a>TCP粘包与拆包是什么？</h2><p>上一章的demo中客户端发送了三条数据<br><img src="https://img-blog.csdn.net/20181011135210357?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br>服务端收到确是合并在一起的一条数据<br><img src="https://img-blog.csdn.net/20181011135352522?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+                <h2 id="TCP粘包与拆包是什么？"><a href="#TCP粘包与拆包是什么？" class="headerlink" title="TCP粘包与拆包是什么？"></a>TCP粘包与拆包是什么？</h2><p>上一章的demo中客户端发送了三条数据<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2rgbc3ij30n20aw0tj.jpg" alt=""><br>服务端收到确是合并在一起的一条数据<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2ryakjdj30ps02e745.jpg" alt=""></p>
 <p>这就是是TCP粘包</p>
 <p>TCP是一个”流”协议，就像河流中的溪流一样，没有严格的分界线。<br>当我们客户端向服务端发送数据时（比如以下发送了三条数据A,B,C），原本的想法就是三条数据单独发送，服务端接收时也是接收到三条单独的数据，但是ABC会变成一条数据发送到服务端，这就是粘包<br>所谓拆包: 如果发送数据的时候，你把A、B,B拆成了几份发，就是拆包了。当然数据不是你主动拆的，是TCP流自动拆的</p>
 <h2 id="TCP粘包与拆包产生原因"><a href="#TCP粘包与拆包产生原因" class="headerlink" title="TCP粘包与拆包产生原因"></a>TCP粘包与拆包产生原因</h2><ol>
@@ -487,104 +444,106 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
 <li>发送端将每个数据包封装为固定长度（FixedLengthFrameDecoder）</li>
 <li>使用带消息头的协议，消息头存储消息开始标识及消息长度信息，服务端获取消息头的时候解析出消息长度，然后向后读取该长度的内容。（自定义协议）</li>
 </ul>
-<h2 id="自定义分隔符方案"><a href="#自定义分隔符方案" class="headerlink" title="自定义分隔符方案"></a>自定义分隔符方案</h2><pre><code>public class Client {
-    //消息响应处理
-    public static  class ClientHander extends ChannelHandlerAdapter{
+<h2 id="自定义分隔符方案"><a href="#自定义分隔符方案" class="headerlink" title="自定义分隔符方案"></a>自定义分隔符方案</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//消息响应处理</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span>  <span class="token keyword">class</span> <span class="token class-name">ClientHander</span> <span class="token keyword">extends</span> <span class="token class-name">ChannelHandlerAdapter</span><span class="token punctuation">{</span>
 
-        @Override
-        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            try {
-                String response = (String)msg;
-                System.out.println(&quot;客户端收到消息: &quot; + response);
-            } finally {
-                // 抛弃收到的数据
-                ReferenceCountUtil.release(msg);
-            }
-        }
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">channelRead</span><span class="token punctuation">(</span>ChannelHandlerContext ctx<span class="token punctuation">,</span> Object msg<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                String response <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>msg<span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"客户端收到消息: "</span> <span class="token operator">+</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 抛弃收到的数据</span>
+                ReferenceCountUtil<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-        @Override
-        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-            ctx.close();
-        }
-    }
-
-
-    public static void main(String[] args) throws  Exception{
-        EventLoopGroup group=new NioEventLoopGroup();
-        Bootstrap b=new Bootstrap();
-        b.group(group).channel(NioSocketChannel.class).handler(new ChannelInitializer&lt;SocketChannel&gt;() {
-            @Override
-            protected void initChannel(SocketChannel socketChannel) {
-                //消息响应处理
-                ByteBuf buf = Unpooled.copiedBuffer(&quot;$_&quot;.getBytes());
-                socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, buf));
-                socketChannel.pipeline().addLast(new StringDecoder());
-
-                socketChannel.pipeline().addLast(new ClientHander());
-            }
-        });
-
-        ChannelFuture cf = b.connect(&quot;127.0.0.1&quot;, 8888).sync();
-        //尾部加入分隔符
-        cf.channel().writeAndFlush(Unpooled.wrappedBuffer(&quot;bbbb$_&quot;.getBytes()));
-        cf.channel().writeAndFlush(Unpooled.wrappedBuffer(&quot;cccc$_&quot;.getBytes()));
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">exceptionCaught</span><span class="token punctuation">(</span>ChannelHandlerContext ctx<span class="token punctuation">,</span> Throwable cause<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+            ctx<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
 
-        //等待客户端端口关闭
-        cf.channel().closeFuture().sync();
-        group.shutdownGracefully();
-    }
-}
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span>  Exception<span class="token punctuation">{</span>
+        EventLoopGroup group<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">NioEventLoopGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Bootstrap b<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Bootstrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span>group<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span>NioSocketChannel<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">handler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ChannelInitializer</span><span class="token operator">&lt;</span>SocketChannel<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initChannel</span><span class="token punctuation">(</span>SocketChannel socketChannel<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//消息响应处理</span>
+                ByteBuf buf <span class="token operator">=</span> Unpooled<span class="token punctuation">.</span><span class="token function">copiedBuffer</span><span class="token punctuation">(</span><span class="token string">"$_"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                socketChannel<span class="token punctuation">.</span><span class="token function">pipeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DelimiterBasedFrameDecoder</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">,</span> buf<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                socketChannel<span class="token punctuation">.</span><span class="token function">pipeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StringDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-</code></pre><p>服务端</p>
-<pre><code>public class Server {
-    public static  class ServerHander extends ChannelHandlerAdapter{
-        @Override
-        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            String request = (String)msg;
-            System.out.println(&quot;服务端收到的消息 :&quot; + msg);
-            String response = &quot;服务器响应：&quot; + msg + &quot;$_&quot;;
-            ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
-        }
+                socketChannel<span class="token punctuation">.</span><span class="token function">pipeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ClientHander</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        @Override
-        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-            ctx.close();
-        }
-    }
-    public static void main(String[] args) throws Exception {
-        //1 创建2个线程，一个是负责接收客户端的连接。一个是负责进行数据传输的
-        EventLoopGroup pGroup = new NioEventLoopGroup();
-        EventLoopGroup cGroup = new NioEventLoopGroup();
-        //2 创建辅助工具类，用于服务器通道的一系列配置
-        ServerBootstrap b = new ServerBootstrap();
-        b.group(pGroup, cGroup)        //绑定俩个线程组
-                .channel(NioServerSocketChannel.class)        //指定NIO的模式
-                .option(ChannelOption.SO_BACKLOG, 1024)        //设置tcp缓冲区
-                .option(ChannelOption.SO_SNDBUF, 32*1024)    //设置发送缓冲大小
-                .option(ChannelOption.SO_RCVBUF, 32*1024)    //这是接收缓冲大小
-                .option(ChannelOption.SO_KEEPALIVE, true)    //保持连接
-                .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
-                    @Override
-                    protected void initChannel(SocketChannel sc) throws Exception {
-                        //设置特殊分隔符
-                        ByteBuf buf = Unpooled.copiedBuffer(&quot;$_&quot;.getBytes());
-                        sc.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, buf));
-                        //设置字符串形式的解码
-                        sc.pipeline().addLast(new StringDecoder());
-                        sc.pipeline().addLast(new ServerHander());
-                    }
-                });
+        ChannelFuture cf <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span> <span class="token number">8888</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//尾部加入分隔符</span>
+        cf<span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">writeAndFlush</span><span class="token punctuation">(</span>Unpooled<span class="token punctuation">.</span><span class="token function">wrappedBuffer</span><span class="token punctuation">(</span><span class="token string">"bbbb$_"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cf<span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">writeAndFlush</span><span class="token punctuation">(</span>Unpooled<span class="token punctuation">.</span><span class="token function">wrappedBuffer</span><span class="token punctuation">(</span><span class="token string">"cccc$_"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //4 进行绑定
-        ChannelFuture cf1 = b.bind(8888).sync();
-        //5 等待关闭
-        cf1.channel().closeFuture().sync();
-        pGroup.shutdownGracefully();
-        cGroup.shutdownGracefully();
-    }
-}
+
+        <span class="token comment" spellcheck="true">//等待客户端端口关闭</span>
+        cf<span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">closeFuture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        group<span class="token punctuation">.</span><span class="token function">shutdownGracefully</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
 </code></pre>
+<p>服务端</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span>  <span class="token keyword">class</span> <span class="token class-name">ServerHander</span> <span class="token keyword">extends</span> <span class="token class-name">ChannelHandlerAdapter</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">channelRead</span><span class="token punctuation">(</span>ChannelHandlerContext ctx<span class="token punctuation">,</span> Object msg<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+            String request <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>msg<span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"服务端收到的消息 :"</span> <span class="token operator">+</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String response <span class="token operator">=</span> <span class="token string">"服务器响应："</span> <span class="token operator">+</span> msg <span class="token operator">+</span> <span class="token string">"$_"</span><span class="token punctuation">;</span>
+            ctx<span class="token punctuation">.</span><span class="token function">writeAndFlush</span><span class="token punctuation">(</span>Unpooled<span class="token punctuation">.</span><span class="token function">copiedBuffer</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">exceptionCaught</span><span class="token punctuation">(</span>ChannelHandlerContext ctx<span class="token punctuation">,</span> Throwable cause<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+            ctx<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1 创建2个线程，一个是负责接收客户端的连接。一个是负责进行数据传输的</span>
+        EventLoopGroup pGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NioEventLoopGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        EventLoopGroup cGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NioEventLoopGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2 创建辅助工具类，用于服务器通道的一系列配置</span>
+        ServerBootstrap b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServerBootstrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        b<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span>pGroup<span class="token punctuation">,</span> cGroup<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//绑定俩个线程组</span>
+                <span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span>NioServerSocketChannel<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//指定NIO的模式</span>
+                <span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span>ChannelOption<span class="token punctuation">.</span>SO_BACKLOG<span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">//设置tcp缓冲区</span>
+                <span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span>ChannelOption<span class="token punctuation">.</span>SO_SNDBUF<span class="token punctuation">,</span> <span class="token number">32</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//设置发送缓冲大小</span>
+                <span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span>ChannelOption<span class="token punctuation">.</span>SO_RCVBUF<span class="token punctuation">,</span> <span class="token number">32</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//这是接收缓冲大小</span>
+                <span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span>ChannelOption<span class="token punctuation">.</span>SO_KEEPALIVE<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//保持连接</span>
+                <span class="token punctuation">.</span><span class="token function">childHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ChannelInitializer</span><span class="token operator">&lt;</span>SocketChannel<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token annotation punctuation">@Override</span>
+                    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initChannel</span><span class="token punctuation">(</span>SocketChannel sc<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">//设置特殊分隔符</span>
+                        ByteBuf buf <span class="token operator">=</span> Unpooled<span class="token punctuation">.</span><span class="token function">copiedBuffer</span><span class="token punctuation">(</span><span class="token string">"$_"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        sc<span class="token punctuation">.</span><span class="token function">pipeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DelimiterBasedFrameDecoder</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">,</span> buf<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token comment" spellcheck="true">//设置字符串形式的解码</span>
+                        sc<span class="token punctuation">.</span><span class="token function">pipeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StringDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        sc<span class="token punctuation">.</span><span class="token function">pipeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ServerHander</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//4 进行绑定</span>
+        ChannelFuture cf1 <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token number">8888</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//5 等待关闭</span>
+        cf1<span class="token punctuation">.</span><span class="token function">channel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">closeFuture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pGroup<span class="token punctuation">.</span><span class="token function">shutdownGracefully</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cGroup<span class="token punctuation">.</span><span class="token function">shutdownGracefully</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
             </div>
             <hr>
 
@@ -650,14 +609,15 @@ TCP是一个”流”协议，就像河流中的溪流一样，没有严格的�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2018/10/26/spring-xi-lie/springbootadmin/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/145440_289b0e9b_1478371.png" class="responsive-img" alt="Spring Boot Admin2.1应用监控">
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Spring Boot Admin2.1应用监控">
                         
                         <span class="card-title">Spring Boot Admin2.1应用监控</span>
                     </div>
@@ -694,7 +654,7 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
         </div>
         
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
@@ -702,7 +662,8 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
                 <a href="/2018/10/11/netty/netty-ru-men-yi-kuai-su-ru-men/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/145107_dbdaa076_1478371.png" class="responsive-img" alt="Netty入门(一)快速入门">
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Netty入门(一)快速入门">
                         
                         <span class="card-title">Netty入门(一)快速入门</span>
                     </div>
@@ -742,45 +703,8 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: codeing<br />'
-            + '作者: qinxuewu<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
     </div>
-    <div class="col l3 hide-on-med-and-down">
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
             <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
@@ -788,13 +712,24 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingSelector: 'h2,h3,h4'
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1,h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -806,7 +741,7 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2,h3,h4').each(function () {
+        $('#articleContent').children('h1,h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -822,6 +757,43 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
                 $tocWidget.removeClass('toc-fixed');
             }
         });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
     
@@ -832,48 +804,53 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">74.6k</span>
+                <span class="white-color">84.8k</span>
             
 
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -886,7 +863,7 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -894,7 +871,9 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -904,7 +883,7 @@ Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软�
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>

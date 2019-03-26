@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
     <meta name="description" content="codeing">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -18,35 +17,36 @@
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -103,24 +103,14 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -192,15 +182,6 @@
             </a>
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
         
         <li><div class="divider"></div></li>
         <li>
@@ -210,35 +191,12 @@
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -292,50 +250,40 @@
 </a>
         
     </nav>
+
 </header>
 
-<style type="text/css">
-    /* don't remove. */
-    .index-cover {
-        height: 100vh;
-    }
-</style>
 
-<div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
+    <div class="bg-cover pd-header about-cover">
     <div class="container">
-        <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                <div class="brand">
-                    <div class="title center-align">
-                    
-                        codeing-java
-                    
-                    </div>
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    codeing-java
+                
+            </div>
 
-                    <div class="description center-align">
-                    
-                        小步走 不停步 等于前进一大步.
-                    
-                    </div>
-                </div>
+            <div class="description center-align">
+                
+                    小步走 不停步 等于前进一大步.
+                
             </div>
         </div>
-        
+    </div>
+</div>
+<script>
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
     </div>
 </div>
 
-<script>
-// Dynamically switch banner pictures every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
 
 <main class="content">
 
     
-
-    <div id="recommend-sections">
-    
-    </div>
 
     
 
@@ -343,12 +291,349 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
     <article id="articles" class="container articles">
         <div class="row article-row">
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/10/26/spring-xi-lie/springcloud-ji-cheng-consul-zhu-ce-zhong-xin/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="SpringCloud集成Consul注册中心">
+                            
+                            <span class="card-title">SpringCloud集成Consul注册中心</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                 Spring Cloud 支持很多服务发现的软件，Eureka 只是其中之一，下面是 Spring Cloud 支持的服务发现软件以及特性
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/springcloud/" class="post-category" target="_blank">
+                                    springcloud
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/springcloud/" target="_blank">
+                            <span class="chip bg-color">springcloud</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/10/26/spring-xi-lie/eureka-zhu-ce-zhong-xin-zeng-jia-fang-wen-quan-xian/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="eureka注册中心增加访问权限">
+                            
+                            <span class="card-title">eureka注册中心增加访问权限</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                eureka注册中心增加访问权限（Springboot2.0版本解决方案）
+
+SpringCloud组件它主要提供的模块包括：服务发现（Eu
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/springcloud/" class="post-category" target="_blank">
+                                    springcloud
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/eureka/" target="_blank">
+                            <span class="chip bg-color">eureka</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/10/26/spring-xi-lie/springbootadmin/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Spring Boot Admin2.1应用监控">
+                            
+                            <span class="card-title">Spring Boot Admin2.1应用监控</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                
+Spring Boot Admin 是一个管理和监控Spring Boot 应用程序的开源软件。每个应用都认为是一个客户端，通过HTTP或
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/springboot/" class="post-category" target="_blank">
+                                    springboot
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/springbootAdmin/" target="_blank">
+                            <span class="chip bg-color">springbootAdmin</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/10/12/netty/netty-ru-men-er-tcp-nian-bao-yu-chai-bao-wen-ti-chu-li/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Netty入门(二)TCP粘包与拆包问题处理">
+                            
+                            <span class="card-title">Netty入门(二)TCP粘包与拆包问题处理</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                TCP粘包与拆包是什么？上一章的demo中客户端发送了三条数据服务端收到确是合并在一起的一条数据
+这就是是TCP粘包
+TCP是一个”流”协议
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Netty/" class="post-category" target="_blank">
+                                    Netty
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Netty/" target="_blank">
+                            <span class="chip bg-color">Netty</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/10/11/netty/netty-ru-men-yi-kuai-su-ru-men/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Netty入门(一)快速入门">
+                            
+                            <span class="card-title">Netty入门(一)快速入门</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                Netty介绍  Netty是一个NIO client-server(客户端服务器)框架，使用Netty可以快速开发网络应用，例如服务器和客
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Netty/" class="post-category" target="_blank">
+                                    Netty
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Netty/" target="_blank">
+                            <span class="chip bg-color">Netty</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/22/sui-bi/hello-world/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="GitHub+hexo搭建个人静态博客">
+                            
+                            <span class="card-title">GitHub+hexo搭建个人静态博客</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                
+写博客的好处是我们用博客表达自己、升华自己。
+平时学习新知识总是经常性会遗忘部分内容，使用过有道云，印象笔记，公众号，缺金社区，csdn,
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-22
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/随笔/" class="post-category" target="_blank">
+                                    随笔
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/hexo/" target="_blank">
+                            <span class="chip bg-color">hexo</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/21/storm/storm-xi-lie-liu-storm-he-kafka-ji-cheng/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Storm系列(六)storm和kafka集成">
+                            
+                            <span class="card-title">Storm系列(六)storm和kafka集成</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                使用kafka-client jar进行Storm Apache Kafka集成这包括新的Apache Kafka消费者API。兼容性 Ap
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/storm/" class="post-category" target="_blank">
+                                    storm
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/storm/" target="_blank">
+                            <span class="chip bg-color">storm</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/20/storm/storm-xi-lie-wu-drpc-shi-xian-yuan-cheng-diao-yong/">
                         <div class="card-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150451_299eb273_1478371.png" class="responsive-img" alt="Storm系列(五)DRPC实现远程调用">
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Storm系列(五)DRPC实现远程调用">
                             
                             <span class="card-title">Storm系列(五)DRPC实现远程调用</span>
                         </div>
@@ -390,12 +675,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/19/storm/storm-xi-lie-si-bing-xing-du-he-liu-fen-zu/">
                         <div class="card-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150239_092fc119_1478371.png" class="responsive-img" alt="Storm系列(四)并行度和流分组">
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Storm系列(四)并行度和流分组">
                             
                             <span class="card-title">Storm系列(四)并行度和流分组</span>
                         </div>
@@ -437,12 +723,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/18/storm/storm-xi-lie-san-java-bian-xie-di-ge-storm-cheng-xu/">
                         <div class="card-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150204_0cb5febc_1478371.png" class="responsive-img" alt="Storm系列(三)java编写第个storm程序">
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Storm系列(三)java编写第个storm程序">
                             
                             <span class="card-title">Storm系列(三)java编写第个storm程序</span>
                         </div>
@@ -483,12 +770,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/17/storm/storm-xi-lie-er-chang-yong-shell-ming-ling-cao-zuo/">
                         <div class="card-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150015_da76a347_1478371.png" class="responsive-img" alt="Storm系列(二)常用shell命令操作">
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Storm系列(二)常用shell命令操作">
                             
                             <span class="card-title">Storm系列(二)常用shell命令操作</span>
                         </div>
@@ -529,12 +817,13 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2018/09/12/storm/storm-xi-lie-yi-huan-jing-da-jian-an-zhuang/">
                         <div class="card-image">
                             
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/150551_d9d60055_1478371.png" class="responsive-img" alt="Storm系列(一)环境搭建安装">
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Storm系列(一)环境搭建安装">
                             
                             <span class="card-title">Storm系列(一)环境搭建安装</span>
                         </div>
@@ -575,344 +864,6 @@ Trident拥有一流的抽象，可以读取和写入有状态的来源。状态�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/29/spring-xi-lie/zookeeper-shi-xian-fen-bu-shi-suo-he-dui-lie/">
-                        <div class="card-image">
-                            
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/145708_1de7a067_1478371.png" class="responsive-img" alt="Zookeeper实现分布式锁和队列">
-                            
-                            <span class="card-title">Zookeeper实现分布式锁和队列</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                Zookeeper客户端（Apache Curator） ZooKeeper常用客户端 
-
-zookeeper自带的客户端是官方提供的，比较
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Zookeeper/" class="post-category" target="_blank">
-                                    Zookeeper
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Zookeeper/" target="_blank">
-                            <span class="chip bg-color">Zookeeper</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/28/java/apache-curator-ru-men/">
-                        <div class="card-image">
-                            
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/141148_36cda434_1478371.png" class="responsive-img" alt="Zookeeper客户端Curator入门">
-                            
-                            <span class="card-title">Zookeeper客户端Curator入门</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                Zookeeper客户端（Apache Curator）
-zookeeper自带的客户端是官方提供的，比较底层、使用起来写代码麻烦、不够直接
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/springboot/" class="post-category" target="_blank">
-                                    springboot
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/zookeeper/" target="_blank">
-                            <span class="chip bg-color">zookeeper</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/28/spring-xi-lie/springboot-ji-cheng-elasticsearch6-2/">
-                        <div class="card-image">
-                            
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/145305_919053c1_1478371.png" class="responsive-img" alt="SpringBoot集成ElasticSearch6.2">
-                            
-                            <span class="card-title">SpringBoot集成ElasticSearch6.2</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                elasticsearch (Java High Level REST Client) apiJava高级REST客户端在Java低级RES
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/springboot/" class="post-category" target="_blank">
-                                    springboot
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/ElasticSearch/" target="_blank">
-                            <span class="chip bg-color">ElasticSearch</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/27/java/elasticsearch-an-zhuang-ji-java-api-shi-yong/">
-                        <div class="card-image">
-                            
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/141442_454e0cc7_1478371.jpeg" class="responsive-img" alt="ElasticSearch安装及java Api使用">
-                            
-                            <span class="card-title">ElasticSearch安装及java Api使用</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                ElasticSearch 简介ElasticSearch是一个高度可扩展的开源搜索引擎并使用REST API，所以您值得拥有。 在本教程中
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-27
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/springboot/" class="post-category" target="_blank">
-                                    springboot
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/ElasticSearch/" target="_blank">
-                            <span class="chip bg-color">ElasticSearch</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/13/java/hbase-kuai-su-ru-men/">
-                        <div class="card-image">
-                            
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/144323_55001076_1478371.png" class="responsive-img" alt="HBase快速入门">
-                            
-                            <span class="card-title">HBase快速入门</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                Apache HBase
-Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储。
-当您需要对大数据进行随机，实时
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/HBase/" class="post-category" target="_blank">
-                                    HBase
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/HBase/" target="_blank">
-                            <span class="chip bg-color">HBase</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/05/java/kafka-an-zhuang-da-jian-yi-ji-springboot-ji-cheng/">
-                        <div class="card-image">
-                            
-                            <img src="https://images.gitee.com/uploads/images/2019/0127/144424_67a8504d_1478371.png" class="responsive-img" alt="Kafka安装搭建以及SpringBoot集成">
-                            
-                            <span class="card-title">Kafka安装搭建以及SpringBoot集成</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                kafka介绍根据官网的介绍，ApacheKafka®是一个分布式流媒体平台，它主要有3种功能：
-
-发布和订阅消息流，这个功能类似于消息队列
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/springboot/" class="post-category" target="_blank">
-                                    springboot
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/kafka/" target="_blank">
-                            <span class="chip bg-color">kafka</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/01/21/spring-xi-lie/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/">
-                        <div class="card-image">
-                            
-                            <img src="https://user-gold-cdn.xitu.io/2019/1/6/168214b1982a6a93?w=2800&amp;h=800&amp;f=jpeg&amp;s=164058" class="responsive-img" alt="简单微信小程序个人博客">
-                            
-                            <span class="card-title">简单微信小程序个人博客</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                项目介绍简单微信笔记小程序.
-文档
-https://a870439570.github.io/blog-sharon/
-
-项目架构
-Spri
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-01-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/springboot/" class="post-category" target="_blank">
-                                    springboot
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/springboot/" target="_blank">
-                            <span class="chip bg-color">springboot</span>
-                        </a>
-                        
-                        <a href="/tags/小程序/" target="_blank">
-                            <span class="chip bg-color">小程序</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -929,11 +880,11 @@ Spri
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">3 / 3</div>
+            <div class="center-align b-text-gray">3 / 4</div>
         </div>
         <div class="col s6 m4 l4">
             
-            <a class="right btn-floating btn-large disabled">
+            <a href="/page/4/" class="right btn-floating btn-large waves-effect waves-light bg-color">
                 <i class="fa fa-angle-right"></i>
             </a>
             
@@ -946,48 +897,53 @@ Spri
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">74.6k</span>
+                <span class="white-color">84.8k</span>
             
 
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -1000,7 +956,7 @@ Spri
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -1008,7 +964,9 @@ Spri
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -1018,7 +976,7 @@ Spri
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>

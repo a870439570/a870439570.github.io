@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
@@ -11,7 +10,7 @@
 发布和订阅消息流，这个功能类似于消息队列，这也是kafka归类为消息队列框架的原因
 以容错的方式记录消息流，kafka以文件的方式来存储消息">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -21,35 +20,36 @@
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -106,24 +106,14 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -195,15 +185,6 @@
             </a>
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
-        </li>
-        
         
         <li><div class="divider"></div></li>
         <li>
@@ -213,35 +194,12 @@
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -295,13 +253,14 @@
 </a>
         
     </nav>
+
 </header>
 
 
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://images.gitee.com/uploads/images/2019/0127/144424_67a8504d_1478371.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -322,38 +281,17 @@
     
     <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
 <style>
-    #articleContent h1,
-    #articleContent h2,
-    #articleContent h3,
-    #articleContent h4,
-    #articleContent h5,
-    #articleContent h6 {
-        padding-top: 76px;
-        margin-top: -76px;
-    }
-
-    #articleContent h1 {
-        line-height: 3.5rem;
-    }
-
-    #articleContent h2 {
-        line-height: 3.2rem;
-    }
-
-    #articleContent h3 {
-        line-height: 2.8rem;
-    }
-
-    #articleContent h4 {
-        line-height: 2.5rem;
-    }
-
-    #articleContent h5 {
-        line-height: 2.2rem;
-    }
-
-    #articleContent h6 {
-        line-height: 1.9rem;
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
     }
 
     #articleContent :focus {
@@ -408,15 +346,34 @@
     #toc-content .is-active-link::before {
         background-color: #42b983;
     }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
 </style>
 <div class="row">
-    <div class="col s12 m12 l9">
+    <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
-                <div class="col s6">
+                <div class="col s7">
                     
                     <div class="article-tag">
                         
@@ -427,7 +384,7 @@
                     </div>
                     
                 </div>
-                <div class="col s6 right-align">
+                <div class="col s5 right-align">
                     
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -442,36 +399,36 @@
             </div>
 
             <div class="post-info">
-                <span class="post-date">
+                <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2018-08-05
-                </span>
+                </div>
 
                 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
                         1.7k
-                    </span>
+                    </div>
                     
 
                     
-                    <span class="post-word-count">
+                    <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
                         7 分
-                    </span>
+                    </div>
                     
                 
 				
 				
-                    <span id="busuanzi_container_page_pv" class="post-read">
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
                         <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                         <span id="busuanzi_value_page_pv"></span>
-                    </span>
+                    </div>
 				
             </div>
         </div>
-        <hr>
+        <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="kafka介绍"><a href="#kafka介绍" class="headerlink" title="kafka介绍"></a>kafka介绍</h3><p>根据官网的介绍，ApacheKafka®是一个分布式流媒体平台，它主要有3种功能：</p>
@@ -494,11 +451,12 @@
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>在kafka官网 <a href="http://kafka.apache.org/downloads下载到最新的kafka安装包，选择下载二进制版本的tgz文件" target="_blank" rel="noopener">http://kafka.apache.org/downloads下载到最新的kafka安装包，选择下载二进制版本的tgz文件</a></p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
 <li>首先确保你的机器上安装了jdk，kafka需要java运行环境，以前的kafka还需要zookeeper，新版的kafka已经内置了一个zookeeper环境，所以我们可以直接使用。</li>
-<li>如果只需要进行最简单的尝试的话我们只需要解压到任意目录即可，这里我们将kafka压缩包解压到/home目录<br><img src="https://images.gitee.com/uploads/images/2018/0803/174343_e2ae8023_1478371.png" alt="输入图片说明"></li>
-</ul>
+<li><p>如果只需要进行最简单的尝试的话我们只需要解压到任意目录即可，这里我们将kafka压缩包解压到/home目录<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2z5kqoxj30qw05z0t6.jpg" alt=""></p>
 <p>kafka解压目录下下有一个config的文件夹，里面放置的是我们的配置文件</p>
 <p>consumer.properites 消费者配置</p>
 <p>producer.properties 生产者配置</p>
+</li>
+</ul>
 <p> <strong>server.properties kafka服务器的配置，此配置文件用来配置kafka服务器 目前仅介绍几个最基础的配置</strong> </p>
 <ul>
 <li>broker.id 申明当前kafka服务器在集群中的唯一ID，需配置为integer,并且集群中的每一个kafka服务器的id都应是唯一的，我们这里采用默认配置即可</li>
@@ -506,149 +464,156 @@
 <li>zookeeper.connect 申明kafka所连接的zookeeper的地址 ，需配置为zookeeper的地址，由于本次使用的是kafka高版本中自带zookeeper，使用默认配置即可 <code>zookeeper.connect=localhost:2181</code></li>
 </ul>
 <h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>启动zookeeper</p>
-<pre><code>#前台启动
-[root@CentOS124 home]# cd kafka2.11/
-[root@CentOS124 kafka2.11]# bin/zookeeper-server-start.sh config/zookeeper.properties
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#前台启动</span>
+<span class="token punctuation">[</span>root@CentOS124 home<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd kafka2.11/</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/zookeeper-server-start.sh config/zookeeper.properties</span>
 
-#后台启动
-[root@CentOS124 kafka2.11]# bin/zookeeper-server-start.sh config/zookeeper.properties 1&gt;/dev/null 2&gt;&amp;1 &amp;
-[1] 18466
+<span class="token comment" spellcheck="true">#后台启动</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/zookeeper-server-start.sh config/zookeeper.properties 1>/dev/null 2>&amp;1 &amp;</span>
+<span class="token punctuation">[</span>1<span class="token punctuation">]</span> 18466
 
-#查看是否启动成功
-[root@CentOS124 ~]#  ps -ef|grep kafka
-</code></pre><p>启动kafka</p>
-<pre><code>[root@CentOS124 kafka2.11]# bin/kafka-server-start.sh config/server.properties
+<span class="token comment" spellcheck="true">#查看是否启动成功</span>
+<span class="token punctuation">[</span>root@CentOS124 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  ps -ef|grep kafka</span>
+</code></pre>
+<p>启动kafka</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/kafka-server-start.sh config/server.properties</span>
 
-#后台启动
-[root@CentOS124 kafka2.11]# bin/kafka-server-start.sh config/server.properties 1&gt;/dev/null 2&gt;&amp;1 &amp;
+<span class="token comment" spellcheck="true">#后台启动</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/kafka-server-start.sh config/server.properties 1>/dev/null 2>&amp;1 &amp;</span>
 
-#创建 topic
-[root@CentOS124 kafka2.11]# bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+<span class="token comment" spellcheck="true">#创建 topic</span>
+<span class="token punctuation">[</span>root@CentOS124 kafka2.11<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span>
 
 
-#查看Kafka 中的 topic 列表
+<span class="token comment" spellcheck="true">#查看Kafka 中的 topic 列表</span>
 bin/kafka-topics.sh --list --zookeeper localhost:2181
-</code></pre><h3 id="配置kafka集群"><a href="#配置kafka集群" class="headerlink" title="配置kafka集群"></a>配置kafka集群</h3><ul>
+</code></pre>
+<h3 id="配置kafka集群"><a href="#配置kafka集群" class="headerlink" title="配置kafka集群"></a>配置kafka集群</h3><ul>
 <li>条件有限，在同一个机器上启动三个broker来模拟kafka集群，三个broker使用另外安装的同一个zookeeper服务（实际集群中，每个broker通常在不同的机器上，也会使用不同host的zookeeper）</li>
 </ul>
-<pre><code>#复制server.properties配置文件为三份，分别起名为server.properties，server-2.properties，server-3.properties
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#复制server.properties配置文件为三份，分别起名为server.properties，server-2.properties，server-3.properties</span>
 
 三份配置中都要修改以下
-#三个配置中分别修改为0,2,3
-broker.id=0
+<span class="token comment" spellcheck="true">#三个配置中分别修改为0,2,3</span>
+broker.id<span class="token operator">=</span>0
 
-#三个配置中分别修改为9092,9093,9094
-port=9092
+<span class="token comment" spellcheck="true">#三个配置中分别修改为9092,9093,9094</span>
+port<span class="token operator">=</span>9092
 
-#kafka-logs，kafka-logs-2，kafka-logs-3
-log.dirs=/tmp/kafka-logs
+<span class="token comment" spellcheck="true">#kafka-logs，kafka-logs-2，kafka-logs-3</span>
+log.dirs<span class="token operator">=</span>/tmp/kafka-logs
 
-#都设置为3，即每个topic默认三个partition
-num.partitions=3
+<span class="token comment" spellcheck="true">#都设置为3，即每个topic默认三个partition</span>
+num.partitions<span class="token operator">=</span>3
 
-#zookeeper集群地址，外部可以配置，这里环境有限  使用默认既可
-zookeeper.connect=localhost:2181
+<span class="token comment" spellcheck="true">#zookeeper集群地址，外部可以配置，这里环境有限  使用默认既可</span>
+zookeeper.connect<span class="token operator">=</span>localhost:2181
 
-#分别进入kafka目录下 执行如下命令启动服务控制台输出日子完成了
+<span class="token comment" spellcheck="true">#分别进入kafka目录下 执行如下命令启动服务控制台输出日子完成了</span>
 bin/kafka-server-start.sh config/server.properties
 bin/kafka-server-start.sh config/server-2.properties
 bin/kafka-server-start.sh config/server-3.properties
-</code></pre><h3 id="springBoot中如何使用kafka"><a href="#springBoot中如何使用kafka" class="headerlink" title="springBoot中如何使用kafka"></a>springBoot中如何使用kafka</h3><p>首先创建一个springBoot项目 引入spring-kafka<br><img src="https://images.gitee.com/uploads/images/2018/0805/121233_6d03045f_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
+</code></pre>
+<h3 id="springBoot中如何使用kafka"><a href="#springBoot中如何使用kafka" class="headerlink" title="springBoot中如何使用kafka"></a>springBoot中如何使用kafka</h3><p>首先创建一个springBoot项目 引入spring-kafka<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g300zr7lj30wu0d8dj9.jpg" alt=""></p>
 <p> <strong>application.properties 配置</strong> </p>
-<pre><code>server.port=8080
+<pre class=" language-bash"><code class="language-bash">server.port<span class="token operator">=</span>8080
 
-#kafka地址 brokers集群地址用,隔开
-spring.kafka.bootstrap-servers=127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
+<span class="token comment" spellcheck="true">#kafka地址 brokers集群地址用,隔开</span>
+spring.kafka.bootstrap-servers<span class="token operator">=</span>127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
 
-#生产者的配置，大部分我们可以使用默认的，这里列出几个比较重要的属性
-#每批次发送消息的数量
-spring.kafka.producer.batch-size=16
-#发送失败重试次数
-spring.kafka.producer.retries=0
-#即32MB的批处理缓冲区
-spring.kafka.producer.buffer-memory=33554432
-#key序列化方式
-spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
-spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+<span class="token comment" spellcheck="true">#生产者的配置，大部分我们可以使用默认的，这里列出几个比较重要的属性</span>
+<span class="token comment" spellcheck="true">#每批次发送消息的数量</span>
+spring.kafka.producer.batch-size<span class="token operator">=</span>16
+<span class="token comment" spellcheck="true">#发送失败重试次数</span>
+spring.kafka.producer.retries<span class="token operator">=</span>0
+<span class="token comment" spellcheck="true">#即32MB的批处理缓冲区</span>
+spring.kafka.producer.buffer-memory<span class="token operator">=</span>33554432
+<span class="token comment" spellcheck="true">#key序列化方式</span>
+spring.kafka.producer.key-serializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringSerializer
 
-#消费者的配置
-##Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
-spring.kafka.consumer.auto-offset-reset=latest
-#是否开启自动提交
-spring.kafka.consumer.enable-auto-commit=true
-#自动提交的时间间隔
-spring.kafka.consumer.auto-commit-interval=100
-#key的解码方式
-spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
-#value的解码方式
-spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
-#在kafka/config文件的consumer.properties中有配置
-spring.kafka.consumer.group-id=test-consumer-group
-</code></pre><p> <strong>创建Producer生产者</strong> </p>
-<pre><code>package com.example.modules;
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
-import java.util.Date;
-/**
+<span class="token comment" spellcheck="true">#消费者的配置</span>
+<span class="token comment" spellcheck="true">##Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】</span>
+spring.kafka.consumer.auto-offset-reset<span class="token operator">=</span>latest
+<span class="token comment" spellcheck="true">#是否开启自动提交</span>
+spring.kafka.consumer.enable-auto-commit<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true">#自动提交的时间间隔</span>
+spring.kafka.consumer.auto-commit-interval<span class="token operator">=</span>100
+<span class="token comment" spellcheck="true">#key的解码方式</span>
+spring.kafka.consumer.key-deserializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringDeserializer
+<span class="token comment" spellcheck="true">#value的解码方式</span>
+spring.kafka.consumer.value-deserializer<span class="token operator">=</span>org.apache.kafka.common.serialization.StringDeserializer
+<span class="token comment" spellcheck="true">#在kafka/config文件的consumer.properties中有配置</span>
+spring.kafka.consumer.group-id<span class="token operator">=</span>test-consumer-group
+</code></pre>
+<p> <strong>创建Producer生产者</strong> </p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>modules<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>fastjson<span class="token punctuation">.</span>JSONObject<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>kafka<span class="token punctuation">.</span>core<span class="token punctuation">.</span>KafkaTemplate<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Date<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
  * 〈生产者〉
  * @author qinxuewu
  * @create 18/8/4下午11:56
  * @since 1.0.0
- */
-@Component
-public class Producer {
-    @Autowired
-    private KafkaTemplate kafkaTemplate;
-    //发送消息方法
-    public void send() {
-        JSONObject obj=new JSONObject();
-        obj.put(&quot;id&quot;,System.currentTimeMillis());
-        obj.put(&quot;name&quot;,&quot;生产者发送消息&quot;);
-        obj.put(&quot;date&quot;,new Date());
-        //这个 topic 在 Java 程序中是不需要提前在 Kafka 中设置的，因为它会在发送的时候自动创建你设置的 topic
-        kafkaTemplate.send(&quot;qxw&quot;,obj.toString());
-    }
-}
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Producer</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> KafkaTemplate kafkaTemplate<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//发送消息方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        JSONObject obj<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"生产者发送消息"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"date"</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//这个 topic 在 Java 程序中是不需要提前在 Kafka 中设置的，因为它会在发送的时候自动创建你设置的 topic</span>
+        kafkaTemplate<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"qxw"</span><span class="token punctuation">,</span>obj<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p> <strong>创建消费者</strong> </p>
-<pre><code>@Component
-public class Consumer {
-    private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
-    /**
+</code></pre>
+<p> <strong>创建消费者</strong> </p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Consumer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>Consumer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
      *  同时监听两个 topic 的消息了，可同时监听多个topic
      * @param record
      * @throws Exception
-     */
-    @KafkaListener(topics = {&quot;test&quot;,&quot;qxw&quot;})
-    public void listen (ConsumerRecord&lt;?, ?&gt; record) throws Exception {
-        Optional&lt;?&gt; kafkaMessage = Optional.ofNullable(record.value());
-        if (kafkaMessage.isPresent()) {
-            Object message = kafkaMessage.get();
-            logger.info(&quot;消费者开始消费message：&quot; + message);
-        }
-    }
-}
-</code></pre><p> <strong>运行后就可以看到控制台输出了</strong> </p>
-<pre><code>@RunWith(SpringRunner.class)                  
-@SpringBootTest                               
-public class KafkaDemoApplicationTests {      
-    @Autowired                                
-    private Producer producer;                
-    @Test                                     
-    public void contextLoads() {              
-        for (int i = 0; i &lt;3 ; i++) {         
-            producer.send();                  
-            try {                             
-                Thread.sleep(1000);           
-            } catch (InterruptedException e) {
-                e.printStackTrace();          
-            }                                 
-        }                                     
-    }                                         
-}                                             
-</code></pre><h3 id="kafka-配置文件参数详解"><a href="#kafka-配置文件参数详解" class="headerlink" title="kafka 配置文件参数详解"></a><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">kafka 配置文件参数详解</a></h3><p><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">https://www.cnblogs.com/alan319/p/8651434.html</a><br>kafka的配置分为 broker、producter、consumer三个不同的配置</p>
+     */</span>
+    <span class="token annotation punctuation">@KafkaListener</span><span class="token punctuation">(</span>topics <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"test"</span><span class="token punctuation">,</span><span class="token string">"qxw"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">listen</span> <span class="token punctuation">(</span>ConsumerRecord<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">></span> record<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        Optional<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> kafkaMessage <span class="token operator">=</span> Optional<span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span>record<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>kafkaMessage<span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Object message <span class="token operator">=</span> kafkaMessage<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"消费者开始消费message："</span> <span class="token operator">+</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p> <strong>运行后就可以看到控制台输出了</strong> </p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>                  
+<span class="token annotation punctuation">@SpringBootTest</span>                               
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">KafkaDemoApplicationTests</span> <span class="token punctuation">{</span>      
+    <span class="token annotation punctuation">@Autowired</span>                                
+    <span class="token keyword">private</span> Producer producer<span class="token punctuation">;</span>                
+    <span class="token annotation punctuation">@Test</span>                                     
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>              
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span><span class="token number">3</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>         
+            producer<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>                             
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          
+            <span class="token punctuation">}</span>                                 
+        <span class="token punctuation">}</span>                                     
+    <span class="token punctuation">}</span>                                         
+<span class="token punctuation">}</span>                                             
+</code></pre>
+<h3 id="kafka-配置文件参数详解"><a href="#kafka-配置文件参数详解" class="headerlink" title="kafka 配置文件参数详解"></a><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">kafka 配置文件参数详解</a></h3><p><a href="https://www.cnblogs.com/alan319/p/8651434.html" target="_blank" rel="noopener">https://www.cnblogs.com/alan319/p/8651434.html</a><br>kafka的配置分为 broker、producter、consumer三个不同的配置</p>
 
             </div>
             <hr>
@@ -715,14 +680,15 @@ public class KafkaDemoApplicationTests {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2018/08/13/java/hbase-kuai-su-ru-men/">
                     <div class="card-image">
                         
-                        <img src="https://images.gitee.com/uploads/images/2019/0127/144323_55001076_1478371.png" class="responsive-img" alt="HBase快速入门">
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="HBase快速入门">
                         
                         <span class="card-title">HBase快速入门</span>
                     </div>
@@ -760,7 +726,7 @@ Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据�
         </div>
         
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
@@ -768,7 +734,8 @@ Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据�
                 <a href="/2018/01/21/spring-xi-lie/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/">
                     <div class="card-image">
                         
-                        <img src="https://user-gold-cdn.xitu.io/2019/1/6/168214b1982a6a93?w=2800&amp;h=800&amp;f=jpeg&amp;s=164058" class="responsive-img" alt="简单微信小程序个人博客">
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="简单微信小程序个人博客">
                         
                         <span class="card-title">简单微信小程序个人博客</span>
                     </div>
@@ -818,45 +785,8 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: codeing<br />'
-            + '作者: qinxuewu<br />'
-            + '链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
     </div>
-    <div class="col l3 hide-on-med-and-down">
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
             <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
@@ -864,13 +794,24 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingSelector: 'h2,h3,h4'
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1,h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -882,7 +823,7 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2,h3,h4').each(function () {
+        $('#articleContent').children('h1,h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -898,6 +839,43 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
                 $tocWidget.removeClass('toc-fixed');
             }
         });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
     
@@ -908,48 +886,53 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">74.6k</span>
+                <span class="white-color">84.8k</span>
             
 
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -962,7 +945,7 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -970,7 +953,9 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -980,7 +965,7 @@ html2wxml  用于微信小程序的HTML和Markdown格式</div>
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
