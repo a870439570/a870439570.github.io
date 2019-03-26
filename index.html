@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
     <meta name="description" content="codeing">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
@@ -18,35 +17,36 @@
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
     <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="/images/qinxuewu.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">codeing</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/images/qinxuewu.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">codeing</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -104,14 +104,13 @@
     </li>
     
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -192,35 +191,12 @@
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -274,209 +250,303 @@
 </a>
         
     </nav>
+
 </header>
 
-<style type="text/css">
-    /* don't remove. */
-    .index-cover {
-        height: 100vh;
+
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
+
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
+
+    #prev-cover i {
+        margin-right: 3px;
+    }
+
+    #next-cover i {
+        margin-left: 3px;
+    }
+
+    .carousel-control:hover {
+        background-color:rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
     }
 </style>
 
-<div class="bg-cover index-cover about-cover" style="background-image: url('/medias/cover.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                <div class="brand">
-                    <div class="title center-align">
-                    
-                        codeing-java
-                    
-                    </div>
 
-                    <div class="description center-align">
-                    
-                        小步走 不停步 等于前进一大步.
-                    
-                    </div>
-                </div>
+
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item red white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    codeing-java
+                
+            </div>
+
+            <div class="description center-align">
+                
+                    小步走 不停步 等于前进一大步.
+                
             </div>
         </div>
-        
-        <div class="cover-btns">
-            <a href="#recommend-sections" class="waves-effect waves-light btn">
-                <i class="fa fa-angle-double-down"></i>继续阅读
-            </a>
-
-            
-            <a href="https://github.com/a870439570" class="waves-effect waves-light btn" target="_blank">
-                <i class="fa fa-github-alt"></i>Github
-            </a>
-            
-        </div>
-        <div class="cover-social-link"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
-
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
-</div>
-        
     </div>
+</div>
+<script>
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+
+            <div class="cover-btns">
+                <a href="#indexCard" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>开始阅读
+                </a>
+
+                
+                <a href="https://github.com/a870439570" class="waves-effect waves-light btn" target="_blank">
+                    <i class="fa fa-github-alt"></i>Github
+                </a>
+                
+            </div>
+            <div class="cover-social-link">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+        </div>
+    </div>
+
+    
 </div>
 
 <script>
-// Dynamically switch banner pictures every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+$(function () {
+    let coverSlider = $('.carousel');
+    coverSlider.carousel({
+        duration: Number('120'),
+        fullWidth: true,
+        indicators: 'true' === 'true'
+    });
+
+    let carouselIntervalId;
+    
+    // Loop to call the next cover article picture.
+    let autoCarousel = function() {
+        carouselIntervalId = setInterval(function () {
+            coverSlider.carousel('next');
+        }, 5000);
+    };
+    autoCarousel();
+    
+
+    let restartPlay = function () {
+        
+        clearInterval(carouselIntervalId);
+        autoCarousel();
+        
+    };
+
+    
+    // prev and next cover post.
+    $('#prev-cover').click(function () {
+        coverSlider.carousel('prev');
+        restartPlay();
+    });
+    $('#next-cover').click(function () {
+        coverSlider.carousel('next');
+        restartPlay();
+    });
+    
+});
 </script>
+
+
 
 <main class="content">
 
     
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
 
-    <div id="recommend-sections">
+                    
+
+                    
+
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
+
+
+<div class="title"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;推荐文章</div>
+
+<div class="row">
+
     
     
-
-
-
-<div class="container recommend">
-    <div class="card">
-        <div class="card-content">
-            
-            <div class="title"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;推荐文章</div>
-            
-            <div class="row">
-                
-                
-                
-                <div class="col s12 m6">
-                    <div class="post-card" style="background-image: url('/images/banner.png')">
-                        <div class="post-body">
-                            <div class="post-categories">
-                                
-                                <a href="/categories/JVM/" class="category" target="_blank">JVM</a>
-                                
-                            </div>
-                            <a href="/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/" target="_blank">
-                                <h3 class="post-title">深入理解JVM+脑图</h3>
-                            </a>
-                            <p class="post-description">
-                                
-                                    深入理解JVM运行机制附带思维导图
-                                
-                            </p>
-                            <a href="/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
-                                <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                            </a>
-                        </div>
-                    </div>
+    <div class="col s12 m6">
+        <div class="post-card" style="background-image: url('/images/banner.png')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/JVM/" class="category" target="_blank">JVM</a>
+                    
                 </div>
-                
-                
-                <div class="col s12 m6">
-                    <div class="post-card" style="background-image: url('/medias/featureimages/2.jpg')">
-                        <div class="post-body">
-                            <div class="post-categories">
-                                
-                                <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
-                                
-                            </div>
-                            <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank">
-                                <h3 class="post-title">SpringBoot实现的Mongodb管理工具</h3>
-                            </a>
-                            <p class="post-description">
-                                
-                                    项目介绍
+                <a href="/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/" target="_blank">
+                    <h3 class="post-title">深入理解JVM+脑图</h3>
+                </a>
+                <p class="post-description">
+                    
+                        深入理解JVM运行机制附带思维导图
+                    
+                </p>
+                <a href="/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6">
+        <div class="post-card" style="background-image: url('/medias/featureimages/2.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
+                    
+                </div>
+                <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank">
+                    <h3 class="post-title">SpringBoot实现的Mongodb管理工具</h3>
+                </a>
+                <p class="post-description">
+                    
+                        项目介绍
 Mongodb网页管理工具,基于Spring Boot2.0，前端采用layerUI实现。
 源于线上环境部署mongodb时屏蔽了
-                                
-                            </p>
-                            <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
-                                <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                            </a>
-                        </div>
-                    </div>
+                    
+                </p>
+                <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/featureimages/23.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
+                    
                 </div>
-                
-                
-                <div class="col s12 m6" data-aos="zoom-in-up">
-                    <div class="post-card" style="background-image: url('/medias/featureimages/23.jpg')">
-                        <div class="post-body">
-                            <div class="post-categories">
-                                
-                                <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
-                                
-                            </div>
-                            <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" target="_blank">
-                                <h3 class="post-title">SpringBoot版的JVM检控工具</h3>
-                            </a>
-                            <p class="post-description">
-                                
-                                    项目介绍
+                <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" target="_blank">
+                    <h3 class="post-title">SpringBoot版的JVM检控工具</h3>
+                </a>
+                <p class="post-description">
+                    
+                        项目介绍
 基于SpringBoot2.0 实现的jvm远程监工图形化工具，可以同时监控多个web应用
 该项目是借鉴另个一开源项目 （ Jav
-                                
-                            </p>
-                            <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)">
-                                <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                            </a>
-                        </div>
-                    </div>
+                    
+                </p>
+                <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/featureimages/13.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
+                    
                 </div>
-                
-                
-                <div class="col s12 m6" data-aos="zoom-in-up">
-                    <div class="post-card" style="background-image: url('/medias/featureimages/13.jpg')">
-                        <div class="post-body">
-                            <div class="post-categories">
-                                
-                                <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
-                                
-                            </div>
-                            <a href="/2018/01/21/spring-xi-lie/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/" target="_blank">
-                                <h3 class="post-title">简单微信小程序个人博客</h3>
-                            </a>
-                            <p class="post-description">
-                                
-                                    项目介绍简单微信笔记小程序.
+                <a href="/2018/01/21/spring-xi-lie/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/" target="_blank">
+                    <h3 class="post-title">简单微信小程序个人博客</h3>
+                </a>
+                <p class="post-description">
+                    
+                        项目介绍简单微信笔记小程序.
 文档
 https://a870439570.github.io/blog-sharon/
 
 项目架构
 Spri
-                                
-                            </p>
-                            <a href="/2018/01/21/spring-xi-lie/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)">
-                                <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                
+                    
+                </p>
+                <a href="/2018/01/21/spring-xi-lie/jian-dan-wei-xin-xiao-cheng-xu-ge-ren-bo-ke/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
             </div>
         </div>
     </div>
+    
+
 </div>
 
 
-    
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     
 
@@ -484,7 +554,7 @@ Spri
     <article id="articles" class="container articles">
         <div class="row article-row">
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/24/java/shen-ru-li-jie-semaphore-yuan-ma/">
                         <div class="card-image">
@@ -533,7 +603,7 @@ Semaphore 通常用于限制可以访问某些资源（物理或逻辑的）的�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/23/java/shen-ru-li-jie-cyclicbarrier-tong-bu-ping-zhang-yuan-ma/">
                         <div class="card-image">
@@ -581,7 +651,7 @@ CyclicBarrie允许让一组线程到达一个屏障（也可以叫同步点）�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/22/java/shen-ru-li-jie-countdownlatch-yuan-ma/">
                         <div class="card-image">
@@ -630,7 +700,7 @@ CyclicBarrie允许让一组线程到达一个屏障（也可以叫同步点）�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/21/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantreadwritelock/">
                         <div class="card-image">
@@ -678,7 +748,7 @@ ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/">
                         <div class="card-image">
@@ -726,7 +796,7 @@ ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/19/java/bing-fa-bian-cheng-shi-me-shi-aqs/">
                         <div class="card-image">
@@ -774,7 +844,7 @@ AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/15/sui-bi/pmp-guan-jian-zhu-yu-he-ji-suan-gong-shi/">
                         <div class="card-image">
@@ -825,7 +895,7 @@ AT：实际
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/02/21/shu-ju-jie-gou-yu-suan-fa/cha-zhao-suan-fa/">
                         <div class="card-image">
@@ -874,7 +944,7 @@ AT：实际
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/02/11/shu-ju-jie-gou-yu-suan-fa/shi-jian-fu-za-du/">
                         <div class="card-image">
@@ -923,7 +993,7 @@ AT：实际
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/02/11/shu-ju-jie-gou-yu-suan-fa/er-cha-shu/">
                         <div class="card-image">
@@ -974,7 +1044,7 @@ AT：实际
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/02/08/shu-ju-jie-gou-yu-suan-fa/dui-lie/">
                         <div class="card-image">
@@ -1022,7 +1092,7 @@ AT：实际
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/02/07/shu-ju-jie-gou-yu-suan-fa/zhan/">
                         <div class="card-image">
@@ -1103,9 +1173,9 @@ AT：实际
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 搭建
-         
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
@@ -1115,36 +1185,42 @@ AT：实际
             
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
+                
+                
+                <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的Gitee" data-position="top" data-delay="50">
-    <i class="fa fa-jsfiddle"></i>
-</a>
-<a href="https://blog.csdn.net/u010391342" class="tooltipped" target="_blank" data-tooltip="CSDN" data-position="top" data-delay="50">
-    <i class="fa fa-arrow-circle-right"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/a870439570" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
 
-<a href="mailto:a870439570@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
 
-<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-    <i class="fa fa-rss"></i>
-</a>
+
+    <a href="mailto:870439570@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=870439570" class="tooltipped" data-tooltip="QQ联系我: 870439570" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
@@ -1157,7 +1233,7 @@ AT：实际
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -1165,7 +1241,9 @@ AT：实际
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -1175,7 +1253,7 @@ AT：实际
 </div>
 
 
-<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
