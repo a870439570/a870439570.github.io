@@ -556,6 +556,7 @@ ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入�
 <h2 id="读锁的获取与释放"><a href="#读锁的获取与释放" class="headerlink" title="读锁的获取与释放"></a>读锁的获取与释放</h2><ul>
 <li>读锁是一个支持重进入的共享锁，它能够被多个线程同时获取，在没有其他写线程访问（或者写状态为0）时，读锁总会被成功地获取，而所做的也只是（线程安全的）增加读状态。如果当前线程已经获取了读锁，则增加读状态。如果当前线程在获取读锁时，写锁已被其他线程获取，则进入等待状态。获取读锁的实现从Java 5到Java 6变得复杂许多，主要原因是新增了一些功能，例如getReadHoldCount()方法，作用是返回当前线程获取读锁的次数。读状态是所有线程获取读锁次数的总和，而每个线程各自获取读锁的次数只能选择保存在ThreadLocal中，由线程自身维护，这使获取读锁的实现变得复杂 </li>
 </ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
 
             </div>
             <hr>
@@ -825,7 +826,7 @@ ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">84.8k</span>
+                <span class="white-color">90.5k</span>
             
 
             

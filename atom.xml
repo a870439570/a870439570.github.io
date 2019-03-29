@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-03-26T06:36:23.584Z</updated>
+  <updated>2019-03-29T02:21:58.696Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -17,11 +17,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>并发编程-深入理解ConcurrentLinkedQueue源码</title>
+    <link href="https://blog.qinxuewu.club/2019/03/29/java/shen-ru-li-jie-concurrentlinkedqueue-yuan-ma/"/>
+    <id>https://blog.qinxuewu.club/2019/03/29/java/shen-ru-li-jie-concurrentlinkedqueue-yuan-ma/</id>
+    <published>2019-03-29T02:21:09.000Z</published>
+    <updated>2019-03-29T02:21:58.696Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://blog.qinxuewu.club/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="ConcurrentLinkedQueue" scheme="https://blog.qinxuewu.club/tags/ConcurrentLinkedQueue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>并发编程-深入理解ThreadLocal源码</title>
+    <link href="https://blog.qinxuewu.club/2019/03/28/java/shen-ru-li-jie-threadlocal-yuan-ma/"/>
+    <id>https://blog.qinxuewu.club/2019/03/28/java/shen-ru-li-jie-threadlocal-yuan-ma/</id>
+    <published>2019-03-28T11:52:09.000Z</published>
+    <updated>2019-03-29T02:11:37.014Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ThreadLocal&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://blog.qinxuewu.club/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="ThreadLocal" scheme="https://blog.qinxuewu.club/tags/ThreadLocal/"/>
+    
+  </entry>
+  
+  <entry>
     <title>并发编程-深入理解Semaphore源码</title>
     <link href="https://blog.qinxuewu.club/2019/03/24/java/shen-ru-li-jie-semaphore-yuan-ma/"/>
     <id>https://blog.qinxuewu.club/2019/03/24/java/shen-ru-li-jie-semaphore-yuan-ma/</id>
     <published>2019-03-24T04:52:09.000Z</published>
-    <updated>2019-03-26T06:36:23.584Z</updated>
+    <updated>2019-03-29T02:11:45.537Z</updated>
     
     <summary type="html">
     
@@ -48,7 +101,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/23/java/shen-ru-li-jie-cyclicbarrier-tong-bu-ping-zhang-yuan-ma/"/>
     <id>https://blog.qinxuewu.club/2019/03/23/java/shen-ru-li-jie-cyclicbarrier-tong-bu-ping-zhang-yuan-ma/</id>
     <published>2019-03-23T04:52:09.000Z</published>
-    <updated>2019-03-26T06:36:41.649Z</updated>
+    <updated>2019-03-29T02:12:13.218Z</updated>
     
     <summary type="html">
     
@@ -74,7 +127,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/22/java/shen-ru-li-jie-countdownlatch-yuan-ma/"/>
     <id>https://blog.qinxuewu.club/2019/03/22/java/shen-ru-li-jie-countdownlatch-yuan-ma/</id>
     <published>2019-03-22T04:52:09.000Z</published>
-    <updated>2019-03-26T06:37:02.927Z</updated>
+    <updated>2019-03-29T02:12:21.980Z</updated>
     
     <summary type="html">
     
@@ -101,7 +154,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/21/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantreadwritelock/"/>
     <id>https://blog.qinxuewu.club/2019/03/21/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantreadwritelock/</id>
     <published>2019-03-21T04:52:09.000Z</published>
-    <updated>2019-03-26T06:37:25.238Z</updated>
+    <updated>2019-03-29T02:12:30.144Z</updated>
     
     <summary type="html">
     
@@ -127,7 +180,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/"/>
     <id>https://blog.qinxuewu.club/2019/03/20/java/bing-fa-bian-cheng-shen-ru-li-jie-reentrantlock/</id>
     <published>2019-03-20T04:52:09.000Z</published>
-    <updated>2019-03-26T06:37:46.905Z</updated>
+    <updated>2019-03-29T02:12:57.982Z</updated>
     
     <summary type="html">
     
@@ -153,7 +206,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/19/java/bing-fa-bian-cheng-shi-me-shi-aqs/"/>
     <id>https://blog.qinxuewu.club/2019/03/19/java/bing-fa-bian-cheng-shi-me-shi-aqs/</id>
     <published>2019-03-19T03:52:09.000Z</published>
-    <updated>2019-03-26T04:26:53.545Z</updated>
+    <updated>2019-03-29T02:13:13.121Z</updated>
     
     <summary type="html">
     
@@ -179,7 +232,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/15/sui-bi/pmp-guan-jian-zhu-yu-he-ji-suan-gong-shi/"/>
     <id>https://blog.qinxuewu.club/2019/03/15/sui-bi/pmp-guan-jian-zhu-yu-he-ji-suan-gong-shi/</id>
     <published>2019-03-15T08:57:21.000Z</published>
-    <updated>2019-03-15T10:54:38.673Z</updated>
+    <updated>2019-03-29T02:20:06.707Z</updated>
     
     <summary type="html">
     
@@ -208,7 +261,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/21/shu-ju-jie-gou-yu-suan-fa/cha-zhao-suan-fa/"/>
     <id>https://blog.qinxuewu.club/2019/02/21/shu-ju-jie-gou-yu-suan-fa/cha-zhao-suan-fa/</id>
     <published>2019-02-21T13:58:11.000Z</published>
-    <updated>2019-03-26T04:03:31.018Z</updated>
+    <updated>2019-03-29T02:17:16.307Z</updated>
     
     <summary type="html">
     
@@ -234,7 +287,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/11/shu-ju-jie-gou-yu-suan-fa/shi-jian-fu-za-du/"/>
     <id>https://blog.qinxuewu.club/2019/02/11/shu-ju-jie-gou-yu-suan-fa/shi-jian-fu-za-du/</id>
     <published>2019-02-11T14:37:11.000Z</published>
-    <updated>2019-03-21T03:54:07.998Z</updated>
+    <updated>2019-03-29T02:17:07.837Z</updated>
     
     <summary type="html">
     
@@ -261,7 +314,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/11/shu-ju-jie-gou-yu-suan-fa/er-cha-shu/"/>
     <id>https://blog.qinxuewu.club/2019/02/11/shu-ju-jie-gou-yu-suan-fa/er-cha-shu/</id>
     <published>2019-02-11T04:28:11.000Z</published>
-    <updated>2019-03-26T03:54:12.509Z</updated>
+    <updated>2019-03-29T02:16:48.849Z</updated>
     
     <summary type="html">
     
@@ -288,7 +341,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/08/shu-ju-jie-gou-yu-suan-fa/dui-lie/"/>
     <id>https://blog.qinxuewu.club/2019/02/08/shu-ju-jie-gou-yu-suan-fa/dui-lie/</id>
     <published>2019-02-08T06:10:01.000Z</published>
-    <updated>2019-03-26T04:07:44.626Z</updated>
+    <updated>2019-03-29T02:17:28.197Z</updated>
     
     <summary type="html">
     
@@ -315,7 +368,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/07/shu-ju-jie-gou-yu-suan-fa/zhan/"/>
     <id>https://blog.qinxuewu.club/2019/02/07/shu-ju-jie-gou-yu-suan-fa/zhan/</id>
     <published>2019-02-07T15:03:21.000Z</published>
-    <updated>2019-03-26T04:05:59.868Z</updated>
+    <updated>2019-03-29T02:17:21.780Z</updated>
     
     <summary type="html">
     
@@ -342,7 +395,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/06/shu-ju-jie-gou-yu-suan-fa/shuang-xiang-lian-biao/"/>
     <id>https://blog.qinxuewu.club/2019/02/06/shu-ju-jie-gou-yu-suan-fa/shuang-xiang-lian-biao/</id>
     <published>2019-02-06T05:39:21.000Z</published>
-    <updated>2019-03-26T03:55:39.458Z</updated>
+    <updated>2019-03-29T02:16:54.564Z</updated>
     
     <summary type="html">
     
@@ -368,7 +421,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/05/shu-ju-jie-gou-yu-suan-fa/xun-huan-lian-biao/"/>
     <id>https://blog.qinxuewu.club/2019/02/05/shu-ju-jie-gou-yu-suan-fa/xun-huan-lian-biao/</id>
     <published>2019-02-05T15:29:21.000Z</published>
-    <updated>2019-03-26T03:56:23.083Z</updated>
+    <updated>2019-03-29T02:17:01.801Z</updated>
     
     <summary type="html">
     
@@ -394,7 +447,7 @@
     <link href="https://blog.qinxuewu.club/2019/02/03/shu-ju-jie-gou-yu-suan-fa/shun-xu-biao-he-dan-lian-biao-de-bi-jiao/"/>
     <id>https://blog.qinxuewu.club/2019/02/03/shu-ju-jie-gou-yu-suan-fa/shun-xu-biao-he-dan-lian-biao-de-bi-jiao/</id>
     <published>2019-02-03T12:28:21.000Z</published>
-    <updated>2019-03-26T04:10:56.936Z</updated>
+    <updated>2019-03-29T02:17:36.755Z</updated>
     
     <summary type="html">
     
@@ -412,6 +465,36 @@
     
     
       <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring cloud alibaba系列(三)Nacos Config配置中心</title>
+    <link href="https://blog.qinxuewu.club/2019/01/29/spring-xi-lie/springcloudalibaba-zhi-pei-zhi-zhong-xin/"/>
+    <id>https://blog.qinxuewu.club/2019/01/29/spring-xi-lie/springcloudalibaba-zhi-pei-zhi-zhong-xin/</id>
+    <published>2019-01-29T08:10:45.000Z</published>
+    <updated>2019-03-29T02:28:17.241Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Nacos 是阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。&lt;/li&gt;
+&lt;li&gt;Nacos
+        
+      
+    
+    </summary>
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
+    
+    
+      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
+    
+      <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
     
   </entry>
   
@@ -449,7 +532,7 @@
     <link href="https://blog.qinxuewu.club/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/"/>
     <id>https://blog.qinxuewu.club/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/</id>
     <published>2019-01-28T06:55:45.000Z</published>
-    <updated>2019-03-26T06:25:04.840Z</updated>
+    <updated>2019-03-29T02:14:40.876Z</updated>
     
     <summary type="html">
     
@@ -469,88 +552,6 @@
       <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
     
       <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring cloud alibaba系列(一) 服务注册</title>
-    <link href="https://blog.qinxuewu.club/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/"/>
-    <id>https://blog.qinxuewu.club/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/</id>
-    <published>2019-01-27T08:10:45.000Z</published>
-    <updated>2019-03-26T06:25:01.732Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;alibaba-cloud&quot;&gt;&lt;a href=&quot;#alibaba-cloud&quot; class=&quot;headerlink&quot; title=&quot;alibaba-cloud&quot;&gt;&lt;/a&gt;alibaba-cloud&lt;/h2&gt;&lt;p&gt;本项目演示如何使用 spring cloud
-        
-      
-    
-    </summary>
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
-    
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
-    
-      <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot版的JVM检控工具</title>
-    <link href="https://blog.qinxuewu.club/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/"/>
-    <id>https://blog.qinxuewu.club/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/</id>
-    <published>2019-01-26T09:46:51.000Z</published>
-    <updated>2019-03-26T04:46:01.262Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;项目介绍&quot;&gt;&lt;a href=&quot;#项目介绍&quot; class=&quot;headerlink&quot; title=&quot;项目介绍&quot;&gt;&lt;/a&gt;项目介绍&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;基于SpringBoot2.0
-        
-      
-    
-    </summary>
-    
-      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
-    
-    
-      <category term="springboot" scheme="https://blog.qinxuewu.club/tags/springboot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入理解JVM+脑图</title>
-    <link href="https://blog.qinxuewu.club/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/"/>
-    <id>https://blog.qinxuewu.club/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/</id>
-    <published>2019-01-25T10:13:39.000Z</published>
-    <updated>2019-03-26T04:35:37.190Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;http://wx1.sinaimg.cn/large/006b7Nxngy1g1g31rss95j30mj0afgnc.jpg&quot; alt=&quot;深入理解JVM脑图&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-运行时数据区域&quot;&gt;&lt;a href=&quot;#1-运行时数据区域&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JVM" scheme="https://blog.qinxuewu.club/categories/JVM/"/>
-    
-    
-      <category term="JVM" scheme="https://blog.qinxuewu.club/tags/JVM/"/>
     
   </entry>
   
