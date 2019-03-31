@@ -406,14 +406,14 @@ ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与�
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2k
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        7 分
                     </div>
                     
                 
@@ -642,40 +642,12 @@ ReentrantLock是一个可重入的互斥锁锁， 实现Lock接口。具有与�
     <span class="token comment" spellcheck="true">//释放锁</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  sync<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
     <span class="token keyword">public</span> Condition <span class="token function">newCondition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">newCondition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getHoldCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">getHoldCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isHeldByCurrentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">isHeldExclusively</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">isLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">isFair</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>   <span class="token keyword">return</span> sync <span class="token keyword">instanceof</span> <span class="token class-name">FairSync</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span>
-    <span class="token keyword">protected</span> Thread <span class="token function">getOwner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">getOwner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">hasQueuedThreads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">hasQueuedThreads</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">hasQueuedThread</span><span class="token punctuation">(</span>Thread thread<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">isQueued</span><span class="token punctuation">(</span>thread<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">getQueueLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">getQueueLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">protected</span> Collection<span class="token operator">&lt;</span>Thread<span class="token operator">></span> <span class="token function">getQueuedThreads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">getQueuedThreads</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasWaiters</span><span class="token punctuation">(</span>Condition condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>condition <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>condition <span class="token keyword">instanceof</span> <span class="token class-name">AbstractQueuedSynchronizer<span class="token punctuation">.</span>ConditionObject</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"not owner"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">hasWaiters</span><span class="token punctuation">(</span><span class="token punctuation">(</span>AbstractQueuedSynchronizer<span class="token punctuation">.</span>ConditionObject<span class="token punctuation">)</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getWaitQueueLength</span><span class="token punctuation">(</span>Condition condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>condition <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>condition <span class="token keyword">instanceof</span> <span class="token class-name">AbstractQueuedSynchronizer<span class="token punctuation">.</span>ConditionObject</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"not owner"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">getWaitQueueLength</span><span class="token punctuation">(</span><span class="token punctuation">(</span>AbstractQueuedSynchronizer<span class="token punctuation">.</span>ConditionObject<span class="token punctuation">)</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">protected</span> Collection<span class="token operator">&lt;</span>Thread<span class="token operator">></span> <span class="token function">getWaitingThreads</span><span class="token punctuation">(</span>Condition condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>condition <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>condition <span class="token keyword">instanceof</span> <span class="token class-name">AbstractQueuedSynchronizer<span class="token punctuation">.</span>ConditionObject</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"not owner"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> sync<span class="token punctuation">.</span><span class="token function">getWaitingThreads</span><span class="token punctuation">(</span><span class="token punctuation">(</span>AbstractQueuedSynchronizer<span class="token punctuation">.</span>ConditionObject<span class="token punctuation">)</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
 
 </code></pre>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
 
             </div>
             <hr>
@@ -940,11 +912,11 @@ AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
+            <a href="https://github.com/a870439570" target="_blank">Hexo</a>搭建.
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">84.8k</span>
+                <span class="white-color">95.5k</span>
             
 
             
@@ -953,13 +925,13 @@ AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它
                 
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
                 <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             

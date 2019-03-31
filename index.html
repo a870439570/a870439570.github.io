@@ -370,7 +370,7 @@ $(function () {
     coverSlider.carousel({
         duration: Number('120'),
         fullWidth: true,
-        indicators: 'true' === 'true'
+        indicators: 'false' === 'true'
     });
 
     let carouselIntervalId;
@@ -391,16 +391,6 @@ $(function () {
         
     };
 
-    
-    // prev and next cover post.
-    $('#prev-cover').click(function () {
-        coverSlider.carousel('prev');
-        restartPlay();
-    });
-    $('#next-cover').click(function () {
-        coverSlider.carousel('next');
-        restartPlay();
-    });
     
 });
 </script>
@@ -434,32 +424,6 @@ $(function () {
     
     
     <div class="col s12 m6">
-        <div class="post-card" style="background-image: url('/medias/featureimages/2.jpg')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                    <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
-                    
-                </div>
-                <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank">
-                    <h3 class="post-title">SpringBoot实现的Mongodb管理工具</h3>
-                </a>
-                <p class="post-description">
-                    
-                        项目介绍
-Mongodb网页管理工具,基于Spring Boot2.0，前端采用layerUI实现。
-源于线上环境部署mongodb时屏蔽了
-                    
-                </p>
-                <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6">
         <div class="post-card" style="background-image: url('/medias/featureimages/23.jpg')">
             <div class="post-body">
                 <div class="post-categories">
@@ -477,7 +441,33 @@ Mongodb网页管理工具,基于Spring Boot2.0，前端采用layerUI实现。
 该项目是借鉴另个一开源项目 （ Jav
                     
                 </p>
-                <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
+                <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6">
+        <div class="post-card" style="background-image: url('/medias/featureimages/2.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                    <a href="/categories/springboot/" class="category" target="_blank">springboot</a>
+                    
+                </div>
+                <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank">
+                    <h3 class="post-title">SpringBoot实现的Mongodb管理工具</h3>
+                </a>
+                <p class="post-description">
+                    
+                        项目介绍
+Mongodb网页管理工具,基于Spring Boot2.0，前端采用layerUI实现。
+源于线上环境部署mongodb时屏蔽了
+                    
+                </p>
+                <a href="/2018/11/21/spring-xi-lie/springboot-shi-xian-de-mongodb-guan-li-gong-ju/" target="_blank" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -553,6 +543,199 @@ Spri
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/03/31/java/shen-ru-li-jie-xian-cheng-chi-threadpoolexecutor/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="并发编程-深入理解线程池ThreadPoolExecutor">
+                            
+                            <span class="card-title">并发编程-深入理解线程池ThreadPoolExecutor</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                概述
+使用线程池技术可以降低资源的消耗，提高响应速度和线程的可重复利用性
+当提交一个新任务到线程池后，线程池首先会判断核心线程池(coreP
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-31
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/ThreadPoolExecutor/" target="_blank">
+                            <span class="chip bg-color">ThreadPoolExecutor</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/03/30/java/shen-ru-li-jie-arrayblockingqueue/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="并发编程-深入理解阻塞队列ArrayBlockingQueue源码">
+                            
+                            <span class="card-title">并发编程-深入理解阻塞队列ArrayBlockingQueue源码</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                概述
+ArrayBlockingQueue是一个由数组构成的有界阻塞队列，此队列按 FIFO（先进先出）原则对元素进行排序,支持公平和非公平
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/ArrayBlockingQueue/" target="_blank">
+                            <span class="chip bg-color">ArrayBlockingQueue</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/03/29/java/shen-ru-li-jie-concurrentlinkedqueue-yuan-ma/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="并发编程-深入理解ConcurrentLinkedQueue源码">
+                            
+                            <span class="card-title">并发编程-深入理解ConcurrentLinkedQueue源码</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                概述
+ConcurrentLinkedQueue是一个基于链接节点的无边界的线程安全队列，它采用先进先出原则对元素进行排序，插入元素放入队列
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-29
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/ConcurrentLinkedQueue/" target="_blank">
+                            <span class="chip bg-color">ConcurrentLinkedQueue</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/03/28/java/shen-ru-li-jie-threadlocal-yuan-ma/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="并发编程-深入理解ThreadLocal源码">
+                            
+                            <span class="card-title">并发编程-深入理解ThreadLocal源码</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                概述
+ThreadLocal 是一个本地线程副本变量工具类。主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-28
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/ThreadLocal/" target="_blank">
+                            <span class="chip bg-color">ThreadLocal</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
@@ -944,202 +1127,6 @@ AT：实际
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/02/11/shu-ju-jie-gou-yu-suan-fa/shi-jian-fu-za-du/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="什么是算法的时间复杂度">
-                            
-                            <span class="card-title">什么是算法的时间复杂度</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                时间复杂度定义
-在进行算法分析时 ,语旬总的执行次次T(n)是关子问题规模n的函数,进而分析T(n)n的变化情况并确定T（n）的数量级。
-一
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/算法/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/算法/" target="_blank">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/02/11/shu-ju-jie-gou-yu-suan-fa/er-cha-shu/">
-                        <div class="card-image">
-                            
-                            <img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1aa00jgb7j30q10dino3.jpg" class="responsive-img" alt="数据结构与算法(六)什么是二叉树">
-                            
-                            <span class="card-title">数据结构与算法(六)什么是二叉树</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                
-概述 二叉树是树的特殊一种，具有如下特点： 
-
-每个结点最多有两颗子树，结点的度最大为2。
-左子树和右子树是有顺序的，次序不能颠倒。
-即使
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/算法/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/算法/" target="_blank">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/02/08/shu-ju-jie-gou-yu-suan-fa/dui-lie/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="数据结构与算法(五)什么是队列">
-                            
-                            <span class="card-title">数据结构与算法(五)什么是队列</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                
-队列的概述队列是一种先进先出 (First 10 First Out) 的线性表,简称 FIFO。允许插入的一 端称为队尾,允许删除的一端
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/算法/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/算法/" target="_blank">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/02/07/shu-ju-jie-gou-yu-suan-fa/zhan/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="数据结构与算法(四)什么是栈">
-                            
-                            <span class="card-title">数据结构与算法(四)什么是栈</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                
-前言今天是大年初三，在广州过的第四个还是第五个年了，已经忘了，中午吃完饭看书大话数据结构的这本书的栈与队列的关于栈的这篇文章。就去电影看黄
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/算法/" class="post-category" target="_blank">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/算法/" target="_blank">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1174,11 +1161,11 @@ AT：实际
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             本站由&copy;<a href="https://github.com/a870439570" target="_blank">codeing-java</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a>搭建
+            <a href="https://github.com/a870439570" target="_blank">Hexo</a>搭建.
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">84.8k</span>
+                <span class="white-color">95.5k</span>
             
 
             
@@ -1187,13 +1174,13 @@ AT：实际
                 
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
-                    总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
                 <span id="busuanzi_container_site_uv">
                     <i class="fa fa-users"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
