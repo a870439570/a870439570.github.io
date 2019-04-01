@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-03-29T02:21:58.696Z</updated>
+  <updated>2019-04-01T01:32:32.213Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>并发编程-深入理解线程池ThreadPoolExecutor</title>
+    <link href="https://blog.qinxuewu.club/2019/03/31/java/shen-ru-li-jie-xian-cheng-chi-threadpoolexecutor/"/>
+    <id>https://blog.qinxuewu.club/2019/03/31/java/shen-ru-li-jie-xian-cheng-chi-threadpoolexecutor/</id>
+    <published>2019-03-31T02:21:09.000Z</published>
+    <updated>2019-04-01T01:32:32.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://blog.qinxuewu.club/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="ThreadPoolExecutor" scheme="https://blog.qinxuewu.club/tags/ThreadPoolExecutor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>并发编程-深入理解阻塞队列ArrayBlockingQueue源码</title>
+    <link href="https://blog.qinxuewu.club/2019/03/30/java/shen-ru-li-jie-arrayblockingqueue/"/>
+    <id>https://blog.qinxuewu.club/2019/03/30/java/shen-ru-li-jie-arrayblockingqueue/</id>
+    <published>2019-03-30T02:21:09.000Z</published>
+    <updated>2019-04-01T01:32:32.212Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ArrayBlockingQueue&lt;/code&gt;是一个由数组构成的有界阻塞队列，此队列按
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://blog.qinxuewu.club/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="ArrayBlockingQueue" scheme="https://blog.qinxuewu.club/tags/ArrayBlockingQueue/"/>
+    
+  </entry>
   
   <entry>
     <title>并发编程-深入理解ConcurrentLinkedQueue源码</title>
@@ -484,63 +537,6 @@
           &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Nacos 是阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。&lt;/li&gt;
 &lt;li&gt;Nacos
-        
-      
-    
-    </summary>
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
-    
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
-    
-      <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【PMP备考】引论项目的概述和目的</title>
-    <link href="https://blog.qinxuewu.club/2019/01/29/sui-bi/pmp-bei-kao-yin-lun-xiang-mu-de-gai-shu-he-mu-de/"/>
-    <id>https://blog.qinxuewu.club/2019/01/29/sui-bi/pmp-bei-kao-yin-lun-xiang-mu-de-gai-shu-he-mu-de/</id>
-    <published>2019-01-29T06:44:21.000Z</published>
-    <updated>2019-03-26T04:15:14.807Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;项目是为创造独特的产品、服务或成果而进行的临时性工作&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;基本要素&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="PMP备考" scheme="https://blog.qinxuewu.club/categories/PMP%E5%A4%87%E8%80%83/"/>
-    
-    
-      <category term="PMP备考" scheme="https://blog.qinxuewu.club/tags/PMP%E5%A4%87%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring cloud alibaba系列(二)Sentinel应用的限流管理</title>
-    <link href="https://blog.qinxuewu.club/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/"/>
-    <id>https://blog.qinxuewu.club/2019/01/28/spring-xi-lie/springcloudalibaba-zhi-sentinel-xian-liu/</id>
-    <published>2019-01-28T06:55:45.000Z</published>
-    <updated>2019-03-29T02:14:40.876Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;限流组件Sentinel&quot;&gt;&lt;a href=&quot;#限流组件Sentinel&quot; class=&quot;headerlink&quot;
         
       
     
