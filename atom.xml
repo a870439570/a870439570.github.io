@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-04-01T01:32:32.213Z</updated>
+  <updated>2019-04-02T13:01:04.777Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot集成prometheus+Grafana监控</title>
+    <link href="https://blog.qinxuewu.club/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/"/>
+    <id>https://blog.qinxuewu.club/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/</id>
+    <published>2019-04-02T12:58:45.000Z</published>
+    <updated>2019-04-02T13:01:04.777Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Prometheus&lt;/code&gt;是一个最初在SoundCloud上构建的开源系统监视和警报工具包
+        
+      
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/tags/springboot/"/>
+    
+      <category term="prometheus" scheme="https://blog.qinxuewu.club/tags/prometheus/"/>
+    
+      <category term="Grafana" scheme="https://blog.qinxuewu.club/tags/Grafana/"/>
+    
+  </entry>
   
   <entry>
     <title>并发编程-深入理解线程池ThreadPoolExecutor</title>
@@ -518,36 +549,6 @@
     
     
       <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring cloud alibaba系列(三)Nacos Config配置中心</title>
-    <link href="https://blog.qinxuewu.club/2019/01/29/spring-xi-lie/springcloudalibaba-zhi-pei-zhi-zhong-xin/"/>
-    <id>https://blog.qinxuewu.club/2019/01/29/spring-xi-lie/springcloudalibaba-zhi-pei-zhi-zhong-xin/</id>
-    <published>2019-01-29T08:10:45.000Z</published>
-    <updated>2019-03-29T02:28:17.241Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Nacos 是阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。&lt;/li&gt;
-&lt;li&gt;Nacos
-        
-      
-    
-    </summary>
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
-    
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
-    
-      <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
     
   </entry>
   
