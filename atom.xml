@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-03-31T06:51:37.000Z</updated>
+  <updated>2019-04-05T06:30:48.000Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>volatile的内存语义</title>
+    <link href="https://blog.qinxuewu.club/2019/04/05/java/volatile-de-nei-cun-yu-yi/"/>
+    <id>https://blog.qinxuewu.club/2019/04/05/java/volatile-de-nei-cun-yu-yi/</id>
+    <published>2019-04-05T06:29:09.000Z</published>
+    <updated>2019-04-05T06:30:48.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;volatile的特性&quot;&gt;&lt;a href=&quot;#volatile的特性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://blog.qinxuewu.club/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="volatile" scheme="https://blog.qinxuewu.club/tags/volatile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot集成prometheus+Grafana监控</title>
+    <link href="https://blog.qinxuewu.club/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/"/>
+    <id>https://blog.qinxuewu.club/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/</id>
+    <published>2019-04-02T12:58:45.000Z</published>
+    <updated>2019-04-05T06:26:25.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Prometheus&lt;/code&gt;是一个最初在SoundCloud上构建的开源系统监视和警报工具包
+        
+      
+    
+    </summary>
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/categories/springboot/"/>
+    
+    
+      <category term="springboot" scheme="https://blog.qinxuewu.club/tags/springboot/"/>
+    
+      <category term="prometheus" scheme="https://blog.qinxuewu.club/tags/prometheus/"/>
+    
+      <category term="Grafana" scheme="https://blog.qinxuewu.club/tags/Grafana/"/>
+    
+  </entry>
   
   <entry>
     <title>并发编程-深入理解线程池ThreadPoolExecutor</title>
@@ -492,62 +549,6 @@
     
     
       <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构与算法(一)顺序表和单链表的比较</title>
-    <link href="https://blog.qinxuewu.club/2019/02/03/shu-ju-jie-gou-yu-suan-fa/shun-xu-biao-he-dan-lian-biao-de-bi-jiao/"/>
-    <id>https://blog.qinxuewu.club/2019/02/03/shu-ju-jie-gou-yu-suan-fa/shun-xu-biao-he-dan-lian-biao-de-bi-jiao/</id>
-    <published>2019-02-03T12:28:21.000Z</published>
-    <updated>2019-03-30T04:18:17.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;线性查找法&quot;&gt;&lt;a href=&quot;#线性查找法&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.qinxuewu.club/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring cloud alibaba系列(三)Nacos Config配置中心</title>
-    <link href="https://blog.qinxuewu.club/2019/01/29/spring-xi-lie/springcloudalibaba-zhi-pei-zhi-zhong-xin/"/>
-    <id>https://blog.qinxuewu.club/2019/01/29/spring-xi-lie/springcloudalibaba-zhi-pei-zhi-zhong-xin/</id>
-    <published>2019-01-29T08:10:45.000Z</published>
-    <updated>2019-03-30T04:18:17.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Nacos 是阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。&lt;/li&gt;
-&lt;li&gt;Nacos
-        
-      
-    
-    </summary>
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/categories/springcloud/"/>
-    
-    
-      <category term="springcloud" scheme="https://blog.qinxuewu.club/tags/springcloud/"/>
-    
-      <category term="alibaba" scheme="https://blog.qinxuewu.club/tags/alibaba/"/>
     
   </entry>
   
