@@ -430,7 +430,7 @@ ArrayBlockingQueue是一个由数组构成的有界阻塞队列，此队列按 F
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
-<li><code>ArrayBlockingQueue</code>是一个由数组构成的有界阻塞队列，此队列按 <code>FIFO</code>（先进先出）原则对元素进行排序,支持公平和非公平模式，默认情况下不保证线程公平的访问队列。新元素插入到队列的尾部，队列获取操作则是从队列头部开始获得元素<br><img src="https://img-blog.csdnimg.cn/20190330111139134.png" alt="继承AbstractQueue类,实现BlockingQueue接口"><h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2></li>
+<li><code>ArrayBlockingQueue</code>是一个由数组构成的有界阻塞队列，此队列按 <code>FIFO</code>（先进先出）原则对元素进行排序,支持公平和非公平模式，默认情况下不保证线程公平的访问队列。新元素插入到队列的尾部，队列获取操作则是从队列头部开始获得元素<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w8723xluj30fg01mmy3.jpg" alt="继承AbstractQueue类,实现BlockingQueue接口"><h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2></li>
 <li><code>ArrayBlockingQueue(int capacity)</code>  创建一个固定容量和默认非公司访问策略队列</li>
 <li><code>ArrayBlockingQueue(int capacity, boolean fair)</code>  创建一个具有固定容量和指定访问策略的 队列</li>
 <li><code>ArrayBlockingQueue(int capacity, boolean fair, Collection&lt;? extends E&gt; c)</code> 创建一个具有固定容量和指定访问策略，并且制定元素类型的 队列</li>
@@ -451,16 +451,16 @@ ArrayBlockingQueue是一个由数组构成的有界阻塞队列，此队列按 F
     <span class="token keyword">private</span> <span class="token keyword">final</span> Condition notEmpty<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token keyword">final</span> Condition notFull<span class="token punctuation">;</span>
 </code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20190330104656506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="构造函数"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w8814qlcj30h90astgb.jpg" alt="构造函数"></p>
 <ul>
 <li><code>ArrayBlockingQueue</code>的公平模式是使用<code>ReentrantLock</code>可重入锁实现的。并使用Condition使用队列的阻塞和唤醒<h2 id="put入队"><a href="#put入队" class="headerlink" title="put入队"></a>put入队</h2></li>
 <li>put操作比较简单。阻塞的添加。首先判断插入元素是否为空，如果是空则抛出控指针</li>
-<li>然后获取可重入的排他锁，根据初始化时选择是公平还是非公平模式的锁，加的锁是一个支持可中断的锁。当队列的count等于数组的长度，此时队列已满。则使用<code>await</code>的方法是当前线程进入阻塞模式。未满就执行增加元素，并释放锁。<br><img src="https://img-blog.csdnimg.cn/20190330105553688.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="put"></li>
+<li>然后获取可重入的排他锁，根据初始化时选择是公平还是非公平模式的锁，加的锁是一个支持可中断的锁。当队列的count等于数组的长度，此时队列已满。则使用<code>await</code>的方法是当前线程进入阻塞模式。未满就执行增加元素，并释放锁。<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w88ty60dj30c005wtbi.jpg" alt="put"></li>
 <li>队列未满，则添加元素到队列尾巴，当<code>++putIndex == items.length</code>条件成立说明此时队列已满，<code>putIndex</code>赋值为0 从头开始。然后累加队列的总个数，并唤醒一个阻塞的线程</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20190330110055639.png" alt="队列未满添加元素"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w89x8h87j30au04q0us.jpg" alt="队列未满添加元素"></p>
 <h2 id="take出队"><a href="#take出队" class="headerlink" title="take出队"></a>take出队</h2><ul>
-<li>出队的操作也很简单，首先拿到锁，然后判断队列是否为空，为空则进入阻塞等待。不为空则执行<code>dequeue</code>出队，并释放锁。<br><img src="https://img-blog.csdnimg.cn/20190330112140281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="出队"><pre class=" language-java"><code class="language-java">  <span class="token keyword">private</span> E <span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<li>出队的操作也很简单，首先拿到锁，然后判断队列是否为空，为空则进入阻塞等待。不为空则执行<code>dequeue</code>出队，并释放锁。<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w8ahc4xij30ck05odil.jpg" alt="出队"><pre class=" language-java"><code class="language-java">  <span class="token keyword">private</span> E <span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">//首先获取队列数组</span>
       <span class="token keyword">final</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> items <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">;</span>
       <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
@@ -752,7 +752,7 @@ ConcurrentLinkedQueue的结</div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">96.2k</span>
+                <span class="white-color">97.3k</span>
             
 
             

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-04-02T13:01:04.777Z</updated>
+  <updated>2019-04-09T03:32:48.677Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>volatile的内存语义</title>
+    <link href="https://blog.qinxuewu.club/2019/04/05/java/volatile-de-nei-cun-yu-yi/"/>
+    <id>https://blog.qinxuewu.club/2019/04/05/java/volatile-de-nei-cun-yu-yi/</id>
+    <published>2019-04-05T06:29:09.000Z</published>
+    <updated>2019-04-09T03:32:48.677Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;volatile的特性&quot;&gt;&lt;a href=&quot;#volatile的特性&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://blog.qinxuewu.club/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="volatile" scheme="https://blog.qinxuewu.club/tags/volatile/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot集成prometheus+Grafana监控</title>
     <link href="https://blog.qinxuewu.club/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/"/>
     <id>https://blog.qinxuewu.club/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/</id>
     <published>2019-04-02T12:58:45.000Z</published>
-    <updated>2019-04-02T13:01:04.777Z</updated>
+    <updated>2019-04-03T06:34:44.629Z</updated>
     
     <summary type="html">
     
@@ -52,7 +78,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/31/java/shen-ru-li-jie-xian-cheng-chi-threadpoolexecutor/"/>
     <id>https://blog.qinxuewu.club/2019/03/31/java/shen-ru-li-jie-xian-cheng-chi-threadpoolexecutor/</id>
     <published>2019-03-31T02:21:09.000Z</published>
-    <updated>2019-04-01T01:32:32.213Z</updated>
+    <updated>2019-04-09T03:33:57.552Z</updated>
     
     <summary type="html">
     
@@ -78,7 +104,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/30/java/shen-ru-li-jie-arrayblockingqueue/"/>
     <id>https://blog.qinxuewu.club/2019/03/30/java/shen-ru-li-jie-arrayblockingqueue/</id>
     <published>2019-03-30T02:21:09.000Z</published>
-    <updated>2019-04-01T01:32:32.212Z</updated>
+    <updated>2019-04-09T03:38:02.119Z</updated>
     
     <summary type="html">
     
@@ -131,7 +157,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/28/java/shen-ru-li-jie-threadlocal-yuan-ma/"/>
     <id>https://blog.qinxuewu.club/2019/03/28/java/shen-ru-li-jie-threadlocal-yuan-ma/</id>
     <published>2019-03-28T11:52:09.000Z</published>
-    <updated>2019-03-29T02:11:37.014Z</updated>
+    <updated>2019-04-09T03:39:17.805Z</updated>
     
     <summary type="html">
     
@@ -211,7 +237,7 @@
     <link href="https://blog.qinxuewu.club/2019/03/22/java/shen-ru-li-jie-countdownlatch-yuan-ma/"/>
     <id>https://blog.qinxuewu.club/2019/03/22/java/shen-ru-li-jie-countdownlatch-yuan-ma/</id>
     <published>2019-03-22T04:52:09.000Z</published>
-    <updated>2019-03-29T02:12:21.980Z</updated>
+    <updated>2019-04-09T03:40:27.735Z</updated>
     
     <summary type="html">
     
@@ -219,8 +245,7 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190321214421587.png&quot; alt=&quot;类方法&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;
         
       
     
@@ -514,32 +539,6 @@
         
         
           &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.qinxuewu.club/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构与算法(一)顺序表和单链表的比较</title>
-    <link href="https://blog.qinxuewu.club/2019/02/03/shu-ju-jie-gou-yu-suan-fa/shun-xu-biao-he-dan-lian-biao-de-bi-jiao/"/>
-    <id>https://blog.qinxuewu.club/2019/02/03/shu-ju-jie-gou-yu-suan-fa/shun-xu-biao-he-dan-lian-biao-de-bi-jiao/</id>
-    <published>2019-02-03T12:28:21.000Z</published>
-    <updated>2019-03-29T02:17:36.755Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;线性查找法&quot;&gt;&lt;a href=&quot;#线性查找法&quot; class=&quot;headerlink&quot;
         
       
     

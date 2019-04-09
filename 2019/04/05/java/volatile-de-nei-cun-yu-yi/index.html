@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="常用工具, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
-    <meta name="description" content="常用工具 | codeing">
+    <meta name="keywords" content="volatile的内存语义, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
+    <meta name="description" content="volatile的特性
+volatile修饰的变量可以禁止指令重排序和保证了内存可见性和单一操作的原子性，类似i++这样的复合操作的原子性保证不了
+有volatile关键字修饰的共享变量进行写操作数，会多出一个lock前缀指令。lock前缀">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>常用工具 | codeing</title>
+    <title>volatile的内存语义 | codeing</title>
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -257,13 +259,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        常用工具
+                        volatile的内存语义
                     </div>
                 </div>
             </div>
@@ -372,12 +374,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/volatile/" target="_blank">
+                                <span class="chip bg-color">volatile</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                并发编程
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -385,21 +400,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-24
+                    2019-04-05
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        118
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -415,19 +430,90 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="在线画图工具"><a href="#在线画图工具" class="headerlink" title="在线画图工具"></a>在线画图工具</h4><p><a href="https://www.processon.com" target="_blank" rel="noopener">https://www.processon.com</a></p>
-<h4 id="深入理解JVM思维导图"><a href="#深入理解JVM思维导图" class="headerlink" title="深入理解JVM思维导图"></a>深入理解JVM思维导图</h4><p><a href="https://www.processon.com/view/5c47c2cfe4b025fe7c875dc1" target="_blank" rel="noopener">https://www.processon.com/view/5c47c2cfe4b025fe7c875dc1</a></p>
-<h4 id="MdEditor在线编辑器"><a href="#MdEditor在线编辑器" class="headerlink" title="MdEditor在线编辑器"></a>MdEditor在线编辑器</h4><p><a href="https://www.mdeditor.com/" target="_blank" rel="noopener">https://www.mdeditor.com/</a></p>
-<h4 id="颜家大少Md2All"><a href="#颜家大少Md2All" class="headerlink" title="颜家大少Md2All"></a>颜家大少Md2All</h4><p><a href="http://md.aclickall.com/" target="_blank" rel="noopener">http://md.aclickall.com/</a></p>
-<h4 id="leetcode"><a href="#leetcode" class="headerlink" title="leetcode"></a>leetcode</h4><p><a href="https://leetcode-cn.com/" target="_blank" rel="noopener">https://leetcode-cn.com/</a></p>
-<h4 id="马克飞象"><a href="#马克飞象" class="headerlink" title="马克飞象"></a>马克飞象</h4><p><a href="https://maxiang.io/" target="_blank" rel="noopener">https://maxiang.io/</a></p>
-<h4 id="在线运行代码"><a href="#在线运行代码" class="headerlink" title="在线运行代码"></a>在线运行代码</h4><p><a href="https://tool.lu/coderunner/" target="_blank" rel="noopener">https://tool.lu/coderunner/</a></p>
-<h4 id="站长工具"><a href="#站长工具" class="headerlink" title="站长工具"></a>站长工具</h4><p><a href="http://s.tool.chinaz.com/tools/pagecode.aspx" target="_blank" rel="noopener">http://s.tool.chinaz.com/tools/pagecode.aspx</a></p>
-<h4 id="调色板"><a href="#调色板" class="headerlink" title="调色板"></a>调色板</h4><p><a href="http://tool.chinaz.com/Tools/OnlineColor.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/OnlineColor.aspx</a></p>
-<h4 id="JS在线加密"><a href="#JS在线加密" class="headerlink" title="JS在线加密"></a>JS在线加密</h4><p><a href="http://tool.chinaz.com/js.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/js.aspx</a></p>
-<h4 id="redis官网"><a href="#redis官网" class="headerlink" title="redis官网"></a>redis官网</h4><p><a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a></p>
-<h4 id="在线文档"><a href="#在线文档" class="headerlink" title="在线文档"></a>在线文档</h4><p><a href="http://tool.oschina.net/apidocs" target="_blank" rel="noopener">http://tool.oschina.net/apidocs</a></p>
-<h4 id="fontawesome图标4-7"><a href="#fontawesome图标4-7" class="headerlink" title="fontawesome图标4.7"></a>fontawesome图标4.7</h4><p><a href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener">https://fontawesome.com/v4.7.0/icons/</a></p>
+                <h2 id="volatile的特性"><a href="#volatile的特性" class="headerlink" title="volatile的特性"></a>volatile的特性</h2><ul>
+<li><code>volatile</code>修饰的变量可以禁止指令重排序和保证了内存可见性和单一操作的原子性，类似<code>i++</code>这样的复合操作的原子性保证不了</li>
+<li>有<code>volatile</code>关键字修饰的共享变量进行写操作数，会多出一个<code>lock</code>前缀指令。<code>lock</code>前缀指令其实就相当于一个内存屏障。在多处理器下，会将当前处理器工作内存的数据回写到主内存中，并且这个回写操作会其它线程中缓存该内存地址的数据无效。相当于会在写操作后，发出一个信号给缓存了这个数的线程，告诉它们值更新了，需要从主内存中从新获取<ul>
+<li>在<code>JVM</code>底层<code>volatile</code>是采用“<code>内存屏障</code>”来实现的。</li>
+</ul>
+</li>
+<li><code>volatile</code>经常用于两个两个场景：状态标记两、单列模式中的<code>DCL</code></li>
+</ul>
+<h2 id="volatile写-读建立的happens-before关系"><a href="#volatile写-读建立的happens-before关系" class="headerlink" title="volatile写-读建立的happens-before关系"></a>volatile写-读建立的happens-before关系</h2><pre class=" language-java"><code class="language-java">  <span class="token keyword">private</span>  <span class="token keyword">int</span>  count<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//普通变量</span>
+  <span class="token keyword">private</span>  <span class="token keyword">volatile</span>  <span class="token keyword">boolean</span> falg<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//volatile 修饰的变量</span>
+    <span class="token comment" spellcheck="true">//写操作</span>
+    <span class="token keyword">public</span>  <span class="token keyword">void</span>  <span class="token function">writer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        count<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 1</span>
+        falg<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 读操作</span>
+    <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">reader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>falg<span class="token punctuation">)</span><span class="token punctuation">{</span>                   <span class="token comment" spellcheck="true">//3</span>
+            <span class="token keyword">int</span>  sum<span class="token operator">=</span>count<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 4</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>假设有两个线程：线程<code>A</code>调用读方法， 线程<code>B</code>调用写方法<br>根据happens-before规则，这个过程的建立分为三类：</li>
+</ul>
+<ol>
+<li><code>程序次序规则</code>： 1 happens-before 2,3 happens-before 4</li>
+<li><code>volatile规则</code>：2 happens-before 3 。对一个volatile变量的写操作先行发生于后面对这个变量的读操作</li>
+<li><code>传递规则</code>： 1 happens-before 4 ；</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20190405130152624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt=""></p>
+<ul>
+<li>如果<code>falg</code>不是volatile修饰的，那么<code>操作1</code>和<code>操作2</code>之间没有数据依赖性，处理器可能会对这两个操作进行<code>重排序</code>，这时<code>线程A</code>正好执行先执行了<code>操作2</code>，然后这时<code>线程B</code>抢先执行了<code>操作3</code>, 发现为<code>true</code>就执行<code>if语句</code>里的代码， 得到值可能就是<code>1</code>，而不是我们所预想的输出<code>sum=2</code>。</li>
+</ul>
+<h2 id="volatile写-读的内存语义"><a href="#volatile写-读的内存语义" class="headerlink" title="volatile写-读的内存语义"></a>volatile写-读的内存语义</h2><ul>
+<li><code>volatile写操作</code>：当对一个volatile共享变量写操作时，JMM会当前线程对应的更新的后的本地内存中的值强制刷新到主内存中</li>
+<li><code>volatile读操作</code>：当读一个<code>volatile</code>共享变量时，JMM会把当前线程对应的本地内存<code>标记为无效</code>，然后线程会从主内存中加载最新的值到工作内存中进行操作。<br><img src="https://img-blog.csdnimg.cn/20190405131645165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt=""></li>
+<li>线程A写一个<code>volatile</code>变量，其实就是新城A向接下来要读取这个共享变量的某个线程，发送了一个信号，告诉它我已经修改了共享变量，你的工作内存的值要被标记无效。</li>
+<li>线程B读一个<code>volatile</code>变量，其实就是接收了之前线程A发出的修改共享变量的信号。</li>
+<li>对一个volatile变量的写操作，随后对这个变量的读操作，其实就是两个线程之间的进行了通讯。</li>
+</ul>
+<h2 id="volatile的内存语义的实现"><a href="#volatile的内存语义的实现" class="headerlink" title="volatile的内存语义的实现"></a>volatile的内存语义的实现</h2><ul>
+<li>重排序分为编译器重排序和处理器重排序，为了实现volatile内存语义，JMM会分别限制这两种重排序的内型。<blockquote>
+<p><code>volatilec</code>重排序规则</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>第一个操作</th>
+<th>第二个操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通读/写</td>
+<td>普通读/写: yes ,      <code>volatile</code>读 ：yes,           <code>volatile</code>写 ：no,</td>
+</tr>
+<tr>
+<td>volatile读</td>
+<td>普通读/写: no ,      <code>volatile</code>读 ：no,           <code>volatile</code>写 ：no,</td>
+</tr>
+<tr>
+<td>volatile写</td>
+<td>普通读/写: yes ,      <code>volatile</code>读 ：no,           <code>volatile</code>写 ：no,</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>当第一个操作为普通变量的读/写时，如果第二个操作是<code>volatile</code>写，则编译器不能重排序这个两个操作。</li>
+<li>当第一个操作是<code>volatile</code>读时,第二个操作不管是什么都不能重排序，这个规则确保volatile读之后的操作不会排序的它之前。</li>
+<li>当一个操作是volatile写时，第二个操作时volatile读时，不能重排序</li>
+</ul>
+<blockquote>
+<p>为了实现<code>volatile</code>内存语义，编译器生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。</p>
+</blockquote>
+<ul>
+<li>在每个<code>volatile写</code>之前插入一个<code>StoreStore</code>屏障</li>
+<li>在每个<code>volatile写</code>操作的后面插入一个StoreLoad屏障</li>
+<li>在每个<code>volatile读</code>操作的后面插入一个LoadLoad屏障</li>
+<li>在每个<code>volatile读</code>操作的后面插入一个LoadStore屏障<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w7ueh8mdj30nk0ed427.jpg" alt="volatile写指令序列示意图"></li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w833hp28j30ot0eh0wk.jpg" alt="volatile读指令序列示意图"></p>
 
             </div>
             <hr>
@@ -451,7 +537,7 @@
                     </span>
                     <a href="https://blog.qinxuewu.club" class="b-link-green">codeing</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/Brain/index.html" class="b-link-green">常用工具</a>
+                    <a href="/2019/04/05/java/volatile-de-nei-cun-yu-yi/" class="b-link-green">volatile的内存语义</a>
                 </p>
             </div>
         </div>
@@ -473,7 +559,7 @@
         repo: 'a870439570.github.io',
         owner: 'a870439570',
         admin: ["a870439570"],
-        id: '2019-01-24T18-35-48',
+        id: '2019-04-05T14-29-09',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -499,32 +585,44 @@
                 <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/Brain/index.html">
+                <a href="/2019/04/05/java/volatile-de-nei-cun-yu-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="常用工具">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="volatile的内存语义">
                         
-                        <span class="card-title">常用工具</span>
+                        <span class="card-title">volatile的内存语义</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">在线画图工具https://www.processon.com
-深入理解JVM思维导图https://www.processon.com/view/5c47c2cfe4b025fe7c875dc1
-MdEditor在线编辑器https://</div>
+                    <div class="summary">volatile的特性
+volatile修饰的变量可以禁止指令重排序和保证了内存可见性和单一操作的原子性，类似i++这样的复合操作的原子性保证不了
+有volatile关键字修饰的共享变量进行写操作数，会多出一个lock前缀指令。lock前缀</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-05
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            qinxuewu
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/volatile/" target="_blank">
+                        <span class="chip bg-color">volatile</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -532,35 +630,56 @@ MdEditor在线编辑器https://</div>
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Brain/index.html">
+                <a href="/2019/04/02/spring-xi-lie/springboot-ji-cheng-prometheus-grafana-jian-kong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="常用工具">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="SpringBoot集成prometheus+Grafana监控">
                         
-                        <span class="card-title">常用工具</span>
+                        <span class="card-title">SpringBoot集成prometheus+Grafana监控</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">在线画图工具https://www.processon.com
-深入理解JVM思维导图https://www.processon.com/view/5c47c2cfe4b025fe7c875dc1
-MdEditor在线编辑器https://</div>
+                    <div class="summary">概述
+Prometheus是一个最初在SoundCloud上构建的开源系统监视和警报工具包 。
+
+添加依赖    &lt;dependency>
+            &lt;groupId>org.springframework.boo</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-02
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            qinxuewu
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/springboot/" class="post-category" target="_blank">
+                                    springboot
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/springboot/" target="_blank">
+                        <span class="chip bg-color">springboot</span>
+                    </a>
+                    
+                    <a href="/tags/prometheus/" target="_blank">
+                        <span class="chip bg-color">prometheus</span>
+                    </a>
+                    
+                    <a href="/tags/Grafana/" target="_blank">
+                        <span class="chip bg-color">Grafana</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
