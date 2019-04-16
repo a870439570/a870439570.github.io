@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.qinxuewu.club/"/>
-  <updated>2019-04-09T03:32:48.677Z</updated>
+  <updated>2019-04-16T07:55:38.145Z</updated>
   <id>https://blog.qinxuewu.club/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一条SQL查询语句是如何执行的</title>
+    <link href="https://blog.qinxuewu.club/2019/04/16/shu-ju-ku/sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de/"/>
+    <id>https://blog.qinxuewu.club/2019/04/16/shu-ju-ku/sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de/</id>
+    <published>2019-04-16T07:43:11.000Z</published>
+    <updated>2019-04-16T07:55:38.145Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;MySQL可以分为&lt;code&gt;Server&lt;/code&gt;层和&lt;code&gt;存储引擎&lt;/code&gt;层两部分&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Server&lt;/code&gt;层包括连接器、查询缓存、分析器、优化器、执行器等，涵
+        
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://blog.qinxuewu.club/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="sql" scheme="https://blog.qinxuewu.club/tags/sql/"/>
+    
+  </entry>
   
   <entry>
     <title>volatile的内存语义</title>
@@ -505,32 +535,6 @@
     <id>https://blog.qinxuewu.club/2019/02/06/shu-ju-jie-gou-yu-suan-fa/shuang-xiang-lian-biao/</id>
     <published>2019-02-06T05:39:21.000Z</published>
     <updated>2019-03-29T02:16:54.564Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="https://blog.qinxuewu.club/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="https://blog.qinxuewu.club/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构与算法(二)循环链表的实现</title>
-    <link href="https://blog.qinxuewu.club/2019/02/05/shu-ju-jie-gou-yu-suan-fa/xun-huan-lian-biao/"/>
-    <id>https://blog.qinxuewu.club/2019/02/05/shu-ju-jie-gou-yu-suan-fa/xun-huan-lian-biao/</id>
-    <published>2019-02-05T15:29:21.000Z</published>
-    <updated>2019-03-29T02:17:01.801Z</updated>
     
     <summary type="html">
     

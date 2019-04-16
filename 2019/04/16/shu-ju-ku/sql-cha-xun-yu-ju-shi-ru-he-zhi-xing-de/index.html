@@ -4,10 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringBoot版的JVM检控工具, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
-    <meta name="description" content="项目介绍
-基于SpringBoot2.0 实现的jvm远程监工图形化工具，可以同时监控多个web应用
-该项目是借鉴另个一开源项目 （ JavaMonitor） https://gitee.com/zyzpp/JavaMonitor 演变而来">
+    <meta name="keywords" content="一条SQL查询语句是如何执行的, java,jvm,springboot,hexo,redis,mongodb,elk,mysql,codeing-java">
+    <meta name="description" content="
+MySQL可以分为Server层和存储引擎层两部分
+
+
+Server层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SpringBoot版的JVM检控工具 | codeing</title>
+    <title>一条SQL查询语句是如何执行的 | codeing</title>
     <link rel="icon" type="image/png" href="/images/qinxuewu.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -277,13 +279,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        SpringBoot版的JVM检控工具
+                        一条SQL查询语句是如何执行的
                     </div>
                 </div>
             </div>
@@ -394,8 +396,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/springboot/" target="_blank">
-                                <span class="chip bg-color">springboot</span>
+                            <a href="/tags/sql/" target="_blank">
+                                <span class="chip bg-color">sql</span>
                             </a>
                         
                     </div>
@@ -406,8 +408,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/springboot/" class="post-category" target="_blank">
-                                springboot
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                数据库
                             </a>
                         
                     </div>
@@ -418,21 +420,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-01-26
+                    2019-04-16
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        260
+                        1.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -448,23 +450,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><ul>
-<li>基于SpringBoot2.0 实现的jvm远程监工图形化工具，可以同时监控多个web应用</li>
-<li>该项目是借鉴另个一开源项目 （ JavaMonitor） <a href="https://gitee.com/zyzpp/JavaMonitor" target="_blank" rel="noopener">https://gitee.com/zyzpp/JavaMonitor</a> 演变而来，剔除了一些功能，增加了可远程监控模块，只需要在需要监控的项目集成监控的jar包 并设置可访问的IP（默认为空 则不拦截IP访问） 就可以实现远程监控,和用户管理模块,动态定时任务<br>支付windows服务器和Linux服务监控,Mac还未测试 应该也支持 </li>
+                <blockquote>
+<p>MySQL可以分为<code>Server</code>层和<code>存储引擎</code>层两部分</p>
+</blockquote>
+<ul>
+<li><code>Server</code>层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</li>
+<li><code>存储引擎层</code>负责数据的存储和提取。其架构模式是插件式的，支持InnoDB、MyISAM、Memory等多个存储引擎。现在最常用的存储引擎是InnoDB，它从MySQL 5.5.5版本开始成为了默认存储引擎。</li>
+<li>不同的存储引擎共用一个Server层，也就是从连接器到执行器的部分</li>
 </ul>
-<h2 id="目录说明"><a href="#目录说明" class="headerlink" title="目录说明"></a>目录说明</h2><ol>
-<li>boot-actuator  需要监控的项目demo</li>
-<li>actuator-service  监控端点jar包 需要引入到需要监控的项目中（已打包好上传）</li>
-<li>boot-monitor    监监控图形化工程</li>
-<li>Sql文件  /boot-monitor/src/main/resources/db/actuator.sql</li>
-</ol>
-<h2 id="部署文档"><a href="#部署文档" class="headerlink" title="部署文档"></a><a href="https://a870439570.github.io/work-doc/actuator/" target="_blank" rel="noopener">部署文档</a></h2><ul>
-<li><a href="https://a870439570.github.io/work-doc/actuator/" target="_blank" rel="noopener">https://a870439570.github.io/work-doc/actuator/</a></li>
+<p>一条普通的查询语是怎样执行并返回结果了</p>
+<pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> table_test <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">10</span>；
+</code></pre>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g24it5uzpkj30og0mu0v4.jpg" alt="一套查询SQL的执行流程图"></p>
+<p><strong>连接器</strong></p>
+<ul>
+<li>第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接完成后，如果你没有后续的动作，这个连接就处于空闲状态，你可以在<code>show processlist</code>命令中看到它。客户端如果太长时间没动静，连接器就会自动将它断开。这个时间是由参数<code>wait_timeout</code>控制的，默认值是<code>8</code>小时。数据库里面，长连接是指连接成功后，如果客户端持续有请求，则一直使用同一个连接。短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。</li>
 </ul>
-<h2 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h2><p><a href="https://github.com/a870439570/boot-actuator" target="_blank" rel="noopener">https://github.com/a870439570/boot-actuator</a></p>
-<h2 id="部分效果图如下"><a href="#部分效果图如下" class="headerlink" title="部分效果图如下"></a>部分效果图如下</h2><h3 id="监控列表主页-增加应用，删除应用"><a href="#监控列表主页-增加应用，删除应用" class="headerlink" title="监控列表主页  增加应用，删除应用"></a>监控列表主页  增加应用，删除应用</h3><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3j279phj31ef0omjy6.jpg" alt=""></p>
-<h3 id="监控详情"><a href="#监控详情" class="headerlink" title="监控详情"></a>监控详情</h3><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g3jt5wz1j31dh0ohafa.jpg" alt=""></p>
-<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
+<p><strong>查询缓存</strong></p>
+<ul>
+<li>连接建立完成后，你就可以执行<code>select</code>语句了。执行逻辑就会来到第二步：查询缓存。</li>
+<li>MySQL拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以<code>key-value对</code>的形式，被直接缓存在内存中。<code>key是查询的语句</code>，<code>value是查询的结果</code>。如果你的查询能够直接在这个缓存中找到key，那么这个value就会被直接返回给客户端。</li>
+<li>如果语句不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。</li>
+</ul>
+<blockquote>
+<p>大多数情况下建议不要使用查询缓存，查询缓存往往弊大于利。查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。</p>
+</blockquote>
+<p><strong>分析器</strong></p>
+<ul>
+<li>如果没有命中查询缓存，就要开始真正执行语句了。首先，MySQL需要知道你要做什么，因此需要对SQL语句做解析。分析器先会做<code>“词法分析”</code>,词法分析完后就要做<code>“语法分析”</code>。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个SQL语句是否满足MySQL语法。如果你的语句不对，就会收到<code>“You have an error in your SQL syntax”</code>的错误提醒</li>
+</ul>
+<p><strong>优化器</strong></p>
+<ul>
+<li>经过了分析器，MySQL就知道你要做什么了。在开始执行之前，还要先经过优化器的处理。</li>
+<li>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。</li>
+</ul>
+<blockquote>
+<p>比如你执行下面这样的语句，这个语句是执行两个表的join：<br><code>mysql&gt; select * from t1 join t2 using(ID)  where t1.c=10 and t2.d=20;</code></p>
+</blockquote>
+<ul>
+<li>既可以先从表t1里面 取出c=10的记录的ID值，再根据ID值关联到表t2，再判断t2里面d的值是否等于20。</li>
+<li>也可以先从表t2里面取出d=20的记录的ID值，再根据ID值关联到t1，再判断t1里面c的值是否等于10。<br>这两种执行方法的逻辑结果是一样的，但是执行的效率会有不同，而优化器的作用就是决定选择使用哪一个方案。</li>
+</ul>
+<p><strong>执行器</strong></p>
+<ul>
+<li>MySQL通过分析器知道了你要做什么，通过优化器知道了该怎么做，于是就进入了执行器阶段，开始执行语句。</li>
+<li>开始执行的时候，要先判断一下你对这个表T有没有执行查询的权限，如果没有，就会返回没有权限的错误</li>
+<li>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。</li>
+</ul>
+<blockquote>
+<p><code>mysql&gt; select * from T where ID=10;</code><br>比如我们这个例子中的表T中，ID字段没有索引，那么执行器的执行流程是这样的：<br>调用InnoDB引擎接口取这个表的第一行，判断ID值是不是10，如果不是则跳过，如果是则将这行存在结果集中；<br>调用引擎接口取“下一行”，重复相同的判断逻辑，直到取到这个表的最后一行。<br>执行器将上述遍历过程中所有满足条件的行组成的记录集作为结果集返回给客户端</p>
+</blockquote>
+<ul>
+<li>至此，这个整个语句就执行完成了。一条查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎。</li>
+</ul>
+<blockquote>
+<p>参考：MySql实战45讲</p>
+</blockquote>
 
             </div>
             <hr>
@@ -488,7 +529,7 @@
                     </span>
                     <a href="https://blog.qinxuewu.club" class="b-link-green">codeing</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/26/spring-xi-lie/springboot-ban-de-jvm-jian-kong-gong-ju/" class="b-link-green">SpringBoot版的JVM检控工具</a>
+                    <a href="/2019/04/16/shu-ju-ku/sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de/" class="b-link-green">一条SQL查询语句是如何执行的</a>
                 </p>
             </div>
         </div>
@@ -510,7 +551,7 @@
         repo: 'a870439570.github.io',
         owner: 'a870439570',
         admin: ["a870439570"],
-        id: '2019-01-26T17-46-51',
+        id: '2019-04-16T15-43-11',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -533,48 +574,46 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/01/27/spring-xi-lie/springcloudalibaba-zhi-fu-wu-zhu-ce-fa-xian/">
+                <a href="/2019/04/16/shu-ju-ku/sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="spring cloud alibaba系列(一) 服务注册">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="一条SQL查询语句是如何执行的">
                         
-                        <span class="card-title">spring cloud alibaba系列(一) 服务注册</span>
+                        <span class="card-title">一条SQL查询语句是如何执行的</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">alibaba-cloud本项目演示如何使用 spring cloud alibaba系列之服务的注册于发现
-引入依赖
-版本 0.2.1.RELEASE 对应的是 Spring Cloud Finchley 版本，
+                    <div class="summary">
+MySQL可以分为Server层和存储引擎层两部分
 
-版本 0.1.1.RE</div>
+
+Server层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/springcloud/" class="post-category" target="_blank">
-                                    springcloud
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/springcloud/" target="_blank">
-                        <span class="chip bg-color">springcloud</span>
-                    </a>
-                    
-                    <a href="/tags/alibaba/" target="_blank">
-                        <span class="chip bg-color">alibaba</span>
+                    <a href="/tags/sql/" target="_blank">
+                        <span class="chip bg-color">sql</span>
                     </a>
                     
                 </div>
@@ -588,28 +627,29 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/01/25/java/shen-ru-li-jie-jvm-nao-tu/">
+                <a href="/2019/04/05/java/volatile-de-nei-cun-yu-yi/">
                     <div class="card-image">
                         
-                        <img src="/images/banner.png" class="responsive-img" alt="深入理解JVM+脑图">
                         
-                        <span class="card-title">深入理解JVM+脑图</span>
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="volatile的内存语义">
+                        
+                        <span class="card-title">volatile的内存语义</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-1. 运行时数据区域
-Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途,以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。</div>
+                    <div class="summary">volatile的特性
+volatile修饰的变量可以禁止指令重排序和保证了内存可见性和单一操作的原子性，类似i++这样的复合操作的原子性保证不了
+有volatile关键字修饰的共享变量进行写操作数，会多出一个lock前缀指令。lock前缀</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JVM/" class="post-category" target="_blank">
-                                    JVM
+                            <a href="/categories/并发编程/" class="post-category" target="_blank">
+                                    并发编程
                                 </a>
                             
                             
@@ -619,8 +659,8 @@ Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/" target="_blank">
-                        <span class="chip bg-color">JVM</span>
+                    <a href="/tags/volatile/" target="_blank">
+                        <span class="chip bg-color">volatile</span>
                     </a>
                     
                 </div>
