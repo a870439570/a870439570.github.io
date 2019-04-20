@@ -516,48 +516,49 @@ Thread<span class="token operator">-</span><span class="token number">1</span>�
 <ul>
 <li>源码中可以看出  <code>ThreadLocalMap</code> 依靠<code>Entry</code> 来存储<code>ThreadLocal</code>和副本值，key就是<code>ThreadLocal</code>，<code>value</code>就是<code>ThreadLocal</code>的变量副本值。<code>Entry</code> 集成<code>WeakReference</code>，说明是一个弱引用关系。当一个对象仅仅被弱引用指向, 而没有任何其他强引用指向的时候, 如果这时GC运行, 那么这个对象就会被回收，不论当前的内存空间是否足够，这个对象都会被回收。</li>
 </ul>
-<blockquote>
-<p><code>getMap</code>方法<br><code>`</code>java<br>    //获取与ThreadLocal关联的Thread中的ThreadLocal。</p>
-</blockquote>
-<pre><code>ThreadLocalMap getMap(Thread t) {
-    return t.threadLocals;
-}
-</code></pre><pre><code>* `ThreadLocal`是包含在`Thread`类中的
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//获取与ThreadLocal关联的Thread中的ThreadLocal。</span>
 
-`ThreadLocalMap`的`set`方法
-```java
-        private void set(ThreadLocal&lt;?&gt; key, Object value) {
-            Entry[] tab = table;
-            int len = tab.length;
-           //计算ThreadLocal 散列值 找到存储位置
-            int i = key.threadLocalHashCode &amp; (len-1);
-            //利用线性探测法找到合适的存储位置
-            for (Entry e = tab[i];
-                 e != null;
-                 e = tab[i = nextIndex(i, len)]) {
-                ThreadLocal&lt;?&gt; k = e.get();
-                //如果找到的k和传入的key相等，说明存在，覆盖更新即可
-                if (k == key) {
-                    e.value = value;
-                    return;
-                }
-               // key == null，但是存在值（因为此处的e != null），说明之前的ThreadLocal对象已经被回收了
-                if (k == null) {
-                 // 替换之前的的元素
-                    replaceStaleEntry(key, value, i);
-                    return;
-                }
-            }
-            //不存在对应key的实例，则创建一个新的
-            tab[i] = new Entry(key, value);
-           //增加容量大小
-            int sz = ++size;
-            //        // 如果没有清理陈旧的 Entry 并且数组中的元素大于了阈值，则进行 rehash
-            if (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold)
-            //整表格的大小。 首先扫描整个表，删除过时的条目。 如果这不足以缩小表的大小，则将表大小加倍。
-                rehash();
-        }
-</code></pre><h3 id="get-操作"><a href="#get-操作" class="headerlink" title="get()操作"></a>get()操作</h3><pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> T <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ThreadLocalMap <span class="token function">getMap</span><span class="token punctuation">(</span>Thread t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> t<span class="token punctuation">.</span>threadLocals<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><code>ThreadLocal</code>是包含在<code>Thread</code>类中的</li>
+</ul>
+<p><code>ThreadLocalMap</code>的<code>set</code>方法</p>
+<pre class=" language-java"><code class="language-java">        <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span>ThreadLocal<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> key<span class="token punctuation">,</span> Object value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Entry<span class="token punctuation">[</span><span class="token punctuation">]</span> tab <span class="token operator">=</span> table<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> len <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+           <span class="token comment" spellcheck="true">//计算ThreadLocal 散列值 找到存储位置</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> key<span class="token punctuation">.</span>threadLocalHashCode <span class="token operator">&amp;</span> <span class="token punctuation">(</span>len<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//利用线性探测法找到合适的存储位置</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Entry e <span class="token operator">=</span> tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                 e <span class="token operator">!=</span> null<span class="token punctuation">;</span>
+                 e <span class="token operator">=</span> tab<span class="token punctuation">[</span>i <span class="token operator">=</span> <span class="token function">nextIndex</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                ThreadLocal<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> k <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//如果找到的k和传入的key相等，说明存在，覆盖更新即可</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+                    <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+               <span class="token comment" spellcheck="true">// key == null，但是存在值（因为此处的e != null），说明之前的ThreadLocal对象已经被回收了</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                 <span class="token comment" spellcheck="true">// 替换之前的的元素</span>
+                    <span class="token function">replaceStaleEntry</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//不存在对应key的实例，则创建一个新的</span>
+            tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Entry</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token comment" spellcheck="true">//增加容量大小</span>
+            <span class="token keyword">int</span> sz <span class="token operator">=</span> <span class="token operator">++</span>size<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//        // 如果没有清理陈旧的 Entry 并且数组中的元素大于了阈值，则进行 rehash</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">cleanSomeSlots</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> sz<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> sz <span class="token operator">>=</span> threshold<span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true">//整表格的大小。 首先扫描整个表，删除过时的条目。 如果这不足以缩小表的大小，则将表大小加倍。</span>
+                <span class="token function">rehash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="get-操作"><a href="#get-操作" class="headerlink" title="get()操作"></a>get()操作</h3><pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> T <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// 记录当前访问线程</span>
         Thread t <span class="token operator">=</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//获取当前线程的ThreadLocalMap对象</span>
@@ -883,7 +884,7 @@ Semaphore 通常用于限制可以访问某些资源（物理或逻辑的）的�
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">97.2k</span>
+                <span class="white-color">103.6k</span>
             
 
             

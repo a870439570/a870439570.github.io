@@ -417,7 +417,7 @@ Prometheus是一个最初在SoundCloud上构建的开源系统监视和警报工
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        687
+                        712
                     </div>
                     
 
@@ -485,9 +485,15 @@ management.metrics.tags.application<span class="token operator">=</span><span cl
 <h2 id="安装Prometheus"><a href="#安装Prometheus" class="headerlink" title="安装Prometheus"></a>安装Prometheus</h2><ul>
 <li>下载地址：<a href="https://prometheus.io/download/" target="_blank" rel="noopener">https://prometheus.io/download/</a>  </li>
 <li>选择时间序列数据库版本<br><img src="https://img-blog.csdnimg.cn/20190402133007321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><blockquote>
-<p><code>Prometheus</code>会将所有采集到的样本数据以时间序列（time-series）的方式保存在内存数据库中，并且定时保存到硬盘上。<br><img src="https://img-blog.csdnimg.cn/2019040213340280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="解压"></p>
+<p><code>Prometheus</code>会将所有采集到的样本数据以时间序列（time-series）的方式保存在内存数据库中，并且定时保存到硬盘上。</p>
 </blockquote>
-<h2 id="配置prometheus-yml"><a href="#配置prometheus-yml" class="headerlink" title="配置prometheus.yml"></a>配置prometheus.yml</h2></li>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/2019040213340280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="解压"></p>
+<ul>
+<li>Linux启动方式：<code>nohup /home/prometheus/prometheus2.8.1/prometheus &amp;</code></li>
+</ul>
+<h2 id="配置prometheus-yml"><a href="#配置prometheus-yml" class="headerlink" title="配置prometheus.yml"></a>配置prometheus.yml</h2><ul>
 <li>SpringBoot官方配置：<a href="https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/</a></li>
 <li>prometheus官方文档：<a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">https://prometheus.io/docs/introduction/overview/</a></li>
 <li>Prometheus-配置解析: <a href="https://www.cnblogs.com/liujiliang/p/10080849.html" target="_blank" rel="noopener">https://www.cnblogs.com/liujiliang/p/10080849.html</a></li>
@@ -538,8 +544,10 @@ scrape_configs:
 </ul>
 <p><img src="https://img-blog.csdnimg.cn/20190402190244641.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="下载解压"></p>
 <blockquote>
-<p>启动   <code>grafana-server.exe</code><br>浏览器访问：<a href="http://127.0.0.1:3000/login" target="_blank" rel="noopener">http://127.0.0.1:3000/login</a><br><img src="https://img-blog.csdnimg.cn/20190402190347714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="登录界面"></p>
+<p>启动   <code>grafana-server.exe</code><br>Linux启动方式：nohup /home/prometheus/prometheus2.8.1/prometheus &amp;</p>
 </blockquote>
+<p>浏览器访问：<a href="http://127.0.0.1:3000/login" target="_blank" rel="noopener">http://127.0.0.1:3000/login</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20190402190347714.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="登录界面"></p>
 <p><strong>默认用户和密码均为<code>admin</code></strong></p>
 <h3 id="添加数据源"><a href="#添加数据源" class="headerlink" title="添加数据源"></a>添加数据源</h3><p>在Data Sources选项中添加数据源<br><img src="https://img-blog.csdnimg.cn/201904021916327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70" alt="搜索Prometheus数据源"></p>
 <ul>
@@ -828,7 +836,7 @@ volatile修饰的变量可以禁止指令重排序和保证了内存可见性和
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">97.2k</span>
+                <span class="white-color">103.6k</span>
             
 
             
