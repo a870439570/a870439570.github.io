@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="印象博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言今儿是大年初一,白天看完流浪地球这部科幻电影,号称中国科幻电影的一个里程碑。剧情紧凑，特性也不错很有质感。特别末日的的地下城生活片段。一个字棒。 晚上闲来无事单算研究下大话数据结构这部分，填补下数据结构这方面的弱点。 什么是循环链表 将单链表中终端结点的指针端自空指针改为指向头结点,就使整个单链表形成一 个环,这种头尾:相接的单链表称为单循环链表,简称循环链表。  循环列表的生活情境 比出 ,">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法(二)循环链表的实现">
+<meta property="og:url" content="https://qinxuewu.github.io/2019/02/05/数据结构与算法/循环链表/index.html">
+<meta property="og:site_name" content="印象博客">
+<meta property="og:description" content="前言今儿是大年初一,白天看完流浪地球这部科幻电影,号称中国科幻电影的一个里程碑。剧情紧凑，特性也不错很有质感。特别末日的的地下城生活片段。一个字棒。 晚上闲来无事单算研究下大话数据结构这部分，填补下数据结构这方面的弱点。 什么是循环链表 将单链表中终端结点的指针端自空指针改为指向头结点,就使整个单链表形成一 个环,这种头尾:相接的单链表称为单循环链表,简称循环链表。  循环列表的生活情境 比出 ,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g24er51fj30kl031q4n.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g259b9f4j30lh0d2dh6.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg">
+<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法(二)循环链表的实现">
+<meta name="twitter:description" content="前言今儿是大年初一,白天看完流浪地球这部科幻电影,号称中国科幻电影的一个里程碑。剧情紧凑，特性也不错很有质感。特别末日的的地下城生活片段。一个字棒。 晚上闲来无事单算研究下大话数据结构这部分，填补下数据结构这方面的弱点。 什么是循环链表 将单链表中终端结点的指针端自空指针改为指向头结点,就使整个单链表形成一 个环,这种头尾:相接的单链表称为单循环链表,简称循环链表。  循环列表的生活情境 比出 ,">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g24er51fj30kl031q4n.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinxuewu.github.io/2019/02/05/数据结构与算法/循环链表/">
+
+
+
+
+
+  <title>数据结构与算法(二)循环链表的实现 | 印象博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c30928a2ca92d1a2dce136bde0ab81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">印象博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工具">
+          <a href="/Brain/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qinxuewu.github.io/2019/02/05/数据结构与算法/循环链表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qinxuewu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_qinxuewu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="印象博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">数据结构与算法(二)循环链表的实现</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T23:29:21+08:00">
+                2019-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今儿是大年初一,白天看完流浪地球这部科幻电影,号称中国科幻电影的一个里程碑。剧情紧凑，特性也不错很有质感。特别末日的的地下城生活片段。一个字棒。 晚上闲来无事单算研究下大话数据结构这部分，填补下数据结构这方面的弱点。</p>
+<h2 id="什么是循环链表"><a href="#什么是循环链表" class="headerlink" title="什么是循环链表"></a>什么是循环链表</h2><ul>
+<li>将单链表中终端结点的指针端自空指针改为指向头结点,就使整个单链表形成一 个环,这种头尾:相接的单链表称为单循环链表,简称循环链表。</li>
+</ul>
+<h2 id="循环列表的生活情境"><a href="#循环列表的生活情境" class="headerlink" title="循环列表的生活情境"></a>循环列表的生活情境</h2><ul>
+<li>比出 ,你是一业务员, 家在上海。儒要经常出差,行程就是上海到北京一路上的 城市,找客户谈生意或分公司办理业务。你从上海出发,乘火车路经多个城市停留 后,再乘飞机返回上海,以后,每隔一段时间,你基本还要按照这样的行程开展业务</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g24er51fj30kl031q4n.jpg" alt="输入图片说明"></p>
+<ul>
+<li>有一次你先到南京开会，接下来要对以上的城市走一遍。此时有人对你说,不行,你得从上海开始,因为上海是第一站。 你会对这人说什么?神经病。哪有这么傻 的,直接回上海根本没有必要,你可以从南京开始,下一站蚌埠,直到北京,之后再 考虑走完上海及苏南的几个城市。显然这表示你是从当中一结点开始遍历整个链裴 , 这都是原来的单链表结构解决不了的问题。</li>
+</ul>
+<h2 id="循环链袭和单链表的主要差异"><a href="#循环链袭和单链表的主要差异" class="headerlink" title="循环链袭和单链表的主要差异"></a>循环链袭和单链表的主要差异</h2><ul>
+<li>循环链袭和单链表的主要差异就在于循环的判断条件土,原沫是判断 <code>p-&gt;next(指针域)</code><br>是否为空,现在则是 <code>p-&gt; next</code> 不等于头结点,则循环未结束。</li>
+<li>在单链表中,我们有了头结点时,我们可以用 0(1)的时间访问第一个结点,但对于要访问到最后一个结点,却需要 O(n)时间,因为我们需要将单链表全部扫描一编。</li>
+<li>循环链表的尾指针方式就用0(1)的时间访问到尾部元素</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CycleLinkList</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Node head; <span class="comment">// 头指针</span></span><br><span class="line">    Node current;<span class="comment">// 当前结点对象</span></span><br><span class="line">    <span class="keyword">int</span> size;<span class="comment">// 结点个数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CycleLinkList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 初始化头结点，让头指针指向头结点。并且让当前结点对象等于头结点。</span></span><br><span class="line">        <span class="keyword">this</span>.head = current = <span class="keyword">new</span> Node(<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;<span class="comment">// 单向链表，初始长度为零。</span></span><br><span class="line">        <span class="keyword">this</span>.head.next = <span class="keyword">this</span>.head; <span class="comment">//最后一个元素指针域指向头结点</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用当前结点对象 定位到要操作结点的前一个结点。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">index</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; -<span class="number">1</span> || index &gt; size - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"参数错误！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 说明在头结点之后操作。</span></span><br><span class="line">        <span class="keyword">if</span> (index == -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">// 第一个数据元素结点的下标是0，那么头结点的下标自然就是-1</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        current = head.next;</span><br><span class="line">        <span class="keyword">int</span> temp=<span class="number">0</span>;	 	<span class="comment">//临时变量 用户循坏判断当前节点是否到达</span></span><br><span class="line">        <span class="keyword">while</span> (current!=head &amp;&amp; temp&lt;index)&#123;</span><br><span class="line">            <span class="comment">//循环找到插入节点的前一个节点</span></span><br><span class="line">            current=current.next;</span><br><span class="line">            temp++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除思路：</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 1。定位到当前要删除的下标的对像的前一个节点</span></span><br><span class="line"><span class="comment">     * 2. 通过改变当前删除对象前一个节点的指针域。》指向当前要删除对象的指针域指向的下一个节点。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 判断链表是否为空</span></span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"链表为空，无法删除！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; size) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"参数错误！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        index(index - <span class="number">1</span>);<span class="comment">// 定位到要操作结点的前一个结点对象。</span></span><br><span class="line">        current.setNext(current.next.next);</span><br><span class="line">        size--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取思路：</span></span><br><span class="line"><span class="comment">     * 		从头节点开始遍历。用临时变量temp记录遍历的次数。一直遍历等于index就不会再行循坏，直接取出当前下标的节点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; -<span class="number">1</span> || index &gt; size - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"参数非法！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        index(index);</span><br><span class="line">        <span class="keyword">return</span> current.getElement();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 指定位置插入节点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> index, Object obj)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; size) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"参数错误！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        index(index-<span class="number">1</span>);<span class="comment">//定位到要操作结点的前一个结点对象。</span></span><br><span class="line">        current.setNext(<span class="keyword">new</span> Node(obj,current.next));</span><br><span class="line">        size++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 未指定下标末尾插入</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 1.判断当前节点指向一下节点的指针域是否为空</span></span><br><span class="line"><span class="comment">         * 如果指针域为空 说明是此节点是末尾节点</span></span><br><span class="line"><span class="comment">         * 直接在尾部修改默认节点的指针域执指向新增的节点，并把新增的节点的指针域指向null</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">while</span> (current.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//循环判断当前节点指针域是否有下一个节点</span></span><br><span class="line">            current=current.next;</span><br><span class="line">        &#125;</span><br><span class="line">        current.setNext(<span class="keyword">new</span> Node(obj, current.next));</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">	Object element; <span class="comment">// 数据域</span></span><br><span class="line">	Node next; <span class="comment">// 指针域</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 头结点的构造方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Node nextval)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.next = nextval;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 非头结点的构造方法</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Object obj, Node nextval)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.element = obj;</span><br><span class="line">		<span class="keyword">this</span>.next = nextval;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获得当前结点的指针域</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获得当前结点数据域的值</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getElement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.element;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 设置当前结点的指针域</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(Node nextval)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.next = nextval;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 设置当前结点数据域的值</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setElement</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.element = obj;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.element.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h2><p>约瑟夫环（约瑟夫问题）是一个数学的应用问题：已知n个人（以编号1，2，3…n分别表示）围坐在一张圆桌周围。从编号为k的人开始报数，数到m的那个人出列；他的下一个人又从1开始报数，数到m的那个人又出列；依此规律重复下去，直到圆桌周围的人全部出列。通常解决这类问题时我们把编号从0~n-1，最后 [1]  结果+1即为原问题的解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Yuesefu</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构建循环链表</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> totalCol</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> node <span class="title">createNodes</span><span class="params">(<span class="keyword">int</span> totalCol)</span></span>&#123;</span><br><span class="line">        node head = <span class="keyword">null</span>; <span class="comment">//定义一个头结点</span></span><br><span class="line">        node[] nodes = <span class="keyword">new</span> node[totalCol]; <span class="comment">//数组结点存放41个人</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; totalCol ; i++)&#123;</span><br><span class="line">            nodes[i] = <span class="keyword">new</span> node();</span><br><span class="line">            nodes[i].node = i+<span class="number">1</span> ; <span class="comment">//数据域赋值  不能让从0开始赋值 +1</span></span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">0</span>)&#123; <span class="comment">//为0时就是是头结点</span></span><br><span class="line">                <span class="comment">// 初始化头结点</span></span><br><span class="line">                head = nodes[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//当前下标结点的前一个节点对象的指针域指向当前i的结点</span></span><br><span class="line">                nodes[i-<span class="number">1</span>].next = nodes[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        nodes[totalCol-<span class="number">1</span>].next = head ; <span class="comment">//最后一个结点的指针域指向头结点</span></span><br><span class="line">        <span class="keyword">return</span> head ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">begin</span><span class="params">(<span class="keyword">int</span> total,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sort = <span class="number">0</span> ; <span class="comment">//删除的序号</span></span><br><span class="line">        <span class="keyword">int</span> n = total ; <span class="comment">//总人数</span></span><br><span class="line">        node head = createNodes(total);</span><br><span class="line">        <span class="comment">//判断循环链表是不是只剩下一个节点</span></span><br><span class="line">        <span class="keyword">while</span>(head.next != head)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt; key-<span class="number">1</span> ; i++)&#123;</span><br><span class="line">                <span class="comment">//1 ：每报数为3的人前一个节点 也就是2 并替代当前头结点</span></span><br><span class="line">                head = head.next;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//2：用一个临时节点代替为当前报数为3的结点</span></span><br><span class="line">            node temp = head.next;</span><br><span class="line">            System.out.println(<span class="string">"第"</span>+(++sort)+<span class="string">"个自杀的为："</span>+temp.node);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//3：使头结点的指针域指向报数为3的结点的next指向的结点</span></span><br><span class="line">            head.next = temp.next;</span><br><span class="line">            <span class="comment">//替换头结点 等于当前报数为3的人结点  循环以上步骤直到最后一个结点自杀完毕</span></span><br><span class="line">            head = head.next;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"第"</span>+(++sort)+<span class="string">"个自杀的为："</span>+head.node);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Yuesefu y = <span class="keyword">new</span> Yuesefu();</span><br><span class="line">        y.begin(<span class="number">41</span>,<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">node</span> </span>&#123;</span><br><span class="line">    node next ; <span class="comment">//指针域</span></span><br><span class="line">    <span class="keyword">int</span> node ; <span class="comment">//数据域</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> node <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(node next)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNode</span><span class="params">(<span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.node = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>算法流程如下：</p>
+<ul>
+<li>1.初始化循环链表,从下标1开始自增赋值。头结点单数据域默认为空。单独处理不存放值</li>
+<li>2.赋值到最后totalCol-1的结点  也就是尾部结点。它的指针域指向头结点形成单向循环链表。</li>
+<li>3.循序开始判断链表是不是只剩下一个节点。也就是结点的指针域是否指向头结点。如果是就直接退出while并自杀此结点</li>
+<li>4.当结点的指针域不是指向头结点时。循环操作i&lt;k-1次循环找到当前报数为3的前一个节点。并使头结点替换</li>
+<li>5 用一个临时节点代替为当前报数为3的结点（也就是步骤4找的结点的next指向）输出它已自杀</li>
+<li>6.使头结点的指针域指向报数为3的结点的next指向的结点。最后替换头结点等于当前报数为3的人结点  循环以上步骤直到最后一个结点自杀完毕</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g259b9f4j30lh0d2dh6.jpg" alt="输入图片说明"></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/03/数据结构与算法/顺序表和单链表的比较/" rel="next" title="数据结构与算法(一)顺序表和单链表的比较">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法(一)顺序表和单链表的比较
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/06/数据结构与算法/双向链表/" rel="prev" title="数据结构与算法(三)双向链表">
+                数据结构与算法(三)双向链表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_qinxuewu.jpg" alt="qinxuewu">
+            
+              <p class="site-author-name" itemprop="name">qinxuewu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qinxuewu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/qinxuewu" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:870439570@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-projects/spring-framework" title="spring" target="_blank">spring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba" title="SpringCloudAlibaba" target="_blank">SpringCloudAlibaba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetcode" target="_blank">leetcode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-cloud" title="SpringCloud" target="_blank">SpringCloud</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-boot/" title="SpringBoot" target="_blank">SpringBoot</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是循环链表"><span class="nav-number">2.</span> <span class="nav-text">什么是循环链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环列表的生活情境"><span class="nav-number">3.</span> <span class="nav-text">循环列表的生活情境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环链袭和单链表的主要差异"><span class="nav-number">4.</span> <span class="nav-text">循环链袭和单链表的主要差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">5.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#约瑟夫环"><span class="nav-number">6.</span> <span class="nav-text">约瑟夫环</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qinxuewu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/qinxuewu">GitHub </a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="shardingjdbc,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="印象博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="概述 ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring J">
+<meta name="keywords" content="shardingjdbc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot集成Sharding-JDBC实现分库分表">
+<meta property="og:url" content="https://qinxuewu.github.io/2019/04/25/spring系列/SpringBoot集成ShardingJDBC实现分库分表/index.html">
+<meta property="og:site_name" content="印象博客">
+<meta property="og:description" content="概述 ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring J">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2f75yivtsj31cu0jy0w9.jpg">
+<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot集成Sharding-JDBC实现分库分表">
+<meta name="twitter:description" content="概述 ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring J">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2f75yivtsj31cu0jy0w9.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinxuewu.github.io/2019/04/25/spring系列/SpringBoot集成ShardingJDBC实现分库分表/">
+
+
+
+
+
+  <title>SpringBoot集成Sharding-JDBC实现分库分表 | 印象博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c30928a2ca92d1a2dce136bde0ab81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">印象博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工具">
+          <a href="/Brain/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qinxuewu.github.io/2019/04/25/spring系列/SpringBoot集成ShardingJDBC实现分库分表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qinxuewu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_qinxuewu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="印象博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SpringBoot集成Sharding-JDBC实现分库分表</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-25T21:37:03+08:00">
+                2019-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring JDBC Template或直接使用JDBC。</li>
+<li>目前已经进入Apache孵化器。以4.x版本为新的发布开始</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2f75yivtsj31cu0jy0w9.jpg" alt="版本历史"></p>
+<h2 id="如何单库分表集成"><a href="#如何单库分表集成" class="headerlink" title="如何单库分表集成"></a>如何单库分表集成</h2><ul>
+<li>首先集成一个不分库只分表的模式。创建一个springboot项目，这里使用Sharding-JDBC3.0版本。使用<code>sharding-jdbc-spring-boot-starter</code>集成</li>
+</ul>
+<h3 id="pom-xml配置"><a href="#pom-xml配置" class="headerlink" title="pom.xml配置"></a>pom.xml配置</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.1.4.RELEASE&lt;/version&gt;</span><br><span class="line">       &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">   &lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">   &lt;groupId&gt;com.example&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;shatding-springboot-mybatis-generator&lt;/artifactId&gt;</span><br><span class="line">   &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">   &lt;name&gt;shatding-springboot-mybatis-generator&lt;/name&gt;</span><br><span class="line">   &lt;description&gt;SpringBoot2.x整合MyBatisGenerator 以及分库分表插件&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">   &lt;properties&gt;</span><br><span class="line">       &lt;sharding.jdbc.version&gt;3.0.0&lt;/sharding.jdbc.version&gt;</span><br><span class="line">       &lt;mybatis.version&gt;1.3.0&lt;/mybatis.version&gt;</span><br><span class="line">       &lt;druid.version&gt;1.1.10&lt;/druid.version&gt;</span><br><span class="line">       &lt;mysql.version&gt;5.1.38&lt;/mysql.version&gt;</span><br><span class="line">       &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">   &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">   &lt;dependencies&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">           &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;$&#123;mybatis.version&#125;&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;$&#123;druid.version&#125;&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;io.shardingsphere&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;sharding-jdbc-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;$&#123;sharding.jdbc.version&#125;&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建测试数据局<code>test_order</code>。分别创建三张表<code>t_address</code>， <code>t_user0</code>，<code>t_user1</code>。这里假设t_user这个预计随着系统的运行。公司发展很好，以后数据量会暴增。所以提前进行水平分片存储。相对于垂直分片，它不再将数据根据业务逻辑分类，而是通过某个字段（或某几个字段），根据某种规则将数据分散至多个库或表中，每个分片仅包含数据的一部分。这样单表数据量降下来了，mysql的B+树的检索效率就提高了</p>
+<h3 id="创建测试数据"><a href="#创建测试数据" class="headerlink" title="创建测试数据"></a>创建测试数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `t_address` (</span><br><span class="line">  `id` bigint(<span class="number">20</span>) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `code` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'编码'</span>,</span><br><span class="line">  `name` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'名称'</span>,</span><br><span class="line">  `pid` varchar(<span class="number">64</span>) NOT NULL DEFAULT <span class="string">'0'</span> COMMENT <span class="string">'父id'</span>,</span><br><span class="line">  `type` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL COMMENT <span class="string">'1国家2省3市4县区'</span>,</span><br><span class="line">  `lit` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL,</span><br><span class="line">  <span class="function">PRIMARY <span class="title">KEY</span> <span class="params">(`id`)</span></span></span><br><span class="line"><span class="function">) ENGINE</span>=InnoDB AUTO_INCREMENT=<span class="number">21</span> DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">CREATE TABLE `t_user0` (</span><br><span class="line">  `id` bigint(<span class="number">20</span>) NOT NULL,</span><br><span class="line">  `name` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'名称'</span>,</span><br><span class="line">  `city_id` <span class="keyword">int</span>(<span class="number">12</span>) DEFAULT NULL COMMENT <span class="string">'城市'</span>,</span><br><span class="line">  `sex` tinyint(<span class="number">1</span>) DEFAULT NULL COMMENT <span class="string">'性别'</span>,</span><br><span class="line">  `phone` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'电话'</span>,</span><br><span class="line">  `email` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'邮箱'</span>,</span><br><span class="line">  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'创建时间'</span>,</span><br><span class="line">  `password` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'密码'</span>,</span><br><span class="line">  <span class="function">PRIMARY <span class="title">KEY</span> <span class="params">(`id`)</span></span></span><br><span class="line"><span class="function">) ENGINE</span>=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">CREATE TABLE `t_user1` (</span><br><span class="line">  `id` bigint(<span class="number">20</span>) NOT NULL,</span><br><span class="line">  `name` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'名称'</span>,</span><br><span class="line">  `city_id` <span class="keyword">int</span>(<span class="number">12</span>) DEFAULT NULL COMMENT <span class="string">'城市'</span>,</span><br><span class="line">  `sex` tinyint(<span class="number">1</span>) DEFAULT NULL COMMENT <span class="string">'性别'</span>,</span><br><span class="line">  `phone` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'电话'</span>,</span><br><span class="line">  `email` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'邮箱'</span>,</span><br><span class="line">  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'创建时间'</span>,</span><br><span class="line">  `password` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'密码'</span>,</span><br><span class="line">  <span class="function">PRIMARY <span class="title">KEY</span> <span class="params">(`id`)</span></span></span><br><span class="line"><span class="function">) ENGINE</span>=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+
+<p>下面就是基本的curd骚操作配置了</p>
+<h3 id="添加实体类"><a href="#添加实体类" class="headerlink" title="添加实体类"></a>添加实体类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Long id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String phone;</span><br><span class="line">	<span class="keyword">private</span> String email;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> Integer cityId;</span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line">    <span class="keyword">private</span> Integer sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Long id;</span><br><span class="line">	<span class="keyword">private</span> String code;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String pid;</span><br><span class="line">	<span class="keyword">private</span> Integer type;</span><br><span class="line">	<span class="keyword">private</span> Integer lit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建Mapper"><a href="#创建Mapper" class="headerlink" title="创建Mapper"></a>创建Mapper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AddressMapper</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 保存</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">(Address address)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">Address <span class="title">get</span><span class="params">(Long id)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 保存</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">(User user)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">User <span class="title">get</span><span class="params">(Long id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加Controller"><a href="#添加Controller" class="headerlink" title="添加Controller"></a>添加Controller</h3><p>UserController</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/user/save"</span>)</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</span><br><span class="line">            User user=<span class="keyword">new</span> User();</span><br><span class="line">            user.setName(<span class="string">"test"</span>+i);</span><br><span class="line">            user.setCityId(<span class="number">1</span>%<span class="number">2</span>==<span class="number">0</span>?<span class="number">1</span>:<span class="number">2</span>);</span><br><span class="line">            user.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">            user.setSex(i%<span class="number">2</span>==<span class="number">0</span>?<span class="number">1</span>:<span class="number">2</span>);</span><br><span class="line">            user.setPhone(<span class="string">"11111111"</span>+i);</span><br><span class="line">            user.setEmail(<span class="string">"xxxxx"</span>);</span><br><span class="line">            user.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">            user.setPassword(<span class="string">"eeeeeeeeeeee"</span>);</span><br><span class="line">            userMapper.save(user);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/user/get/&#123;id&#125;"</span>)</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">get</span><span class="params">(@PathVariable Long id)</span> </span>&#123;</span><br><span class="line">		User user =  userMapper.get(id);</span><br><span class="line">		System.out.println(user.getId());</span><br><span class="line">		<span class="keyword">return</span> user;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AddressController</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddressController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> AddressMapper addressMapper;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/address/save"</span>)</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</span><br><span class="line">			Address address=<span class="keyword">new</span> Address();</span><br><span class="line">			address.setCode(<span class="string">"code_"</span>+i);</span><br><span class="line">			address.setName(<span class="string">"name_"</span>+i);</span><br><span class="line">			address.setPid(i+<span class="string">""</span>);</span><br><span class="line">			address.setType(<span class="number">0</span>);</span><br><span class="line">			address.setLit(i%<span class="number">2</span>==<span class="number">0</span>?<span class="number">1</span>:<span class="number">2</span>);</span><br><span class="line">			addressMapper.save(address);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/address/get/&#123;id&#125;"</span>)</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Address <span class="title">get</span><span class="params">(@PathVariable Long id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> addressMapper.get(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AddressMapper.xml</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"com.example.mapper.AddressMapper"</span>&gt;</span><br><span class="line">    &lt;insert id=<span class="string">"save"</span> parameterType=<span class="string">"Address"</span>&gt;</span><br><span class="line">        <span class="function">INSERT INTO <span class="title">t_address</span><span class="params">(code,name,pid,type,lit)</span></span></span><br><span class="line"><span class="function">        VALUES</span></span><br><span class="line"><span class="function">        <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        #&#123;code&#125;,#&#123;name&#125;,#&#123;pid&#125;,#&#123;type&#125;,#&#123;lit&#125;</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span></span></span><br><span class="line"><span class="function">    &lt;/insert&gt;</span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function">    &lt;select id</span>=<span class="string">"get"</span> parameterType=<span class="string">"long"</span> resultType=<span class="string">"Address"</span>&gt;</span><br><span class="line">    	select * from t_address where id = #&#123;id&#125;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+
+<p>UserMapper.xml</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"com.example.mapper.UserMapper"</span>&gt;</span><br><span class="line">    &lt;insert id=<span class="string">"save"</span> parameterType=<span class="string">"User"</span>&gt;</span><br><span class="line">        <span class="function">INSERT INTO <span class="title">t_user</span><span class="params">(name,phone,email,city_id,sex,password)</span></span></span><br><span class="line"><span class="function">        VALUES</span></span><br><span class="line"><span class="function">        <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        #&#123;name&#125;,#&#123;phone&#125;,#&#123;email&#125;,#&#123;cityId&#125;,#&#123;sex&#125;,#&#123;password&#125;</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span></span></span><br><span class="line"><span class="function">    &lt;/insert&gt;</span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function">    &lt;select id</span>=<span class="string">"get"</span> parameterType=<span class="string">"long"</span> resultType=<span class="string">"User"</span>&gt;</span><br><span class="line">    	select * from t_user where id = #&#123;id&#125;</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置分片规则"><a href="#设置分片规则" class="headerlink" title="设置分片规则"></a>设置分片规则</h3><ul>
+<li>application.yml中配置具体要进行分片存储的表规则</li>
+<li>行表达式标识符可以使用${…}或$-&gt;{…}，但前者与Spring本身的属性文件占位符冲突，因此在Spring环境中使用行表达式标识符建议使用$-&gt;{…}。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: <span class="number">8080</span></span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: shatding-springboot-mybatis</span><br><span class="line">mybatis:</span><br><span class="line"> mapper-locations: classpath:mybatis/mapper<span class="comment">/*.xml</span></span><br><span class="line"><span class="comment">  type-aliases-package: com.example.entity</span></span><br><span class="line"><span class="comment">sharding:</span></span><br><span class="line"><span class="comment">  jdbc:</span></span><br><span class="line"><span class="comment">    datasource:</span></span><br><span class="line"><span class="comment">      names: ds0</span></span><br><span class="line"><span class="comment">      # 数据源ds0</span></span><br><span class="line"><span class="comment">      ds0:</span></span><br><span class="line"><span class="comment">        type: com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="comment">        driver-class-name: com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment">        url: jdbc:mysql://localhost:3306/test_order</span></span><br><span class="line"><span class="comment">        username: root</span></span><br><span class="line"><span class="comment">        password: 123456</span></span><br><span class="line"><span class="comment">    config:</span></span><br><span class="line"><span class="comment">      sharding:</span></span><br><span class="line"><span class="comment">        props:</span></span><br><span class="line"><span class="comment">          sql.show: true</span></span><br><span class="line"><span class="comment">        tables:</span></span><br><span class="line"><span class="comment">          t_user:  #t_user表</span></span><br><span class="line"><span class="comment">            key-generator-column-name: id  #主键</span></span><br><span class="line"><span class="comment">            actual-data-nodes: ds0.t_user$&#123;0..1&#125;    #数据节点,均匀分布</span></span><br><span class="line"><span class="comment">            table-strategy:  #分表策略</span></span><br><span class="line"><span class="comment">              inline: #行表达式</span></span><br><span class="line"><span class="comment">                sharding-column: sex</span></span><br><span class="line"><span class="comment">                algorithm-expression: t_user$&#123;sex % 2&#125;  #按模运算分配</span></span><br></pre></td></tr></table></figure>
+
+<p>一个简单的水平分片单库分表就完成了。进行测试就发现数据分别存储到t_user0和t_user1两个表中。这里采用的事按照字段<code>sex</code>取模分片存储。</p>
+<h2 id="如何集成分库又分表"><a href="#如何集成分库又分表" class="headerlink" title="如何集成分库又分表"></a>如何集成分库又分表</h2><ul>
+<li>既分库又分表其实只需要在配置文件修改一个分片规则即可，不用修改业务任何代码。分库分表的数据表不能用自增主键，Sharding-JDBC会自动分配一个id，默认使用雪花算法（snowflake）生成64bit的长整型数据。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `t_address` (</span><br><span class="line">  `id` bigint(<span class="number">20</span>) NOT NULL,</span><br><span class="line">  `code` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'编码'</span>,</span><br><span class="line">  `name` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'名称'</span>,</span><br><span class="line">  `pid` varchar(<span class="number">64</span>) NOT NULL DEFAULT <span class="string">'0'</span> COMMENT <span class="string">'父id'</span>,</span><br><span class="line">  `type` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL COMMENT <span class="string">'1国家2省3市4县区'</span>,</span><br><span class="line">  `lit` <span class="keyword">int</span>(<span class="number">11</span>) DEFAULT NULL,</span><br><span class="line">  <span class="function">PRIMARY <span class="title">KEY</span> <span class="params">(`id`)</span></span></span><br><span class="line"><span class="function">) ENGINE</span>=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">CREATE TABLE `t_user0` (</span><br><span class="line">  `id` bigint(<span class="number">20</span>) NOT NULL,</span><br><span class="line">  `name` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'名称'</span>,</span><br><span class="line">  `city_id` <span class="keyword">int</span>(<span class="number">12</span>) DEFAULT NULL COMMENT <span class="string">'城市'</span>,</span><br><span class="line">  `sex` tinyint(<span class="number">1</span>) DEFAULT NULL COMMENT <span class="string">'性别'</span>,</span><br><span class="line">  `phone` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'电话'</span>,</span><br><span class="line">  `email` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'邮箱'</span>,</span><br><span class="line">  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'创建时间'</span>,</span><br><span class="line">  `password` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'密码'</span>,</span><br><span class="line">  <span class="function">PRIMARY <span class="title">KEY</span> <span class="params">(`id`)</span></span></span><br><span class="line"><span class="function">) ENGINE</span>=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">CREATE TABLE `t_user1` (</span><br><span class="line">  `id` bigint(<span class="number">20</span>) NOT NULL,</span><br><span class="line">  `name` varchar(<span class="number">64</span>) DEFAULT NULL COMMENT <span class="string">'名称'</span>,</span><br><span class="line">  `city_id` <span class="keyword">int</span>(<span class="number">12</span>) DEFAULT NULL COMMENT <span class="string">'城市'</span>,</span><br><span class="line">  `sex` tinyint(<span class="number">1</span>) DEFAULT NULL COMMENT <span class="string">'性别'</span>,</span><br><span class="line">  `phone` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'电话'</span>,</span><br><span class="line">  `email` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'邮箱'</span>,</span><br><span class="line">  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT <span class="string">'创建时间'</span>,</span><br><span class="line">  `password` varchar(<span class="number">32</span>) DEFAULT NULL COMMENT <span class="string">'密码'</span>,</span><br><span class="line">  <span class="function">PRIMARY <span class="title">KEY</span> <span class="params">(`id`)</span></span></span><br><span class="line"><span class="function">) ENGINE</span>=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+
+<p>修改分配规则</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: <span class="number">9900</span></span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: shard-jdbc-starter</span><br><span class="line"></span><br><span class="line"># mybatis</span><br><span class="line">mybatis:</span><br><span class="line">  mapper-locations: classpath:mybatis/mapper<span class="comment">/*.xml</span></span><br><span class="line"><span class="comment">  type-aliases-package: com.example.entity</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">###数据源名称，多数据源以逗号分隔</span></span><br><span class="line"><span class="comment">sharding:</span></span><br><span class="line"><span class="comment">  jdbc:</span></span><br><span class="line"><span class="comment">    datasource:</span></span><br><span class="line"><span class="comment">      names: ds0,ds1</span></span><br><span class="line"><span class="comment">      # 数据源ds0</span></span><br><span class="line"><span class="comment">      ds0:</span></span><br><span class="line"><span class="comment">        type: com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="comment">        driver-class-name: com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment">        url: jdbc:mysql://localhost:3306/order1</span></span><br><span class="line"><span class="comment">        username: root</span></span><br><span class="line"><span class="comment">        password: 123456</span></span><br><span class="line"><span class="comment">      # 数据源ds1</span></span><br><span class="line"><span class="comment">      ds1:</span></span><br><span class="line"><span class="comment">        type: com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="comment">        driver-class-name: com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="comment">        url: jdbc:mysql://localhost:3306/order2</span></span><br><span class="line"><span class="comment">        username: root</span></span><br><span class="line"><span class="comment">        password: 123456</span></span><br><span class="line"><span class="comment">    config:</span></span><br><span class="line"><span class="comment">      sharding:</span></span><br><span class="line"><span class="comment">        props:</span></span><br><span class="line"><span class="comment">          sql.show: true</span></span><br><span class="line"><span class="comment">        tables:</span></span><br><span class="line"><span class="comment">          t_user:  #t_user表</span></span><br><span class="line"><span class="comment">            key-generator-column-name: id  #主键</span></span><br><span class="line"><span class="comment">            actual-data-nodes: ds$&#123;0..1&#125;.t_user$&#123;0..1&#125;    #数据节点,均匀分布</span></span><br><span class="line"><span class="comment">            database-strategy:   #分库策略</span></span><br><span class="line"><span class="comment">              inline: #行表达式</span></span><br><span class="line"><span class="comment">                sharding-column: city_id        #列名称，多个列以逗号分隔</span></span><br><span class="line"><span class="comment">                algorithm-expression: ds$&#123;city_id % 2&#125;    #按模运算分配</span></span><br><span class="line"><span class="comment">            table-strategy:  #分表策略</span></span><br><span class="line"><span class="comment">              inline: #行表达式</span></span><br><span class="line"><span class="comment">                sharding-column: sex</span></span><br><span class="line"><span class="comment">                algorithm-expression: t_user$&#123;sex % 2&#125;</span></span><br><span class="line"><span class="comment">          t_address:</span></span><br><span class="line"><span class="comment">            key-generator-column-name: id</span></span><br><span class="line"><span class="comment">            actual-data-nodes: ds$&#123;0..1&#125;.t_address</span></span><br><span class="line"><span class="comment">            database-strategy:</span></span><br><span class="line"><span class="comment">              inline:</span></span><br><span class="line"><span class="comment">                sharding-column: lit</span></span><br><span class="line"><span class="comment">                algorithm-expression: ds$&#123;lit % 2&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>分库又分表就完成了，测试over。</p>
+<h3 id="官方配置示例"><a href="#官方配置示例" class="headerlink" title="官方配置示例"></a>官方配置示例</h3><p>数据分片</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">sharding.jdbc.datasource.names=ds0,ds1</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.ds0.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.ds0.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.ds0.url=jdbc:mysql:<span class="comment">//localhost:3306/ds0</span></span><br><span class="line">sharding.jdbc.datasource.ds0.username=root</span><br><span class="line">sharding.jdbc.datasource.ds0.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.ds1.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.ds1.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.ds1.url=jdbc:mysql:<span class="comment">//localhost:3306/ds1</span></span><br><span class="line">sharding.jdbc.datasource.ds1.username=root</span><br><span class="line">sharding.jdbc.datasource.ds1.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.actual-data-nodes=ds$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;.t_order$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.table-strategy.inline.sharding-column=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.table-strategy.inline.algorithm-expression=t_order$-&gt;&#123;order_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.key-generator-column-name=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.actual-data-nodes=ds$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;.t_order_item$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.table-strategy.inline.sharding-column=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.table-strategy.inline.algorithm-expression=t_order_item$-&gt;&#123;order_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.key-generator-column-name=order_item_id</span><br><span class="line">sharding.jdbc.config.sharding.binding-tables=t_order,t_order_item</span><br><span class="line">sharding.jdbc.config.sharding.broadcast-tables=t_config</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.sharding-column=user_id</span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.algorithm-expression=ds$-&gt;&#123;user_id % <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>读写分离</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">harding.jdbc.datasource.names=master,slave0,slave1</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.master.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master.url=jdbc:mysql:<span class="comment">//localhost:3306/master</span></span><br><span class="line">sharding.jdbc.datasource.master.username=root</span><br><span class="line">sharding.jdbc.datasource.master.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.slave0.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.slave0.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.slave0.url=jdbc:mysql:<span class="comment">//localhost:3306/slave0</span></span><br><span class="line">sharding.jdbc.datasource.slave0.username=root</span><br><span class="line">sharding.jdbc.datasource.slave0.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.slave1.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.slave1.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.slave1.url=jdbc:mysql:<span class="comment">//localhost:3306/slave1</span></span><br><span class="line">sharding.jdbc.datasource.slave1.username=root</span><br><span class="line">sharding.jdbc.datasource.slave1.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.masterslave.load-balance-algorithm-type=round_robin</span><br><span class="line">sharding.jdbc.config.masterslave.name=ms</span><br><span class="line">sharding.jdbc.config.masterslave.master-data-source-name=master</span><br><span class="line">sharding.jdbc.config.masterslave.slave-data-source-names=slave0,slave1</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.props.sql.show=<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p>数据分片 + 读写分离</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">sharding.jdbc.datasource.names=master0,master1,master0slave0,master0slave1,master1slave0,master1slave1</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.master0.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master0.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master0.url=jdbc:mysql:<span class="comment">//localhost:3306/master0</span></span><br><span class="line">sharding.jdbc.datasource.master0.username=root</span><br><span class="line">sharding.jdbc.datasource.master0.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.master0slave0.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master0slave0.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master0slave0.url=jdbc:mysql:<span class="comment">//localhost:3306/master0slave0</span></span><br><span class="line">sharding.jdbc.datasource.master0slave0.username=root</span><br><span class="line">sharding.jdbc.datasource.master0slave0.password=</span><br><span class="line">sharding.jdbc.datasource.master0slave1.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master0slave1.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master0slave1.url=jdbc:mysql:<span class="comment">//localhost:3306/master0slave1</span></span><br><span class="line">sharding.jdbc.datasource.master0slave1.username=root</span><br><span class="line">sharding.jdbc.datasource.master0slave1.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.master1.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master1.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master1.url=jdbc:mysql:<span class="comment">//localhost:3306/master1</span></span><br><span class="line">sharding.jdbc.datasource.master1.username=root</span><br><span class="line">sharding.jdbc.datasource.master1.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.master1slave0.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master1slave0.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master1slave0.url=jdbc:mysql:<span class="comment">//localhost:3306/master1slave0</span></span><br><span class="line">sharding.jdbc.datasource.master1slave0.username=root</span><br><span class="line">sharding.jdbc.datasource.master1slave0.password=</span><br><span class="line">sharding.jdbc.datasource.master1slave1.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.master1slave1.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.master1slave1.url=jdbc:mysql:<span class="comment">//localhost:3306/master1slave1</span></span><br><span class="line">sharding.jdbc.datasource.master1slave1.username=root</span><br><span class="line">sharding.jdbc.datasource.master1slave1.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.actual-data-nodes=ds$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;.t_order$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.table-strategy.inline.sharding-column=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.table-strategy.inline.algorithm-expression=t_order$-&gt;&#123;order_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.key-generator-column-name=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.actual-data-nodes=ds$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;.t_order_item$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.table-strategy.inline.sharding-column=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.table-strategy.inline.algorithm-expression=t_order_item$-&gt;&#123;order_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.key-generator-column-name=order_item_id</span><br><span class="line">sharding.jdbc.config.sharding.binding-tables=t_order,t_order_item</span><br><span class="line">sharding.jdbc.config.sharding.broadcast-tables=t_config</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.sharding-column=user_id</span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.algorithm-expression=master$-&gt;&#123;user_id % <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.master-slave-rules.ds0.master-data-source-name=master0</span><br><span class="line">sharding.jdbc.config.sharding.master-slave-rules.ds0.slave-data-source-names=master0slave0, master0slave1</span><br><span class="line">sharding.jdbc.config.sharding.master-slave-rules.ds1.master-data-source-name=master1</span><br><span class="line">sharding.jdbc.config.sharding.master-slave-rules.ds1.slave-data-source-names=master1slave0, master1slave1</span><br></pre></td></tr></table></figure>
+
+<p>数据治理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">sharding.jdbc.datasource.names=ds,ds0,ds1</span><br><span class="line">sharding.jdbc.datasource.ds.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.ds.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=org.h2.Driver</span><br><span class="line">sharding.jdbc.datasource.ds.url=jdbc:mysql:<span class="comment">//localhost:3306/ds</span></span><br><span class="line">sharding.jdbc.datasource.ds.username=root</span><br><span class="line">sharding.jdbc.datasource.ds.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.ds0.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.ds0.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.ds0.url=jdbc:mysql:<span class="comment">//localhost:3306/ds0</span></span><br><span class="line">sharding.jdbc.datasource.ds0.username=root</span><br><span class="line">sharding.jdbc.datasource.ds0.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.datasource.ds1.type=org.apache.commons.dbcp.BasicDataSource</span><br><span class="line">sharding.jdbc.datasource.ds1.driver-<span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=com.mysql.jdbc.Driver</span><br><span class="line">sharding.jdbc.datasource.ds1.url=jdbc:mysql:<span class="comment">//localhost:3306/ds1</span></span><br><span class="line">sharding.jdbc.datasource.ds1.username=root</span><br><span class="line">sharding.jdbc.datasource.ds1.password=</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-data-source-name=ds</span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.sharding-column=user_id</span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.algorithm-expression=ds$-&gt;&#123;user_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.actual-data-nodes=ds$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;.t_order$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.table-strategy.inline.sharding-column=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.table-strategy.inline.algorithm-expression=t_order$-&gt;&#123;order_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order.key-generator-column-name=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.actual-data-nodes=ds$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;.t_order_item$-&gt;&#123;<span class="number">0</span>..<span class="number">1</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.table-strategy.inline.sharding-column=order_id</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.table-strategy.inline.algorithm-expression=t_order_item$-&gt;&#123;order_id % <span class="number">2</span>&#125;</span><br><span class="line">sharding.jdbc.config.sharding.tables.t_order_item.key-generator-column-name=order_item_id</span><br><span class="line">sharding.jdbc.config.sharding.binding-tables=t_order,t_order_item</span><br><span class="line">sharding.jdbc.config.sharding.broadcast-tables=t_config</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.sharding-column=user_id</span><br><span class="line">sharding.jdbc.config.sharding.<span class="keyword">default</span>-database-strategy.inline.algorithm-expression=master$-&gt;&#123;user_id % <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">sharding.jdbc.config.orchestration.name=spring_boot_ds_sharding</span><br><span class="line">sharding.jdbc.config.orchestration.overwrite=<span class="keyword">true</span></span><br><span class="line">sharding.jdbc.config.orchestration.registry.namespace=orchestration-spring-boot-sharding-test</span><br><span class="line">sharding.jdbc.config.orchestration.registry.server-lists=localhost:<span class="number">2181</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Sharding-JDBC不支持的项"><a href="#Sharding-JDBC不支持的项" class="headerlink" title="Sharding-JDBC不支持的项"></a>Sharding-JDBC不支持的项</h3><h4 id="DataSource接口"><a href="#DataSource接口" class="headerlink" title="DataSource接口"></a>DataSource接口</h4><ul>
+<li>不支持timeout相关操作</li>
+</ul>
+<h4 id="Connection接口"><a href="#Connection接口" class="headerlink" title="Connection接口"></a>Connection接口</h4><ul>
+<li>不支持存储过程，函数，游标的操作</li>
+<li>不支持执行native的SQL</li>
+<li>不支持savepoint相关操作</li>
+<li>不支持Schema/Catalog的操作</li>
+<li>不支持自定义类型映射</li>
+</ul>
+<h4 id="Statement和PreparedStatement接口"><a href="#Statement和PreparedStatement接口" class="headerlink" title="Statement和PreparedStatement接口"></a>Statement和PreparedStatement接口</h4><ul>
+<li>不支持返回多结果集的语句（即存储过程，非SELECT多条数据）</li>
+<li>不支持国际化字符的操作</li>
+</ul>
+<h4 id="对于ResultSet接口"><a href="#对于ResultSet接口" class="headerlink" title="对于ResultSet接口"></a>对于ResultSet接口</h4><ul>
+<li>不支持对于结果集指针位置判断</li>
+<li>不支持通过非next方法改变结果指针位置</li>
+<li>不支持修改结果集内容</li>
+<li>不支持获取国际化字符</li>
+<li>不支持获取Array<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2></li>
+<li><a href="https://shardingsphere.apache.org/document/legacy/3.x/document/cn/overview/" target="_blank" rel="noopener">https://shardingsphere.apache.org/document/legacy/3.x/document/cn/overview/</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shardingjdbc/" rel="tag"># shardingjdbc</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/25/spring系列/SpringBoot自定义一个starter/" rel="next" title="Spring Boot 自定义一个starter">
+                <i class="fa fa-chevron-left"></i> Spring Boot 自定义一个starter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/27/数据库/高性能MySQL笔记(上)/" rel="prev" title="高性能MySQL第三本笔记总结（上）">
+                高性能MySQL第三本笔记总结（上） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_qinxuewu.jpg" alt="qinxuewu">
+            
+              <p class="site-author-name" itemprop="name">qinxuewu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qinxuewu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/qinxuewu" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:870439570@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-projects/spring-framework" title="spring" target="_blank">spring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba" title="SpringCloudAlibaba" target="_blank">SpringCloudAlibaba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetcode" target="_blank">leetcode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-cloud" title="SpringCloud" target="_blank">SpringCloud</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-boot/" title="SpringBoot" target="_blank">SpringBoot</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何单库分表集成"><span class="nav-number">2.</span> <span class="nav-text">如何单库分表集成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml配置"><span class="nav-number">2.1.</span> <span class="nav-text">pom.xml配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建测试数据"><span class="nav-number">2.2.</span> <span class="nav-text">创建测试数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加实体类"><span class="nav-number">2.3.</span> <span class="nav-text">添加实体类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Mapper"><span class="nav-number">2.4.</span> <span class="nav-text">创建Mapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加Controller"><span class="nav-number">2.5.</span> <span class="nav-text">添加Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置分片规则"><span class="nav-number">2.6.</span> <span class="nav-text">设置分片规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何集成分库又分表"><span class="nav-number">3.</span> <span class="nav-text">如何集成分库又分表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方配置示例"><span class="nav-number">3.1.</span> <span class="nav-text">官方配置示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sharding-JDBC不支持的项"><span class="nav-number">3.2.</span> <span class="nav-text">Sharding-JDBC不支持的项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DataSource接口"><span class="nav-number">3.2.1.</span> <span class="nav-text">DataSource接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Connection接口"><span class="nav-number">3.2.2.</span> <span class="nav-text">Connection接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Statement和PreparedStatement接口"><span class="nav-number">3.2.3.</span> <span class="nav-text">Statement和PreparedStatement接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对于ResultSet接口"><span class="nav-number">3.2.4.</span> <span class="nav-text">对于ResultSet接口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">4.</span> <span class="nav-text">官方文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qinxuewu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/qinxuewu">GitHub </a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

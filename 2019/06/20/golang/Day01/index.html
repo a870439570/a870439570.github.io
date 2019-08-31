@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="goquery,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="印象博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="goquery官方文档地址会用jquery的，goquery基本可以1分钟上手  goquery常用方法12345678910111213141516171819202122Eq(index int) *Selection 	//根据索引获取某个节点集First() *Selection 			//获取第一个子节点集Last() *Selection	 		//获取最后一个子节点集Next()">
+<meta name="keywords" content="goquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【从零开始学Go】使用goquery爬取全网VIP影视资源在线观看地址">
+<meta property="og:url" content="https://qinxuewu.github.io/2019/06/20/golang/Day01/index.html">
+<meta property="og:site_name" content="印象博客">
+<meta property="og:description" content="goquery官方文档地址会用jquery的，goquery基本可以1分钟上手  goquery常用方法12345678910111213141516171819202122Eq(index int) *Selection 	//根据索引获取某个节点集First() *Selection 			//获取第一个子节点集Last() *Selection	 		//获取最后一个子节点集Next()">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【从零开始学Go】使用goquery爬取全网VIP影视资源在线观看地址">
+<meta name="twitter:description" content="goquery官方文档地址会用jquery的，goquery基本可以1分钟上手  goquery常用方法12345678910111213141516171819202122Eq(index int) *Selection 	//根据索引获取某个节点集First() *Selection 			//获取第一个子节点集Last() *Selection	 		//获取最后一个子节点集Next()">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinxuewu.github.io/2019/06/20/golang/Day01/">
+
+
+
+
+
+  <title>【从零开始学Go】使用goquery爬取全网VIP影视资源在线观看地址 | 印象博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c30928a2ca92d1a2dce136bde0ab81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">印象博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工具">
+          <a href="/Brain/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qinxuewu.github.io/2019/06/20/golang/Day01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qinxuewu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_qinxuewu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="印象博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【从零开始学Go】使用goquery爬取全网VIP影视资源在线观看地址</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T10:40:57+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/从零开始学Go/" itemprop="url" rel="index">
+                    <span itemprop="name">从零开始学Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="https://godoc.org/github.com/PuerkitoBio/goquery" target="_blank" rel="noopener">goquery官方文档地址</a><br>会用jquery的，goquery基本可以1分钟上手</p>
+</blockquote>
+<h3 id="goquery常用方法"><a href="#goquery常用方法" class="headerlink" title="goquery常用方法"></a>goquery常用方法</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Eq(index <span class="keyword">int</span>) *Selection 	<span class="comment">//根据索引获取某个节点集</span></span><br><span class="line">First() *Selection 			<span class="comment">//获取第一个子节点集</span></span><br><span class="line">Last() *Selection	 		<span class="comment">//获取最后一个子节点集</span></span><br><span class="line">Next() *Selection 			<span class="comment">//获取下一个兄弟节点集</span></span><br><span class="line">NextAll() *Selection 		<span class="comment">//获取后面所有兄弟节点集</span></span><br><span class="line">Prev() *Selection			<span class="comment">//前一个兄弟节点集</span></span><br><span class="line">Get(index <span class="keyword">int</span>) *html.Node	<span class="comment">//根据索引获取一个节点</span></span><br><span class="line">Index() <span class="keyword">int</span> 				<span class="comment">//返回选择对象中第一个元素的位置</span></span><br><span class="line">Slice(start, end <span class="keyword">int</span>) *Selection <span class="comment">//根据起始位置获取子节点集</span></span><br><span class="line">Each(f <span class="function"><span class="keyword">func</span><span class="params">(<span class="keyword">int</span>, *Selection)</span>) *<span class="title">Selection</span> //遍历</span></span><br><span class="line"><span class="function"><span class="title">EachWithBreak</span><span class="params">(f <span class="keyword">func</span>(<span class="keyword">int</span>, *Selection)</span> <span class="title">bool</span>) *<span class="title">Selection</span> //可中断遍历</span></span><br><span class="line"><span class="function"><span class="title">Map</span><span class="params">(f <span class="keyword">func</span>(<span class="keyword">int</span>, *Selection)</span> <span class="title">string</span>) <span class="params">(result []<span class="keyword">string</span>)</span> //返回字符串数组</span></span><br><span class="line"><span class="function"><span class="title">Attr</span><span class="params">()</span>, <span class="title">RemoveAttr</span><span class="params">()</span>, <span class="title">SetAttr</span><span class="params">()</span> //获取，移除，设置属性的值</span></span><br><span class="line"><span class="function"><span class="title">AddClass</span><span class="params">()</span>, <span class="title">HasClass</span><span class="params">()</span>, <span class="title">RemoveClass</span><span class="params">()</span>, <span class="title">ToggleClass</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">Html</span><span class="params">()</span> //获取该节点的<span class="title">html</span></span></span><br><span class="line"><span class="function"><span class="title">Length</span><span class="params">()</span> //返回该<span class="title">Selection</span>的元素个数</span></span><br><span class="line"><span class="function"><span class="title">Text</span><span class="params">()</span> //获取该节点的文本值</span></span><br><span class="line"><span class="function"><span class="title">Children</span><span class="params">()</span> //返回<span class="title">selection</span>中各个节点下的孩子节点</span></span><br><span class="line"><span class="function"><span class="title">Contents</span><span class="params">()</span> //获取当前节点下的所有节点</span></span><br><span class="line"><span class="function"><span class="title">Find</span><span class="params">()</span> //查找获取当前匹配的元素</span></span><br><span class="line"><span class="function"><span class="title">Next</span><span class="params">()</span> //下一个元素</span></span><br><span class="line"><span class="function"><span class="title">Prev</span><span class="params">()</span> //上一个元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"github.com/PuerkitoBio/goquery"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 电影列表地址</span></span><br><span class="line"><span class="keyword">var</span> url=<span class="string">"http://zuikzy.cc/?m=vod-type-id-PAGE.html"</span>;</span><br><span class="line"><span class="keyword">const</span> YUMING  = <span class="string">"http://zuikzy.cc/"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//  爬虫电影网站资源 添加到数据库</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SaveVideo</span><span class="params">(page <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果n为-1，则全部替换；如果 old 为空</span></span><br><span class="line">	movieurl:=strings.Replace(url,<span class="string">"PAGE"</span>,strconv.Itoa(page),<span class="number">-1</span>)</span><br><span class="line">	log.Println(fmt.Sprintf(<span class="string">"【开始爬取电影,页码:%d  请求地址为 %s 】"</span>,page,movieurl))</span><br><span class="line">	res, err := http.Get(movieurl)</span><br><span class="line">	checkErr(err,<span class="string">"【爬取网站地址请求异常 】"</span>)</span><br><span class="line">	<span class="keyword">if</span> res.StatusCode != <span class="number">200</span> &#123;</span><br><span class="line">		log.Fatalf(<span class="string">"status code error: %d %s"</span>, res.StatusCode, res.Status)</span><br><span class="line">	&#125;</span><br><span class="line">	doc, err := goquery.NewDocumentFromReader(res.Body)</span><br><span class="line">	checkErr(err,<span class="string">"爬取成功,解析html异常"</span>)</span><br><span class="line"></span><br><span class="line">	doc.Find(<span class="string">".DianDian"</span>).Each(<span class="function"><span class="keyword">func</span><span class="params">(j <span class="keyword">int</span>, tr *goquery.Selection)</span></span> &#123;</span><br><span class="line">		title:=tr.Find(<span class="string">"td"</span>).Eq(<span class="number">0</span>).Text()  <span class="comment">//标题</span></span><br><span class="line">		detailsLink,_:=tr.Find(<span class="string">"td"</span>).Eq(<span class="number">0</span>).Find(<span class="string">"a"</span>).Eq(<span class="number">0</span>).Attr(<span class="string">"href"</span>)  <span class="comment">//详情页地址</span></span><br><span class="line"></span><br><span class="line">		types:=tr.Find(<span class="string">"td"</span>).Eq(<span class="number">1</span>).Text()  <span class="comment">// 电影类型</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 爬取播放地址和详情链接</span></span><br><span class="line">		res, err= http.Get(YUMING+detailsLink)</span><br><span class="line">		checkErr(err,<span class="string">"【爬取电影: %s  异常】"</span>)</span><br><span class="line">		<span class="keyword">if</span> res.StatusCode != <span class="number">200</span> &#123;</span><br><span class="line">			log.Fatalf(<span class="string">"status code error: %d %s"</span>, res.StatusCode, res.Status)</span><br><span class="line">		&#125;</span><br><span class="line">		doc,_= goquery.NewDocumentFromReader(res.Body)</span><br><span class="line"></span><br><span class="line">		<span class="comment">//imgpath,_:=doc.Find(".videoPic img").Eq(0).Attr("src")</span></span><br><span class="line">		<span class="comment">//reamrk:=doc.Find(".movievod").Eq(1).Text();</span></span><br><span class="line">		palyLink:=doc.Find(<span class="string">".contentURL li"</span>).Eq(<span class="number">1</span>).Text()</span><br><span class="line"></span><br><span class="line">		palyLink=strings.Replace(palyLink,<span class="string">"$"</span>,<span class="string">"-"</span>,<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">		log.Println(fmt.Sprintf(<span class="string">"标题:%s  类型 %s 播放地址  %s "</span>,title,types,palyLink))</span><br><span class="line"></span><br><span class="line">		tracefile(fmt.Sprintf(<span class="string">"标题:%s  类型 %s 播放地址  %s "</span>,title,types,palyLink))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">defer</span> res.Body.Close()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		SaveVideo(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tracefile</span><span class="params">(str_content <span class="keyword">string</span>)</span></span>  &#123;</span><br><span class="line">	<span class="comment">// // 读写模式打开文件 如果不存在将创建一个新文件 写操作时将数据附加到文件尾部</span></span><br><span class="line">	fd,_:=os.OpenFile(<span class="string">"爬取全网VIP电影在线观看.txt"</span>,os.O_RDWR|os.O_CREATE|os.O_APPEND,<span class="number">0644</span>)</span><br><span class="line">	fd_content:=strings.Join([]<span class="keyword">string</span>&#123;str_content,<span class="string">"\n"</span>&#125;,<span class="string">""</span>)</span><br><span class="line">	buf:=[]<span class="keyword">byte</span>(fd_content)</span><br><span class="line">	fd.Write(buf)</span><br><span class="line">	fd.Close()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误检查</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkErr</span><span class="params">(err error,msg <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(msg,err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="爬取结果，复制地址到浏览即可在线播放"><a href="#爬取结果，复制地址到浏览即可在线播放" class="headerlink" title="爬取结果，复制地址到浏览即可在线播放"></a>爬取结果，复制地址到浏览即可在线播放</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">标题:神医 [高清]</span><br><span class="line">    类型 剧情片 播放地址  高清-https://zkgn.wb699.com/share/4bUkbVK2CRMgHeUo </span><br><span class="line">标题:匹诺曹 [高清]</span><br><span class="line">    类型 爱情片 播放地址  高清-https://zkgn.wb699.com/share/v5339kxgH65mjfn8 </span><br><span class="line">标题:等风来 [高清]</span><br><span class="line">    类型 喜剧片 播放地址  高清-https://zkgn.wb699.com/share/7KE8MG7uiDVCbLvg </span><br><span class="line">标题:相见恨晚 [德语1080P]</span><br><span class="line">    类型 喜剧片 播放地址  德语1080P-https://zkgn.wb699.com/share/dpfgCBaQzS7HPJh1 </span><br><span class="line">标题:都市灰姑娘 [德语1080P]</span><br><span class="line">    类型 剧情片 播放地址  德语1080P-https://zkgn.wb699.com/share/FPucBGxQy30QpzQ7 </span><br><span class="line">标题:米娅和白狮 [BD中英双字]</span><br><span class="line">    类型 剧情片 播放地址  BD中英双字-https://zkgn.wb699.com/share/uLiLFpOTGlfEBz71</span><br></pre></td></tr></table></figure>
+
+<h3 id="源码地址"><a href="#源码地址" class="headerlink" title="源码地址"></a>源码地址</h3><ul>
+<li><a href="https://github.com/a870439570/Go-notes" target="_blank" rel="noopener">https://github.com/a870439570/Go-notes</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://blog.csdn.net/jeffrey11223/article/details/79318856" target="_blank" rel="noopener">https://blog.csdn.net/jeffrey11223/article/details/79318856</a></li>
+<li>采集地址： <a href="http://zuikzy.cc/?m=vod-type-id-1.html" target="_blank" rel="noopener">http://zuikzy.cc/?m=vod-type-id-1.html</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/goquery/" rel="tag"># goquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/数据库/高性能MySQL笔记(上)/" rel="next" title="高性能MySQL第三本笔记总结（上）">
+                <i class="fa fa-chevron-left"></i> 高性能MySQL第三本笔记总结（上）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_qinxuewu.jpg" alt="qinxuewu">
+            
+              <p class="site-author-name" itemprop="name">qinxuewu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qinxuewu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/qinxuewu" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:870439570@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-projects/spring-framework" title="spring" target="_blank">spring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba" title="SpringCloudAlibaba" target="_blank">SpringCloudAlibaba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetcode" target="_blank">leetcode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-cloud" title="SpringCloud" target="_blank">SpringCloud</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-boot/" title="SpringBoot" target="_blank">SpringBoot</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#goquery常用方法"><span class="nav-number">1.</span> <span class="nav-text">goquery常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爬取结果，复制地址到浏览即可在线播放"><span class="nav-number">3.</span> <span class="nav-text">爬取结果，复制地址到浏览即可在线播放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码地址"><span class="nav-number">4.</span> <span class="nav-text">源码地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qinxuewu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/qinxuewu">GitHub </a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

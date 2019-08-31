@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HBase,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="印象博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Apache HBase Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储。 当您需要对大数据进行随机，实时读/写访问时，请使用Apache HBase™。该项目的目标是托管非常大的表 - 数十亿行X百万列 - 在商品硬件集群上。Apache HBase是一个开源的，分布式的，版本化的非关系数据库  特征 线性和模块化可扩展性。 严格一致的读写操作。 表的自动和可配">
+<meta name="keywords" content="HBase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HBase快速入门">
+<meta property="og:url" content="https://qinxuewu.github.io/2018/08/13/java/HBase快速入门/index.html">
+<meta property="og:site_name" content="印象博客">
+<meta property="og:description" content="Apache HBase Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储。 当您需要对大数据进行随机，实时读/写访问时，请使用Apache HBase™。该项目的目标是托管非常大的表 - 数十亿行X百万列 - 在商品硬件集群上。Apache HBase是一个开源的，分布式的，版本化的非关系数据库  特征 线性和模块化可扩展性。 严格一致的读写操作。 表的自动和可配">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0809/161554_01933e92_1478371.png">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2y9ladfj30jb01sdfs.jpg">
+<meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
+<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HBase快速入门">
+<meta name="twitter:description" content="Apache HBase Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储。 当您需要对大数据进行随机，实时读/写访问时，请使用Apache HBase™。该项目的目标是托管非常大的表 - 数十亿行X百万列 - 在商品硬件集群上。Apache HBase是一个开源的，分布式的，版本化的非关系数据库  特征 线性和模块化可扩展性。 严格一致的读写操作。 表的自动和可配">
+<meta name="twitter:image" content="https://images.gitee.com/uploads/images/2018/0809/161554_01933e92_1478371.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinxuewu.github.io/2018/08/13/java/HBase快速入门/">
+
+
+
+
+
+  <title>HBase快速入门 | 印象博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c30928a2ca92d1a2dce136bde0ab81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">印象博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工具">
+          <a href="/Brain/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qinxuewu.github.io/2018/08/13/java/HBase快速入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qinxuewu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_qinxuewu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="印象博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">HBase快速入门</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T14:15:09+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HBase/" itemprop="url" rel="index">
+                    <span itemprop="name">HBase</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Apache-HBase"><a href="#Apache-HBase" class="headerlink" title="Apache HBase"></a>Apache HBase</h3><ul>
+<li>Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储。</li>
+<li>当您需要对大数据进行随机，实时读/写访问时，请使用Apache HBase™。该项目的目标是托管非常大的表 - 数十亿行X百万列 - 在商品硬件集群上。Apache HBase是一个开源的，分布式的，版本化的非关系数据库</li>
+</ul>
+<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ul>
+<li>线性和模块化可扩展性。</li>
+<li>严格一致的读写操作。</li>
+<li>表的自动和可配置分片</li>
+<li>RegionServers之间的自动故障转移支持。</li>
+<li>方便的基类，用于使用Apache HBase表支持Hadoop MapReduce作业。</li>
+<li>易于使用的Java API，用于客户端访问。</li>
+<li>阻止缓存和布隆过滤器以进行实时查询。</li>
+<li>查询谓词通过服务器端过滤器下推</li>
+<li>Thrift网关和REST-ful Web服务，支持XML，Protobuf和二进制数据编码选项</li>
+<li>可扩展的基于jruby（JIRB）的外壳</li>
+<li>支持通过Hadoop指标子系统将指标导出到文件或Ganglia; 或通过JMX</li>
+</ul>
+<h3 id="安装-独立HBase"><a href="#安装-独立HBase" class="headerlink" title="安装  独立HBase"></a>安装  独立HBase</h3><p>HBase要求安装JDK。有关支持的JDK版本的信息<br><img src="https://images.gitee.com/uploads/images/2018/0809/161554_01933e92_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
+<p>从此Apache下载镜像列表中选择一个下载站点。单击建议的顶部链接。这将带您进入HBase版本的镜像。单击名为stable的文件夹，然后将以.tar.gz结尾的二进制文件下载到本地文件系统。暂时不要下载以src.tar.gz结尾的文件。</p>
+<p>解压缩下载的文件，然后切换到新创建的目录。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xzvf hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>-bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>为HBase设置Java目录，并从conf文件夹打开hbase-env.sh文件。编辑JAVA_HOME环境变量，改变路径到当前JAVA_HOME变量</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#编辑/home/hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>/conf/hbase-env.sh</span><br><span class="line">#配置hbase-env.sh文件：把<span class="number">29</span>行的注释取消，配置虚拟机上面的Java地址</span><br><span class="line">export JAVA_HOME=/usr/local/java/jdk1<span class="number">.7</span><span class="number">.0</span>_79</span><br></pre></td></tr></table></figure>
+
+<p>编辑conf/hbase-site.xml，这是主要的HBase配置文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">	&lt;!--  配置hbase存在位置--&gt;</span><br><span class="line">	    &lt;name&gt;hbase.rootdir&lt;/name&gt;</span><br><span class="line">	    &lt;value&gt;file:<span class="comment">///home/pflm/HBase/HFiles&lt;/value&gt;</span></span><br><span class="line">	  &lt;/property&gt;</span><br><span class="line">	  &lt;property&gt;</span><br><span class="line">	  	&lt;!--  配置hbase文件保存路径--&gt;</span><br><span class="line">	    &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;</span><br><span class="line">	    &lt;value&gt;/home/pflm/HBase/zookeeper&lt;/value&gt;</span><br><span class="line">	  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>到此 HBase 的安装配置已成功完成。可以通过使用 HBase 的 bin 文件夹中提供 start-hbase.sh 脚本启动 HBase</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .<span class="regexp">/bin/</span>start-hbase.sh</span><br></pre></td></tr></table></figure>
+
+<p>运行HBase启动脚本，它会提示一条消息：HBase has started</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">starting master,<span class="built_in"> logging </span><span class="keyword">to</span> /usr/local/HBase/bin/<span class="built_in">..</span>/logs/hbase-tpmaster-localhost.localdomain.out</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>该./start-hbase.sh脚本是作为启动HBase的一种便捷方式。发出命令，如果一切顺利，将在标准输出中记录一条消息，显示HBase已成功启动。您可以使用该jps命令验证是否有一个正在运行的进程HMaster。在独立模式下，HBase运行此单个JVM中的所有守护程序，即HMaster，单个HRegionServer和ZooKeeper守护程序。转到<code>http：// localhost：16010</code>以查看HBase Web UI。</li>
+</ul>
+<h3 id="HBase-Shell"><a href="#HBase-Shell" class="headerlink" title="HBase Shell"></a>HBase Shell</h3><p>要访问HBase shell，必须导航进入到HBase的主文件夹。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入shell</span></span><br><span class="line">/bin/hbase <span class="keyword">shell</span><span class="bash"></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#列出HBase的所有表。</span></span></span><br><span class="line">hbase(main):<span class="number">001</span>:<span class="number">0</span>&gt; list</span><br><span class="line">TABLE</span><br></pre></td></tr></table></figure>
+
+<p> <strong>通用命令</strong> </p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">status:</span> 提供HBase的状态，例如，服务器的数量。</span><br><span class="line"><span class="symbol">version:</span> 提供正在使用HBase版本。</span><br><span class="line"><span class="symbol">table_help:</span> 表引用命令提供帮助</span><br><span class="line"><span class="symbol">whoami:</span> 提供有关用户的信息。</span><br></pre></td></tr></table></figure>
+
+<p> <strong>HBase在表中操作的命令。</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create: 创建一个表。</span><br><span class="line">list: 列出HBase的所有表。</span><br><span class="line"><span class="built_in">disable</span>: 禁用表。</span><br><span class="line">is_disabled: 验证表是否被禁用。</span><br><span class="line"><span class="built_in">enable</span>: 启用一个表。</span><br><span class="line">is_enabled: 验证表是否已启用。</span><br><span class="line">describe: 提供了一个表的描述。</span><br><span class="line">alter: 改变一个表。</span><br><span class="line">exists: 验证表是否存在。</span><br><span class="line">drop: 从HBase中删除表。</span><br><span class="line">drop_all: 丢弃在命令中给出匹配“regex”的表</span><br></pre></td></tr></table></figure>
+
+<p> <strong>数据操纵语言</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">put: 把指定列在指定的行中单元格的值在一个特定的表。</span><br><span class="line">get: 取行或单元格的内容。</span><br><span class="line">delete: 删除表中的单元格值。</span><br><span class="line">deleteall: 删除给定行的所有单元格。</span><br><span class="line">scan: 扫描并返回表数据。</span><br><span class="line">count: 计数并返回表中的行的数目。</span><br><span class="line">truncate: 禁用，删除和重新创建一个指定的表。</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决Java-API不能远程访问HBase的问题"><a href="#解决Java-API不能远程访问HBase的问题" class="headerlink" title="解决Java API不能远程访问HBase的问题"></a>解决Java API不能远程访问HBase的问题</h3><p> <strong>1、配置Linux的hostname</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS124 hbase-1.2.6.1]<span class="comment"># vie /etc/sysconfig/network</span></span><br><span class="line">NETWORKING=yes</span><br><span class="line">HOSTNAME=CentOS124   <span class="comment">#名字随便</span></span><br></pre></td></tr></table></figure>
+
+<p>这里配置的hostname要Linux重启才生效，为了不重启就生效，我们可以执行：hostname CentOS124命令，暂时设置hostname</p>
+<p> <strong>2、配置Linux的hosts，映射ip的hostname的关系</strong> </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#映射ip的hostname的关系</span><br><span class="line">[root@CentOS124 hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>]# vim /etc/host</span><br><span class="line"></span><br><span class="line">#查看hbase ip绑定是否成功</span><br><span class="line">[root@CentOS124 hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>]# netstat -anp|grep <span class="number">16010</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2y9ladfj30jb01sdfs.jpg" alt></p>
+<p> <strong>3、配置访问windows的hosts</strong> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#hbase</span></span><br><span class="line">192.168.10.124  CentOS124</span><br></pre></td></tr></table></figure>
+
+<h1 id="Java-操作远程hbase"><a href="#Java-操作远程hbase" class="headerlink" title="Java 操作远程hbase"></a>Java 操作远程hbase</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HbaseTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span>  Connection connection;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Configuration configuration; </span><br><span class="line">    <span class="keyword">static</span> &#123; </span><br><span class="line"> </span><br><span class="line">        configuration = HBaseConfiguration.create(); </span><br><span class="line">        <span class="comment">// 设置连接参数：HBase数据库使用的端口</span></span><br><span class="line">        configuration.set(<span class="string">"hbase.zookeeper.property.clientPort"</span>, <span class="string">"2181"</span>); </span><br><span class="line">        <span class="comment">// 设置连接参数：HBase数据库所在的主机IP</span></span><br><span class="line">        configuration.set(<span class="string">"hbase.zookeeper.quorum"</span>, <span class="string">"192.168.10.124"</span>); </span><br><span class="line">        <span class="comment">// configuration.addResource("hbase-site.xml");</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">        	 <span class="comment">// 取得一个数据库连接对象</span></span><br><span class="line">			connection = ConnectionFactory.createConnection(configuration);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">        </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    	createTable(<span class="string">"gazw"</span>, <span class="string">"id"</span>,<span class="string">"name"</span>);</span><br><span class="line"><span class="comment">//    	deleteTable("gazw");</span></span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">createTable</span><span class="params">(String tableName,String... cf1)</span> <span class="keyword">throws</span> IOException </span>&#123; </span><br><span class="line">    	Admin admin = connection.getAdmin();</span><br><span class="line">        <span class="comment">//HTD需要TableName类型的tableName，创建TableName类型的tableName</span></span><br><span class="line">        TableName tbName = TableName.valueOf(tableName);</span><br><span class="line">        <span class="comment">//判断表述否已存在，不存在则创建表</span></span><br><span class="line">        <span class="keyword">if</span>(admin.tableExists(tbName))&#123;</span><br><span class="line">            System.err.println(<span class="string">"表"</span> + tableName + <span class="string">"已存在！"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//通过HTableDescriptor创建一个HTableDescriptor将表的描述传到createTable参数中</span></span><br><span class="line">        HTableDescriptor HTD = <span class="keyword">new</span> HTableDescriptor(tbName);</span><br><span class="line">        <span class="comment">//为描述器添加表的详细参数</span></span><br><span class="line">        <span class="keyword">for</span>(String cf : cf1)&#123;</span><br><span class="line">            <span class="comment">// 创建HColumnDescriptor对象添加表的详细的描述</span></span><br><span class="line">            HColumnDescriptor HCD =<span class="keyword">new</span> HColumnDescriptor(cf);</span><br><span class="line">            HTD.addFamily(HCD);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//调用createtable方法创建表</span></span><br><span class="line">        admin.createTable(HTD);</span><br><span class="line">        System.out.println(<span class="string">"创建成功"</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HBase/" rel="tag"># HBase</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/java/Kafka安装搭建以及SpringBoot集成/" rel="next" title="Kafka安装搭建以及SpringBoot集成">
+                <i class="fa fa-chevron-left"></i> Kafka安装搭建以及SpringBoot集成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/27/java/ElasticSearch安装及java-Api使用/" rel="prev" title="ElasticSearch安装及Api使用">
+                ElasticSearch安装及Api使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_qinxuewu.jpg" alt="qinxuewu">
+            
+              <p class="site-author-name" itemprop="name">qinxuewu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qinxuewu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/qinxuewu" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:870439570@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-projects/spring-framework" title="spring" target="_blank">spring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba" title="SpringCloudAlibaba" target="_blank">SpringCloudAlibaba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetcode" target="_blank">leetcode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-cloud" title="SpringCloud" target="_blank">SpringCloud</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-boot/" title="SpringBoot" target="_blank">SpringBoot</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache-HBase"><span class="nav-number">1.</span> <span class="nav-text">Apache HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征"><span class="nav-number">2.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-独立HBase"><span class="nav-number">3.</span> <span class="nav-text">安装  独立HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HBase-Shell"><span class="nav-number">4.</span> <span class="nav-text">HBase Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决Java-API不能远程访问HBase的问题"><span class="nav-number">5.</span> <span class="nav-text">解决Java API不能远程访问HBase的问题</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-操作远程hbase"><span class="nav-number"></span> <span class="nav-text">Java 操作远程hbase</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qinxuewu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/qinxuewu">GitHub </a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

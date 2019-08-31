@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="印象博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="顺序表查找 顺序查找又叫线性查找，是最基本的查找技术。 它的查找过程是:从表中第一个(或最后一个)记录开始，逐个进行记亲的关键字和给定值比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录;如果直到最后一个(或第一个)记录，其关键字和给定值比较都不等时，则表中没有所查的记录，查找不成功 。  有序表查找二分查找 在有序表中，取中间记录作为比较对象，若给定值与中间记录的关键字相等，则查找">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法(七)查找算法">
+<meta property="og:url" content="https://qinxuewu.github.io/2019/02/21/数据结构与算法/查找算法/index.html">
+<meta property="og:site_name" content="印象博客">
+<meta property="og:description" content="顺序表查找 顺序查找又叫线性查找，是最基本的查找技术。 它的查找过程是:从表中第一个(或最后一个)记录开始，逐个进行记亲的关键字和给定值比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录;如果直到最后一个(或第一个)记录，其关键字和给定值比较都不等时，则表中没有所查的记录，查找不成功 。  有序表查找二分查找 在有序表中，取中间记录作为比较对象，若给定值与中间记录的关键字相等，则查找">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g25zpjljj30ds09dmzw.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g27306wvj30fo0fnjux.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g27mzeayj30is02bmy6.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g281xltsj30bv07ggn0.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g28s8dezj30cw07ywf2.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g29924b3j309e080q3n.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g29qrk8hj309e06x74w.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2a6dlk0j30es07aab3.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2ao32xnj30dp06y0tp.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2b9io6wj30jn0bhtb0.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2bq4vk6j30ad074wff.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2c7stkej30co0cndha.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2cnantjj30bc0e6ta8.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg">
+<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法(七)查找算法">
+<meta name="twitter:description" content="顺序表查找 顺序查找又叫线性查找，是最基本的查找技术。 它的查找过程是:从表中第一个(或最后一个)记录开始，逐个进行记亲的关键字和给定值比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录;如果直到最后一个(或第一个)记录，其关键字和给定值比较都不等时，则表中没有所查的记录，查找不成功 。  有序表查找二分查找 在有序表中，取中间记录作为比较对象，若给定值与中间记录的关键字相等，则查找">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g25zpjljj30ds09dmzw.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinxuewu.github.io/2019/02/21/数据结构与算法/查找算法/">
+
+
+
+
+
+  <title>数据结构与算法(七)查找算法 | 印象博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c30928a2ca92d1a2dce136bde0ab81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">印象博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工具">
+          <a href="/Brain/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qinxuewu.github.io/2019/02/21/数据结构与算法/查找算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qinxuewu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_qinxuewu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="印象博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">数据结构与算法(七)查找算法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T21:58:11+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="顺序表查找"><a href="#顺序表查找" class="headerlink" title="顺序表查找"></a>顺序表查找</h2><ul>
+<li>顺序查找又叫线性查找，是最基本的查找技术。</li>
+<li>它的查找过程是:从表中第一个(或最后一个)记录开始，逐个进行记亲的关键字和给定值比较，若某个记录的关键字和给定值相等，则查找成功，找到所查的记录;如果直到最后一个(或第一个)记录，其关键字和给定值比较都不等时，则表中没有所查的记录，查找不成功 。</li>
+</ul>
+<h2 id="有序表查找"><a href="#有序表查找" class="headerlink" title="有序表查找"></a>有序表查找</h2><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><ul>
+<li>在有序表中，取中间记录作为比较对象，若给定值与中间记录的关键字相等，则查找成功;</li>
+<li>若给定值小于中间记录的关键字，则在中间记录的左边部分继续查找；</li>
+<li>若给定值大于中间记录的关键字，则在中间记录的右边部分继续查找。不断重复以上过程。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span>[] number = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">	     <span class="keyword">int</span> key = <span class="number">5</span>;</span><br><span class="line">	      System.out.println(<span class="string">"递归查找出的下标："</span>+binSearch(number,<span class="number">0</span>,number.length-<span class="number">1</span>,key));</span><br><span class="line">	     System.out.println(<span class="string">"查找出的下标："</span>+halfSort(number, key));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">halfSort</span><span class="params">(<span class="keyword">int</span>[] data,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> left=<span class="number">1</span>, right=data.length;		</span><br><span class="line">		<span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">			<span class="keyword">int</span> mid = (left+right)/<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span>(data[mid]&gt;key)&#123;</span><br><span class="line">				right = mid-<span class="number">1</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(data[mid]&lt;key)&#123;</span><br><span class="line">				left = mid+<span class="number">1</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	  &#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 二分查找递归实现   </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binSearch</span><span class="params">(<span class="keyword">int</span> srcArray[], <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> key)</span></span>&#123;   </span><br><span class="line">        <span class="keyword">int</span> mid = (end - start) / <span class="number">2</span> + start;   </span><br><span class="line">        <span class="keyword">if</span> (srcArray[mid] == key) &#123;   </span><br><span class="line">            <span class="keyword">return</span> mid;   </span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">if</span> (start &gt;= end) &#123;   </span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;   </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; srcArray[mid]) &#123;   </span><br><span class="line">            <span class="keyword">return</span> binSearch(srcArray, mid + <span class="number">1</span>, end, key);   </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key &lt; srcArray[mid]) &#123;   </span><br><span class="line">            <span class="keyword">return</span> binSearch(srcArray, start, mid - <span class="number">1</span>, key);   </span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="插值查找"><a href="#插值查找" class="headerlink" title="插值查找"></a>插值查找</h3><ul>
+<li>插值查找是根据要查找的关键字key与查找表中最大最小记录的关键字比较后的查找方法。</li>
+<li>计算公式：<code>int mid=left+(right-left)*(key-data[left])/(data[right]-data[left]);</code></li>
+<li>从时间复杂度来 看，它也是O(logn),，但对表长比较大，而关键字分布又比较均匀的查找表来说，插值查找算法的平均性能比折半查找要好得多</li>
+<li>反之，数组中如果分布类似币，1，2，2000，2001…..999998, 999999}这种极端不均匀的数据，用插值查找未必是很合适的选择</li>
+</ul>
+<p>上述二分法查找计算中间值部分更换为计算公式即可实现插值查找</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">halfSort</span><span class="params">(<span class="keyword">int</span>[] data,<span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left=<span class="number">0</span>, right=data.length-<span class="number">1</span>;		</span><br><span class="line">     <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">          <span class="keyword">int</span> mid=left+(right-left)*(key-data[left])/(data[right]-data[left]); <span class="comment">//插值</span></span><br><span class="line">	      <span class="keyword">if</span>(data[mid]&gt;key)&#123;</span><br><span class="line">		    right = mid-<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(data[mid]&lt;key)&#123;</span><br><span class="line">		   left = mid+<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		  <span class="keyword">return</span> mid;</span><br><span class="line">	        &#125;</span><br><span class="line">	     &#125;</span><br><span class="line">	      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线性索引查找"><a href="#线性索引查找" class="headerlink" title="线性索引查找"></a>线性索引查找</h2><ul>
+<li>索引就是把一个关键字与宫对应的记录相关联的过程 , 一个索引由若干个索引项构成,每个索引项至少应包含关键字和其对应的记录在存储器中的位置等信息</li>
+<li>所谓线性索引就是将索引项集合组织为线性结构,也称为索引表。</li>
+</ul>
+<h3 id="稠密索引"><a href="#稠密索引" class="headerlink" title="稠密索引"></a>稠密索引</h3><ul>
+<li>稠密索引是指在线性索引中,将数据集中的每个记录对应一个索引项</li>
+<li>对于稠密索引这个索引表来说,索引项一定是按照关键码有序的排列。索引项有序也就意味着,我们要查找关键字时,可以用到折半、插值、斐被那契 等有序查找算法,大大提高了效率 ,</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g25zpjljj30ds09dmzw.jpg" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Index</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> key;</span><br><span class="line">    <span class="keyword">public</span> Object value;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> size;<span class="comment">//分块存储数量</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Comparable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> no, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.no = no;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> no;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Student&#123;"</span> +</span><br><span class="line">                <span class="string">"no="</span> + no +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        Student other = (Student) o;</span><br><span class="line">        <span class="keyword">if</span> (no &lt; other.no) <span class="comment">//这里比较的是什么 sort方法实现的就是按照此比较的东西从小到大排列</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (no &gt; other.no)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Student[] array=<span class="keyword">new</span> Student[]&#123;</span><br><span class="line">                <span class="keyword">new</span> Student(<span class="number">2</span>,<span class="string">"2222"</span>),<span class="keyword">new</span> Student(<span class="number">1</span>,<span class="string">"1111"</span>),</span><br><span class="line">                <span class="keyword">new</span> Student(<span class="number">3</span>,<span class="string">"3333"</span>),<span class="keyword">new</span> Student(<span class="number">4</span>,<span class="string">"44444"</span>),</span><br><span class="line">                <span class="keyword">new</span> Student(<span class="number">5</span>,<span class="string">"5555"</span>),<span class="keyword">new</span> Student(<span class="number">6</span>,<span class="string">"7777"</span>),</span><br><span class="line">        <span class="keyword">new</span> Student(<span class="number">7</span>,<span class="string">"7777"</span>),<span class="keyword">new</span> Student(<span class="number">8</span>,<span class="string">"8888"</span>)&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> key=<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(denseIndex(array,<span class="number">8</span>).toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建稠密索引表</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Student <span class="title">denseIndex</span><span class="params">(Student[] array, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (array != <span class="keyword">null</span> &amp;&amp; array.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//排序 对于稠密索引这个索引表来说,索引项一定是按照关键码有序的排列</span></span><br><span class="line">            Arrays.sort(array);</span><br><span class="line">            Index[] list = <span class="keyword">new</span> Index[array.length];</span><br><span class="line">            <span class="comment">//建立索引</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">                Index index = <span class="keyword">new</span> Index();</span><br><span class="line">                index.key = array[i].no;</span><br><span class="line">                index.value = array[i];</span><br><span class="line">                list[i] = index;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//根据索引关键码搜索</span></span><br><span class="line">            <span class="keyword">int</span> code = binarySearch(list, key);</span><br><span class="line">            <span class="keyword">if</span> (code != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> (Student) list[code].value;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(Index[] array, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (array.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> low, high, mid;</span><br><span class="line">            low = <span class="number">0</span>;</span><br><span class="line">            high = array.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">                mid = (low + high) / <span class="number">2</span>;<span class="comment">//折半</span></span><br><span class="line">                <span class="keyword">if</span> (key &lt; array[mid].key)</span><br><span class="line">                    high = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (key &gt; array[mid].key)</span><br><span class="line">                    low = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分块索引"><a href="#分块索引" class="headerlink" title="分块索引"></a>分块索引</h3><ul>
+<li><p>稠密索引因为索引项与数据集的记录个数相同,所以空间代价很大。为了减少索引项的个数,我们可以对数据集进行分块,使其分块有序,然后再对每一块建立一个索引项,从而减少索引项的个数。</p>
+<p><strong>分块有序,是把数据集的记录分成了若干块,并且这些块需要满足两个条件:</strong> </p>
+</li>
+<li><p>块内无序,即每一块内的记录不要求有序。</p>
+</li>
+<li><p>块间有序,例如,要求第二块所有记录的关键字均要大于第一块中所有记录的关键字,第三块的所有记录的关键字均要大于第二块的所有 记录关键字……因为只有块间有序,才有可能在查找时带来放率。</p>
+</li>
+</ul>
+<p>对于分块有序的数据集,将每块对应一个索引项,这种索引方法叫做分块索引。我们定义的分块索引的索引项结构分三个数据项 </p>
+<ul>
+<li>最大关键码,它存储每一块中的最大关键字,这样的好处就是可以使得在它之后的下一块中的最小关键字也能比这一块最大的关键字要大 i</li>
+<li>存储了块中的记录个数,以便于循环时使用;</li>
+<li>用于指向块首数据元素的指针,便于开始对这一块中记景进行遍历。</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g27306wvj30fo0fnjux.jpg" alt="分块索引"></p>
+<p>在分块索引表中查找,就是分两步进行:</p>
+<ul>
+<li>在分块索引表中查找要查关键字所在的块。由于分块索引表是块间有序的, 因此很容易利用折半、插值等算法得到结果。例如,在图 8-5-4的数据集中 查找62,我们可以很快可以从左上角的索引表中由 57&lt;62&lt;96 得到 62 在第三 个块中。</li>
+<li>根据块首指针找到相应的块,并在块中顺序查找关键码。因为块中可以是无序的,因此只能顺序查找。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlockIndex</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span>[] index; <span class="comment">//索引表</span></span><br><span class="line">	<span class="keyword">public</span> ArrayList[] list; <span class="comment">//块内元素 可以无序</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//初始化分块索引表</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BlockIndex</span><span class="params">(<span class="keyword">int</span>[] index)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.index=index;</span><br><span class="line">			<span class="keyword">this</span>.list=<span class="keyword">new</span> ArrayList[index.length];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">				<span class="comment">// 分配元素到各自的块内</span></span><br><span class="line">				list[i]=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 分配块内元素</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(value&lt;index[i])&#123;</span><br><span class="line">				list[i].add(value);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 打印每块元素</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">			ArrayList l = list[i];</span><br><span class="line">			System.out.print(<span class="string">"ArrayList"</span> + i + <span class="string">":"</span>);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; l.size(); j++) &#123;</span><br><span class="line">				System.out.print(l.get(j) + <span class="string">"  "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 二分查找</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">binarysearch</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> end = index.length;</span><br><span class="line">		<span class="keyword">int</span> mid = -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">			mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span> (index[mid] &gt; value) &#123;</span><br><span class="line">				end = mid - <span class="number">1</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				start = mid + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> start;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查找元素</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i = binarysearch(data);</span><br><span class="line">		<span class="comment">// 先二分查找确定在哪个块</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; list[i].size(); j++) &#123;</span><br><span class="line">			<span class="comment">// 然后顺序查找在该块内哪个位置</span></span><br><span class="line">			<span class="keyword">if</span> (data == (<span class="keyword">int</span>) list[i].get(j)) &#123;</span><br><span class="line">				System.out.println(String.format(<span class="string">"查找元素为  %d 第: %d块  第%d个 元素"</span>,data, i + <span class="number">1</span>, j + <span class="number">1</span>));</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> [] data=&#123;<span class="number">1</span>,<span class="number">12</span>,<span class="number">22</span>,<span class="number">10</span>,<span class="number">18</span>,<span class="number">23</span>,<span class="number">5</span>,<span class="number">15</span>,<span class="number">27</span>&#125;;</span><br><span class="line">		<span class="comment">//分为三个块 </span></span><br><span class="line">		<span class="keyword">int</span>[] index = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line">		BlockIndex blocksearch=<span class="keyword">new</span> BlockIndex(index);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">			blocksearch.insert(data[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		blocksearch.printAll();</span><br><span class="line"></span><br><span class="line">		blocksearch.search(<span class="number">18</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><ul>
+<li>现在有两篇极短的英文”文章”一一其实只能算是句子,我们暂认为是文章,编号分别是 1 和 2。</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g27mzeayj30is02bmy6.jpg" alt></p>
+<ul>
+<li>假设我们忽略掉如 <code>books</code>,<code>friends</code> 中的复数 <code>s</code> 以及如 <code>A</code> 这样的大小写差异。我们可以整理出这样一张单词表,如表 8-5-1 所示,并将单词做了排序 , 也就是表格显示了每个不同的单词分别出现在哪篇文章中,比如 <code>good</code> 它在两篇文章中都有出现,而<code>is</code>只是在文章 2 中才有,</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g281xltsj30bv07ggn0.jpg" alt></p>
+<ul>
+<li><p>有了这样一张单词衰,我们要搜索文章,就非常方便了.如果在搜索框中搜索<code>book</code>关键字。系统就先在这张单词表中有序查找 “book”,找到后将它对应的文章编号 1 和 2的文章地址(通常在搜索引擎中就是网页的标题和链接)返回,并告诉你,查找到两条记录,用时 0.0001 秒。由于单词表是有序的,查找效率很高,返回的又只是文章的编号,所以整体速度都非常快 。</p>
+<p><strong>在这里这张单词表就是索引表, 索引项的通用结构是:</strong> </p>
+</li>
+<li><p>次关键码.例如上面的”英文单词”。</p>
+</li>
+<li><p>记录号衰,例如上面的”文章编号” 。</p>
+</li>
+</ul>
+<p>其中记录号表存储具有相同次关键字的所有记录的记录号。这样的索引方法就是倒排索引</p>
+<p> <strong>优点：</strong> </p>
+<ul>
+<li><p>倒排索引的优点显然就是查找记录非常快,基本等于生成索引表后,查找时都不 用去读取记录,就可以得到结果。</p>
+<p><strong>缺点：</strong> </p>
+</li>
+<li><p>它的缺点是这个记录号不定长。维护比较困难，插入和删除操作都要做相应的处理。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.chazhao;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 倒排索引</span></span><br><span class="line"><span class="comment">  * 倒排索引的优点显然就是查找记录非常快,基本等于生成索引表后,查找时都不 用去读取记录,就可以得到结果</span></span><br><span class="line"><span class="comment">  * </span></span><br><span class="line"><span class="comment">  * 它的缺点是这个记录号不定长。维护比较困难，插入和删除操作都要做相应的处理</span></span><br><span class="line"><span class="comment">  * </span></span><br><span class="line"><span class="comment">  * 1.txt：i live in hangzhou where are you</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	2.txt：i love you i love you</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	3.txt：i love you today is a good day</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntertedIndex</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 存储单词对应 多个文件列表</span></span><br><span class="line">	<span class="keyword">private</span> Map&lt;String, ArrayList&lt;String&gt;&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	<span class="comment">//文路径列表</span></span><br><span class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; list;</span><br><span class="line">	<span class="comment">//词频统计</span></span><br><span class="line">	<span class="keyword">private</span> Map&lt;String, Integer&gt; nums=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CreateIndex</span><span class="params">(String filepath)</span></span>&#123;</span><br><span class="line">		String[] words = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">		</span><br><span class="line">			File file=<span class="keyword">new</span> File(filepath);</span><br><span class="line">			BufferedReader reader=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</span><br><span class="line">			String s=<span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">while</span>((s=reader.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="comment">//获取单词</span></span><br><span class="line">				words=s.split(<span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (String string : words) &#123;</span><br><span class="line">				<span class="keyword">if</span> (!map.containsKey(string)) &#123;</span><br><span class="line">					<span class="comment">//集合汇总不不存在当前单词</span></span><br><span class="line">					list=<span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">					list.add(filepath);</span><br><span class="line">					map.put(string, list); <span class="comment">//单词对应的 文件列表</span></span><br><span class="line">					nums.put(string, <span class="number">1</span>); <span class="comment">//单词出现的次数 首次默认1</span></span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					list=map.get(string);</span><br><span class="line">					<span class="comment">//如果没有包含过此文件名，则把文件名放入</span></span><br><span class="line">					<span class="keyword">if</span> (!list.contains(filepath)) &#123;</span><br><span class="line">						list.add(filepath);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">//文件总词频数目</span></span><br><span class="line">					<span class="keyword">int</span> count=nums.get(string)+<span class="number">1</span>;</span><br><span class="line">					nums.put(string, count);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			reader.close();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		IntertedIndex index=<span class="keyword">new</span> IntertedIndex();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>;i++)&#123;</span><br><span class="line">			String path=<span class="string">"C:\\Users\\admin\\Desktop\\"</span>+i+<span class="string">".txt"</span>;</span><br><span class="line">			index.CreateIndex(path);</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; num : index.nums.entrySet()) &#123;</span><br><span class="line">			System.out.println(<span class="string">"单词:"</span>+num.getKey()+<span class="string">"   		"</span></span><br><span class="line">					+ <span class="string">"出现次数："</span>+num.getValue()+<span class="string">"  "</span>+index.map.get(num.getKey()));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h2><p> <strong>二叉排序树 又称为二叉查找树。它或者是一棵空树，或者是具有下列性质的二叉树。</strong> </p>
+<ul>
+<li>若它的左子树不空，则左子树上所有结点的值均小于它的根结构的值</li>
+<li>若它的右子树不空 ，则右子树上所有结点的值均大于宫的根结点的值</li>
+<li>它的左、右子树也分别为二叉排序树</li>
+<li>它的结点间满足一定的次序关系，左子树结点一定比其双亲结点小，右子树结点一定比其双亲结点大。</li>
+<li>构造一棵二叉排序树的目的，其实并不是为了排序，而是为了提高查找和插入删除关键字的速度</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g28s8dezj30cw07ywf2.jpg" alt></p>
+<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><p>（1）首先将20与根节点进行比较，发现比根节点小，所以继续与根节点的左子树30比较。</p>
+<p>（2）发现20比30也要小，所以继续与30的左子树10进行比较。</p>
+<p>（3）发现20比10要大，所以就将20插入到10的右子树中。</p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g29924b3j309e080q3n.jpg" alt></p>
+<h3 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a>查找节点</h3><p>比如我们要查找节点10，那么思路如下：</p>
+<p>（1）还是一样，首先将10与根节点50进行比较，发现比根节点要小，所以继续与根节点的左子树30进行比较。</p>
+<p>（2）发现10比左子树30要小，所以继续与30的左子树10进行比较。</p>
+<p>（3）发现两值相等，即查找成功，返回10的位置。</p>
+<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p> <strong>删除节点的情况相对复杂，主要分为以下三种情形：</strong> </p>
+<p>删除的是叶节点(即没有孩子节点的)。比如20，删除它不会破坏原来树的结构，最简单。如图所示</p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g29qrk8hj309e06x74w.jpg" alt></p>
+<p>删除的是单孩子节点。比如90，删除它后需要将它的孩子节点与自己的父节点相连。情形比第一种复杂一些。</p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2a6dlk0j30es07aab3.jpg" alt></p>
+<p>删除的是有左右孩子的节点。比如根节点50</p>
+<p>这里有一个问题就是删除它后，谁将作为根节点？利用二叉树的中序遍历，就是右节点的左子树的最左孩子。</p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2ao32xnj30dp06y0tp.jpg" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> value;<span class="comment">// 结点值</span></span><br><span class="line">	<span class="keyword">protected</span> Node leftChild;<span class="comment">// 左孩子结点</span></span><br><span class="line">	<span class="keyword">protected</span> Node rightChild;<span class="comment">// 右孩子结点</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">		<span class="keyword">this</span>.leftChild = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">this</span>.rightChild = <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortTree</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 递归实现二叉排序树的插入</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertBST</span><span class="params">(Node root, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">			root = <span class="keyword">new</span> Node(value);</span><br><span class="line">			root.leftChild = <span class="keyword">null</span>;</span><br><span class="line">			root.rightChild = <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//大于根节点则 分配在右子树</span></span><br><span class="line">		<span class="keyword">if</span> (value &gt; root.getValue()) &#123;</span><br><span class="line">			<span class="comment">//如果右子树为空则直接赋值给右子树</span></span><br><span class="line">			<span class="keyword">if</span> (root.rightChild == <span class="keyword">null</span>) &#123;</span><br><span class="line">				root.rightChild = <span class="keyword">new</span> Node(value);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">//右子树不为空，则递归判断，以右子树为父节点的</span></span><br><span class="line">				insertBST(root.rightChild, value);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">//左子树分配原理同上</span></span><br><span class="line">			<span class="keyword">if</span> (root.leftChild == <span class="keyword">null</span>) &#123;</span><br><span class="line">				root.leftChild = <span class="keyword">new</span> Node(value);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				insertBST(root.leftChild, value);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 递归实现二叉排序树查找</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">searchBSTByRecursion</span><span class="params">(Node root, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (root.getValue() == value) &#123;<span class="comment">// 步骤1</span></span><br><span class="line">			<span class="keyword">return</span> root;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &lt; root.getValue()) &#123;<span class="comment">// 步骤2</span></span><br><span class="line">			<span class="keyword">return</span> searchBST(root.leftChild, value);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &gt; root.getValue()) &#123;<span class="comment">// 步骤3</span></span><br><span class="line">			<span class="keyword">return</span> searchBST(root.rightChild, value);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;<span class="comment">// 如果没找到，就返回null</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 非递归实现二叉排序树查找</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">searchBST</span><span class="params">(Node root, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		Node temp = root;</span><br><span class="line">		<span class="keyword">while</span> (temp != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (temp.getValue() == value) &#123;</span><br><span class="line">				<span class="keyword">return</span> temp;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (value &lt; temp.getValue()) &#123;</span><br><span class="line">				temp = temp.leftChild;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				temp = temp.rightChild;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 二叉排序树的删除</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">deleteBST</span><span class="params">(Node root, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		Node cur = root; <span class="comment">// 当前结点</span></span><br><span class="line">		Node parent = <span class="keyword">null</span>; <span class="comment">// 待删结点的父结点</span></span><br><span class="line">		Node delNode = <span class="keyword">null</span>; <span class="comment">// 在后面用来引用待删结点</span></span><br><span class="line">		Node temp = <span class="keyword">null</span>; <span class="comment">// 作为一个局域内的根结点</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 查找待删结点p和待删结点的父结点f</span></span><br><span class="line">		<span class="keyword">while</span> (cur != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (value == cur.getValue()) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			parent = cur;</span><br><span class="line">			<span class="keyword">if</span> (value &gt; cur.getValue()) &#123;</span><br><span class="line">				cur = cur.rightChild;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				cur = cur.leftChild;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 当前结点为null，即没有找到待删结点。 此时cur指向待删结点</span></span><br><span class="line">		<span class="keyword">if</span> (cur == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 待删结点只有右子树</span></span><br><span class="line">		<span class="keyword">if</span> (cur.leftChild == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 待删结点的父结点为null，即待删结点为根结点</span></span><br><span class="line">			<span class="keyword">if</span> (parent == <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="comment">// 根结点为待删结点的右子树</span></span><br><span class="line">				root = cur.rightChild;</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (parent.leftChild == cur) &#123; <span class="comment">// 待删结点为父结点的左子树</span></span><br><span class="line">				<span class="comment">// 把待删结点的右子树作为待删结点父结点的左子树</span></span><br><span class="line">				parent.leftChild = cur.rightChild;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123; <span class="comment">// 待删结点为父结点的右子树</span></span><br><span class="line">				parent.rightChild = cur.rightChild;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;<span class="comment">// 待删结点有左子树，要找左子树的最右下角的结点</span></span><br><span class="line">			temp = cur;</span><br><span class="line">			delNode = cur.leftChild; <span class="comment">// 此时s指向待删结点</span></span><br><span class="line">			<span class="keyword">while</span> (delNode.rightChild != <span class="keyword">null</span>) &#123;<span class="comment">// 查找待删结点的最右下角结点</span></span><br><span class="line">				temp = delNode;</span><br><span class="line">				delNode = delNode.rightChild;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (temp == cur) &#123;<span class="comment">// 即，待删结点没有右子树，把左子树向上移动</span></span><br><span class="line">				temp.leftChild = delNode.leftChild;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;<span class="comment">// 即，待删结点有右子树</span></span><br><span class="line">				temp.rightChild = delNode.leftChild;</span><br><span class="line">			&#125;</span><br><span class="line">			cur.setValue(delNode.getValue());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//先序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.print(root.getValue() + <span class="string">" "</span>);</span><br><span class="line">            preOrder(root.leftChild);</span><br><span class="line">            preOrder(root.rightChild);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 先序遍历</span></span><br><span class="line"><span class="comment">     * 非递归</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder1</span><span class="params">(Node root)</span></span>&#123;</span><br><span class="line">        Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack.empty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">                System.out.print(root.getValue() + <span class="string">"   "</span>);</span><br><span class="line">                stack.push(root);</span><br><span class="line">                root = root.leftChild;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!stack.empty())&#123;</span><br><span class="line">            	root = stack.pop();</span><br><span class="line">            	root = root.rightChild;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//中序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">            inOrder(root.leftChild);</span><br><span class="line">            System.out.print(root.getValue() + <span class="string">" "</span>);</span><br><span class="line">            inOrder(root.rightChild);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 中序遍历</span></span><br><span class="line"><span class="comment">     * 非递归</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder1</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack.empty())&#123;</span><br><span class="line">            <span class="keyword">while</span> (root != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack.push(root);</span><br><span class="line">                root = root.leftChild;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!stack.empty())&#123;</span><br><span class="line">            	root = stack.pop();</span><br><span class="line">                System.out.print(root.getValue() + <span class="string">"   "</span>);</span><br><span class="line">                root = root.rightChild;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//后序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(Node root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) &#123;</span><br><span class="line">            postOrder(root.leftChild);</span><br><span class="line">            postOrder(root.rightChild);</span><br><span class="line">            System.out.print(root.getValue() + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后序遍历</span></span><br><span class="line"><span class="comment">     * 非递归</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">posOrder1</span><span class="params">(Node root)</span></span>&#123;</span><br><span class="line">        Stack&lt;Node&gt; stack1 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Stack&lt;Integer&gt; stack2 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack1.empty())&#123;</span><br><span class="line">            <span class="keyword">while</span> (root != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack1.push(root);</span><br><span class="line">                stack2.push(<span class="number">0</span>);</span><br><span class="line">                root = root.leftChild;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(!stack1.empty() &amp;&amp; stack2.peek() == i)&#123;</span><br><span class="line">                stack2.pop();</span><br><span class="line">                System.out.print(stack1.pop().getValue() + <span class="string">"   "</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(!stack1.empty())&#123;</span><br><span class="line">                stack2.pop();</span><br><span class="line">                stack2.push(<span class="number">1</span>);</span><br><span class="line">                root = stack1.peek();</span><br><span class="line">                root = root.rightChild;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SortTree t=<span class="keyword">new</span> SortTree();</span><br><span class="line">		Node root=<span class="keyword">new</span> Node(<span class="number">44</span>); <span class="comment">//根节点</span></span><br><span class="line">		t.insertBST(root, <span class="number">21</span>); <span class="comment">//左子树		</span></span><br><span class="line">		t.insertBST(root, <span class="number">65</span>); <span class="comment">//右子树</span></span><br><span class="line">		t.insertBST(root, <span class="number">14</span>);</span><br><span class="line">		t.insertBST(root, <span class="number">72</span>);</span><br><span class="line">		t.insertBST(root, <span class="number">32</span>);</span><br><span class="line">		t.insertBST(root, <span class="number">58</span>);</span><br><span class="line">		t.insertBST(root, <span class="number">80</span>);</span><br><span class="line">		t.postOrder(root);</span><br><span class="line">		System.out.println(<span class="string">"-----------------"</span>);</span><br><span class="line">		t.posOrder1(root);</span><br><span class="line"><span class="comment">//		t.deleteBST(root, 44);</span></span><br><span class="line">		System.out.println();</span><br><span class="line"><span class="comment">//		t.preOrder(t.deleteBST(root, 44));</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="平衡二叉树-AVL树"><a href="#平衡二叉树-AVL树" class="headerlink" title="平衡二叉树(AVL树)"></a>平衡二叉树(AVL树)</h2><ul>
+<li>是一种二叉排序树，其中每一个节点的左子树和右子树的高度差至多等于1</li>
+<li>它是一种高度平衡的二叉排序树。要么它是一棵空树，要么它的左子树和右子树都是平衡二叉树， 旦左子树和右子树的深度之差的绝对值不超过 1</li>
+<li>我们将二叉树上结点的左子树深度减去右子树深度的值称为平衡因子BF。平衡二叉树上所有结点的平衡因乎只可能是-1 ， 0 和 1.</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2b9io6wj30jn0bhtb0.jpg" alt="平衡二叉树"></p>
+<ul>
+<li>图二 59 比 58 大却是 58 的左子树，这是不符合二叉排序树的定义的</li>
+<li>图 3 不是平衡二叉树的原因就在于，结点 58 的左子树高度为 2 ，而右子树为空，二者差大于了绝对值 1 </li>
+</ul>
+<p>距离插入结点最近的，且平衡困子的绝对值大于 1 的结点为根的子树，我们称为最小不平衡子树</p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2bq4vk6j30ad074wff.jpg" alt="最小不平衡子树"></p>
+<ul>
+<li>上图当新插入结点37时，距离它最近的平衡因子绝对值超过1的结点是58 (即它的左子树高度2减去右子树高度的，所以从58 开始以下的子树为最小不平衡子树 。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AVLNode</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> AVLNode&lt;T&gt; left;<span class="comment">//左结点</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> AVLNode&lt;T&gt; right;<span class="comment">//右结点</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> T data;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> height;<span class="comment">//当前结点的高度</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AVLNode</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(<span class="keyword">null</span>,<span class="keyword">null</span>,data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AVLNode</span><span class="params">(AVLNode&lt;T&gt; left, AVLNode&lt;T&gt; right, T data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(left,right,data,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AVLNode</span><span class="params">(AVLNode&lt;T&gt; left, AVLNode&lt;T&gt; right, T data, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.left=left;</span><br><span class="line">        <span class="keyword">this</span>.right=right;</span><br><span class="line">        <span class="keyword">this</span>.data=data;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AVLTree</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> AVLNode&lt;T&gt; root;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> root == <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> size(root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">(AVLNode&lt;T&gt; subtree)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (subtree == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> size(subtree.left) + <span class="number">1</span> + size(subtree.right);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">height</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> height(root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> p</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">height</span><span class="params">(AVLNode&lt;T&gt; p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> p == <span class="keyword">null</span> ? -<span class="number">1</span> : p.height;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">preOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String sb = preOrder(root);</span><br><span class="line">		<span class="keyword">if</span> (sb.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// 去掉尾部","号</span></span><br><span class="line">			sb = sb.substring(<span class="number">0</span>, sb.length() - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 先根遍历</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> subtree</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">preOrder</span><span class="params">(AVLNode&lt;T&gt; subtree)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">if</span> (subtree != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 先访问根结点</span></span><br><span class="line">			sb.append(subtree.data).append(<span class="string">","</span>);</span><br><span class="line">			<span class="comment">// 访问左子树</span></span><br><span class="line">			sb.append(preOrder(subtree.left));</span><br><span class="line">			<span class="comment">// 访问右子树</span></span><br><span class="line">			sb.append(preOrder(subtree.right));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">inOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String sb = inOrder(root);</span><br><span class="line">		<span class="keyword">if</span> (sb.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// 去掉尾部","号</span></span><br><span class="line">			sb = sb.substring(<span class="number">0</span>, sb.length() - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 中根遍历</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> subtree</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">inOrder</span><span class="params">(AVLNode&lt;T&gt; subtree)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">if</span> (subtree != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 访问左子树</span></span><br><span class="line">			sb.append(inOrder(subtree.left));</span><br><span class="line">			<span class="comment">// 访问根结点</span></span><br><span class="line">			sb.append(subtree.data).append(<span class="string">","</span>);</span><br><span class="line">			<span class="comment">// 访问右子树</span></span><br><span class="line">			sb.append(inOrder(subtree.right));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">postOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		String sb = postOrder(root);</span><br><span class="line">		<span class="keyword">if</span> (sb.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// 去掉尾部","号</span></span><br><span class="line">			sb = sb.substring(<span class="number">0</span>, sb.length() - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 后根遍历</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> subtree</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">postOrder</span><span class="params">(AVLNode&lt;T&gt; subtree)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">if</span> (subtree != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 访问左子树</span></span><br><span class="line">			sb.append(postOrder(subtree.left));</span><br><span class="line">			<span class="comment">// 访问右子树</span></span><br><span class="line">			sb.append(postOrder(subtree.right));</span><br><span class="line">			<span class="comment">// 访问根结点</span></span><br><span class="line">			sb.append(subtree.data).append(<span class="string">","</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">levelOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@see</span> BinarySearchTree#levelOrder()</span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 插入方法</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (data == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data can\'t not be null "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.root = insert(data, root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">insert</span><span class="params">(T data, AVLNode&lt;T&gt; p)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 说明已没有孩子结点,可以创建新结点插入了.</span></span><br><span class="line">		<span class="keyword">if</span> (p == <span class="keyword">null</span>) &#123;</span><br><span class="line">			p = <span class="keyword">new</span> AVLNode&lt;T&gt;(data);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> result = data.compareTo(p.data);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (result &lt; <span class="number">0</span>) &#123;<span class="comment">// 向左子树寻找插入位置</span></span><br><span class="line">			p.left = insert(data, p.left);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 插入后计算子树的高度,等于2则需要重新恢复平衡,由于是左边插入,左子树的高度肯定大于等于右子树的高度</span></span><br><span class="line">			<span class="keyword">if</span> (height(p.left) - height(p.right) == <span class="number">2</span>) &#123;</span><br><span class="line">				<span class="comment">// 判断data是插入点的左孩子还是右孩子</span></span><br><span class="line">				<span class="keyword">if</span> (data.compareTo(p.left.data) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">					<span class="comment">// 进行LL旋转</span></span><br><span class="line">					p = singleRotateLeft(p);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="comment">// 进行左右旋转</span></span><br><span class="line">					p = doubleRotateWithLeft(p);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (result &gt; <span class="number">0</span>) &#123;<span class="comment">// 向右子树寻找插入位置</span></span><br><span class="line">			p.right = insert(data, p.right);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (height(p.right) - height(p.left) == <span class="number">2</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (data.compareTo(p.right.data) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">					<span class="comment">// 进行右左旋转</span></span><br><span class="line">					p = doubleRotateWithRight(p);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					p = singleRotateRight(p);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">			;<span class="comment">// if exist do nothing</span></span><br><span class="line">				<span class="comment">// 重新计算各个结点的高度</span></span><br><span class="line">		p.height = Math.max(height(p.left), height(p.right)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> p;<span class="comment">// 返回根结点</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 删除方法</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (data == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"data can\'t not be null "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.root = remove(data, root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 删除操作</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> p</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">remove</span><span class="params">(T data, AVLNode&lt;T&gt; p)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (p == <span class="keyword">null</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> result = data.compareTo(p.data);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 从左子树查找需要删除的元素</span></span><br><span class="line">		<span class="keyword">if</span> (result &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			p.left = remove(data, p.left);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 检测是否平衡</span></span><br><span class="line">			<span class="keyword">if</span> (height(p.right) - height(p.left) == <span class="number">2</span>) &#123;</span><br><span class="line">				AVLNode&lt;T&gt; currentNode = p.right;</span><br><span class="line">				<span class="comment">// 判断需要那种旋转</span></span><br><span class="line">				<span class="keyword">if</span> (height(currentNode.left) &gt; height(currentNode.right)) &#123;</span><br><span class="line">					<span class="comment">// RL</span></span><br><span class="line">					p = doubleRotateWithRight(p);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="comment">// RR</span></span><br><span class="line">					p = singleRotateRight(p);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 从右子树查找需要删除的元素</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (result &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			p.right = remove(data, p.right);</span><br><span class="line">			<span class="comment">// 检测是否平衡</span></span><br><span class="line">			<span class="keyword">if</span> (height(p.left) - height(p.right) == <span class="number">2</span>) &#123;</span><br><span class="line">				AVLNode&lt;T&gt; currentNode = p.left;</span><br><span class="line">				<span class="comment">// 判断需要那种旋转</span></span><br><span class="line">				<span class="keyword">if</span> (height(currentNode.right) &gt; height(currentNode.left)) &#123;</span><br><span class="line">					<span class="comment">// LR</span></span><br><span class="line">					p = doubleRotateWithLeft(p);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="comment">// LL</span></span><br><span class="line">					p = singleRotateLeft(p);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 已找到需要删除的元素,并且要删除的结点拥有两个子节点</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (p.right != <span class="keyword">null</span> &amp;&amp; p.left != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 寻找替换结点</span></span><br><span class="line">			p.data = findMin(p.right).data;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 移除用于替换的结点</span></span><br><span class="line">			p.right = remove(p.data, p.right);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 只有一个孩子结点或者只是叶子结点的情况</span></span><br><span class="line">			p = (p.left != <span class="keyword">null</span>) ? p.left : p.right;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 更新高度值</span></span><br><span class="line">		<span class="keyword">if</span> (p != <span class="keyword">null</span>)</span><br><span class="line">			p.height = Math.max(height(p.left), height(p.right)) + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查找最小值结点</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> p</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">findMin</span><span class="params">(AVLNode&lt;T&gt; p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="keyword">null</span>)<span class="comment">// 结束条件</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (p.left == <span class="keyword">null</span>)<span class="comment">// 如果没有左结点,那么t就是最小的</span></span><br><span class="line">			<span class="keyword">return</span> p;</span><br><span class="line">		<span class="keyword">return</span> findMin(p.left);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">findMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> findMin(root).data;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">findMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> findMax(root).data;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查找最大值结点</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> p</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">findMax</span><span class="params">(AVLNode&lt;T&gt; p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="keyword">null</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (p.right == <span class="keyword">null</span>)<span class="comment">// 如果没有右结点,那么t就是最大的</span></span><br><span class="line">			<span class="keyword">return</span> p;</span><br><span class="line">		<span class="keyword">return</span> findMax(p.right);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> data != <span class="keyword">null</span> &amp;&amp; contain(data, root);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contain</span><span class="params">(T data, AVLNode&lt;T&gt; subtree)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (subtree == <span class="keyword">null</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> result = data.compareTo(subtree.data);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (result &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> contain(data, subtree.left);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (result &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> contain(data, subtree.right);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 左左单旋转(LL旋转) w变为x的根结点, x变为w的右子树</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">singleRotateLeft</span><span class="params">(AVLNode&lt;T&gt; x)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 把w结点旋转为根结点</span></span><br><span class="line">		AVLNode&lt;T&gt; w = x.left;</span><br><span class="line">		<span class="comment">// 同时w的右子树变为x的左子树</span></span><br><span class="line">		x.left = w.right;</span><br><span class="line">		<span class="comment">// x变为w的右子树</span></span><br><span class="line">		w.right = x;</span><br><span class="line">		<span class="comment">// 重新计算x/w的高度</span></span><br><span class="line">		x.height = Math.max(height(x.left), height(x.right)) + <span class="number">1</span>;</span><br><span class="line">		w.height = Math.max(height(w.left), x.height) + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> w;<span class="comment">// 返回新的根结点</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 右右单旋转(RR旋转) x变为w的根结点, w变为x的左子树</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">singleRotateRight</span><span class="params">(AVLNode&lt;T&gt; w)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		AVLNode&lt;T&gt; x = w.right;</span><br><span class="line"></span><br><span class="line">		w.right = x.left;</span><br><span class="line">		x.left = w;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 重新计算x/w的高度</span></span><br><span class="line">		x.height = Math.max(height(x.left), w.height) + <span class="number">1</span>;</span><br><span class="line">		w.height = Math.max(height(w.left), height(w.right)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 返回新的根结点</span></span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 左右旋转(LR旋转) x(根) w y 结点 把y变成根结点</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">doubleRotateWithLeft</span><span class="params">(AVLNode&lt;T&gt; x)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// w先进行RR旋转</span></span><br><span class="line">		x.left = singleRotateRight(x.left);</span><br><span class="line">		<span class="comment">// 再进行x的LL旋转</span></span><br><span class="line">		<span class="keyword">return</span> singleRotateLeft(x);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 右左旋转(RL旋转)</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> w</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> AVLNode&lt;T&gt; <span class="title">doubleRotateWithRight</span><span class="params">(AVLNode&lt;T&gt; w)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 先进行LL旋转</span></span><br><span class="line">		w.right = singleRotateLeft(w.right);</span><br><span class="line">		<span class="comment">// 再进行RR旋转</span></span><br><span class="line">		<span class="keyword">return</span> singleRotateRight(w);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">printTree</span><span class="params">(AVLNode&lt;T&gt; t)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (t != <span class="keyword">null</span>) &#123;</span><br><span class="line">			printTree(t.left);</span><br><span class="line">			System.out.println(t.data);</span><br><span class="line">			printTree(t.right);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 测试</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arg</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String arg[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		AVLTree&lt;Integer&gt; avlTree = <span class="keyword">new</span> AVLTree&lt;&gt;();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">18</span>; i++) &#123;</span><br><span class="line">			avlTree.insert(i);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		avlTree.printTree(avlTree.root);</span><br><span class="line">		<span class="comment">// 删除11,8以触发旋转平衡操作</span></span><br><span class="line">		avlTree.remove(<span class="number">11</span>);</span><br><span class="line">		avlTree.remove(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"================"</span>);</span><br><span class="line"></span><br><span class="line">		avlTree.printTree(avlTree.root);</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"findMin:"</span> + avlTree.findMin());</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"findMax:"</span> + avlTree.findMax());</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"15 exist or not : "</span> + avlTree.contains(<span class="number">15</span>));</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"先根遍历:"</span> + avlTree.preOrder());</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"中根遍历:"</span> + avlTree.inOrder());</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"后根遍历:"</span> + avlTree.postOrder());</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="散列表查找"><a href="#散列表查找" class="headerlink" title="散列表查找"></a>散列表查找</h2><ul>
+<li><p>散列技术是在记录的存储位置和它的关键字之间建立一个确定的对应关系f，使得每个关键字 key 对应一个存储位置 f (key) 这里我们把这种对应关系 f 称为散列函数 ， 又称为哈希 (Hash) 函数。</p>
+</li>
+<li><p>采用散列技术将记录存储在一块连续的存储空间中，这块连续存储空间称为散列表或哈希表。那么关键字对应的记录存储位置我们称为散列地址。</p>
+</li>
+<li><p>散列技术最适合的求解问题是查找与给定值相等的记录。必须是一对一的关系。不适合范围区间查找</p>
+<p><strong>整个散列过程其实就是两步</strong> </p>
+</li>
+<li><p>存储肘，通过散列函数计算记录 的散列地址，并按此散列地址存储该记录</p>
+</li>
+<li><p>查找记录时，我们通过同样的散列函数计算记录的散列地址，按此散到地址访问该记录 。</p>
+</li>
+</ul>
+<h3 id="散列函数的构造方法"><a href="#散列函数的构造方法" class="headerlink" title="散列函数的构造方法"></a>散列函数的构造方法</h3><ul>
+<li><p>散列函数的计算时间不应该超过其他查找技术与关键字比较的时间。</p>
+</li>
+<li><p>尽量让散列地址均匀地分布在存储空间中</p>
+<p><strong>直接定址法</strong> </p>
+</li>
+<li><p>这样的散列函数优点就是简单 ，均匀，也不会产生冲突</p>
+</li>
+<li><p>问题是这需要事先知道关键字的分布情况，适合查找表较小且连续的情况</p>
+</li>
+<li><p>此方法虽然简单，但却并不常用</p>
+</li>
+</ul>
+<p>比如我们要对 0 到100岁的人口数字统计表那么我们对年龄这个关键字就可以直接用年龄的数字作为地址。此时 f (key) =key</p>
+<p><code>f ( key ) =a*key+b</code>(a,b为常数)</p>
+<p> <strong>数字分析法</strong> </p>
+<ul>
+<li><p>比如我们的 11 位 手机号前三位是接入号应不同运营商公司的子品牌，中间四位HLR识别号，表示用户号的归属地;后四位才是真正的用户号。选择后面的四位成为散列地址就是不错的选择，并且还可以对抽取出来的数字再进行反转，左环位移等 </p>
+</li>
+<li><p>数字分析法通常适合处理关键字位数比较大的情况，如果事先知道关键字的分布且关键字的若干位分布较均匀，就可以考虑用这个方法。</p>
+<p><strong>平方取中法</strong> </p>
+</li>
+<li><p>假设关键字是1234，那么它的平方就是1522756，再抽取中间的3位就是227，用做散列地址</p>
+</li>
+<li><p>平方取中法比较适合子不知道关键字的分布，而位数又不是很大的情况</p>
+<p><strong>折叠法</strong> </p>
+</li>
+<li><p>折叠法是将关键字从左到右分割成位数相等的几部分(注意最后一部分位数不够时可以短些) ，然后将这几部分叠加求和，并按散列表表长，取后几位作为散列地址。</p>
+</li>
+<li><p>比如我们的关键字是 9876543210 ，散列表表长为三位，我们将它分为四组，9871654132110 ， 然后将它们叠加求和 <code>987+654+321+0=1962</code> ，再求后 3 位得到散列地址为 962 。</p>
+</li>
+<li><p>折叠法事先不需要知道关键字的分布，适合关键字位数较多的情况</p>
+<p><strong>除留余敢法</strong> </p>
+</li>
+<li><p>此方法为最常用的构造散列函数方法。 对于散列裴长为 m 的散列函数公式为<code>f( key) = key %p (p &lt;= m)</code></p>
+</li>
+<li><p>若散列表表长为 m，通常 p 为小于或等于表长(最好接近m) 的最小质数或不包含小于20 质因子的合数。</p>
+<p><strong>随机数法</strong> </p>
+</li>
+<li><p>选择一个随机数，取关键字的随机函数值为它的散列地址。也就是 <code>f (key)=random (key )</code> 。这里 random 是随机函数。当关键字的长度不等时，采用这个方法构造散列函数是比较合适的。</p>
+</li>
+</ul>
+<h3 id="处理散列冲突的方法"><a href="#处理散列冲突的方法" class="headerlink" title="处理散列冲突的方法"></a>处理散列冲突的方法</h3><p> <strong>开放定址法</strong> </p>
+<ul>
+<li>所谓的开放定址法就是一旦发生了冲突，就去寻找下一个空的散列地址，只要散列表足够大，空的散列地址总能找到，并将记录存入。</li>
+</ul>
+<p>公式：<code>f(key)=(f(key)+d)% m</code> d等于（1，2，3….m-1 )</p>
+<ul>
+<li><p>比如说，我仍的关键字集合为{1 2，67，56，16，25，37，22，29，15，47.4B，34}表长为12我们用散列函<code>f(key)=ke%12</code></p>
+</li>
+<li><p>计算前 5 个数{1 2，67，56，16，25}时，都是没有冲突的散列地址，直接存入</p>
+</li>
+<li><p>计算 key=37 时，发现 f (37) =1 ，此时就与 25 所在的位置冲突。 于是使用开放定址法 <code>f(37)=(f(37)+1)%12=2</code>。加入还是重负d就是不断进行累加</p>
+</li>
+<li><p>我们把这种解决冲突的开放定址法称为线性探测法</p>
+<p><strong>再散列函数法</strong> </p>
+</li>
+<li><p>此方法对于我们的散列表来说，我们事先准备多个散列函数。每当发生散到地址冲突肘，就换一个散列函数计算，相信总会有一<br>个可以把冲突解决掉</p>
+<p><strong>链地址法</strong> </p>
+</li>
+<li><p>将所有关键字为同义词的记录存储在一个单链表中，我们称这种表为同义词子表，在散列表中只存储所有同义词子表的头指针。</p>
+</li>
+<li><p>对于关键字集合{12，67，S6，16，25.37，22,29,lS,47,48,34} ，我们用前面同样的 12 为除数，进行除留余数法，可得到如图<br>8-11-1 结构，此时， 已经不存在什么冲突换址的问题，无论有多少个冲突，都只是在当前位置给单链裴增加结点的问题 。</p>
+</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2c7stkej30co0cndha.jpg" alt></p>
+<p>链地址法对于可能会造成很多冲突的散列函数来说，提供了绝不会出现找不到地址的保障。当然，这也就带来了查找时需要遍历单链装的性能损耗。</p>
+<p> <strong>公共溢出区法</strong> </p>
+<ul>
+<li>凡是冲突的都跟我走，我给你们这些冲突找个地儿待着。这就如同孤儿院收留所有无家可归的孩子一样，我们为<br>所有冲突的关键字建立了一个公共的溢出区来存放.</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2cnantjj30bc0e6ta8.jpg" alt></p>
+<ul>
+<li>在查找时，对给定值通过散列函数计算出散列地址后，先与基本表的相应位置进行比对，如果相等，则查找成功 i 如果不相等，则到溢出表去进行j帧序查找。</li>
+<li>如果相对于基本表而言，有冲突的数据很少的情况下，公共溢出区的结构对查找性能来说还是非常高的。</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/11/数据结构与算法/时间复杂度/" rel="next" title="什么是算法的时间复杂度">
+                <i class="fa fa-chevron-left"></i> 什么是算法的时间复杂度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/15/随笔/PMP关键术语和计算公式/" rel="prev" title="【PMP备考】关进术语和计算公式">
+                【PMP备考】关进术语和计算公式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_qinxuewu.jpg" alt="qinxuewu">
+            
+              <p class="site-author-name" itemprop="name">qinxuewu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qinxuewu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/qinxuewu" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:870439570@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-projects/spring-framework" title="spring" target="_blank">spring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba" title="SpringCloudAlibaba" target="_blank">SpringCloudAlibaba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetcode" target="_blank">leetcode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-cloud" title="SpringCloud" target="_blank">SpringCloud</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-boot/" title="SpringBoot" target="_blank">SpringBoot</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序表查找"><span class="nav-number">1.</span> <span class="nav-text">顺序表查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有序表查找"><span class="nav-number">2.</span> <span class="nav-text">有序表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分查找"><span class="nav-number">2.1.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插值查找"><span class="nav-number">2.2.</span> <span class="nav-text">插值查找</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性索引查找"><span class="nav-number">3.</span> <span class="nav-text">线性索引查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#稠密索引"><span class="nav-number">3.1.</span> <span class="nav-text">稠密索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分块索引"><span class="nav-number">3.2.</span> <span class="nav-text">分块索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#倒排索引"><span class="nav-number">3.3.</span> <span class="nav-text">倒排索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉排序树"><span class="nav-number">4.</span> <span class="nav-text">二叉排序树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入节点"><span class="nav-number">4.1.</span> <span class="nav-text">插入节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找节点"><span class="nav-number">4.2.</span> <span class="nav-text">查找节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除节点"><span class="nav-number">4.3.</span> <span class="nav-text">删除节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树-AVL树"><span class="nav-number">5.</span> <span class="nav-text">平衡二叉树(AVL树)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散列表查找"><span class="nav-number">6.</span> <span class="nav-text">散列表查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#散列函数的构造方法"><span class="nav-number">6.1.</span> <span class="nav-text">散列函数的构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理散列冲突的方法"><span class="nav-number">6.2.</span> <span class="nav-text">处理散列冲突的方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qinxuewu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/qinxuewu">GitHub </a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="springboot,prometheus,Grafana,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="印象博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="概述 Prometheus是一个最初在SoundCloud上构建的开源系统监视和警报工具包 。  添加依赖1234567891011&amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;spring-boot-starter-actuato">
+<meta name="keywords" content="springboot,prometheus,Grafana">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot集成prometheus+Grafana监控">
+<meta property="og:url" content="https://qinxuewu.github.io/2019/04/02/spring系列/SpringBoot集成prometheus+Grafana监控/index.html">
+<meta property="og:site_name" content="印象博客">
+<meta property="og:description" content="概述 Prometheus是一个最初在SoundCloud上构建的开源系统监视和警报工具包 。  添加依赖1234567891011&amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;spring-boot-starter-actuato">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2citxbsjcj30xe0i976l.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciuzqce8j30xv0800u9.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2civp2qpwj30b60793z6.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cixu1ux4j31bs0d5mxr.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciybnkd5j31dq0d6q4n.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciyr02tuj31cy0hqq65.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciz609zbj30jp075js5.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cizkr31gj30mv0akdgn.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj00ermej310z0jjdo3.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj0gss3pj30ks0l978m.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj0uh888j31320klaln.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj1ai99kj30qe033t94.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cjlawe5zj30s803awey.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj1pavcuj310k0lwagx.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj2p4n9zj30x50fwdk7.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cjlywmezj30ul0bdact.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj33o1ifj30ts0d8q5f.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj3l2texj31cg0ng0z4.jpg">
+<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot集成prometheus+Grafana监控">
+<meta name="twitter:description" content="概述 Prometheus是一个最初在SoundCloud上构建的开源系统监视和警报工具包 。  添加依赖1234567891011&amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;spring-boot-starter-actuato">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g2citxbsjcj30xe0i976l.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qinxuewu.github.io/2019/04/02/spring系列/SpringBoot集成prometheus+Grafana监控/">
+
+
+
+
+
+  <title>SpringBoot集成prometheus+Grafana监控 | 印象博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c30928a2ca92d1a2dce136bde0ab81";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">印象博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-工具">
+          <a href="/Brain/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qinxuewu.github.io/2019/04/02/spring系列/SpringBoot集成prometheus+Grafana监控/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qinxuewu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/logo_qinxuewu.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="印象博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SpringBoot集成prometheus+Grafana监控</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-02T20:58:45+08:00">
+                2019-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><code>Prometheus</code>是一个最初在SoundCloud上构建的开源系统监视和警报工具包 。</li>
+</ul>
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--prometheus监控  https:<span class="comment">//prometheus.io/docs/introduction/overview/--&gt;</span></span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;io.micrometer&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;micrometer-registry-prometheus&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.1.3&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.application.name=SpringBootPrometheus</span><br><span class="line"><span class="comment"># 监控端点配置</span></span><br><span class="line"><span class="comment"># 自定义端点路径  将  /actuator/&#123;id&#125;为/manage/&#123;id&#125;</span></span><br><span class="line"><span class="comment">#management.endpoints.web.base-path=/manage</span></span><br><span class="line">management.endpoints.web.exposure.include=*</span><br><span class="line">management.metrics.tags.application=<span class="variable">$&#123;spring.application.name&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="启动类添加"><a href="#启动类添加" class="headerlink" title="启动类添加"></a>启动类添加</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FreemarkerApplication</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;spring.application.name&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span>  String application;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(FreemarkerApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">MeterRegistryCustomizer&lt;MeterRegistry&gt; <span class="title">configurer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (registry) -&gt; registry.config().commonTags(<span class="string">"application"</span>, application);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看度量指标是否集成成功</p>
+</blockquote>
+<p>浏览器访问：<a href="http://localhost:8081/actuator/prometheus" target="_blank" rel="noopener">http://localhost:8081/actuator/prometheus</a></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2citxbsjcj30xe0i976l.jpg" alt="启动成功"></p>
+<h2 id="安装Prometheus"><a href="#安装Prometheus" class="headerlink" title="安装Prometheus"></a>安装Prometheus</h2><ul>
+<li>下载地址：<a href="https://prometheus.io/download/" target="_blank" rel="noopener">https://prometheus.io/download/</a>  </li>
+<li>选择时间序列数据库版本<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciuzqce8j30xv0800u9.jpg" alt><blockquote>
+<p><code>Prometheus</code>会将所有采集到的样本数据以时间序列（time-series）的方式保存在内存数据库中，并且定时保存到硬盘上。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2civp2qpwj30b60793z6.jpg" alt="解压"></p>
+<ul>
+<li>Linux启动方式：<code>nohup /home/prometheus/prometheus2.8.1/prometheus &amp;</code></li>
+</ul>
+<h2 id="配置prometheus-yml"><a href="#配置prometheus-yml" class="headerlink" title="配置prometheus.yml"></a>配置prometheus.yml</h2><ul>
+<li>SpringBoot官方配置：<a href="https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/</a></li>
+<li>prometheus官方文档：<a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">https://prometheus.io/docs/introduction/overview/</a></li>
+<li>Prometheus-配置解析: <a href="https://www.cnblogs.com/liujiliang/p/10080849.html" target="_blank" rel="noopener">https://www.cnblogs.com/liujiliang/p/10080849.html</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># 全局配置</span></span><br><span class="line">global:</span><br><span class="line">  scrape_interval:     15s <span class="comment"># 多久 收集 一次数据</span></span><br><span class="line">  evaluation_interval: 15s <span class="comment"># 多久评估一次 规则</span></span><br><span class="line">  scrape_timeout:      10s   <span class="comment"># 每次 收集数据的 超时时间</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Alertmanager configuration</span></span><br><span class="line">alerting:</span><br><span class="line">  alertmanagers:</span><br><span class="line">  - static_configs:</span><br><span class="line">    - targets:</span><br><span class="line">      <span class="comment"># - alertmanager:9093</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 规则文件, 可以使用通配符</span></span><br><span class="line">rule_files:</span><br><span class="line">  <span class="comment"># - "first_rules.yml"</span></span><br><span class="line">  <span class="comment"># - "second_rules.yml"</span></span><br><span class="line"></span><br><span class="line">scrape_configs:</span><br><span class="line">  - job_name: <span class="string">'prometheus'</span></span><br><span class="line">    static_configs:</span><br><span class="line">    - targets: [<span class="string">'localhost:9090'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># SpringBoot应用配置</span></span><br><span class="line">  - job_name: <span class="string">'SpringBootPrometheus'</span></span><br><span class="line">    scrape_interval: 5s</span><br><span class="line">    metrics_path: <span class="string">'/actuator/prometheus'</span></span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [<span class="string">'127.0.0.1:8081'</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动Prometheus"><a href="#启动Prometheus" class="headerlink" title="启动Prometheus"></a>启动Prometheus</h2><p>浏览器访问：<a href="http://localhost:9090" target="_blank" rel="noopener">http://localhost:9090</a></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cixu1ux4j31bs0d5mxr.jpg" alt="启动成功界面"></p>
+<h2 id="查看Prometheus监控的应用"><a href="#查看Prometheus监控的应用" class="headerlink" title="查看Prometheus监控的应用"></a>查看Prometheus监控的应用</h2><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciybnkd5j31dq0d6q4n.jpg" alt="监控的应用"></p>
+<ul>
+<li>UP状态表示目前存活的实例</li>
+<li>查看具体的监控指标</li>
+<li><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciyr02tuj31cy0hqq65.jpg" alt><h2 id="Grafana安装配置"><a href="#Grafana安装配置" class="headerlink" title="Grafana安装配置"></a>Grafana安装配置</h2></li>
+<li>下载地址:<a href="https://grafana.com/grafana/download" target="_blank" rel="noopener">https://grafana.com/grafana/download</a></li>
+<li>这里本机使用win系统：<a href="https://dl.grafana.com/oss/release/grafana-6.0.2.windows-amd64.zip" target="_blank" rel="noopener">https://dl.grafana.com/oss/release/grafana-6.0.2.windows-amd64.zip</a></li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2ciz609zbj30jp075js5.jpg" alt="下载解压"></p>
+<blockquote>
+<p>启动   <code>grafana-server.exe</code><br>Linux启动方式：nohup /home/prometheus/prometheus2.8.1/prometheus &amp;</p>
+</blockquote>
+<p>浏览器访问：<a href="http://127.0.0.1:3000/login" target="_blank" rel="noopener">http://127.0.0.1:3000/login</a></p>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cizkr31gj30mv0akdgn.jpg" alt="登录界面"></p>
+<p><strong>默认用户和密码均为<code>admin</code></strong></p>
+<h3 id="添加数据源"><a href="#添加数据源" class="headerlink" title="添加数据源"></a>添加数据源</h3><p>在Data Sources选项中添加数据源<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj00ermej310z0jjdo3.jpg" alt="搜索Prometheus数据源"></p>
+<ul>
+<li>设置<code>数据源的名称</code>（唯一的，可添加多个数据源）和<code>Prometheus</code>的访问地址，如果<code>Prometheus</code>有设置账号密码才可以访问，则需要在Auth模块勾选<code>Basuc Auth</code> 设置账号密码</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj0gss3pj30ks0l978m.jpg" alt="设置"></p>
+<h3 id="导入仪表盘模板"><a href="#导入仪表盘模板" class="headerlink" title="导入仪表盘模板"></a>导入仪表盘模板</h3><ul>
+<li><p>模板地址：<a href="https://grafana.com/dashboards" target="_blank" rel="noopener">https://grafana.com/dashboards</a></p>
+</li>
+<li><p>在搜索框中搜索<code>Spring Boot</code>会检索出相关的模板，选择一个自己喜欢<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj0uh888j31320klaln.jpg" alt="搜索"><br>这里我选择我比较喜欢第三个和第五个。模板ID分别是<code>4701</code>，<code>6756</code><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj1ai99kj30qe033t94.jpg" alt="第三个"><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cjlawe5zj30s803awey.jpg" alt="倒数第二个"></p>
+</li>
+<li><p>红框标注的部分就是项目中需要配置代码, 复制模板ID</p>
+</li>
+<li><p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj1pavcuj310k0lwagx.jpg" alt="模板ID4701"></p>
+</li>
+<li><p>开始导入,输入模板ID 点击<code>Load</code></p>
+</li>
+</ul>
+<p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj2p4n9zj30x50fwdk7.jpg" alt><br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cjlywmezj30ul0bdact.jpg" alt="选择导入"></p>
+<ul>
+<li>设置<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj33o1ifj30ts0d8q5f.jpg" alt></li>
+<li>添加完成<br><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g2cj3l2texj31cg0ng0z4.jpg" alt="添加完成"></li>
+<li>Grafana还支持很多数据源的监控， 后续在慢慢研究</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
+          
+            <a href="/tags/prometheus/" rel="tag"># prometheus</a>
+          
+            <a href="/tags/Grafana/" rel="tag"># Grafana</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/31/java/深入理解线程池ThreadPoolExecutor/" rel="next" title="并发编程-深入理解线程池ThreadPoolExecutor">
+                <i class="fa fa-chevron-left"></i> 并发编程-深入理解线程池ThreadPoolExecutor
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/05/java/volatile的内存语义/" rel="prev" title="volatile的内存语义">
+                volatile的内存语义 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/logo_qinxuewu.jpg" alt="qinxuewu">
+            
+              <p class="site-author-name" itemprop="name">qinxuewu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qinxuewu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitee.com/qinxuewu" target="_blank" title="码云">
+                      
+                        <i class="fa fa-fw fa-google"></i>码云</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:870439570@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-projects/spring-framework" title="spring" target="_blank">spring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/spring-cloud-incubator/spring-cloud-alibaba" title="SpringCloudAlibaba" target="_blank">SpringCloudAlibaba</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://leetcode-cn.com/" title="leetcode" target="_blank">leetcode</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-cloud" title="SpringCloud" target="_blank">SpringCloud</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://spring.io/projects/spring-boot/" title="SpringBoot" target="_blank">SpringBoot</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加依赖"><span class="nav-number">2.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">3.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动类添加"><span class="nav-number">4.</span> <span class="nav-text">启动类添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Prometheus"><span class="nav-number">5.</span> <span class="nav-text">安装Prometheus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置prometheus-yml"><span class="nav-number">6.</span> <span class="nav-text">配置prometheus.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Prometheus"><span class="nav-number">7.</span> <span class="nav-text">启动Prometheus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看Prometheus监控的应用"><span class="nav-number">8.</span> <span class="nav-text">查看Prometheus监控的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grafana安装配置"><span class="nav-number">9.</span> <span class="nav-text">Grafana安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加数据源"><span class="nav-number">9.1.</span> <span class="nav-text">添加数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入仪表盘模板"><span class="nav-number">9.2.</span> <span class="nav-text">导入仪表盘模板</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qinxuewu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/qinxuewu">GitHub </a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>
