@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -98,7 +102,7 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16816de096c243bc?w=746&h=460&f=png&s=61973">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/1/4/16816de098ed1780?w=644&h=463&f=png&s=32769">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github+docsify打造个人文档">
 <meta name="twitter:description" content="简介在日常开发中 前后端对接时 经常要写很多文档Api。docsify就是一个强大的文档生成工具 界面清新好 支持语法高亮和Markdown 语法，并且docsify 扩展了一些 Markdown 语法可以让文档更易读。像vue.js官网(https://cn.vuejs.org/)就是docsify 其中的一种注意 并且是目前用的的最多的主题 效果图如下预览链接：https://a8704395">
@@ -209,16 +213,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -388,17 +382,17 @@
 <h3 id="效果图如下"><a href="#效果图如下" class="headerlink" title="效果图如下"></a>效果图如下</h3><p>预览链接：<a href="https://a870439570.github.io/interview-docs" target="_blank" rel="noopener">https://a870439570.github.io/interview-docs</a><br><img src="https://user-gold-cdn.xitu.io/2019/1/4/16816de06fadda89?w=1237&h=607&f=png&s=367834" alt><br><img src="https://user-gold-cdn.xitu.io/2019/1/4/16816de06f91f058?w=1919&h=933&f=png&s=239829" alt></p>
 <h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><p>首先先安装好npm和nodejs,这里就不做过多介绍了 自信安装即可 （<a href="https://blog.csdn.net/zimushuang/article/details/79715679）" target="_blank" rel="noopener">https://blog.csdn.net/zimushuang/article/details/79715679）</a></p>
 <p>安装docsify 推荐安装 docsify-cli 工具，可以方便创建及本地预览文档网站。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> docsify-cli -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i docsify-cli -g</span><br></pre></td></tr></table></figure>
 
 <p>初始化项目 </p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 进入指定文件目录 如下：F:<span class="symbol">\i</span>deWork<span class="symbol">\g</span>ithubWork<span class="symbol">\t</span>est_docs </span><br><span class="line">运行    docsify init ./docs</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 进入指定文件目录 如下：F:\ideWork\githubWork\test_docs </span><br><span class="line">运行    docsify init ./docs</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16816de06fdd7ea4?w=485&h=72&f=png&s=3356" alt><br>初始化成功后，可以看到 ./docs 目录下创建的几个文件</p>
 <pre><code>index.html 入口文件
 README.md 会做为主页内容渲染
 .nojekyll 用于阻止 GitHub Pages 会忽略掉下划线开头的文件</code></pre><p><img src="https://user-gold-cdn.xitu.io/2019/1/4/16816de0706dda77?w=341&h=172&f=png&s=13375" alt></p>
 <h2 id="本地预览网站"><a href="#本地预览网站" class="headerlink" title="本地预览网站"></a>本地预览网站</h2><p>运行一个本地服务器通过 docsify serve 可以方便的预览效果，而且提供 LiveReload 功能，可以让实时的预览。默认访问<a href="http://localhost:3000/#/。" target="_blank" rel="noopener">http://localhost:3000/#/。</a></p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docsify serve docs</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve docs</span><br></pre></td></tr></table></figure>
 
 <p>一个基本的文档网站就搭建好了，docsify还可以自定义导航栏，自定义侧边栏以及背景图和一些开发插件等等<br>更多配置请参考官方文档  <a href="https://docsify.js.org/#/zh-cn/quickstart" target="_blank" rel="noopener">https://docsify.js.org/#/zh-cn/quickstart</a></p>
 <h3 id="下面介绍docsify如何部署到Github-使用免费的站点"><a href="#下面介绍docsify如何部署到Github-使用免费的站点" class="headerlink" title="下面介绍docsify如何部署到Github  使用免费的站点"></a>下面介绍docsify如何部署到Github  使用免费的站点</h3><p>和 GitBook 生成的文档一样，我们可以直接把文档网站部署到 GitHub Pages 或者 VPS 上</p>
@@ -538,7 +532,7 @@ README.md 会做为主页内容渲染
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

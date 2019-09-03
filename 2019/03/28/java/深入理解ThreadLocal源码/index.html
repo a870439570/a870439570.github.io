@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -90,7 +94,7 @@
 <meta property="og:description" content="概述 ThreadLocal 是一个本地线程副本变量工具类。主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰。在高并发场景下，可以实现无状态的调用，适用于各个线程不共享变量值的操作。 内部使用静态内部类ThreadLocalMap存储每个线程变量副本的方法，key存储的是当前线程的ThreadLocal对象，value就是当前ThreadLocal对应的线程变量的的副">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发编程-深入理解ThreadLocal源码">
 <meta name="twitter:description" content="概述 ThreadLocal 是一个本地线程副本变量工具类。主要用于将私有线程和该线程存放的副本对象做一个映射，各个线程之间的变量互不干扰。在高并发场景下，可以实现无状态的调用，适用于各个线程不共享变量值的操作。 内部使用静态内部类ThreadLocalMap存储每个线程变量副本的方法，key存储的是当前线程的ThreadLocal对象，value就是当前ThreadLocal对应的线程变量的的副">
@@ -201,16 +205,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -533,7 +527,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

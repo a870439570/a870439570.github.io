@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -90,7 +94,7 @@
 <meta property="og:description" content="常用命令官方文档http://storm.apache.org/releases/1.2.2/Command-line-client.html 查看命令帮助123456789101112131415161718192021222324252627282930313233343536373839[root@web1 apache-storm-1.2.2]# bin/storm helpCommand">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Storm系列(二)常用shell命令操作">
 <meta name="twitter:description" content="常用命令官方文档http://storm.apache.org/releases/1.2.2/Command-line-client.html 查看命令帮助123456789101112131415161718192021222324252627282930313233343536373839[root@web1 apache-storm-1.2.2]# bin/storm helpCommand">
@@ -201,16 +205,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -380,43 +374,43 @@
 <h3 id="查看命令帮助"><a href="#查看命令帮助" class="headerlink" title="查看命令帮助"></a>查看命令帮助</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">[root@web1 apache-storm-1.2.2]<span class="comment"># bin/storm help</span></span><br><span class="line">Commands:</span><br><span class="line">	activate</span><br><span class="line">	blobstore</span><br><span class="line">	classpath</span><br><span class="line">	deactivate</span><br><span class="line">	dev-zookeeper</span><br><span class="line">	drpc</span><br><span class="line">	get-errors</span><br><span class="line">	heartbeats</span><br><span class="line">	<span class="built_in">help</span></span><br><span class="line">	jar</span><br><span class="line">	<span class="built_in">kill</span></span><br><span class="line">	kill_workers</span><br><span class="line">	list</span><br><span class="line">	localconfvalue</span><br><span class="line">	logviewer</span><br><span class="line">	monitor</span><br><span class="line">	nimbus</span><br><span class="line">	node-health-check</span><br><span class="line">	pacemaker</span><br><span class="line">	rebalance</span><br><span class="line">	remoteconfvalue</span><br><span class="line">	repl</span><br><span class="line">	set_log_level</span><br><span class="line">	shell</span><br><span class="line">	sql</span><br><span class="line">	supervisor</span><br><span class="line">	ui</span><br><span class="line">	upload-credentials</span><br><span class="line">	version</span><br><span class="line"></span><br><span class="line">Help: </span><br><span class="line">	<span class="built_in">help</span> </span><br><span class="line">	<span class="built_in">help</span> &lt;<span class="built_in">command</span>&gt;</span><br><span class="line"></span><br><span class="line">Documentation <span class="keyword">for</span> the storm client can be found at http://storm.apache.org/documentation/Command-line-client.html</span><br><span class="line"></span><br><span class="line">Configs can be overridden using one or more -c flags, e.g. <span class="string">"storm list -c nimbus.host=nimbus.mycompany.com"</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>activate（激活指定拓扑的spouts。）</strong></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：storm <span class="built_in">activate</span> topology-<span class="built_in">name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法：storm activate topology-name</span><br></pre></td></tr></table></figure>
 
 <p><strong>classpath（在运行命令时打印storm客户端使用的类路径）</strong></p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">storm classpath</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm classpath</span><br></pre></td></tr></table></figure>
 
 <p><strong>deactivate  停用指定拓扑的spouts</strong> </p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm deactivate topology-<span class="built_in">name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm deactivate topology-name</span><br></pre></td></tr></table></figure>
 
 <p><strong>drpc (启动DRPC守护程序)</strong></p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">storm drpc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm drpc</span><br></pre></td></tr></table></figure>
 
 <p><strong>get-errors</strong><br>从正在运行的拓扑中获取最新错误。返回的结果包含组件名称的键值对和错误组件的组件错误。结果以json格式返回</p>
-<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">storm </span><span class="built_in">get-errors</span> <span class="string">topology-name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm get-errors topology-name</span><br></pre></td></tr></table></figure>
 
 <p><strong>jar</strong><br>使用指定的参数运行类的主要方法。提交拓扑使用</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm jar topology-jar-path <span class="class"><span class="keyword">class</span> ...</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm jar topology-jar-path class ...</span><br></pre></td></tr></table></figure>
 
 <p><strong>kill</strong><br>使用名称终止拓扑topology-name 您可以使用-w标志覆盖Storm在停用和关闭之间等待的时间长度</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm <span class="built_in">kill</span> topology-name [-w <span class="built_in">wait</span>-<span class="built_in">time</span>-<span class="built_in">secs</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm kill topology-name [-w wait-time-secs]</span><br></pre></td></tr></table></figure>
 
 <p><strong>list</strong><br>列出正在运行的拓扑及其状态</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm list</span><br></pre></td></tr></table></figure>
 
 <p><strong>localconfvalue</strong><br>打印出本地Storm配置的conf-name的值</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm localconfvalue conf-<span class="built_in">name</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm localconfvalue conf-name</span><br></pre></td></tr></table></figure>
 
 <p><strong>logviewer</strong><br>启动Logviewer守护进程</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">storm logviewe</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm logviewe</span><br></pre></td></tr></table></figure>
 
 <p><strong>nimbus</strong><br>启动Nimbus守护进程</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">storm nimbus</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm nimbus</span><br></pre></td></tr></table></figure>
 
 <p><strong>supervisor</strong> </p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">storm supervisor</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm supervisor</span><br></pre></td></tr></table></figure>
 
 <p><strong>version</strong></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm <span class="built_in">version</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">storm version</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg" alt="觉得本文不错的话，分享一下给小伙伴吧~"></p>
 
@@ -540,7 +534,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

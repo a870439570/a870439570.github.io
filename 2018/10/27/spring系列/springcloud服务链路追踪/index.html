@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -90,7 +94,7 @@
 <meta property="og:description" content="SpringCloud 教程Finchley版本 服务链路追踪(Spring Cloud Sleuth)(Finchley版本)在spring Cloud为F版本的时候，已经不需要自己构建Zipkin Server了，只需要下载jar即可，下载地址：https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/ 123ja">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringCloud服务链路追踪">
 <meta name="twitter:description" content="SpringCloud 教程Finchley版本 服务链路追踪(Spring Cloud Sleuth)(Finchley版本)在spring Cloud为F版本的时候，已经不需要自己构建Zipkin Server了，只需要下载jar即可，下载地址：https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/ 123ja">
@@ -201,16 +205,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -378,7 +372,7 @@
       
         <p><a href="https://github.com/a870439570/boot-cloud" target="_blank" rel="noopener">SpringCloud 教程Finchley版本</a></p>
 <h3 id="服务链路追踪-Spring-Cloud-Sleuth-Finchley版本"><a href="#服务链路追踪-Spring-Cloud-Sleuth-Finchley版本" class="headerlink" title="服务链路追踪(Spring Cloud Sleuth)(Finchley版本)"></a>服务链路追踪(Spring Cloud Sleuth)(Finchley版本)</h3><p>在spring Cloud为F版本的时候，已经不需要自己构建Zipkin Server了，只需要下载jar即可，下载地址：<br><a href="https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/" target="_blank" rel="noopener">https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/</a></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">java</span> <span class="selector-tag">-jar</span> <span class="selector-tag">zipkin-server-2</span><span class="selector-class">.10</span><span class="selector-class">.1-exec</span><span class="selector-class">.jar</span></span><br><span class="line"></span><br><span class="line">访问 <span class="selector-tag">localhost</span><span class="selector-pseudo">:9411</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java -jar zipkin-server-2.10.1-exec.jar</span><br><span class="line"></span><br><span class="line">访问 localhost:9411</span><br></pre></td></tr></table></figure>
 
 <p> <strong>构建工程</strong> </p>
 <ul>
@@ -387,14 +381,14 @@
 </li>
 </ul>
 <p>application.properties配制文件</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.port=<span class="number">8988</span></span><br><span class="line">spring<span class="selector-class">.zipkin</span><span class="selector-class">.base-url</span>=http:<span class="comment">//localhost:9411</span></span><br><span class="line">spring<span class="selector-class">.application</span><span class="selector-class">.name</span>=service-hi</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.port=8988</span><br><span class="line">spring.zipkin.base-url=http://localhost:9411</span><br><span class="line">spring.application.name=service-hi</span><br></pre></td></tr></table></figure>
 
 <p>启动类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceHiApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(ServiceHiApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = Logger.getLogger(ServiceHiApplication.class.getName());</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hi"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">callHome</span><span class="params">()</span></span>&#123;</span><br><span class="line">        LOG.log(Level.INFO, <span class="string">"calling trace service-hi  "</span>);</span><br><span class="line">        <span class="keyword">return</span> restTemplate.getForObject(<span class="string">"http://localhost:8989/miya"</span>, String.class);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/info"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">info</span><span class="params">()</span></span>&#123;</span><br><span class="line">        LOG.log(Level.INFO, <span class="string">"calling trace service-hi "</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"i'm service-hi"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Sampler <span class="title">defaultSampler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Sampler.ALWAYS_SAMPLE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>  <strong>创建service-miya</strong> </p>
 <p> 创建过程痛service-hi，引入相同的依赖，配置下spring.zipkin.base-url。<br>application.properties配制文件</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.port=<span class="number">8989</span></span><br><span class="line">spring<span class="selector-class">.zipkin</span><span class="selector-class">.base-url</span>=http:<span class="comment">//localhost:9411</span></span><br><span class="line">spring<span class="selector-class">.application</span><span class="selector-class">.name</span>=service-miya</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.port=8989</span><br><span class="line">spring.zipkin.base-url=http://localhost:9411</span><br><span class="line">spring.application.name=service-miya</span><br></pre></td></tr></table></figure>
 
 <p>启动类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceMiyaApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(ServiceMiyaApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = Logger.getLogger(ServiceMiyaApplication.class.getName());</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hi"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">()</span></span>&#123;</span><br><span class="line">        LOG.log(Level.INFO, <span class="string">"hi is being called"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hi i'm miya!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/miya"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">info</span><span class="params">()</span></span>&#123;</span><br><span class="line">        LOG.log(Level.INFO, <span class="string">"info is being called"</span>);</span><br><span class="line">        <span class="keyword">return</span> restTemplate.getForObject(<span class="string">"http://localhost:8988/info"</span>,String.class);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Sampler <span class="title">defaultSampler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Sampler.ALWAYS_SAMPLE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -529,7 +523,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

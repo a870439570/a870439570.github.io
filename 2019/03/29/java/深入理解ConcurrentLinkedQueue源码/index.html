@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -101,7 +105,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190329004142245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2019032900524254.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzOTEzNDI=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发编程-深入理解ConcurrentLinkedQueue源码">
 <meta name="twitter:description" content="概述 ConcurrentLinkedQueue是一个基于链接节点的无边界的线程安全队列，它采用先进先出原则对元素进行排序，插入元素放入队列尾部，出队时从队列头部返回元素，利用CAS方式实现的 ConcurrentLinkedQueue的结构由头节点和尾节点组成的，都是使用volatile修饰的。每个节点由节点元素item和指向下一个节点的next引用组成，组成一张链表结构。 Concurrent">
@@ -212,16 +216,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -560,7 +554,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

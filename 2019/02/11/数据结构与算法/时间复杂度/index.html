@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -91,7 +95,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1a9wj2kefj30lu0dtgsd.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是算法的时间复杂度">
 <meta name="twitter:description" content="时间复杂度定义 在进行算法分析时 ,语旬总的执行次次T(n)是关子问题规模n的函数,进而分析T(n)n的变化情况并确定T（n）的数量级。 一般情况下,随着n的增大,T(n)增长最慢的算法为最优算法 算法的时间复杂度也就算法的度量，记作：T（n）=O(f(n)).它表示随问题规模n的增大，算法执行时间增长率和f(n)的增长率相同，乘坐算法的渐进时间复杂度。其中f(n)是问题规模n的某个函数 这样用大">
@@ -202,16 +206,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -405,7 +399,7 @@
 <li>由于每次count 乘以2之后,就距离n更近了一分 。 也就是说,有多少n个2相乘后大于 ,则会退出循。由 $2^x$=n得到x=log2n。 所以这个循环的时间复杂度为<code>O(logn)</code>。</li>
 <li>二分查找算法的时间复杂度就是O(logn)。O(logn)的意思是以log为底数（你如果采用二分法,那么就会以2为底数,三分法就会以3为底数）比如当数据增大256倍时，耗时只增加8倍：</li>
 </ul>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">O(logn)=O(log<span class="number">256</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">4</span>                  //第<span class="number">1</span>次</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">8</span>                //第<span class="number">2</span>次</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">16</span>             //第<span class="number">3</span>次</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">32</span>           //第<span class="number">4</span>次</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">64</span>         //第<span class="number">5</span>次</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">128</span>      //第<span class="number">6</span>次</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>=<span class="number">256</span>(n)   //第<span class="number">7</span>次 <span class="number">7</span>个<span class="number">2</span>相乘后=n</span><br><span class="line"><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span><span class="keyword">x</span><span class="number">2</span>&gt;n      //第<span class="number">8</span>次 个<span class="number">2</span>相乘后大于n</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">O(logn)=O(log256)</span><br><span class="line"></span><br><span class="line">2x2=4                  //第1次</span><br><span class="line">2x2x2=8                //第2次</span><br><span class="line">2x2x2x2=16             //第3次</span><br><span class="line">2x2x2x2x2=32           //第4次</span><br><span class="line">2x2x2x2x2x2=64         //第5次</span><br><span class="line">2x2x2x2x2x2x2=128      //第6次</span><br><span class="line">2x2x2x2x2x2x2=256(n)   //第7次 7个2相乘后=n</span><br><span class="line">2x2x2x2x2x2x2x2&gt;n      //第8次 个2相乘后大于n</span><br></pre></td></tr></table></figure>
 
 <p> <strong><code>O(nlogn)</code>同理，就是n乘以logn，当数据增大256倍时，耗时增大256*8=2048倍。这个复杂度高于线性低于平方。归并排序就是O(nlogn)的时间复杂度。</strong> </p>
 <p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1a9wj2kefj30lu0dtgsd.jpg" alt="输入图片说明"></p>
@@ -531,7 +525,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -94,7 +98,7 @@
 <meta property="og:image" content="https://wx1.sinaimg.cn/large/006b7Nxngy1g1w7ueh8mdj30nk0ed427.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1w833hp28j30ot0eh0wk.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="volatile的内存语义">
 <meta name="twitter:description" content="volatile的特性 volatile修饰的变量可以禁止指令重排序和保证了内存可见性和单一操作的原子性，类似i++这样的复合操作的原子性保证不了 有volatile关键字修饰的共享变量进行写操作数，会多出一个lock前缀指令。lock前缀指令其实就相当于一个内存屏障。在多处理器下，会将当前处理器工作内存的数据回写到主内存中，并且这个回写操作会其它线程中缓存该内存地址的数据无效。相当于会在写操作后">
@@ -205,16 +209,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -572,7 +566,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

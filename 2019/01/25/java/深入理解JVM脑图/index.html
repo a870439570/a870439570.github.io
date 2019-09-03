@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -98,7 +102,7 @@
 <meta property="og:image" content="https://wx1.sinaimg.cn/large/006b7Nxngy1g1g37jd8gwj30ih0900uu.jpg">
 <meta property="og:image" content="https://wx1.sinaimg.cn/large/006b7Nxngy1g1g3817gxxj30kf09bwgj.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解JVM+脑图">
 <meta name="twitter:description" content="1. 运行时数据区域 Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域有各自的用途,以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则是依赖用户线程的启动和结束而建立和销毁。    线程私有的：虚拟机栈，本地方法栈，程序计数器 线程共享的 方法区，堆  程序计数器 程序计数器是一块较小的内存空间,它的作用可以看作是当前线程所执行的字">
@@ -209,16 +213,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -570,7 +564,7 @@
 <h4 id="3-准备"><a href="#3-准备" class="headerlink" title="3.准备"></a>3.准备</h4><ul>
 <li>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些变量所使用的内存都将在方法区中进行分配。这时候进行内存分配的仅包括类变量（被static修饰的变量），而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配在堆中。其次，这里所说的初始值“通常情况”下是数据类型的零值，假设一个类变量的定义为：</li>
 </ul>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="keyword">value</span>=<span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static int value=123;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>那变量value在准备阶段过后的初始值为0而不是123.因为这时候尚未开始执行任何java方法，而把value赋值为123的putstatic指令是程序被编译后，存放于类构造器()方法之中，所以把value赋值为123的动作将在初始化阶段才会执行。 </li>
@@ -621,7 +615,7 @@
 <li>我们无法就所有场景来规定某个线程修改的变量何时对其他线程可见，但是我们可以指定某些规则，这规则就是happens-before，从JDK 5 开始，JMM就使用happens-before的概念来阐述多线程之间的内存可见性。</li>
 <li>在JMM中，如果一个操作执行的结果需要对另一个操作可见，那么这两个操作之间必须存在happens-before关系。<br>happens-before原则非常重要，它是判断数据是否存在竞争、线程是否安全的主要依据，依靠这个原则，我们解决在并发环境下两操作之间是否可能存在冲突的所有问题。下面我们就一个简单的例子稍微了解下happens-before ；</li>
 </ul>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i</span> = <span class="number">1</span><span class="comment">;       //线程A执行</span></span><br><span class="line"><span class="attr">j</span> = i <span class="comment">;      //线程B执行</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i = 1;       //线程A执行</span><br><span class="line">j = i ;      //线程B执行</span><br></pre></td></tr></table></figure>
 
 <p>j 是否等于1呢？假定线程A的操作（i = 1）happens-before线程B的操作（j = i）,那么可以确定线程B执行后j = 1 一定成立，如果他们不存在happens-before原则，那么j = 1 不一定成立。这就是happens-before原则的威力。</p>
 <h3 id="原则定义"><a href="#原则定义" class="headerlink" title="原则定义"></a>原则定义</h3><ul>
@@ -637,33 +631,33 @@
 <h4 id="线程终结规则"><a href="#线程终结规则" class="headerlink" title="线程终结规则"></a>线程终结规则</h4><p>线程中所有的操作都先行发生于线程的终止检测，我们可以通过Thread.join()方法结束、Thread.isAlive()的返回值手段检测到线程已经终止执行；</p>
 <h4 id="对象终结规则"><a href="#对象终结规则" class="headerlink" title="对象终结规则"></a>对象终结规则</h4><p>一个对象的初始化完成先行发生于他的finalize()方法的开始；</p>
 <h2 id="8-对象"><a href="#8-对象" class="headerlink" title="8. 对象"></a>8. 对象</h2><h3 id="Java中创建对象的5种方式"><a href="#Java中创建对象的5种方式" class="headerlink" title="Java中创建对象的5种方式"></a>Java中创建对象的5种方式</h3><p>使用new关键字 → 调用了构造函数</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Employee emp1 = <span class="keyword">new</span> <span class="type">Employee</span>();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Employee emp1 = new Employee();</span><br></pre></td></tr></table></figure>
 
 <p>使用Class类的newInstance方法→ 调用了构造函数</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用Class类的newInstance方法创建对象。这个newInstance方法调用无参的构造函数创建对象。--&gt;</span></span><br><span class="line"></span><br><span class="line">Employee emp2 = (Employee) Class.forName("org.programming.mitra.exercises.Employee").newInstance();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--使用Class类的newInstance方法创建对象。这个newInstance方法调用无参的构造函数创建对象。--&gt;</span><br><span class="line"></span><br><span class="line">Employee emp2 = (Employee) Class.forName(&quot;org.programming.mitra.exercises.Employee&quot;).newInstance();</span><br></pre></td></tr></table></figure>
 
 <p>使用Constructor类的newInstance方法 → 调用了构造函数</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--和<span class="keyword">Class</span>类的newInstance方法很像， java.lang.reflect.<span class="keyword">Constructor</span>类里也有一个newInstance方法可以创建对象--&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">Constructor</span>&lt;<span class="title">Employee</span>&gt; <span class="title">constructor</span> = <span class="title">Employee</span>.<span class="title">class</span>.<span class="title">getConstructor</span><span class="params">()</span>;</span></span><br><span class="line">Employee emp3 = <span class="function"><span class="keyword">constructor</span>.<span class="title">newInstance</span><span class="params">()</span>;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--和Class类的newInstance方法很像， java.lang.reflect.Constructor类里也有一个newInstance方法可以创建对象--&gt;</span><br><span class="line"></span><br><span class="line">Constructor&lt;Employee&gt; constructor = Employee.class.getConstructor();</span><br><span class="line">Employee emp3 = constructor.newInstance();</span><br></pre></td></tr></table></figure>
 
 <p>使用clone方法→ 没有调用构造函数</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--无论何时我们调用一个对象的clone方法，jvm就会创建一个新的对象，将前面对象的内容全部拷贝进去。用clone方法创建对象并不会调用任何构造函数。--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--要使用clone方法，我们需要先实现Cloneable接口并实现其定义的clone方法--&gt;</span></span><br><span class="line">Employee emp4 = (Employee) emp3.clone();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--无论何时我们调用一个对象的clone方法，jvm就会创建一个新的对象，将前面对象的内容全部拷贝进去。用clone方法创建对象并不会调用任何构造函数。--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--要使用clone方法，我们需要先实现Cloneable接口并实现其定义的clone方法--&gt;</span><br><span class="line">Employee emp4 = (Employee) emp3.clone();</span><br></pre></td></tr></table></figure>
 
 <p>使用反序列化→ 没有调用构造函数</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjectInputStream <span class="keyword">in</span> = <span class="keyword">new</span> <span class="type">ObjectInputStream</span>(<span class="keyword">new</span> <span class="type">FileInputStream</span>(<span class="string">"data.obj"</span>));</span><br><span class="line">Employee emp5 = (Employee) <span class="keyword">in</span>.readObject();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjectInputStream in = new ObjectInputStream(new FileInputStream(&quot;data.obj&quot;));</span><br><span class="line">Employee emp5 = (Employee) in.readObject();</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://wx1.sinaimg.cn/large/006b7Nxngy1g1g354jorrj30830el0sy.jpg" alt="对象的创建"></p>
 <h3 id="Java-对象生命周期"><a href="#Java-对象生命周期" class="headerlink" title="Java 对象生命周期"></a>Java 对象生命周期</h3><p> 对象的整个生命周期大致可以分为7个阶段：</p>
-<h4 id="创建阶段（Creation）"><a href="#创建阶段（Creation）" class="headerlink" title="创建阶段（Creation）"></a>创建阶段（Creation）</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在创建阶段系统通过下面的几个步骤来完成对象的创建过程</span><br><span class="line"><span class="number">1</span>，为对象分配存储空间</span><br><span class="line"><span class="number">2</span>，开始构造对象</span><br><span class="line"><span class="number">3</span>，从超类到子类对static成员进行初始化</span><br><span class="line"><span class="number">4</span>，超类成员变量按顺序初始化，递归调用超类的构造方法</span><br><span class="line"><span class="number">5</span>，子类成员变量按顺序初始化，子类构造方法调用</span><br><span class="line"></span><br><span class="line">一旦对象被创建，并被分派给某些变量赋值，这个对象的状态就切换到了应用阶段</span><br></pre></td></tr></table></figure>
+<h4 id="创建阶段（Creation）"><a href="#创建阶段（Creation）" class="headerlink" title="创建阶段（Creation）"></a>创建阶段（Creation）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在创建阶段系统通过下面的几个步骤来完成对象的创建过程</span><br><span class="line">1，为对象分配存储空间</span><br><span class="line">2，开始构造对象</span><br><span class="line">3，从超类到子类对static成员进行初始化</span><br><span class="line">4，超类成员变量按顺序初始化，递归调用超类的构造方法</span><br><span class="line">5，子类成员变量按顺序初始化，子类构造方法调用</span><br><span class="line"></span><br><span class="line">一旦对象被创建，并被分派给某些变量赋值，这个对象的状态就切换到了应用阶段</span><br></pre></td></tr></table></figure>
 
 <h4 id="应用阶段-In-Use"><a href="#应用阶段-In-Use" class="headerlink" title="应用阶段(In Use)"></a>应用阶段(In Use)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象至少被一个强引用持有着</span><br></pre></td></tr></table></figure>
 
 <h4 id="不可视阶段（Invisible）"><a href="#不可视阶段（Invisible）" class="headerlink" title="不可视阶段（Invisible）"></a>不可视阶段（Invisible）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当一个对象处于不可见阶段时，说明程序本身不再持有该对象的任何强引用，虽然该这些引用仍然是存在着的。</span><br><span class="line">简单说就是程序的执行已经超出了该对象的作用域了。</span><br></pre></td></tr></table></figure>
 
-<h4 id="不可到达阶段（Unreachable）"><a href="#不可到达阶段（Unreachable）" class="headerlink" title="不可到达阶段（Unreachable）"></a>不可到达阶段（Unreachable）</h4><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对象处于不可达阶段是指该对象不再被任何强引用所持有</span><br><span class="line"></span><br><span class="line">与“不可见阶段”相比，“不可见阶段”是指程序不再持有该对象的任何强引用，这种情况下，该对象仍可能被JVM等系统下的某些已装载的静态变量或线程或JNI等强引用持有着，这些特殊的强引用被称为”GC<span class="built_in"> root</span>”。存在着这些GC<span class="built_in"> root</span>会导致对象的内存泄露情况，无法被回收。</span><br></pre></td></tr></table></figure>
+<h4 id="不可到达阶段（Unreachable）"><a href="#不可到达阶段（Unreachable）" class="headerlink" title="不可到达阶段（Unreachable）"></a>不可到达阶段（Unreachable）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对象处于不可达阶段是指该对象不再被任何强引用所持有</span><br><span class="line"></span><br><span class="line">与“不可见阶段”相比，“不可见阶段”是指程序不再持有该对象的任何强引用，这种情况下，该对象仍可能被JVM等系统下的某些已装载的静态变量或线程或JNI等强引用持有着，这些特殊的强引用被称为”GC root”。存在着这些GC root会导致对象的内存泄露情况，无法被回收。</span><br></pre></td></tr></table></figure>
 
-<h4 id="可收集阶段（Collected）"><a href="#可收集阶段（Collected）" class="headerlink" title="可收集阶段（Collected）"></a>可收集阶段（Collected）</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当垃圾回收器发现该对象已经处于“不可达阶段”并且垃圾回收器已经对该对象的内存空间重新分配做好准备时，则对象进入了“收集阶段”。</span><br><span class="line">如果该对象已经重写了<span class="selector-tag">finalize</span>()方法，则会去执行该方法的终端操作。</span><br></pre></td></tr></table></figure>
+<h4 id="可收集阶段（Collected）"><a href="#可收集阶段（Collected）" class="headerlink" title="可收集阶段（Collected）"></a>可收集阶段（Collected）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当垃圾回收器发现该对象已经处于“不可达阶段”并且垃圾回收器已经对该对象的内存空间重新分配做好准备时，则对象进入了“收集阶段”。</span><br><span class="line">如果该对象已经重写了finalize()方法，则会去执行该方法的终端操作。</span><br></pre></td></tr></table></figure>
 
-<h4 id="终结阶段（Finalized）"><a href="#终结阶段（Finalized）" class="headerlink" title="终结阶段（Finalized）"></a>终结阶段（Finalized）</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当对象执行完<span class="selector-tag">finalize</span>()方法后仍然处于不可达状态时，则该对象进入终结阶段。在该阶段是等待垃圾回收器对该对象空间进行回收。</span><br></pre></td></tr></table></figure>
+<h4 id="终结阶段（Finalized）"><a href="#终结阶段（Finalized）" class="headerlink" title="终结阶段（Finalized）"></a>终结阶段（Finalized）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当对象执行完finalize()方法后仍然处于不可达状态时，则该对象进入终结阶段。在该阶段是等待垃圾回收器对该对象空间进行回收。</span><br></pre></td></tr></table></figure>
 
 <h4 id="对象空间重新分配阶段"><a href="#对象空间重新分配阶段" class="headerlink" title="对象空间重新分配阶段"></a>对象空间重新分配阶段</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">垃圾回收器对该对象的所占用的内存空间进行回收或者再分配了，则该对象彻底消失了，称之为“对象空间重新分配阶段”。</span><br></pre></td></tr></table></figure>
 
@@ -786,7 +780,7 @@
 <li>只要能被invokestatic和invokespecial指令调用的方法，都可以在解析阶段中确定唯一的调用版本.(比如静态方法,私有方法,实列构造器,父类方法)它们在类加载时候会把符号引用解析为该方法的直接引用。</li>
 </ul>
 <h4 id="2-静态分派"><a href="#2-静态分派" class="headerlink" title="2.静态分派"></a>2.静态分派</h4><p>在重载时时通过参数的静态类型而不是实际类型作为判定依据的。并且静态类型是编译可知的。<br>静态分派的典型应用就是方法重载</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//左边是静态类型 右边是实际类型</span></span><br><span class="line">Human man=<span class="keyword">new</span> <span class="type">Man</span>();</span><br><span class="line">Huamn woman=<span class="keyword">new</span> <span class="type">Woman</span>();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//左边是静态类型 右边是实际类型</span><br><span class="line">Human man=new Man();</span><br><span class="line">Huamn woman=new Woman();</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-动态分派"><a href="#3-动态分派" class="headerlink" title="3.动态分派"></a>3.动态分派</h4><p>方法的重写就是动态分派的体现。</p>
 <h2 id="12-高效并发"><a href="#12-高效并发" class="headerlink" title="12. 高效并发"></a>12. 高效并发</h2><h3 id="主内存与工作内存"><a href="#主内存与工作内存" class="headerlink" title="主内存与工作内存"></a>主内存与工作内存</h3><ul>
@@ -959,7 +953,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

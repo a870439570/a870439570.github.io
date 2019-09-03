@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -92,7 +96,7 @@
 <meta property="og:image" content="https://images.gitee.com/uploads/images/2018/0809/161554_01933e92_1478371.png">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2y9ladfj30jb01sdfs.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HBase快速入门">
 <meta name="twitter:description" content="Apache HBase Apache HBase™是Hadoop数据库，是一个分布式，可扩展的大数据存储。 当您需要对大数据进行随机，实时读/写访问时，请使用Apache HBase™。该项目的目标是托管非常大的表 - 数十亿行X百万列 - 在商品硬件集群上。Apache HBase是一个开源的，分布式的，版本化的非关系数据库  特征 线性和模块化可扩展性。 严格一致的读写操作。 表的自动和可配">
@@ -203,16 +207,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -398,28 +392,28 @@
 <h3 id="安装-独立HBase"><a href="#安装-独立HBase" class="headerlink" title="安装  独立HBase"></a>安装  独立HBase</h3><p>HBase要求安装JDK。有关支持的JDK版本的信息<br><img src="https://images.gitee.com/uploads/images/2018/0809/161554_01933e92_1478371.png" alt="输入图片说明" title="屏幕截图.png"></p>
 <p>从此Apache下载镜像列表中选择一个下载站点。单击建议的顶部链接。这将带您进入HBase版本的镜像。单击名为stable的文件夹，然后将以.tar.gz结尾的二进制文件下载到本地文件系统。暂时不要下载以src.tar.gz结尾的文件。</p>
 <p>解压缩下载的文件，然后切换到新创建的目录。</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xzvf hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>-bin.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xzvf hbase-1.2.6.1-bin.tar.gz</span><br></pre></td></tr></table></figure>
 
 <p>为HBase设置Java目录，并从conf文件夹打开hbase-env.sh文件。编辑JAVA_HOME环境变量，改变路径到当前JAVA_HOME变量</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#编辑/home/hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>/conf/hbase-env.sh</span><br><span class="line">#配置hbase-env.sh文件：把<span class="number">29</span>行的注释取消，配置虚拟机上面的Java地址</span><br><span class="line">export JAVA_HOME=/usr/local/java/jdk1<span class="number">.7</span><span class="number">.0</span>_79</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#编辑/home/hbase-1.2.6.1/conf/hbase-env.sh</span><br><span class="line">#配置hbase-env.sh文件：把29行的注释取消，配置虚拟机上面的Java地址</span><br><span class="line">export JAVA_HOME=/usr/local/java/jdk1.7.0_79</span><br></pre></td></tr></table></figure>
 
 <p>编辑conf/hbase-site.xml，这是主要的HBase配置文件</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">	&lt;!--  配置hbase存在位置--&gt;</span><br><span class="line">	    &lt;name&gt;hbase.rootdir&lt;/name&gt;</span><br><span class="line">	    &lt;value&gt;file:<span class="comment">///home/pflm/HBase/HFiles&lt;/value&gt;</span></span><br><span class="line">	  &lt;/property&gt;</span><br><span class="line">	  &lt;property&gt;</span><br><span class="line">	  	&lt;!--  配置hbase文件保存路径--&gt;</span><br><span class="line">	    &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;</span><br><span class="line">	    &lt;value&gt;/home/pflm/HBase/zookeeper&lt;/value&gt;</span><br><span class="line">	  &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
 
 <p>到此 HBase 的安装配置已成功完成。可以通过使用 HBase 的 bin 文件夹中提供 start-hbase.sh 脚本启动 HBase</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .<span class="regexp">/bin/</span>start-hbase.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/start-hbase.sh</span><br></pre></td></tr></table></figure>
 
 <p>运行HBase启动脚本，它会提示一条消息：HBase has started</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">starting master,<span class="built_in"> logging </span><span class="keyword">to</span> /usr/local/HBase/bin/<span class="built_in">..</span>/logs/hbase-tpmaster-localhost.localdomain.out</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">starting master, logging to /usr/local/HBase/bin/../logs/hbase-tpmaster-localhost.localdomain.out</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>该./start-hbase.sh脚本是作为启动HBase的一种便捷方式。发出命令，如果一切顺利，将在标准输出中记录一条消息，显示HBase已成功启动。您可以使用该jps命令验证是否有一个正在运行的进程HMaster。在独立模式下，HBase运行此单个JVM中的所有守护程序，即HMaster，单个HRegionServer和ZooKeeper守护程序。转到<code>http：// localhost：16010</code>以查看HBase Web UI。</li>
 </ul>
 <h3 id="HBase-Shell"><a href="#HBase-Shell" class="headerlink" title="HBase Shell"></a>HBase Shell</h3><p>要访问HBase shell，必须导航进入到HBase的主文件夹。</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入shell</span></span><br><span class="line">/bin/hbase <span class="keyword">shell</span><span class="bash"></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#列出HBase的所有表。</span></span></span><br><span class="line">hbase(main):<span class="number">001</span>:<span class="number">0</span>&gt; list</span><br><span class="line">TABLE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#进入shell</span><br><span class="line">/bin/hbase shell</span><br><span class="line"></span><br><span class="line">#列出HBase的所有表。</span><br><span class="line">hbase(main):001:0&gt; list</span><br><span class="line">TABLE</span><br></pre></td></tr></table></figure>
 
 <p> <strong>通用命令</strong> </p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">status:</span> 提供HBase的状态，例如，服务器的数量。</span><br><span class="line"><span class="symbol">version:</span> 提供正在使用HBase版本。</span><br><span class="line"><span class="symbol">table_help:</span> 表引用命令提供帮助</span><br><span class="line"><span class="symbol">whoami:</span> 提供有关用户的信息。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">status: 提供HBase的状态，例如，服务器的数量。</span><br><span class="line">version: 提供正在使用HBase版本。</span><br><span class="line">table_help: 表引用命令提供帮助</span><br><span class="line">whoami: 提供有关用户的信息。</span><br></pre></td></tr></table></figure>
 
 <p> <strong>HBase在表中操作的命令。</strong> </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">create: 创建一个表。</span><br><span class="line">list: 列出HBase的所有表。</span><br><span class="line"><span class="built_in">disable</span>: 禁用表。</span><br><span class="line">is_disabled: 验证表是否被禁用。</span><br><span class="line"><span class="built_in">enable</span>: 启用一个表。</span><br><span class="line">is_enabled: 验证表是否已启用。</span><br><span class="line">describe: 提供了一个表的描述。</span><br><span class="line">alter: 改变一个表。</span><br><span class="line">exists: 验证表是否存在。</span><br><span class="line">drop: 从HBase中删除表。</span><br><span class="line">drop_all: 丢弃在命令中给出匹配“regex”的表</span><br></pre></td></tr></table></figure>
@@ -432,7 +426,7 @@
 
 <p>这里配置的hostname要Linux重启才生效，为了不重启就生效，我们可以执行：hostname CentOS124命令，暂时设置hostname</p>
 <p> <strong>2、配置Linux的hosts，映射ip的hostname的关系</strong> </p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#映射ip的hostname的关系</span><br><span class="line">[root@CentOS124 hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>]# vim /etc/host</span><br><span class="line"></span><br><span class="line">#查看hbase ip绑定是否成功</span><br><span class="line">[root@CentOS124 hbase<span class="number">-1.2</span><span class="number">.6</span><span class="number">.1</span>]# netstat -anp|grep <span class="number">16010</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#映射ip的hostname的关系</span><br><span class="line">[root@CentOS124 hbase-1.2.6.1]# vim /etc/host</span><br><span class="line"></span><br><span class="line">#查看hbase ip绑定是否成功</span><br><span class="line">[root@CentOS124 hbase-1.2.6.1]# netstat -anp|grep 16010</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://wx1.sinaimg.cn/large/006b7Nxngy1g1g2y9ladfj30jb01sdfs.jpg" alt></p>
 <p> <strong>3、配置访问windows的hosts</strong> </p>
@@ -562,7 +556,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -91,7 +95,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx1.sinaimg.cn/large/006b7Nxngy1g1g30xqlk9j30tk0dogs7.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发编程-深入理解AQS(队列同步器)">
 <meta name="twitter:description" content="什么是AQS AbstractQueuedSynchronizer是一个队列同步器，是用来构建锁和其它同步组件的基础框架，它使用一个volatile修饰的int成员变量表示同步状态，通过内置的FIFO队列来完成资源获取线程排队的工作 通过改变int成员变量state来表示锁是否获取成功，当state&amp;gt;0表示锁获取成功，当state=0时说明锁释放成功。提供了三个方法（getState()、s">
@@ -202,16 +206,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -548,7 +542,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

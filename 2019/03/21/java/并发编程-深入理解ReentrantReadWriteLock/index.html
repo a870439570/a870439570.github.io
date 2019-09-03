@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -90,7 +94,7 @@
 <meta property="og:description" content="概述 ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入和公以及平非公平模式。读锁是共享式的，多个线程可以并发的读取。写锁是独占式的，在写线程访问时，所有的读线程和其他写线程均被阻塞。通过分离读锁和写锁，使得并发性相比一般的排他锁有了很大提升 锁降级：遵循获取写锁，获取读锁在释放写锁的次序，写锁可以降级为读锁 读取锁和写入锁都支持锁获取期间的中断 Reentrant">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发编程-深入理解ReentrantReadWriteLock读写锁">
 <meta name="twitter:description" content="概述 ReentrantReadWriteLock内部维护了一对锁，读锁和写锁。支持重入和公以及平非公平模式。读锁是共享式的，多个线程可以并发的读取。写锁是独占式的，在写线程访问时，所有的读线程和其他写线程均被阻塞。通过分离读锁和写锁，使得并发性相比一般的排他锁有了很大提升 锁降级：遵循获取写锁，获取读锁在释放写锁的次序，写锁可以降级为读锁 读取锁和写入锁都支持锁获取期间的中断 Reentrant">
@@ -201,16 +205,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -541,7 +535,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

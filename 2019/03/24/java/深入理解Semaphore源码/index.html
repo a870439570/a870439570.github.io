@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -90,7 +94,7 @@
 <meta property="og:description" content="概述 Semaphore 通常用于限制可以访问某些资源（物理或逻辑的）的线程数目。 比如数据库的连接资源是非常有限的，如果同时有上千个线程去数据获取连接，对数据造成的压力是非常的，会造成数据库无法连接而报错，Semaphore就可以限制此类问题 Semaphore有非公平和公平模式，默认是非公平的。当Semaphore设置为1时，可以排它锁使用，同一个时刻，只能限制一个线程访问。和CountDow">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发编程-深入理解Semaphore源码">
 <meta name="twitter:description" content="概述 Semaphore 通常用于限制可以访问某些资源（物理或逻辑的）的线程数目。 比如数据库的连接资源是非常有限的，如果同时有上千个线程去数据获取连接，对数据造成的压力是非常的，会造成数据库无法连接而报错，Semaphore就可以限制此类问题 Semaphore有非公平和公平模式，默认是非公平的。当Semaphore设置为1时，可以排它锁使用，同一个时刻，只能限制一个线程访问。和CountDow">
@@ -201,16 +205,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -583,7 +577,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

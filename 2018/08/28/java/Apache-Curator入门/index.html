@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -91,7 +95,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://wx1.sinaimg.cn/large/006b7Nxngy1g1g2tsm8jrj30gw0djmxo.jpg">
 <meta property="og:image" content="https://wx3.sinaimg.cn/large/0068QeGHgy1g48plv1tr9j3076076758.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zookeeper客户端Curator入门">
 <meta name="twitter:description" content="Zookeeper客户端（Apache Curator） zookeeper自带的客户端是官方提供的，比较底层、使用起来写代码麻烦、不够直接。 Apache Curator是Apache的开源项目，封装了zookeeper自带的客户端，使用相对简便，易于使用。 zkclient是另一个开源的ZooKeeper客户端，其地址：https://github.com/adyliu/zkclient生产环">
@@ -202,16 +206,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -389,17 +383,17 @@
 
 <h3 id="zookeeper-集群的-监控图形化页面"><a href="#zookeeper-集群的-监控图形化页面" class="headerlink" title="zookeeper 集群的 监控图形化页面"></a>zookeeper 集群的 监控图形化页面</h3><p><a href="https://gitee.com/crystony/zookeeper-web" target="_blank" rel="noopener">https://gitee.com/crystony/zookeeper-web</a></p>
 <p>如果你是gradle用户(2.0以上),请直接执行以下命令运行项目：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gradle jettyRun</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle jettyRun</span><br></pre></td></tr></table></figure>
 
 <p>如果你没使用gralde,执行项目跟路径下的脚本,linux/windows用户执行</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew/gradlew<span class="selector-class">.bat</span> jettyRun</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew/gradlew.bat jettyRun</span><br></pre></td></tr></table></figure>
 
 <p>自动下载gralde完成后,会自动使用jetty启动项目</p>
 <p>如果想将项目导入IDE调试,eclipse用户执行</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew/gradlew<span class="selector-class">.bat</span> eclipse</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew/gradlew.bat eclipse</span><br></pre></td></tr></table></figure>
 
 <p>idea用户执行</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew/gradlew<span class="selector-class">.bat</span> idea</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew/gradlew.bat idea</span><br></pre></td></tr></table></figure>
 
 <h3 id="zookeeper分布式锁原理"><a href="#zookeeper分布式锁原理" class="headerlink" title="zookeeper分布式锁原理"></a>zookeeper分布式锁原理</h3><p>分布式锁主要用于在分布式环境中保护跨进程、跨主机、跨网络的共享资源实现互斥访问，以达到保证数据的一致性。<br><img src="https://wx1.sinaimg.cn/large/006b7Nxngy1g1g2tsm8jrj30gw0djmxo.jpg" alt></p>
 <p>左边的整个区域表示一个Zookeeper集群，locker是Zookeeper的一个持久节点，node_1、node_2、node_3是locker这个持久节点下面的临时顺序节点。client_1、client_2、client_n表示多个客户端，Service表示需要互斥访问的共享资源。</p>
@@ -533,7 +527,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

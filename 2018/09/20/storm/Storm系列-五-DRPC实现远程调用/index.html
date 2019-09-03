@@ -65,6 +65,10 @@
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
 
 
 
@@ -90,7 +94,7 @@
 <meta property="og:description" content="Trident简介 Trident拥有一流的抽象，可以读取和写入有状态的来源。状态可以是拓扑的内部 - 例如，保存在内存中并由HDFS支持 -  或者外部存储在Memcached或Cassandra等数据库中。在任何一种情况下，Trident API都没有区别。 Trident以容错的方式管理状态，以便状态更新在重试和失败时是幂等的。这使您可以推理Trident拓扑，就好像每条消息都是精确处理一次">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/006b7Nxngy1g1eu6ewhl9j30760763yz.jpg">
-<meta property="og:updated_time" content="2019-08-31T02:21:31.000Z">
+<meta property="og:updated_time" content="2019-09-02T09:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Storm系列(五)DRPC实现远程调用">
 <meta name="twitter:description" content="Trident简介 Trident拥有一流的抽象，可以读取和写入有状态的来源。状态可以是拓扑的内部 - 例如，保存在内存中并由HDFS支持 -  或者外部存储在Memcached或Cassandra等数据库中。在任何一种情况下，Trident API都没有区别。 Trident以容错的方式管理状态，以便状态更新在重试和失败时是幂等的。这使您可以推理Trident拓扑，就好像每条消息都是精确处理一次">
@@ -201,16 +205,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             主页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-关于">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
           </a>
         </li>
       
@@ -400,13 +394,13 @@
 <p>（一方面注意 - 一旦Kafka支持复制，就有可能拥有对节点故障具有容错能力的事务性spout，但该功能尚不存在。）</p>
 <p>假设您的拓扑计算字数，并且您希望将字数存储在键/值数据库中。键将是单词，值将包含计数。您已经看到只存储计数，因为该值不足以知道您之前是否处理过一批元组。相反，您可以做的是将事务id与数据库中的count一起存储为原子值。然后，在更新计数时，您只需将数据库中的事务ID与当前批次的事务ID进行比较。如果它们是相同的，则跳过更新 - 由于强大的排序，您确定数据库中的值包含当前批次。如果它们不同，则增加计数。这个逻辑有效，因为txid的批处理永远不会改变，</p>
 <p>假设您正在处理由以下一批元组组成的txid 3：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"man"</span>]</span><br><span class="line">[<span class="string">"man"</span>]</span><br><span class="line">[<span class="string">"dog"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[&quot;man&quot;]</span><br><span class="line">[&quot;man&quot;]</span><br><span class="line">[&quot;dog&quot;]</span><br></pre></td></tr></table></figure>
 
 <p>假设数据库当前包含以下键/值对：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">man =&gt; [<span class="attribute">count</span>=3, <span class="attribute">txid</span>=1]</span><br><span class="line">dog =&gt; [<span class="attribute">count</span>=4, <span class="attribute">txid</span>=3]</span><br><span class="line">apple =&gt; [<span class="attribute">count</span>=10, <span class="attribute">txid</span>=2]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">man =&gt; [count=3, txid=1]</span><br><span class="line">dog =&gt; [count=4, txid=3]</span><br><span class="line">apple =&gt; [count=10, txid=2]</span><br></pre></td></tr></table></figure>
 
 <p>与“man”关联的txid为txid 1.由于当前txid为3，因此您确定该批次中未表示此批元组。因此，您可以继续将计数增加2并更新txid。另一方面，“dog”的txid与当前的txid相同。因此，您确定已知当前批次的增量已在数据库中表示为“dog”键。所以你可以跳过更新。完成更新后，数据库如下所示：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">man =&gt; [<span class="attribute">count</span>=5, <span class="attribute">txid</span>=3]</span><br><span class="line">dog =&gt; [<span class="attribute">count</span>=4, <span class="attribute">txid</span>=3]</span><br><span class="line">apple =&gt; [<span class="attribute">count</span>=10, <span class="attribute">txid</span>=2]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">man =&gt; [count=5, txid=3]</span><br><span class="line">dog =&gt; [count=4, txid=3]</span><br><span class="line">apple =&gt; [count=10, txid=2]</span><br></pre></td></tr></table></figure>
 
 <h2 id="不透明事务性-模糊事务型"><a href="#不透明事务性-模糊事务型" class="headerlink" title="不透明事务性(模糊事务型)"></a>不透明事务性(模糊事务型)</h2><p>模糊事务型spout不能保证txid的一批元组保持不变。不透明的事务性spout具有以下属性：</p>
 <ol>
@@ -549,7 +543,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
